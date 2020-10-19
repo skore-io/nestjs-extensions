@@ -1,0 +1,37 @@
+name: On pull request
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  pr_analysis:
+    name: PR Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node 10
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Dependencies
+        run: npm install
+
+      - name: Tests
+        run: npm test
