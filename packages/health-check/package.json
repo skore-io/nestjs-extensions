@@ -1,0 +1,11 @@
+{
+  "name": "@skore-io/health-check",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "test": "npx jest"
+  },
+  "dependencies": {
+    "@nestjs/terminus": "^7.0.1"
+  }
+}
