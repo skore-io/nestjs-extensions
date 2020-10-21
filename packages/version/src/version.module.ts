@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common'
 import { VersionDocument } from './document'
 
-@Module({ imports: [VersionDocument] })
+@Module({ providers: [VersionDocument] })
 export class VersionModule {}
