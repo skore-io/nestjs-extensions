@@ -1,7 +1,12 @@
 {
   "name": "root",
   "scripts": {
-    "build": "npx lerna run build"
+    "build": "npx lerna run build",
+    "test": "npx lerna run test"
+  },
+  "dependencies": {
+    "class-transformer": "^0.3.1",
+    "mongodb": "^3.6.2"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.2.0",
@@ -29,9 +34,5 @@
     "ts-node": "8.1.0",
     "tsconfig-paths": "3.8.0",
     "typescript": "^4.0.3"
-  },
-  "dependencies": {
-    "class-transformer": "^0.3.1",
-    "mongodb": "^3.6.2"
   }
 }
