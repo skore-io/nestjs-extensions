@@ -47,6 +47,9 @@ jobs:
       - name: Dependencies
         run: npm install --no-package-lock
 
+      - name: Test environment
+        run: docker-compose up -d
+
       - name: Tests
         run: npm test
 
