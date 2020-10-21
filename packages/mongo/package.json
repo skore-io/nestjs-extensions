@@ -1,0 +1,27 @@
+{
+  "name": "@skore-io/mongo",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "homepage": "",
+  "license": "ISC",
+  "author": "Skore",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "directories": {
+    "dist": "dist"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "npx rimraf dist",
+    "build": "nest build",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "mongodb": "^3.6.2"
+  },
+  "devDependencies": {
+    "@types/mongodb": "^3.5.31"
+  }
+}
