@@ -27,10 +27,13 @@ export class VersionDocumentTest {
     const docId = VersionFactory.mongoId()
     await VersionFactory.createWithIds(module, { docId })
 
-    const versions = await document.findVersionsFor<{ title: string }>('contents', docId)
+    const versions = await document.findVersionsFor<{ title: string }>(
+      'contents',
+      docId.toHexString(),
+    )
 
     expect(versions).toHaveLength(1)
-    expect(versions[0].documentId).toBe(docId)
+    expect(versions[0].documentId).toBe(docId.toHexString())
     expect(versions[0].documentData.title).toBe('Sample 0')
   }
 
@@ -43,7 +46,10 @@ export class VersionDocumentTest {
 
     await VersionFactory.createWithIds(module, { docId, createdAt }, { docId })
 
-    const versions = await document.findVersionsFor<{ title: string }>('contents', docId)
+    const versions = await document.findVersionsFor<{ title: string }>(
+      'contents',
+      docId.toHexString(),
+    )
 
     expect(versions).toHaveLength(2)
     expect(versions[0].documentData.title).toBe('Sample 1')
@@ -60,9 +66,12 @@ export class VersionDocumentTest {
     const docId = VersionFactory.mongoId()
     await VersionFactory.createWithIds(module, { docId, title: 'Sample latest' })
 
-    const version = await document.findLatestVersionFor<{ title: string }>('contents', docId)
+    const version = await document.findLatestVersionFor<{ title: string }>(
+      'contents',
+      docId.toHexString(),
+    )
 
-    expect(version.documentId).toBe(docId)
+    expect(version.documentId).toBe(docId.toHexString())
     expect(version.documentData.title).toBe('Sample latest')
   }
 

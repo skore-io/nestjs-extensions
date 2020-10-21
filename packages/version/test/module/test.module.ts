@@ -17,7 +17,7 @@ import { VersionModule } from '../../src'
           },
         )
         const db = mongoClient.db('skoredb_dev')
-        db.createIndex('versions', { document_type: 1, document_id: 1 })
+        db.createIndex('versions', { document_collection: 1, document_id: 1 })
         return db
       },
     },

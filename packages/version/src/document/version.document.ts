@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { plainToClass } from 'class-transformer'
-import { Collection, Db } from 'mongodb'
+import { Collection, Db, ObjectID } from 'mongodb'
 import { Version } from '../domain'
 
 @Injectable()
@@ -11,20 +11,23 @@ export class VersionDocument {
     this.collection = db.collection('versions')
   }
 
-  async findVersionsFor<T>(documentType: string, documentId: string): Promise<Version<T>[]> {
+  async findVersionsFor<T>(documentCollection: string, documentId: string): Promise<Version<T>[]> {
     const versions = await this.collection
-      .find({ document_type: documentType, document_id: documentId })
+      .find({ document_collection: documentCollection, document_id: new ObjectID(documentId) })
       .sort({ created_at: -1 })
       .toArray()
 
     return plainToClass(Version, versions)
   }
 
-  async findLatestVersionFor<T>(documentType: string, documentId: string): Promise<Version<T>> {
+  async findLatestVersionFor<T>(
+    documentCollection: string,
+    documentId: string,
+  ): Promise<Version<T>> {
     const version = await this.collection.findOne(
       {
-        document_type: documentType,
-        document_id: documentId,
+        document_collection: documentCollection,
+        document_id: new ObjectID(documentId),
       },
       { sort: { created_at: -1 } },
     )
