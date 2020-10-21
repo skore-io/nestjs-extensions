@@ -33,6 +33,7 @@ export class VersionDocumentTest {
     )
 
     expect(versions).toHaveLength(1)
+    expect(versions[0]._id).toBeDefined()
     expect(versions[0].documentId).toBe(docId.toHexString())
     expect(versions[0].documentData.title).toBe('Sample 0')
   }
@@ -71,6 +72,7 @@ export class VersionDocumentTest {
       docId.toHexString(),
     )
 
+    expect(version._id).toBeDefined()
     expect(version.documentId).toBe(docId.toHexString())
     expect(version.documentData.title).toBe('Sample latest')
   }

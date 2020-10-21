@@ -2,8 +2,9 @@ import { Expose, Transform } from 'class-transformer'
 import { ObjectID } from 'mongodb'
 
 export class Version<T> {
+  @Transform((id: ObjectID) => id.toHexString(), { toClassOnly: true })
   @Expose()
-  id: string
+  _id: string
   @Expose({ name: 'created_at' })
   createdAt: number
   @Transform((id: ObjectID) => id.toHexString(), { toClassOnly: true })
