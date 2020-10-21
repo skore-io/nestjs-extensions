@@ -17,11 +17,5 @@
     "prebuild": "npx rimraf dist",
     "build": "nest build",
     "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "dependencies": {
-    "mongodb": "^3.6.2"
-  },
-  "devDependencies": {
-    "@types/mongodb": "^3.5.31"
   }
 }
