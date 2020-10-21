@@ -11,14 +11,24 @@ export class VersionDocument {
     this.collection = db.collection('versions')
   }
 
-  async findVersionsFor<T>(collection: string, id: string): Promise<Version<T>[]> {
-    const documents = await this.collection
-      .find({ document_type: collection, document_id: id })
+  async findVersionsFor<T>(documentType: string, documentId: string): Promise<Version<T>[]> {
+    const versions = await this.collection
+      .find({ document_type: documentType, document_id: documentId })
       .sort({ created_at: -1 })
       .toArray()
 
-    if (!documents.length) return []
+    return plainToClass(Version, versions)
+  }
 
-    return plainToClass(Version, documents)
+  async findLatestVersionFor<T>(documentType: string, documentId: string): Promise<Version<T>> {
+    const version = await this.collection.findOne(
+      {
+        document_type: documentType,
+        document_id: documentId,
+      },
+      { sort: { created_at: -1 } },
+    )
+
+    return plainToClass(Version, version)
   }
 }

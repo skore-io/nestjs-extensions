@@ -8,6 +8,7 @@ module.exports = {
   coverageDirectory: 'coverage',
   setupFiles: ['../../jest-setup.js'],
   testMatch: ['<rootDir>/test/**/*.test.ts'],
+  coveragePathIgnorePatterns: ['/node_modules/', '/test/'],
   testEnvironment: 'node',
   collectCoverage: true,
   forceExit: true,
