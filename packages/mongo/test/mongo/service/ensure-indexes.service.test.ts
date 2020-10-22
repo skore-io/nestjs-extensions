@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { suite, test } from '@testdeck/jest'
 import { Collection, Db } from 'mongodb'
-import { MongoModule } from 'packages/mongo/src'
-import { TestDocument } from 'packages/mongo/test/mongo/document'
+import { MongoModule } from '../../../src'
+import { TestDocument } from '../document'
 
 @suite('MongoModule EnsureIndexesService')
 export class EnsureIndexesServiceTest {

@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common'
-import { EnsureIndex } from 'packages/mongo/src'
+import { EnsureIndex } from '../../../src'
 
 @EnsureIndex('test', [
   { name: 'my_cool_index', key: { public: 1 } },

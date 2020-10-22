@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { suite, test } from '@testdeck/jest'
 import { Db } from 'mongodb'
-import { MongoModule } from 'packages/mongo/src'
+import { MongoModule } from '../../src'
 
 const TOPOLOGY_CLOSED = 'Topology is closed, please connect'
 

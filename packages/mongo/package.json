@@ -16,6 +16,6 @@
   "scripts": {
     "prebuild": "npx rimraf dist",
     "build": "nest build",
-    "test": "NODE_PATH=../../  npx jest"
+    "test": "npx jest"
   }
 }
