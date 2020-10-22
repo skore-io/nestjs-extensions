@@ -60,7 +60,14 @@
             "type": "ci",
             "section": "Continuous Integration 🤖"
           }
-        ]
+        ],
+        "issuePrefixes": [
+          "#"
+        ],
+        "issueUrlFormat": "{{host}}/{{owner}}/{{repository}}/issues/{{id}}",
+        "commitUrlFormat": "{{host}}/{{owner}}/{{repository}}/commit/{{hash}}",
+        "compareUrlFormat": "{{host}}/{{owner}}/{{repository}}/compare/{{previousTag}}...{{currentTag}}",
+        "userUrlFormat": "{{host}}/{{user}}"
       },
       "conventionalCommits": true,
       "createRelease": "github",
@@ -71,5 +78,5 @@
     "packages/*"
   ],
   "includeMergedTags": true,
-  "version": "0.0.0"
+  "version": "0.1.0"
 }
