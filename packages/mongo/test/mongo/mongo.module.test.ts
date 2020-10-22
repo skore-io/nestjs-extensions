@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { suite, test } from '@testdeck/jest'
 import { Db } from 'mongodb'
-import { MongoModule } from '../../src'
+import { TestModule } from './module/test.module'
 
 const TOPOLOGY_CLOSED = 'Topology is closed, please connect'
 
@@ -11,9 +11,7 @@ export class MongoModuleTest {
   private app: TestingModule
 
   async before() {
-    const testingModule = await Test.createTestingModule({
-      imports: [MongoModule],
-    }).compile()
+    const testingModule = await Test.createTestingModule({ imports: [TestModule] }).compile()
 
     this.app = await testingModule.init()
     this.db = this.app.get<Db>(Db)

@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { suite, test } from '@testdeck/jest'
 import { Collection, Db } from 'mongodb'
-import { MongoModule } from '../../../src'
 import { TestDocument } from '../document'
+import { TestModule } from '../module/test.module'
 
 @suite('MongoModule EnsureIndexesService')
 export class EnsureIndexesServiceTest {
@@ -11,7 +11,7 @@ export class EnsureIndexesServiceTest {
 
   async before() {
     const module = await Test.createTestingModule({
-      imports: [MongoModule],
+      imports: [TestModule],
       providers: [TestDocument],
     }).compile()
 
