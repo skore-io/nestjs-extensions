@@ -1,9 +1,9 @@
 {
   "name": "@skore-io/mongo",
-  "version": "0.0.0",
-  "description": "> TODO: description",
+  "version": "0.0.1",
+  "description": "Provides a Mongodb's Db provider, manages mongodb connections and anotation for auto create indexs for the database",
   "homepage": "",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "author": "Skore",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -16,6 +16,6 @@
   "scripts": {
     "prebuild": "npx rimraf dist",
     "build": "nest build",
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "NODE_PATH=../../  npx jest"
   }
 }

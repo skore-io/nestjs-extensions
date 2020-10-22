@@ -2,9 +2,9 @@
 const { defaults: tsjPreset } = require('ts-jest/presets')
 
 module.exports = {
-  collectCoverageFrom: ['src/**/{!(app.module|index|main),}.ts'],
+  collectCoverageFrom: ['packages/**/src/**/{!(app.module|index|main),}.ts'],
   coveragePathIgnorePatterns: ['/node_modules/', '/test/'],
-  coverageReporters: ['lcovonly'],
+  coverageReporters: ['lcovonly', 'text'],
   coverageThreshold: {
     global: {
       branches: 80,

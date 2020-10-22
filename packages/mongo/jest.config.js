@@ -11,4 +11,6 @@ module.exports = {
   testEnvironment: 'node',
   collectCoverage: true,
   forceExit: true,
+  coverageReporters: ['lcovonly', 'text'],
+  collectCoverageFrom: ['src/**/{!(mongo.module|index),}.ts'],
 }

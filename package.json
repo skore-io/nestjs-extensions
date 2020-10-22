@@ -19,6 +19,7 @@
     "@types/node": "^10.17.24",
     "@typescript-eslint/eslint-plugin": "^3.0.2",
     "@typescript-eslint/parser": "^3.0.2",
+    "dotenv": "^8.2.0",
     "eslint": "^7.1.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.20.2",
@@ -34,5 +35,10 @@
     "ts-node": "8.1.0",
     "tsconfig-paths": "3.8.0",
     "typescript": "^4.0.3"
+  },
+  "jestSonar": {
+    "reportFile": "test-reporter.xml",
+    "indent": 2,
+    "reportPath": "coverage"
   }
 }

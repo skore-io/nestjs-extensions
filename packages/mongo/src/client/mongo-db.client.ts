@@ -4,13 +4,11 @@ import { Db, MongoClient } from 'mongodb'
 @Injectable()
 export class MongoDbClient implements OnApplicationShutdown {
   private static connection: MongoClient
-  private db: Db
 
   async init(): Promise<Db> {
     MongoDbClient.connection = await this.mongoClient()
-    this.db = MongoDbClient.connection.db(process.env.DATABASE_NAME)
 
-    return this.db
+    return MongoDbClient.connection.db(process.env.DATABASE_NAME)
   }
 
   async onApplicationShutdown(signal: string): Promise<void> {
