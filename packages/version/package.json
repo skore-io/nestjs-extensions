@@ -6,5 +6,8 @@
   "author": "",
   "scripts": {
     "test": "npx jest"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@skore-io"
   }
 }
