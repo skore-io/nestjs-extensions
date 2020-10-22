@@ -1,0 +1,10 @@
+{
+  "name": "@skore-io/version",
+  "version": "0.0.1",
+  "description": "",
+  "license": "UNLICENSED",
+  "author": "",
+  "scripts": {
+    "test": "npx jest"
+  }
+}

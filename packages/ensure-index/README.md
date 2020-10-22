@@ -1,1 +1,0 @@
-# `@skore-io/ensure-index`
