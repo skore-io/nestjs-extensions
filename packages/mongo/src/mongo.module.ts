@@ -14,7 +14,6 @@ import { EnsureIndexesService } from './service'
       },
     },
   ],
-
   exports: [Db],
 })
 export class MongoModule {}

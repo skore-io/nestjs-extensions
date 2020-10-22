@@ -17,5 +17,9 @@
     "prebuild": "npx rimraf dist",
     "build": "nest build",
     "test": "npx jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:skore-io/nestjs-extensions.git"
   }
 }
