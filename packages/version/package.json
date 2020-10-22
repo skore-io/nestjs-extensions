@@ -2,13 +2,23 @@
   "name": "@skore-io/version",
   "version": "0.1.3",
   "description": "",
-  "license": "UNLICENSED",
-  "author": "",
-  "scripts": {
-    "test": "npx jest"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com:skore-io/nestjs-extensions.git"
+  },
+  "license": "UNLICENSED",
+  "author": "Skore",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "directories": {
+    "dist": "dist"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "npx rimraf dist",
+    "build": "npx nest build",
+    "test": "npx jest"
   }
 }
