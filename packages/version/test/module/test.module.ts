@@ -10,7 +10,7 @@ import { VersionModule } from '../../src'
       provide: Db,
       useFactory: async () => {
         const mongoClient = await MongoClient.connect(
-          'mongodb://extensions:extensions@mongodb?retryWrites=true&w=majority',
+          'mongodb://extensions:extensions@localhost?retryWrites=true&w=majority',
           {
             useNewUrlParser: true,
             useUnifiedTopology: true,
