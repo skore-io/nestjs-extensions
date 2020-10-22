@@ -2,9 +2,14 @@
 const { defaults: tsjPreset } = require('ts-jest/presets')
 
 module.exports = {
-  collectCoverageFrom: ['packages/**/src/**/{!(app.module|index|main),}.ts'],
+  rootDir: '.',
+  projects: ['<rootDir>/packages/version/jest.config.js'],
+  transform: tsjPreset.transform,
+  coverageDirectory: 'coverage',
+  setupFiles: ['./jest-setup.js'],
+  collectCoverageFrom: ['packages/*/src/**/{!(app.module|index|main),}.ts'],
   coveragePathIgnorePatterns: ['/node_modules/', '/test/'],
-  coverageReporters: ['lcovonly', 'text'],
+  coverageReporters: ['lcovonly'],
   coverageThreshold: {
     global: {
       branches: 80,
@@ -13,13 +18,9 @@ module.exports = {
       statements: 80,
     },
   },
-  rootDir: '.',
   testMatch: ['<rootDir>/packages/**/*.test.ts'],
   testResultsProcessor: 'jest-sonar-reporter',
-  transform: tsjPreset.transform,
   testEnvironment: 'node',
   collectCoverage: true,
   forceExit: true,
-  coverageDirectory: 'coverage',
-  setupFiles: ['./jest-setup.js'],
 }

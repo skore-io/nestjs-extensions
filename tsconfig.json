@@ -1,4 +1,6 @@
 {
+  "extends": "./tsconfig.build.json",
+
   "compilerOptions": {
     "module": "commonjs",
     "declaration": true,
@@ -7,9 +9,9 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "target": "es2017",
-    "sourceMap": true,
+    "sourceMap": false,
     "outDir": "./dist",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "incremental": true
   }
 }

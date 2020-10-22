@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import { EnsureIndex } from '../../../src'
 
 @EnsureIndex('test', [
