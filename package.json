@@ -5,6 +5,7 @@
     "test": "npx lerna run test"
   },
   "dependencies": {
+    "@nestjs/config": "^0.5.0",
     "class-transformer": "^0.3.1",
     "mongodb": "^3.6.2"
   },
@@ -35,5 +36,10 @@
     "ts-node": "8.1.0",
     "tsconfig-paths": "3.8.0",
     "typescript": "^4.0.3"
+  },
+  "jestSonar": {
+    "reportFile": "test-reporter.xml",
+    "indent": 2,
+    "reportPath": "coverage"
   }
 }

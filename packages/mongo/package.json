@@ -1,0 +1,25 @@
+{
+  "name": "@skore-io/mongo",
+  "version": "0.0.1",
+  "description": "Provides a Mongodb's Db provider, manages mongodb connections and anotation for auto create indexs for the database",
+  "homepage": "",
+  "license": "UNLICENSED",
+  "author": "Skore",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "directories": {
+    "dist": "dist"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "npx rimraf dist",
+    "build": "nest build",
+    "test": "npx jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:skore-io/nestjs-extensions.git"
+  }
+}
