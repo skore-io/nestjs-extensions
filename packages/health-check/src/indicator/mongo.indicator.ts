@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import { HealthIndicator, HealthIndicatorResult } from '@nestjs/terminus'
+import { HealthCheckError, HealthIndicator, HealthIndicatorResult } from '@nestjs/terminus'
 import { Db } from 'mongodb'
 
 @Injectable()
@@ -9,9 +9,11 @@ export class MongoIndicator extends HealthIndicator {
   }
 
   async pingCheck(): Promise<HealthIndicatorResult> {
-    const stats = await this.db.stats()
-
-    console.log(stats)
-    return this.getStatus('mongodb', stats.ok)
+    try {
+      const stats = await this.db.stats()
+      return this.getStatus('mongodb', stats.ok)
+    } catch (error) {
+      throw new HealthCheckError('MongoDB check status failed', error)
+    }
   }
 }

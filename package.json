@@ -2,7 +2,7 @@
   "name": "root",
   "scripts": {
     "build": "npx lerna run build",
-    "test": "NODE_PATH=. npx jest --detectOpenHandles"
+    "test": "npx lerna run test"
   },
   "dependencies": {
     "@nestjs/config": "^0.5.0",
