@@ -1,38 +1,20 @@
 import { Test } from '@nestjs/testing'
 import { suite, test } from '@testdeck/jest'
-import { Db, MongoClient } from 'mongodb'
-import { HealthCheckModule } from 'packages/health-check/src/health-check.module'
-import { MongoIndicator } from 'packages/health-check/src/indicator'
+import { MongoIndicator } from '../../src/indicator'
+import { TestModule } from '../module/test.module'
 
 @suite('Mongo Indicator')
 export class MongoIndicatorTest {
   @test
-  async 'Given some'() {
-    const indicator = await this.indicator()
-
-    await indicator.pingCheck()
-
-    expect(true).toBeFalsy()
-  }
-
-  async indicator(): Promise<MongoIndicator> {
-    const mongoClient = await MongoClient.connect(
-      'mongodb://paperbottest:paperbottest@localhost?retryWrites=true&w=majority',
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      },
-    )
-
-    console.log(await mongoClient.db('skore_dev').stats())
-
-    const module = await Test.createTestingModule({
-      imports: [HealthCheckModule],
-      providers: [{ provide: Db, useFactory: () => mongoClient.db('skore_dev') }],
+  async 'Given MongoDB OK'() {
+    const moduleRef = await Test.createTestingModule({
+      imports: [TestModule],
     }).compile()
 
-    const app = await module.createNestApplication().init()
+    const app = await moduleRef.init()
 
-    return app.get(MongoIndicator)
+    const indicator = await app.get(MongoIndicator).pingCheck()
+
+    expect(indicator.mongodb.status).toBe('up')
   }
 }

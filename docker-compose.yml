@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  mongodb:
+    container_name: mongodb
+    environment:
+      - MONGO_INITDB_DATABASE=skoredb_dev
+      - MONGO_INITDB_ROOT_USERNAME=extensions
+      - MONGO_INITDB_ROOT_PASSWORD=extensions
+    image: mongo:4.2.8
+    restart: always
+    ports:
+      - 27017:27017
+    command: mongod --setParameter notablescan=1
