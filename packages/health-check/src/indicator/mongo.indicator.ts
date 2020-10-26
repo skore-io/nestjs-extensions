@@ -8,7 +8,7 @@ export class MongoIndicator extends HealthIndicator {
     super()
   }
 
-  async pingCheck(): Promise<HealthIndicatorResult> {
+  async statusCheck(): Promise<HealthIndicatorResult> {
     try {
       const stats = await this.db.stats()
       return this.getStatus('mongodb', stats.ok)

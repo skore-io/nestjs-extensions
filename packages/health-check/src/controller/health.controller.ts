@@ -1,7 +1,20 @@
-import { Controller, Get, HttpCode, HttpStatus, Logger, ServiceUnavailableException } from '@nestjs/common'
-import { DNSHealthIndicator, HealthCheck, HealthCheckResult, HealthCheckService, HealthIndicatorResult } from '@nestjs/terminus'
+import {
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Logger,
+  ServiceUnavailableException,
+} from '@nestjs/common'
+import {
+  DNSHealthIndicator,
+  HealthCheck,
+  HealthCheckResult,
+  HealthCheckService,
+  HealthIndicatorResult,
+} from '@nestjs/terminus'
 import { readFileSync } from 'fs'
-import { MongoIndicator } from '../indicator'
+import { MongoIndicator, RedisIndicator } from '../indicator'
 
 @Controller('health')
 export class HealthController {
@@ -9,6 +22,7 @@ export class HealthController {
     private readonly health: HealthCheckService,
     private readonly dns: DNSHealthIndicator,
     private readonly mongoIndicator: MongoIndicator,
+    private readonly redisIndicator: RedisIndicator,
   ) {}
 
   @Get()
@@ -17,16 +31,16 @@ export class HealthController {
   async check(): Promise<HealthCheckResult> {
     Logger.log('Checking services health', HealthController.name)
 
-    JSON.parse(readFileSync('package.json', 'utf8'))
+    const { version } = JSON.parse(readFileSync('package.json', 'utf8'))
 
     try {
-
       const health = await this.health.check([
-        (): Promise<HealthIndicatorResult> => this.mongoIndicator.pingCheck()
+        (): Promise<HealthIndicatorResult> => this.mongoIndicator.statusCheck(),
+        (): Promise<HealthIndicatorResult> => this.redisIndicator.statusCheck(),
       ])
+      return { ...health, ...{ version } }
     } catch (error) {
-      throw new ServiceUnavailableException({...error})
+      throw new ServiceUnavailableException({ ...error, ...{ version } })
     }
-    return Promise.resolve(null)
   }
 }

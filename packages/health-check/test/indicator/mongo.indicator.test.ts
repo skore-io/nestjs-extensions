@@ -14,7 +14,7 @@ export class MongoIndicatorTest {
 
     const app = await moduleRef.init()
 
-    const indicator = await app.get(MongoIndicator).pingCheck()
+    const indicator = await app.get(MongoIndicator).statusCheck()
 
     expect(indicator.mongodb.status).toBe('up')
   }
@@ -23,7 +23,7 @@ export class MongoIndicatorTest {
   async 'Given MongoDB status down'() {
     const indicator = await new MongoIndicator(({
       stats: () => ({ ok: false }),
-    } as unknown) as Db).pingCheck()
+    } as unknown) as Db).statusCheck()
 
     expect(indicator.mongodb.status).toBe('down')
   }
@@ -37,7 +37,7 @@ export class MongoIndicatorTest {
     } as unknown) as Db)
 
     try {
-      await indicator.pingCheck()
+      await indicator.statusCheck()
     } catch (error) {
       expect(error.message).toBe('MongoDB check status failed')
     }
