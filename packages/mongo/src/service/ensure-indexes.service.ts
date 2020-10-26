@@ -12,11 +12,12 @@ export class EnsureIndexesService implements OnModuleInit {
   }
 
   async onModuleInit(): Promise<void> {
-    Object.keys(EnsureIndexesService.INDEX_LIST).forEach(async collectionName => {
+    for (const collectionName of Object.keys(EnsureIndexesService.INDEX_LIST)) {
       Logger.debug(`Ensuring indexes for ${collectionName}`, EnsureIndexesService.name)
+
       await this.db
         .collection(collectionName)
         .createIndexes(EnsureIndexesService.INDEX_LIST[collectionName])
-    })
+    }
   }
 }
