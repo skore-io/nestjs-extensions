@@ -1,8 +1,8 @@
-import { Injectable, Logger } from '@nestjs/common'
+import { Injectable, Logger, OnModuleInit } from '@nestjs/common'
 import { Db, IndexSpecification } from 'mongodb'
 
 @Injectable()
-export class EnsureIndexesService {
+export class EnsureIndexesService implements OnModuleInit {
   private static INDEX_LIST = new Set()
   constructor(private readonly db: Db) {}
 
@@ -11,7 +11,7 @@ export class EnsureIndexesService {
     EnsureIndexesService.INDEX_LIST[name].push(indexSpecification)
   }
 
-  async onApplicationBootstrap(): Promise<void> {
+  async onModuleInit(): Promise<void> {
     Object.keys(EnsureIndexesService.INDEX_LIST).forEach(async collectionName => {
       Logger.debug(`Ensuring indexes for ${collectionName}`, EnsureIndexesService.name)
       await this.db
