@@ -13,7 +13,7 @@ export class MongoDbClient implements OnApplicationShutdown {
 
   async onApplicationShutdown(signal: string): Promise<void> {
     Logger.debug(`Application received shutdown with signal: ${signal}.`, MongoDbClient.name)
-    if (MongoDbClient.connection?.isConnected) await MongoDbClient.connection.close()
+    if (MongoDbClient.connection?.isConnected()) await MongoDbClient.connection.close()
     Logger.debug('Connection with MongoDb closed. ', MongoDbClient.name)
   }
 
