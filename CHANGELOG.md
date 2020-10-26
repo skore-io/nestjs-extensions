@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.2.1](https://github.com/skore-io/nestjs-extensions/compare/v0.2.0...v0.2.1) (2020-10-26)
+
+
+### Bug Fixes 🐛
+
+* add implements onModuleInit on EnrureIndexService ([536f928](https://github.com/skore-io/nestjs-extensions/commit/536f928a2a073a258d02cddc9eaee48aa0cece1c))
+* added parenteses after method call ([cd08ae6](https://github.com/skore-io/nestjs-extensions/commit/cd08ae6913f4e466b6355c7bc21d73d7792b9053))
+* verify connection open before closing it ([f71ff22](https://github.com/skore-io/nestjs-extensions/commit/f71ff222abbfd09bae14bbe2c62f51c8f82a2672))
+
+
+### Code Refactoring 🎨
+
+* change for each by for of ([57ee9e3](https://github.com/skore-io/nestjs-extensions/commit/57ee9e39c084234c5bfcad6c0b2c6f2e252de963))
+
+
+
 ## [0.2.0](https://github.com/skore-io/nestjs-extensions/compare/v0.1.4...v0.2.0) (2020-10-23)
 
 
