@@ -7,7 +7,6 @@ import {
   ServiceUnavailableException,
 } from '@nestjs/common'
 import {
-  DNSHealthIndicator,
   HealthCheck,
   HealthCheckResult,
   HealthCheckService,
@@ -20,7 +19,6 @@ import { MongoIndicator, RedisIndicator } from '../indicator'
 export class HealthController {
   constructor(
     private readonly health: HealthCheckService,
-    private readonly dns: DNSHealthIndicator,
     private readonly mongoIndicator: MongoIndicator,
     private readonly redisIndicator: RedisIndicator,
   ) {}
