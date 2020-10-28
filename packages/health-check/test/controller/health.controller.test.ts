@@ -15,9 +15,12 @@ export class HealthControllerTest {
 
     const app = await moduleRef.createNestApplication().init()
 
-    await request(app.getHttpServer())
+    const { body } = await request(app.getHttpServer())
       .get('/health')
       .expect(HttpStatus.OK)
+
+    expect(body.info.redis.status).toBe('up')
+    expect(body.info.mongodb.status).toBe('up')
 
     app.close()
   }
