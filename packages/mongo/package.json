@@ -3,6 +3,10 @@
   "version": "0.2.1",
   "description": "Provides a Mongodb's Db provider, manages mongodb connections and anotation for auto create indexs for the database",
   "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:skore-io/nestjs-extensions.git"
+  },
   "license": "UNLICENSED",
   "author": "Skore",
   "main": "dist/index.js",
@@ -17,9 +21,5 @@
     "prebuild": "npx rimraf dist",
     "build": "nest build",
     "test": "npx jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com:skore-io/nestjs-extensions.git"
   }
 }
