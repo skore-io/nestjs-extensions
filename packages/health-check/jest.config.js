@@ -12,5 +12,5 @@ module.exports = {
   collectCoverage: true,
   forceExit: true,
   coverageReporters: ['lcovonly', 'text'],
-  collectCoverageFrom: ['src/**/{!(mongo.module|index),}.ts'],
+  collectCoverageFrom: ['src/**/{!(health-check.module|index),}.ts'],
 }

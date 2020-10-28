@@ -1,7 +1,7 @@
 import { Global, Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { Db, MongoClient } from 'mongodb'
-import { HealthCheckModule } from '../../src/health-check.module'
+import { HealthCheckModule } from '../../src'
 
 @Global()
 @Module({
