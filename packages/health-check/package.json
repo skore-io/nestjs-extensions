@@ -2,7 +2,25 @@
   "name": "@skore-io/health-check",
   "version": "0.0.0",
   "private": true,
+  "description": "Provides a Health Check provider for MongoDB and Redis",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:skore-io/nestjs-extensions.git"
+  },
+  "license": "UNLICENSED",
+  "author": "Skore",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "directories": {
+    "dist": "dist"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "prebuild": "npx rimraf dist",
+    "build": "nest build",
     "test": "npx jest"
   },
   "dependencies": {
