@@ -1,7 +1,8 @@
 {
-  "name": "@skore-io/mongo",
-  "version": "0.2.1",
-  "description": "Provides a Mongodb's Db provider, manages mongodb connections and anotation for auto create indexs for the database",
+  "name": "@skore-io/health-check",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Provides a Health Check provider for MongoDB and Redis",
   "homepage": "",
   "repository": {
     "type": "git",
@@ -21,5 +22,13 @@
     "prebuild": "npx rimraf dist",
     "build": "nest build",
     "test": "npx jest"
+  },
+  "dependencies": {
+    "@nestjs/bull": "^0.2.2",
+    "@nestjs/terminus": "^7.0.1",
+    "bull": "^3.18.0"
+  },
+  "devDependencies": {
+    "@types/bull": "^3.14.4"
   }
 }
