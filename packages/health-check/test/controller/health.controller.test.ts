@@ -22,7 +22,7 @@ export class HealthControllerTest {
     expect(body.info.redis.status).toBe('up')
     expect(body.info.mongodb.status).toBe('up')
 
-    app.close()
+    await app.close()
   }
 
   @test
