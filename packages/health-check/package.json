@@ -1,7 +1,6 @@
 {
   "name": "@skore-io/health-check",
   "version": "0.3.0",
-  "private": true,
   "description": "Provides a Health Check provider for MongoDB and Redis",
   "homepage": "",
   "repository": {
