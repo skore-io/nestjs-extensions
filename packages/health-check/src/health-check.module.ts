@@ -12,6 +12,7 @@ import { MongoIndicator, RedisIndicator } from './indicator'
       useFactory: (configService: ConfigService) => ({
         host: configService.get('REDIS_URL'),
         port: configService.get('REDIS_PORT'),
+        password: configService.get('REDIS_PASSWORD'),
       }),
       inject: [ConfigService],
     }),
