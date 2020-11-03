@@ -20,5 +20,8 @@
     "prebuild": "npx rimraf dist",
     "build": "nest build",
     "test": "npx jest"
+  },
+  "dependencies": {
+    "keycloak-connect": "^11.0.2"
   }
 }
