@@ -14,6 +14,7 @@ services:
     command: mongod --setParameter notablescan=1
 
   redis:
+    command: redis-server --requirepass redispassword
     container_name: redis
     image: redis:5.0.9-alpine
     ports:
