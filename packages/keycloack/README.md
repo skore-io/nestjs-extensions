@@ -1,3 +1,3 @@
 # `@skore-io/keycloack`
 
-## Provides authorization through anotations
+## Provides authorization through annotations
