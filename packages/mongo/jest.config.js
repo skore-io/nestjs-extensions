@@ -2,8 +2,8 @@
 const { defaults: tsjPreset } = require('ts-jest/presets')
 
 module.exports = {
-  displayName: '@skore-io/version',
-  name: '@skore-io/version',
+  displayName: '@skore-io/mongo',
+  name: '@skore-io/mongo',
   transform: tsjPreset.transform,
   coverageDirectory: 'coverage',
   setupFiles: ['../../jest-setup.js'],
