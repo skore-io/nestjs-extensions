@@ -1,7 +1,7 @@
 {
   "name": "@skore-io/keycloack",
   "version": "0.0.0",
-  "description": "Provides authorization through anotations",
+  "description": "Provides authorization through annotations",
   "repository": {
     "type": "git",
     "url": "git+https://github.com:skore-io/nestjs-extensions.git"
