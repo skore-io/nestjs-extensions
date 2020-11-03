@@ -8,3 +8,4 @@ A collection of NestJS extensions used by Skore.
 | [`Paginate`](./packages/paginate)        | Paginate graphql queries                                                |
 | [`HealthCheck`](./packages/health-check) | Create health checks with easy setup                                    |
 | [`Version`](./packages/version)          | Document versioning based on mongodb triggers                           |
+| [`Keycloak`](./packages/keycloak)        | Provides authorization through annotations                              |
