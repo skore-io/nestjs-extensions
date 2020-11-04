@@ -10,13 +10,23 @@ A collection of NestJS extensions used by Skore.
 | [`Version`](./packages/version)          | Document versioning based on mongodb triggers                           |
 | [`Keycloak`](./packages/keycloak)        | Provides authorization through annotations                              |
 
-Local Development
+**Local Development**
 
-1 - Use project node version
-  nvm use
+1.  Use correct node version
 
-2 - Install dependencies
-  npx lerna exec npm install
+```bash
+  $ nvm use
+```
 
-3 - Run tests
-  npm test
+2.  Install dependencies
+
+```bash
+  $ npm i -g lerna
+  $ lerna bootstrap --hoist
+```
+
+3. Run tests
+
+```bash
+  $ npm t
+```

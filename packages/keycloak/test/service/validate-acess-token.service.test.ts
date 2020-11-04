@@ -1,10 +1,10 @@
-import { suite, test } from '@testdeck/jest'
+import { suite, test, timeout } from '@testdeck/jest'
 import { ValidateAccessTokenService } from '../../src/service'
 import { BaseTest } from '../base-test'
 
 @suite('[Keycloak Module] Validate Access Token Service')
 export class ValidateAccessTokenServiceTest extends BaseTest {
-  @test()
+  @test(timeout(10000))
   async 'Given a valid access token then return true'() {
     const service = super.get(ValidateAccessTokenService)
 
@@ -13,7 +13,7 @@ export class ValidateAccessTokenServiceTest extends BaseTest {
     expect(isValidToken).toBeTruthy()
   }
 
-  @test()
+  @test(timeout(10000))
   async 'Given an invalid access token then return false'() {
     const service = super.get(ValidateAccessTokenService)
 
