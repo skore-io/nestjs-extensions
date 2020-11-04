@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 import { KeycloakClient } from '../client'
 
 @Injectable()
-export class ValidateAccessToken {
+export class ValidateAccessTokenService {
   constructor(private readonly keycloakClient: KeycloakClient) {}
 
   async perform(realm: string, token: string): Promise<boolean> {
