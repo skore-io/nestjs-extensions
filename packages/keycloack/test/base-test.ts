@@ -11,7 +11,7 @@ export abstract class BaseTest {
 
   static async before() {
     const response = await axios.post(
-      'http://keycloak:8080/auth/realms/skore/protocol/openid-connect/token',
+      `${process.env.KEYCLOAK_SERVER_URL}/auth/realms/skore/protocol/openid-connect/token`,
       stringify({
         client_id: 'player',
         client_secret: '436db9f9-d49b-4c83-9480-8e38d21570c6',
@@ -37,9 +37,9 @@ export abstract class BaseTest {
   }
 
   fakeToken(): string {
-    return `123123.${Buffer.from('{"iss":"http://keycloak:8080/auth/realms/skore"}').toString(
-      'base64',
-    )}`
+    return `123123.${Buffer.from(
+      `{"iss": "${process.env.KEYCLOAK_SERVER_URL}/auth/realms/skore"}`,
+    ).toString('base64')}`
   }
 
   get<TInput = any, TResult = TInput>(type: Type<TInput>): TResult {

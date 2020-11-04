@@ -12,7 +12,7 @@ export class KeycloakClient {
   constructor(configService: ConfigService) {
     this.clientId = configService.get('CLIENT_ID')
     this.clientSecret = configService.get('CLIENT_SECRET')
-    this.authorizationServerUrl = configService.get('AUTHORIZATION_SERVER_URL')
+    this.authorizationServerUrl = `${configService.get('KEYCLOAK_SERVER_URL')}/auth`
   }
 
   async isValidAccessToken(realm: string, token: string): Promise<boolean> {
@@ -28,8 +28,8 @@ export class KeycloakClient {
       this.clientsCache.set(
         realm,
         new Keycloak({}, {
-          resource: this.clientId,
           realm,
+          resource: this.clientId,
           authServerUrl: this.authorizationServerUrl,
           secret: this.clientSecret,
         } as any),
