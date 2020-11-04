@@ -3,7 +3,7 @@
   "scripts": {
     "build": "npx lerna run build",
     "lint": "eslint --ext .js,.ts,.json ./",
-    "test": "npx lerna run test"
+    "test": "npx lerna run test --parallel"
   },
   "husky": {
     "hooks": {
