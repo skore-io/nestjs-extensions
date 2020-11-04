@@ -5,6 +5,7 @@ import { GetAccessTokenService, ValidateAccessTokenService } from './service'
 
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }), HttpModule],
+  exports: [GetAccessTokenService],
   providers: [KeycloakClient, ValidateAccessTokenService, GetAccessTokenService],
 })
 export class KeycloakModule {}
