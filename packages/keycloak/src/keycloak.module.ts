@@ -7,4 +7,4 @@ import { ValidateAccessTokenService } from './service'
   imports: [ConfigModule.forRoot({ isGlobal: true })],
   providers: [KeycloakClient, ValidateAccessTokenService],
 })
-export class KeycloackModule {}
+export class KeycloakModule {}

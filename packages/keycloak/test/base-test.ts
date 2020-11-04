@@ -3,7 +3,7 @@ import axios from 'axios'
 import { stringify } from 'qs'
 import { Test } from '@nestjs/testing'
 import { INestApplication, Type } from '@nestjs/common'
-import { KeycloackModule } from '../src'
+import { KeycloakModule } from '../src'
 
 export abstract class BaseTest {
   static app: INestApplication
@@ -21,7 +21,7 @@ export abstract class BaseTest {
     )
 
     const moduleRef = await Test.createTestingModule({
-      imports: [KeycloackModule],
+      imports: [KeycloakModule],
     }).compile()
 
     BaseTest.app = await moduleRef.createNestApplication().init()

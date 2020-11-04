@@ -2,8 +2,8 @@
 const { defaults: tsjPreset } = require('ts-jest/presets')
 
 module.exports = {
-  displayName: '@skore-io/keycloack',
-  name: '@skore-io/keycloack',
+  displayName: '@skore-io/keycloak',
+  name: '@skore-io/keycloak',
   transform: tsjPreset.transform,
   coverageDirectory: 'coverage',
   setupFiles: ['../../jest-setup.js'],
@@ -12,5 +12,5 @@ module.exports = {
   collectCoverage: true,
   forceExit: true,
   coverageReporters: ['lcovonly', 'text'],
-  collectCoverageFrom: ['src/**/{!(keycloack.module|index),}.ts'],
+  collectCoverageFrom: ['src/**/{!(keycloak.module|index),}.ts'],
 }
