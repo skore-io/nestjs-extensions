@@ -26,12 +26,7 @@ services:
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=admin
       - KEYCLOAK_IMPORT=/tmp/realm.json
-    networks:
-      - nestjs-keycloak-network
     ports:
       - 8080:8080
     volumes:
       - ${PWD}/realm.json:/tmp/realm.json
-
-networks:
-  nestjs-keycloak-network:

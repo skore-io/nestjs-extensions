@@ -19,7 +19,7 @@
   "scripts": {
     "prebuild": "npx rimraf dist",
     "build": "nest build",
-    "test": "npx jest"
+    "test": "npx jest --detectOpenHandles"
   },
   "dependencies": {
     "keycloak-connect": "^11.0.2"
