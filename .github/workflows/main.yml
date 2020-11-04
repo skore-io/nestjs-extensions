@@ -45,7 +45,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: Dependencies
-        run: npm install --no-package-lock
+        run: npx lerna bootstrap --hoist -- --no-package-lock
 
       - name: Test environment
         run: docker-compose up -d
