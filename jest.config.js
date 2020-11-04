@@ -3,7 +3,7 @@ const { defaults: tsjPreset } = require('ts-jest/presets')
 
 module.exports = {
   rootDir: '.',
-  projects: ['<rootDir>/packages/version/jest.config.js'],
+  projects: ['<rootDir>/jest.config.js'],
   transform: tsjPreset.transform,
   coverageDirectory: 'coverage',
   setupFiles: ['./jest-setup.js'],

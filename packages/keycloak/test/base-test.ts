@@ -10,6 +10,8 @@ export abstract class BaseTest {
   static token: string
 
   static async before() {
+    jest.setTimeout(30000)
+
     const response = await axios.post(
       `${process.env.KEYCLOAK_SERVER_URL}/auth/realms/skore/protocol/openid-connect/token`,
       stringify({
@@ -17,7 +19,7 @@ export abstract class BaseTest {
         client_secret: '436db9f9-d49b-4c83-9480-8e38d21570c6',
         grant_type: 'client_credentials',
       }),
-      { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } },
+      { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, timeout: 15000 },
     )
 
     const moduleRef = await Test.createTestingModule({
