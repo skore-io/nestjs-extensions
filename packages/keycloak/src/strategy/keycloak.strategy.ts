@@ -7,6 +7,7 @@ import { ValidateAccessTokenService } from '../service'
 import { KeycloakUtils } from '../utils'
 
 const INVALID_SERVER_CONFIGURATION = 'Invalid server configuration'
+
 @Injectable()
 export class KeycloakStrategy extends PassportStrategy(Strategy, 'keycloak') {
   constructor(private readonly validateAccessTokenService: ValidateAccessTokenService) {

@@ -1,6 +1,6 @@
 const BASE64 = 'base64'
-
 const INVALID_TOKEN = 'Invalid token'
+
 export class KeycloakUtils {
   static realmFromToken(token: string): string {
     try {
