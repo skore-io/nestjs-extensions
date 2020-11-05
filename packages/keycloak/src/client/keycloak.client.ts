@@ -1,4 +1,4 @@
-import * as Keycloak from 'keycloak-connect'
+import Keycloak from 'keycloak-connect'
 import { Injectable } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 

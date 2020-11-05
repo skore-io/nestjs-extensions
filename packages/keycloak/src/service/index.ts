@@ -1,1 +1,1 @@
-export * from './validate-acess-token.service'
+export * from './validate-access-token.service'

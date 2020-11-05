@@ -2,7 +2,7 @@ import { HttpStatus } from '@nestjs/common'
 import { Test } from '@nestjs/testing'
 import { suite, test } from '@testdeck/jest'
 import { MongoIndicator } from '../../src/indicator'
-import * as request from 'supertest'
+import request from 'supertest'
 import { TestModule } from '../module/test.module'
 
 @suite('Mongo Indicator')
