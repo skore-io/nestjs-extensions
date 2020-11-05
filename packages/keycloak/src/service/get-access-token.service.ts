@@ -5,9 +5,7 @@ import { KeycloakClient } from '../client'
 export class GetAccessTokenService {
   constructor(private readonly keycloakClient: KeycloakClient) {}
 
-  async perform(realm: string, username: string, password: string): Promise<string> {
-    const accessToken = await this.keycloakClient.getAccessToken(realm, username, password)
-
-    return accessToken
+  perform(realm: string, username: string, password: string): Promise<string> {
+    return this.keycloakClient.getAccessToken(realm, username, password)
   }
 }
