@@ -1,10 +1,10 @@
-import { Module, UseGuards } from '@nestjs/common'
+import { HttpModule, Module, UseGuards } from '@nestjs/common'
 import { GraphQLModule, Query, Resolver } from '@nestjs/graphql'
-import { KeycloakClient } from '../../src/client'
-import { ValidateAccessTokenService } from '../../src/service'
 import { KeycloakModule } from '../../src'
+import { KeycloakClient } from '../../src/client'
 import { Protected } from '../../src/decorator'
 import { KeycloakGuard } from '../../src/guard'
+import { ValidateAccessTokenService } from '../../src/service'
 
 @Resolver(() => String)
 class ResolverOne {
@@ -29,6 +29,7 @@ class ResolverOne {
   imports: [
     KeycloakModule,
     GraphQLModule.forRoot({ autoSchemaFile: true, context: ({ req }) => req }),
+    HttpModule,
   ],
   providers: [ResolverOne, ValidateAccessTokenService, KeycloakClient],
 })

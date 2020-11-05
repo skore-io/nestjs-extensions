@@ -1,9 +1,9 @@
-import { Controller, Get, Module, UseGuards } from '@nestjs/common'
-import { ValidateAccessTokenService } from '../../src/service'
+import { Controller, Get, HttpModule, Module, UseGuards } from '@nestjs/common'
 import { KeycloakModule } from '../../src'
+import { KeycloakClient } from '../../src/client'
 import { Protected } from '../../src/decorator'
 import { KeycloakGuard } from '../../src/guard'
-import { KeycloakClient } from '../../src/client'
+import { ValidateAccessTokenService } from '../../src/service'
 
 @Controller()
 class ControllerOne {
@@ -26,7 +26,7 @@ class ControllerOne {
 
 @Module({
   controllers: [ControllerOne],
-  imports: [KeycloakModule],
+  imports: [KeycloakModule, HttpModule],
   providers: [ValidateAccessTokenService, KeycloakClient],
 })
 export class RestModule {}

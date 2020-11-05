@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.0](https://github.com/skore-io/nestjs-extensions/compare/v0.5.0...v0.6.0) (2020-11-05)
+
+
+### Features 🚀
+
+* **keycloak:** get access token ([#12](https://github.com/skore-io/nestjs-extensions/issues/12)) ([b64d156](https://github.com/skore-io/nestjs-extensions/commit/b64d1569a384ba3284955ff482a5ef28adb4a545))
+
+
+
+## [0.5.0](https://github.com/skore-io/nestjs-extensions/compare/v0.4.3...v0.5.0) (2020-11-04)
+
+
+### Features 🚀
+
+* **keycloak:** setup docker to tests ([#10](https://github.com/skore-io/nestjs-extensions/issues/10)) ([4563eb2](https://github.com/skore-io/nestjs-extensions/commit/4563eb2ce96ac9bba17ee0ca46e9888328d3d138))
+
+
+
 ### [0.4.3](https://github.com/skore-io/nestjs-extensions/compare/v0.4.2...v0.4.3) (2020-11-04)
 
 
