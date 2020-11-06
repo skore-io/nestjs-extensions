@@ -1,13 +1,14 @@
-import 'reflect-metadata'
 import axios from 'axios'
 import { stringify } from 'qs'
-import { Test } from '@nestjs/testing'
+import { Test, TestingModuleBuilder } from '@nestjs/testing'
 import { INestApplication, Type } from '@nestjs/common'
 import { KeycloakModule } from '../src'
+import request, { SuperTest } from 'supertest'
 
 export abstract class BaseTest {
   static app: INestApplication
   static token: string
+  static noAccessToken: string
 
   static async before() {
     jest.setTimeout(30000)
@@ -28,14 +29,36 @@ export abstract class BaseTest {
 
     BaseTest.app = await moduleRef.createNestApplication().init()
     BaseTest.token = response.data.access_token
+
+    const noAccessClient = await axios.post(
+      `${process.env.KEYCLOAK_SERVER_URL}/auth/realms/skore/protocol/openid-connect/token`,
+      stringify({
+        client_id: 'no-access-client',
+        client_secret: '0f9d7137-0f35-4cdf-8c33-1b331ca349c1',
+        grant_type: 'client_credentials',
+      }),
+      { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, timeout: 15000 },
+    )
+
+    BaseTest.noAccessToken = noAccessClient.data.access_token
   }
 
   before() {
     expect.hasAssertions()
   }
 
+  async httpServerForModule(moduleBuilder: TestingModuleBuilder): Promise<SuperTest<request.Test>> {
+    const moduleRef = await moduleBuilder.compile()
+    const app = await moduleRef.createNestApplication().init()
+    return request(app.getHttpServer())
+  }
+
   token(): string {
     return BaseTest.token
+  }
+
+  noAccessToken(): string {
+    return BaseTest.noAccessToken
   }
 
   fakeToken(): string {

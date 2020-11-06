@@ -17,8 +17,10 @@ export class ValidateAccessTokenServiceTest extends BaseTest {
   async 'Given an invalid access token then return false'() {
     const service = super.get(ValidateAccessTokenService)
 
-    const isValidToken = await service.perform('skore', super.fakeToken())
-
-    expect(isValidToken).toBeFalsy()
+    try {
+      await service.perform('skore', super.fakeToken())
+    } catch (error) {
+      expect(error.message).toEqual('Invalid access token')
+    }
   }
 }
