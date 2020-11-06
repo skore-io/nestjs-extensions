@@ -44,3 +44,9 @@ async someFunction(): Promise<void> {
   const accessToken = await this.getAccessTokenService.perform('realm', 'username', 'password')
 }
 ```
+
+## Protecting actions/queries
+
+Just annotate yout REST actions and Graphql queries/mutations methods with `@Protected()`
+
+The client should send a Bearer authorization header e.g., `'Authorization: Bearer JWT_TOKEN'`
