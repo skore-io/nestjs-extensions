@@ -11,6 +11,6 @@ export class ValidateAccessTokenService {
     const isValidAccessToken = await this.keycloakClient.isValidAccessToken(realm, token)
     if (isValidAccessToken) return null
 
-    throw new Error(INVALID_ACCESS_TOKEN)
+    throw Error(INVALID_ACCESS_TOKEN)
   }
 }
