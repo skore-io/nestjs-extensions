@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.0](https://github.com/skore-io/nestjs-extensions/compare/v0.6.0...v0.7.0) (2020-11-06)
+
+
+### Features 🚀
+
+* **@skore-one/keycloak:** add protected decorator ([#13](https://github.com/skore-io/nestjs-extensions/issues/13)) ([1b49869](https://github.com/skore-io/nestjs-extensions/commit/1b49869a6d573fed3e322388ecf372a8331c511f))
+
+
+
 ## [0.6.0](https://github.com/skore-io/nestjs-extensions/compare/v0.5.0...v0.6.0) (2020-11-05)
 
 **Note:** Version bump only for package @skore-io/health-check
