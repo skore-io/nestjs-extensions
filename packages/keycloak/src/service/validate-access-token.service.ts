@@ -7,9 +7,9 @@ const INVALID_ACCESS_TOKEN = 'Invalid access token'
 export class ValidateAccessTokenService {
   constructor(private readonly keycloakClient: KeycloakClient) {}
 
-  async perform(realm: string, token: string): Promise<void> {
+  async perform(realm: string, token: string): Promise<boolean> {
     const isValidAccessToken = await this.keycloakClient.isValidAccessToken(realm, token)
-    if (isValidAccessToken) return null
+    if (isValidAccessToken) return true
 
     throw Error(INVALID_ACCESS_TOKEN)
   }

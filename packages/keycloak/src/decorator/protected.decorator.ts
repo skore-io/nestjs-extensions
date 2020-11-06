@@ -1,5 +1,5 @@
 import { applyDecorators, SetMetadata, UseGuards } from '@nestjs/common'
-import { KeycloakGuard } from '../guard/keycloak.guard'
+import { KeycloakGuard } from '../guard'
 import { PROTECTED } from '../constants'
 
 export const Protected = (): MethodDecorator =>

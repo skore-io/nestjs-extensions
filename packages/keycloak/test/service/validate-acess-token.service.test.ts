@@ -10,7 +10,7 @@ export class ValidateAccessTokenServiceTest extends BaseTest {
 
     const isValidToken = await service.perform('skore', super.token())
 
-    expect(isValidToken).toBeNull()
+    expect(isValidToken).toBeTruthy()
   }
 
   @test(timeout(10000))
