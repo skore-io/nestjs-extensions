@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, Logger } from '@nestjs/common'
 import { LogoutClient } from '../client'
 
 @Injectable()
@@ -11,6 +11,12 @@ export class LogoutService {
     accessToken: string,
     refreshToken: string,
   ): Promise<void> {
-    await this.loginClient.invalidateToken(realm, clientId, accessToken, refreshToken)
+    try {
+      await this.loginClient.invalidateToken(realm, clientId, accessToken, refreshToken)
+    } catch (error) {
+      Logger.error('Error on doing logout', error, LogoutService.name)
+
+      throw error
+    }
   }
 }

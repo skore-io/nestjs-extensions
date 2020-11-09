@@ -6,7 +6,7 @@ import { KeycloakStrategy } from './strategy'
 
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }), HttpModule],
-  exports: [LoginService, LogoutClient],
+  exports: [LoginService, LogoutService],
   providers: [
     KeycloakClient,
     LoginClient,

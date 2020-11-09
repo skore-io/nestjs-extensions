@@ -25,7 +25,6 @@ export class LogoutClient {
         stringify({
           client_id: clientId,
           refresh_token: refreshToken,
-          grant_type: 'password',
         }),
         {
           headers: {
