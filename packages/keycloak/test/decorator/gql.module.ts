@@ -1,8 +1,10 @@
-import { HttpModule, Module } from '@nestjs/common'
+import { HttpModule, Logger, Module } from '@nestjs/common'
 import { GraphQLModule, Query, Resolver } from '@nestjs/graphql'
 import { KeycloakModule } from '../../src'
 import { KeycloakClient } from '../../src/client'
 import { Protected } from '../../src/decorator'
+import { GetUser } from '../../src/decorator/get-user.decorator'
+import { User } from '../../src/domain'
 
 @Resolver(() => String)
 class ResolverOne {
@@ -12,8 +14,9 @@ class ResolverOne {
   }
   @Query(() => String)
   @Protected()
-  protected(): string {
-    return 'protected'
+  protected(@GetUser() currentUser: User): string {
+    Logger.debug(currentUser.id, 'HAHA')
+    return 'protected' + currentUser.id
   }
 }
 
