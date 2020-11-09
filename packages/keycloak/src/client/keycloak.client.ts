@@ -1,6 +1,6 @@
-import { stringify } from 'qs'
-import { Injectable, HttpService, Logger } from '@nestjs/common'
+import { HttpService, Injectable, Logger } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
+import { stringify } from 'qs'
 
 @Injectable()
 export class KeycloakClient {

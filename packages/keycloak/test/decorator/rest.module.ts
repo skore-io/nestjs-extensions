@@ -1,8 +1,7 @@
-import { Controller, Get, HttpModule, Module, UseGuards } from '@nestjs/common'
+import { Controller, Get, HttpModule, Module } from '@nestjs/common'
 import { KeycloakModule } from '../../src'
 import { KeycloakClient } from '../../src/client'
 import { Protected } from '../../src/decorator'
-import { KeycloakGuard } from '../../src/guard'
 
 @Controller()
 class ControllerOne {
@@ -14,12 +13,6 @@ class ControllerOne {
   @Protected()
   protected(): string {
     return 'Protected'
-  }
-
-  @Get('misused')
-  @UseGuards(KeycloakGuard)
-  misused(): string {
-    return 'Misused'
   }
 }
 

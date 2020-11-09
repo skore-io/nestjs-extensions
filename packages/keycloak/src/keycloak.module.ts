@@ -1,12 +1,18 @@
 import { HttpModule, Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
-import { KeycloakClient } from './client'
-import { GetAccessTokenService } from './service'
+import { KeycloakClient, UserInfoClient } from './client'
+import { FindUserService, GetAccessTokenService } from './service'
 import { KeycloakStrategy } from './strategy'
 
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }), HttpModule],
   exports: [GetAccessTokenService],
-  providers: [KeycloakClient, GetAccessTokenService, KeycloakStrategy],
+  providers: [
+    KeycloakClient,
+    UserInfoClient,
+    GetAccessTokenService,
+    KeycloakStrategy,
+    FindUserService,
+  ],
 })
 export class KeycloakModule {}

@@ -3,13 +3,12 @@ import { PassportStrategy } from '@nestjs/passport'
 import { ForbiddenError } from 'apollo-server-express'
 import { Strategy } from 'passport-http-bearer'
 import { PROTECTED } from '../constants'
+import { FindUserService } from '../service'
 import { KeycloakUtils } from '../utils'
-
-const INVALID_SERVER_CONFIGURATION = 'Invalid server configuration'
 
 @Injectable()
 export class KeycloakStrategy extends PassportStrategy(Strategy, 'keycloak') {
-  constructor() {
+  constructor(private readonly findUserService: FindUserService) {
     super({ passReqToCallback: true })
   }
 
@@ -19,13 +18,8 @@ export class KeycloakStrategy extends PassportStrategy(Strategy, 'keycloak') {
     try {
       const type = req.protectionType as string
       const realm = this.realmFromToken(token)
-      switch (type) {
-        case PROTECTED:
-          break
-        default:
-          Logger.warn('No protection type defined denying access ' + type, KeycloakStrategy.name)
-          if (req.isRest) return false
-          throw new ForbiddenError(INVALID_SERVER_CONFIGURATION)
+      if (type && type === PROTECTED) {
+        req.user = await this.findUserService.perform(realm, token)
       }
 
       return true

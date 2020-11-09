@@ -1,9 +1,8 @@
-import { HttpModule, Module, UseGuards } from '@nestjs/common'
+import { HttpModule, Module } from '@nestjs/common'
 import { GraphQLModule, Query, Resolver } from '@nestjs/graphql'
 import { KeycloakModule } from '../../src'
 import { KeycloakClient } from '../../src/client'
 import { Protected } from '../../src/decorator'
-import { KeycloakGuard } from '../../src/guard'
 
 @Resolver(() => String)
 class ResolverOne {
@@ -15,12 +14,6 @@ class ResolverOne {
   @Protected()
   protected(): string {
     return 'protected'
-  }
-
-  @Query(() => String)
-  @UseGuards(KeycloakGuard)
-  misused(): string {
-    return 'Misused'
   }
 }
 

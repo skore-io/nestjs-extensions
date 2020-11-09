@@ -37,23 +37,6 @@ export class HttpTest extends BaseTest {
     expect(gqlResponse.body.errors[0].extensions.code).toBe('FORBIDDEN')
   }
 
-  @test
-  async 'Given misused lib should deny request'() {
-    const httpServer = await super.httpServerForModule(
-      Test.createTestingModule({ imports: [RestModule, GqlModule] }),
-    )
-
-    const restResponse = await httpServer.get('/misused').auth(super.token(), { type: 'bearer' })
-    expect(restResponse.status).toBe(401)
-
-    const gqlResponse = await httpServer
-      .post('/graphql')
-      .auth(super.token(), { type: 'bearer' })
-      .send({ query: 'query { misused }' })
-
-    expect(gqlResponse.body.errors[0].extensions.code).toBe('FORBIDDEN')
-  }
-
   @params(
     { path: 'protected', query: 'protected' },
     '[@Protected()] valid access token return protected resource',
