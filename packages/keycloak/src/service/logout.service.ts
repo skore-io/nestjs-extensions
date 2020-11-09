@@ -3,7 +3,7 @@ import { LogoutClient } from '../client'
 
 @Injectable()
 export class LogoutService {
-  constructor(private readonly loginClient: LogoutClient) {}
+  constructor(private readonly logoutClient: LogoutClient) {}
 
   async perform(
     realm: string,
@@ -12,7 +12,7 @@ export class LogoutService {
     refreshToken: string,
   ): Promise<void> {
     try {
-      await this.loginClient.invalidateToken(realm, clientId, accessToken, refreshToken)
+      await this.logoutClient.invalidateToken(realm, clientId, accessToken, refreshToken)
     } catch (error) {
       Logger.error('Error on doing logout', error, LogoutService.name)
 
