@@ -1,5 +1,5 @@
 import Keycloak from 'keycloak-connect'
-import { Injectable, HttpService } from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 
 @Injectable()
@@ -7,10 +7,7 @@ export class KeycloakClient {
   private readonly clientsCache = new Map<string, Keycloak.Keycloak>()
   private readonly authorizationServerUrl: string
 
-  constructor(
-    private readonly configService: ConfigService,
-    private readonly httpService: HttpService,
-  ) {
+  constructor(private readonly configService: ConfigService) {
     this.authorizationServerUrl = `${this.configService.get('KEYCLOAK_SERVER_URL')}/auth`
   }
 
