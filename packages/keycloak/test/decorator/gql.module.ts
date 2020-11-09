@@ -4,7 +4,6 @@ import { KeycloakModule } from '../../src'
 import { KeycloakClient } from '../../src/client'
 import { Protected } from '../../src/decorator'
 import { KeycloakGuard } from '../../src/guard'
-import { ValidateAccessTokenService } from '../../src/service'
 
 @Resolver(() => String)
 class ResolverOne {
@@ -31,6 +30,6 @@ class ResolverOne {
     GraphQLModule.forRoot({ autoSchemaFile: true, context: ({ req }) => req }),
     HttpModule,
   ],
-  providers: [ResolverOne, ValidateAccessTokenService, KeycloakClient],
+  providers: [ResolverOne, KeycloakClient],
 })
 export class GqlModule {}

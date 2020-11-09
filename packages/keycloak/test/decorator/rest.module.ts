@@ -3,7 +3,6 @@ import { KeycloakModule } from '../../src'
 import { KeycloakClient } from '../../src/client'
 import { Protected } from '../../src/decorator'
 import { KeycloakGuard } from '../../src/guard'
-import { ValidateAccessTokenService } from '../../src/service'
 
 @Controller()
 class ControllerOne {
@@ -27,6 +26,6 @@ class ControllerOne {
 @Module({
   controllers: [ControllerOne],
   imports: [KeycloakModule, HttpModule],
-  providers: [ValidateAccessTokenService, KeycloakClient],
+  providers: [KeycloakClient],
 })
 export class RestModule {}
