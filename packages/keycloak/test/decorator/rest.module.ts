@@ -1,6 +1,5 @@
 import { Controller, Get, HttpModule, Module } from '@nestjs/common'
 import { KeycloakModule } from '../../src'
-import { KeycloakClient } from '../../src/client'
 import { Protected } from '../../src/decorator'
 
 @Controller()
@@ -19,6 +18,6 @@ class ControllerOne {
 @Module({
   controllers: [ControllerOne],
   imports: [KeycloakModule, HttpModule],
-  providers: [KeycloakClient],
+  providers: [],
 })
 export class RestModule {}

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.0](https://github.com/skore-io/nestjs-extensions/compare/v0.7.0...v0.8.0) (2020-11-10)
+
+
+### Features 🚀
+
+* **keycloak:** logout ([#14](https://github.com/skore-io/nestjs-extensions/issues/14)) ([84c01dd](https://github.com/skore-io/nestjs-extensions/commit/84c01ddc3d831b80b0ea9df8f404951c7f48948d))
+
+
+
 ## [0.7.0](https://github.com/skore-io/nestjs-extensions/compare/v0.6.0...v0.7.0) (2020-11-06)
 
 

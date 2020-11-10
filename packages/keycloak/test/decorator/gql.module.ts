@@ -1,7 +1,6 @@
 import { HttpModule, Logger, Module } from '@nestjs/common'
 import { GraphQLModule, Query, Resolver } from '@nestjs/graphql'
 import { KeycloakModule } from '../../src'
-import { KeycloakClient } from '../../src/client'
 import { GetUser, Protected } from '../../src/decorator'
 import { User } from '../../src/domain'
 
@@ -25,6 +24,6 @@ class ResolverOne {
     GraphQLModule.forRoot({ autoSchemaFile: true, context: ({ req }) => req }),
     HttpModule,
   ],
-  providers: [ResolverOne, KeycloakClient],
+  providers: [ResolverOne],
 })
 export class GqlModule {}
