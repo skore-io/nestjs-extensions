@@ -2,8 +2,7 @@ import { HttpModule, Logger, Module } from '@nestjs/common'
 import { GraphQLModule, Query, Resolver } from '@nestjs/graphql'
 import { KeycloakModule } from '../../src'
 import { KeycloakClient } from '../../src/client'
-import { Protected } from '../../src/decorator'
-import { GetUser } from '../../src/decorator/get-user.decorator'
+import { GetUser, Protected } from '../../src/decorator'
 import { User } from '../../src/domain'
 
 @Resolver(() => String)
