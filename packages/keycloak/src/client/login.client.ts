@@ -1,5 +1,5 @@
 import { stringify } from 'qs'
-import { Injectable, HttpService, Logger } from '@nestjs/common'
+import { Injectable, HttpService } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 
 @Injectable()
@@ -18,30 +18,21 @@ export class LoginClient {
     clientId: string,
     username: string,
     password: string,
-  ): Promise<{ accessToken: string; refreshToken: string }> {
-    try {
-      const { data } = await this.httpService
-        .post(
-          `${this.keycloakServerUrl}/auth/realms/${realm}/protocol/openid-connect/token`,
-          stringify({
-            client_id: clientId,
-            scope: 'email profile',
-            grant_type: 'password',
-            username,
-            password,
-          }),
-          { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } },
-        )
-        .toPromise()
+  ): Promise<object> {
+    const { data } = await this.httpService
+      .post(
+        `${this.keycloakServerUrl}/auth/realms/${realm}/protocol/openid-connect/token`,
+        stringify({
+          client_id: clientId,
+          scope: 'email profile',
+          grant_type: 'password',
+          username,
+          password,
+        }),
+        { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } },
+      )
+      .toPromise()
 
-      return {
-        accessToken: data?.access_token,
-        refreshToken: data?.refresh_token,
-      }
-    } catch (error) {
-      Logger.error('Error on doing login', error, LoginClient.name)
-
-      throw error
-    }
+    return data
   }
 }
