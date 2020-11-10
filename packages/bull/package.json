@@ -1,0 +1,25 @@
+{
+  "name": "@skore-io/bull",
+  "version": "0.8.0",
+  "description": "Setup bull queues along with bull-board",
+  "homepage": "https://github.com/skore-io/nestjs-extensions#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skore-io/nestjs-extensions.git"
+  },
+  "license": "UNLICENSED",
+  "author": "Skore",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "directories": {
+    "dist": "dist"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "npx rimraf dist",
+    "build": "nest build",
+    "test": "npx jest"
+  }
+}
