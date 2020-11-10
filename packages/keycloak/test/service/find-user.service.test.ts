@@ -5,7 +5,7 @@ import { BaseTest } from '../base-test'
 @suite('[Keycloak Module] Fid User Service')
 export class FindUserServiceTest extends BaseTest {
   @test(timeout(10000))
-  async 'Given an valid access token then return the user info'() {
+  async 'Given a valid access token then return the user info'() {
     const service = super.get(FindUserService)
 
     const user = await service.perform('master', super.commonUserAccessToken())
