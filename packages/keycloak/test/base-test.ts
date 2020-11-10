@@ -1,14 +1,15 @@
+import { INestApplication, Type } from '@nestjs/common'
+import { Test, TestingModuleBuilder } from '@nestjs/testing'
 import axios from 'axios'
 import { stringify } from 'qs'
-import { Test, TestingModuleBuilder } from '@nestjs/testing'
-import { INestApplication, Type } from '@nestjs/common'
-import { KeycloakModule } from '../src'
 import request, { SuperTest } from 'supertest'
+import { KeycloakModule } from '../src'
 
 export abstract class BaseTest {
   static app: INestApplication
   static token: string
   static noAccessToken: string
+  static commonUserAccessToken: string
 
   static async before() {
     jest.setTimeout(30000)
@@ -41,6 +42,19 @@ export abstract class BaseTest {
     )
 
     BaseTest.noAccessToken = noAccessClient.data.access_token
+
+    const commonUser = await axios.post(
+      `${process.env.KEYCLOAK_SERVER_URL}/auth/realms/master/protocol/openid-connect/token`,
+      stringify({
+        client_id: 'admin-cli',
+        grant_type: 'password',
+        username: 'admin',
+        password: 'admin',
+      }),
+      { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, timeout: 15000 },
+    )
+
+    BaseTest.commonUserAccessToken = commonUser.data.access_token
   }
 
   before() {
@@ -65,6 +79,10 @@ export abstract class BaseTest {
     return `123123.${Buffer.from(
       `{"iss": "${process.env.KEYCLOAK_SERVER_URL}/auth/realms/skore"}`,
     ).toString('base64')}`
+  }
+
+  commonUserAccessToken(): string {
+    return BaseTest.commonUserAccessToken
   }
 
   get<TInput = any, TResult = TInput>(type: Type<TInput>): TResult {

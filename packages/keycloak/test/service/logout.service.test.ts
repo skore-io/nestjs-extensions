@@ -1,6 +1,6 @@
 import { suite, test, timeout } from '@testdeck/jest'
+import { FindUserService, LoginService, LogoutService } from '../../src/service'
 import { BaseTest } from '../base-test'
-import { LoginService, LogoutService, ValidateAccessTokenService } from '../../src/service'
 
 @suite('[Keycloak Module] Logout Service')
 export class LogoutServiceTest extends BaseTest {
@@ -8,14 +8,14 @@ export class LogoutServiceTest extends BaseTest {
   async 'Given a valid access token then invalidate it'() {
     const logoutService = super.get(LogoutService)
     const loginService = super.get(LoginService)
-    const validateAccessTokenService = super.get(ValidateAccessTokenService)
+    const findUserService = super.get(FindUserService)
 
     const result = await loginService.perform('master', 'admin-cli', 'admin', 'admin')
 
     await logoutService.perform('master', 'admin-cli', result.accessToken, result.refreshToken)
 
     try {
-      await validateAccessTokenService.perform('master', result.accessToken)
+      await findUserService.perform('master', result.accessToken)
     } catch (error) {
       expect(error).toBeDefined()
     }

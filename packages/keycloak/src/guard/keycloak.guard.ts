@@ -1,8 +1,8 @@
 import { ExecutionContext, Injectable } from '@nestjs/common'
 import { Reflector } from '@nestjs/core'
-import { GqlExecutionContext } from '@nestjs/graphql'
 import { AuthGuard } from '@nestjs/passport'
 import { PROTECTED } from '../constants'
+import { RequestHelper } from '../utils'
 
 @Injectable()
 export class KeycloakGuard extends AuthGuard('keycloak') {
@@ -11,16 +11,9 @@ export class KeycloakGuard extends AuthGuard('keycloak') {
   }
 
   getRequest(context: ExecutionContext): unknown {
-    const isRest = context.getType() === 'http'
+    const request = RequestHelper.getTypedRequest(context)
 
-    const request = isRest
-      ? context.switchToHttp().getRequest()
-      : GqlExecutionContext.create(context).getContext().req
-
-    request.isRest = isRest
-    const handler = context.getHandler()
-
-    const hasProtectedDecorator = this.reflector.get<boolean>(PROTECTED, handler)
+    const hasProtectedDecorator = this.reflector.get<boolean>(PROTECTED, context.getHandler())
 
     if (hasProtectedDecorator) {
       request.protectionType = PROTECTED

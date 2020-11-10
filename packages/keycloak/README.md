@@ -76,3 +76,5 @@ async someFunction(): Promise<void> {
 Just annotate yout REST actions and Graphql queries/mutations methods with `@Protected()`
 
 The client should send a Bearer authorization header e.g., `'Authorization: Bearer JWT_TOKEN'`
+
+You can also use the `@GetUser` param annotation to get access to the current user

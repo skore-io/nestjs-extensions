@@ -1,10 +1,8 @@
-import { HttpModule, Module, UseGuards } from '@nestjs/common'
+import { HttpModule, Logger, Module } from '@nestjs/common'
 import { GraphQLModule, Query, Resolver } from '@nestjs/graphql'
 import { KeycloakModule } from '../../src'
-import { KeycloakClient } from '../../src/client'
-import { Protected } from '../../src/decorator'
-import { KeycloakGuard } from '../../src/guard'
-import { ValidateAccessTokenService } from '../../src/service'
+import { GetUser, Protected } from '../../src/decorator'
+import { User } from '../../src/domain'
 
 @Resolver(() => String)
 class ResolverOne {
@@ -14,14 +12,9 @@ class ResolverOne {
   }
   @Query(() => String)
   @Protected()
-  protected(): string {
-    return 'protected'
-  }
-
-  @Query(() => String)
-  @UseGuards(KeycloakGuard)
-  misused(): string {
-    return 'Misused'
+  protected(@GetUser() currentUser: User): string {
+    Logger.log(currentUser.id, ResolverOne.name)
+    return 'protected' + currentUser.id
   }
 }
 
@@ -31,6 +24,6 @@ class ResolverOne {
     GraphQLModule.forRoot({ autoSchemaFile: true, context: ({ req }) => req }),
     HttpModule,
   ],
-  providers: [ResolverOne, ValidateAccessTokenService, KeycloakClient],
+  providers: [ResolverOne],
 })
 export class GqlModule {}
