@@ -13,6 +13,6 @@ export class User {
   @Expose({ name: 'preferred_username' })
   username: string
 
-  @Expose()
-  organization_id: string
+  @Expose({ name: 'organization_id' })
+  organizationId: string
 }
