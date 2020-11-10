@@ -27,21 +27,47 @@ export class AppModule {}
 
 2. Make sure that Keycloak is up and running.
 
-## Getting access token
+## Logging in
 
-1. Import the GetAccessToken service.
+1. Import the Login service.
 
 ```typescript
 // your_file.service.ts
 
-import { GetAccessTokenService } from '@skore-io/keycloak'
+import { LoginService } from '@skore-io/keycloak'
 
 constructor(
-  private readonly getAccessTokenService: GetAccessTokenService,
+  private readonly loginService: LoginService,
 ) {}
+```
 
+2. Call method
+
+```typescript
 async someFunction(): Promise<void> {
-  const accessToken = await this.getAccessTokenService.perform('realm', 'username', 'password')
+  const result = await this.loginService.perform('realm', 'client_id', 'username', 'password')
+}
+```
+
+## Logging out
+
+1. Import the Logout service.
+
+```typescript
+// your_file.service.ts
+
+import { LogoutService } from '@skore-io/keycloak'
+
+constructor(
+  private readonly logoutService: LogoutService,
+) {}
+```
+
+2. Call method
+
+```typescript
+async someFunction(): Promise<void> {
+  await this.logoutService.perform('realm', 'client_id', 'access_token', 'refresh_token')
 }
 ```
 
