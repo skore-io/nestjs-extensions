@@ -11,11 +11,9 @@ export class KeycloakGuard extends AuthGuard('keycloak') {
   }
 
   getRequest(context: ExecutionContext): unknown {
-    const request = RequestHelper.getRequest(context)
+    const request = RequestHelper.getTypedRequest(context)
 
-    const handler = context.getHandler()
-
-    const hasProtectedDecorator = this.reflector.get<boolean>(PROTECTED, handler)
+    const hasProtectedDecorator = this.reflector.get<boolean>(PROTECTED, context.getHandler())
 
     if (hasProtectedDecorator) {
       request.protectionType = PROTECTED

@@ -4,7 +4,7 @@ import { RequestHelper } from '../utils'
 
 export const GetUser = createParamDecorator(
   (data: unknown, context: ExecutionContext): User => {
-    const request = RequestHelper.getRequest(context)
+    const request = RequestHelper.getTypedRequest(context)
     return request.user
   },
 )

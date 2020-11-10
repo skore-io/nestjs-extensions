@@ -2,7 +2,8 @@ import { ExecutionContext } from '@nestjs/common'
 import { GqlExecutionContext } from '@nestjs/graphql'
 
 export class RequestHelper {
-  static getRequest(context: ExecutionContext): unknown {
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  static getTypedRequest(context: ExecutionContext): any {
     const isRest = context.getType() === 'http'
     const request = isRest
       ? context.switchToHttp().getRequest()

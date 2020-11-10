@@ -15,7 +15,7 @@ class ResolverOne {
   @Query(() => String)
   @Protected()
   protected(@GetUser() currentUser: User): string {
-    Logger.debug(currentUser.id, 'HAHA')
+    Logger.log(currentUser.id, ResolverOne.name)
     return 'protected' + currentUser.id
   }
 }
