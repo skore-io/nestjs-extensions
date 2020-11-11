@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.0](https://github.com/skore-io/nestjs-extensions/compare/v0.9.0...v0.10.0) (2020-11-11)
+
+
+### Features 🚀
+
+* **keycloak:** refresh token ([#17](https://github.com/skore-io/nestjs-extensions/issues/17)) ([2383f59](https://github.com/skore-io/nestjs-extensions/commit/2383f591a6d1f331fc25de0668b4ab18341d68d1))
+
+
+
 ## [0.9.0](https://github.com/skore-io/nestjs-extensions/compare/v0.8.0...v0.9.0) (2020-11-10)
 
 
