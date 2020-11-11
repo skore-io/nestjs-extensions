@@ -21,5 +21,14 @@
     "prebuild": "npx rimraf dist",
     "build": "nest build",
     "test": "npx jest"
+  },
+  "dependencies": {
+    "@nestjs/bull": "^0.2.3",
+    "bull": "^3.18.1",
+    "bull-board": "^0.10.0",
+    "express-basic-auth": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/bull-board": "^0.6.0"
   }
 }

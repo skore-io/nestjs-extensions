@@ -7,24 +7,14 @@
 Setup redis credentials:
 
 ```sh
-REDIS_URL='redis'
-REDIS_PORT='6379'
-REDIS_PASSWORD='redispassword'
+REDIS_CONNECTION='redis://default:redispassword@redis:6379'
 ```
 
 Declaring your queues and enabling `bull-board`
 
 ```typescript
 @Module({
-  imports: [
-    // Your ConfigModule should be global to be accessible by QueueModule
-    ConfigModule.forRoot({ isGlobal: true }),
-    QueueModule.forRoot({
-      queues: [{ name: 'content' }, { name: 'video' }],
-      // Enable bull-board
-      admin: true,
-    }),
-  ],
+  imports: [QueueModule.forRoot({ name: 'content' }, { name: 'video' })],
 })
 export class AppModule {}
 ```
@@ -35,4 +25,8 @@ Start your app
   npm run start:dev
 ```
 
-Once started you can access bull-board on: `http://localhost:3000/admin/queues`
+Once started you can access bull-board on: [localhost](http://localhost:3000/admin/queues)
+
+User: bull
+
+Password: board
