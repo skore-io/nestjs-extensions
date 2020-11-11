@@ -71,6 +71,28 @@ async someFunction(): Promise<void> {
 }
 ```
 
+## Refreshing token
+
+1. Import the RefreshToken service.
+
+```typescript
+// your_file.service.ts
+
+import { RefreshToken } from '@skore-io/keycloak'
+
+constructor(
+  private readonly refreshToken: RefreshToken,
+) {}
+```
+
+2. Call method
+
+```typescript
+async someFunction(): Promise<void> {
+  const result = await this.refreshToken.perform('realm', 'client_id', 'refresh_token')
+}
+```
+
 ## Protecting actions/queries
 
 Just annotate yout REST actions and Graphql queries/mutations methods with `@Protected()`
