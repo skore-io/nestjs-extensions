@@ -1,25 +1,24 @@
 import { Injectable, Logger } from '@nestjs/common'
-import { LoginClient } from '../client'
+import { RefreshTokenClient } from '../client'
 
 @Injectable()
-export class LoginService {
-  constructor(private readonly loginClient: LoginClient) {}
+export class RefreshTokenService {
+  constructor(private readonly refreshTokenClient: RefreshTokenClient) {}
 
   async perform(
     realm: string,
     clientId: string,
-    username: string,
-    password: string,
+    refreshToken: string,
   ): Promise<{ accessToken: string; refreshToken: string }> {
     try {
-      const result = await this.loginClient.generateToken(realm, clientId, username, password)
+      const result = await this.refreshTokenClient.generateToken(realm, clientId, refreshToken)
 
       return {
         accessToken: result['access_token'],
         refreshToken: result['refresh_token'],
       }
     } catch (error) {
-      Logger.error('Error trying to login', error, LoginService.name)
+      Logger.error('Error trying to refresh token', error, RefreshTokenClient.name)
 
       throw error
     }

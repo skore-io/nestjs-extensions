@@ -14,7 +14,7 @@ export class LogoutService {
     try {
       await this.logoutClient.invalidateToken(realm, clientId, accessToken, refreshToken)
     } catch (error) {
-      Logger.error('Error on doing logout', error, LogoutService.name)
+      Logger.error('Error trying to logout', error, LogoutService.name)
 
       throw error
     }
