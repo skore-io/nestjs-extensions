@@ -1,9 +1,9 @@
 import { Field, ObjectType } from '@nestjs/graphql'
 import { ClassType } from 'class-transformer/ClassTransformer'
 
-export function PaginatedResponse<ItemType>(ItemClass: ClassType<ItemType>): unknown {
+export function PaginationResponse<ItemType>(ItemClass: ClassType<ItemType>): unknown {
   @ObjectType({ isAbstract: true })
-  abstract class PaginatedResponseClass {
+  abstract class PaginationResponseClass {
     constructor(items: ItemType[], total: number) {
       this.items = items
       this.total = total
@@ -16,5 +16,5 @@ export function PaginatedResponse<ItemType>(ItemClass: ClassType<ItemType>): unk
     total: number
   }
 
-  return PaginatedResponseClass
+  return PaginationResponseClass
 }
