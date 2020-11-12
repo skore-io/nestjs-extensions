@@ -3,7 +3,7 @@ import { plainToClass } from 'class-transformer'
 import { validate } from 'class-validator'
 import { PaginationArgs } from '../src/pagination-args'
 
-@suite
+@suite('[Pagination] Pagination Args')
 export class PaginationArgsTest {
   @test()
   'Skip defaults to PaginationArgs.MIN_SKIP when not provided'() {

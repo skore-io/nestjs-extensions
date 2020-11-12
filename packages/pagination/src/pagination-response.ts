@@ -1,7 +1,8 @@
-import { Field, ObjectType } from '@nestjs/graphql'
+import { Field, Int, ObjectType } from '@nestjs/graphql'
 import { ClassType } from 'class-transformer/ClassTransformer'
 
-export function PaginationResponse<ItemType>(ItemClass: ClassType<ItemType>): unknown {
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export function PaginationResponse<ItemType>(ItemClass: ClassType<ItemType>) {
   @ObjectType({ isAbstract: true })
   abstract class PaginationResponseClass {
     constructor(items: ItemType[], total: number) {
@@ -12,9 +13,11 @@ export function PaginationResponse<ItemType>(ItemClass: ClassType<ItemType>): un
     @Field(() => [ItemClass])
     items: ItemType[]
 
-    @Field()
+    @Field(() => Int)
     total: number
   }
 
-  return PaginationResponseClass
+  return PaginationResponseClass as new (items: ItemType[], total: number) => {
+    [key in keyof PaginationResponseClass]: PaginationResponseClass[key]
+  }
 }

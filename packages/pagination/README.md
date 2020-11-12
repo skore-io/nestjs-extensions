@@ -24,13 +24,12 @@ $ npm install --save @skore-io/pagination
 1. Graphql query
 
 ```typescript
-import { PaginationResult } from '@skore-io/pagination'
-import { PaginatedDocumentsDto, ArgsDto } from 'src/app/dto'
+import { DocumentDto, PaginatedDocumentsDto, ArgsDto } from 'src/app/dto'
 
 @Query(() => PaginatedDocumentsDto)
 getDocuments(@Args() argsDto: ArgsDto): Promise<PaginatedDocumentsDto> {
-  const items = [1, 2]
-  const documents = new PaginationResult(items, items.length)
+  const items = [new DocumentDto()]
+  const documents = new PaginatedDocumentsDto(items, items.length)
 
   return new PaginatedDocumentsDto(documents, 20)
 }
