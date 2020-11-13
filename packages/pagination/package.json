@@ -1,0 +1,28 @@
+{
+  "name": "@skore-io/pagination",
+  "version": "0.0.0",
+  "description": "Provides pagination response",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:skore-io/nestjs-extensions.git"
+  },
+  "license": "UNLICENSED",
+  "author": "Skore",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "directories": {
+    "dist": "dist"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "npx rimraf dist",
+    "build": "nest build",
+    "test": "npx jest --detectOpenHandles"
+  },
+  "dependencies": {
+    "class-transformer": "^0.3.1",
+    "class-validator": "^0.12.2"
+  }
+}
