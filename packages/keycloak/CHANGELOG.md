@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.0](https://github.com/skore-io/nestjs-extensions/compare/v0.12.0...v0.13.0) (2020-11-13)
+
+
+### Features 🚀
+
+* **skore-io/keycloak:** export user domain ([#20](https://github.com/skore-io/nestjs-extensions/issues/20)) ([b64fa6f](https://github.com/skore-io/nestjs-extensions/commit/b64fa6f4bc2ad7032b5b4cd9c47430175b4829e7))
+
+
+
 ## [0.12.0](https://github.com/skore-io/nestjs-extensions/compare/v0.11.0...v0.12.0) (2020-11-13)
 
 **Note:** Version bump only for package @skore-io/keycloak
