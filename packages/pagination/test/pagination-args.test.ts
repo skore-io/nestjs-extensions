@@ -29,26 +29,14 @@ export class PaginationArgsTest {
   }
 
   @test()
-  async 'Take produces validation errors when greater than PaginationArgs.MAX_TAKE'() {
-    const pageArgs = plainToClass(PaginationArgs, { take: 10 ** 6 })
-    expect(pageArgs.take).toBeGreaterThan(PaginationArgs.MAX_TAKE)
-
-    const [error] = await validate(pageArgs)
-
-    expect(error.property).toBe('take')
-    expect(error.constraints.max).toEqual(
-      `take must not be greater than ${PaginationArgs.MAX_TAKE}`,
-    )
+  async 'Take the default maximum value when greater than PaginationArgs.MAX_TAKE'() {
+    const pageArgs = plainToClass(PaginationArgs, { take: 60 })
+    expect(pageArgs.take).toEqual(PaginationArgs.MAX_TAKE)
   }
 
   @test()
-  async 'Take produces validation errors when smaller than PaginationArgs.MIN_TAKE'() {
+  async 'Take the default minimum value when smaller than PaginationArgs.MIN_TAKE'() {
     const pageArgs = plainToClass(PaginationArgs, { take: -10 })
-    expect(pageArgs.take).toBeLessThan(PaginationArgs.MIN_TAKE)
-
-    const [error] = await validate(pageArgs)
-
-    expect(error.property).toBe('take')
-    expect(error.constraints.min).toEqual(`take must not be less than ${PaginationArgs.MIN_TAKE}`)
+    expect(pageArgs.take).toEqual(PaginationArgs.MIN_TAKE)
   }
 }
