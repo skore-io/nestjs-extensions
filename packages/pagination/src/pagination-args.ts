@@ -1,6 +1,6 @@
 import { ArgsType, Field, Int } from '@nestjs/graphql'
 import { Transform } from 'class-transformer'
-import { IsInt, Max, Min } from 'class-validator'
+import { IsInt, Min } from 'class-validator'
 import { Pagination } from './pagination'
 
 @ArgsType()
@@ -17,9 +17,12 @@ export class PaginationArgs {
 
   @Field(() => Int)
   @IsInt()
-  @Min(PaginationArgs.MIN_TAKE)
-  @Max(PaginationArgs.MAX_TAKE)
-  @Transform(value => value || PaginationArgs.MAX_TAKE)
+  @Transform(value => {
+    if (value < PaginationArgs.MIN_TAKE) return PaginationArgs.MIN_TAKE
+    if (value > PaginationArgs.MAX_TAKE) return PaginationArgs.MAX_TAKE
+
+    return PaginationArgs.MAX_TAKE
+  })
   take: number = PaginationArgs.MAX_TAKE
 
   get pagination(): Pagination {
