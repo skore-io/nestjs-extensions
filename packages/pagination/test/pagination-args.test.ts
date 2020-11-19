@@ -6,37 +6,22 @@ import { PaginationArgs } from '../src/pagination-args'
 @suite('[Pagination] Pagination Args')
 export class PaginationArgsTest {
   @test()
-  'Skip defaults to PaginationArgs.MIN_SKIP when not provided'() {
-    const pagination = plainToClass(PaginationArgs, {})
-    expect(pagination.skip).toEqual(PaginationArgs.MIN_SKIP)
-  }
+  async 'Given a not integer "skip" then throw error'() {
+    const paginationArgs = plainToClass(PaginationArgs, { skip: '10' })
 
-  @test()
-  async 'Skip produces validation errors when smaller than PaginationArgs.MIN_SKIP'() {
-    const pageArgs = plainToClass(PaginationArgs, { skip: -10 })
-    expect(pageArgs.skip).toBeLessThan(PaginationArgs.MIN_SKIP)
-
-    const [error] = await validate(pageArgs)
+    const [error] = await validate(paginationArgs)
 
     expect(error.property).toBe('skip')
-    expect(error.constraints.min).toEqual(`skip must not be less than ${PaginationArgs.MIN_SKIP}`)
+    expect(error.constraints.isInt).toEqual('skip must be an integer number')
   }
 
   @test()
-  'Take defaults to PaginationArgs.MAX_TAKE when not provided'() {
-    const pagination = plainToClass(PaginationArgs, {})
-    expect(pagination.take).toEqual(PaginationArgs.MAX_TAKE)
-  }
+  async 'Given a not integer "take" then throw error'() {
+    const paginationArgs = plainToClass(PaginationArgs, { take: '50' })
 
-  @test()
-  async 'Take the default maximum value when greater than PaginationArgs.MAX_TAKE'() {
-    const pageArgs = plainToClass(PaginationArgs, { take: 60 })
-    expect(pageArgs.take).toEqual(PaginationArgs.MAX_TAKE)
-  }
+    const [error] = await validate(paginationArgs)
 
-  @test()
-  async 'Take the default minimum value when smaller than PaginationArgs.MIN_TAKE'() {
-    const pageArgs = plainToClass(PaginationArgs, { take: -10 })
-    expect(pageArgs.take).toEqual(PaginationArgs.MIN_TAKE)
+    expect(error.property).toBe('take')
+    expect(error.constraints.isInt).toEqual('take must be an integer number')
   }
 }

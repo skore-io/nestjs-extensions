@@ -12,5 +12,5 @@ module.exports = {
   collectCoverage: true,
   forceExit: true,
   coverageReporters: ['lcovonly', 'text'],
-  collectCoverageFrom: ['src/**/{!(index|pagination-result|pagination.ts),}.ts'],
+  collectCoverageFrom: ['src/**/{!(index|pagination-result),}.ts'],
 }
