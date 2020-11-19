@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.13.2](https://github.com/skore-io/nestjs-extensions/compare/v0.13.1...v0.13.2) (2020-11-19)
+
+
+### Code Refactoring 🎨
+
+* use defaults value to pagination take ([#22](https://github.com/skore-io/nestjs-extensions/issues/22)) ([ce78d3d](https://github.com/skore-io/nestjs-extensions/commit/ce78d3d8bab88fd4ff3dfc65c3277c6f93e20c98))
+
+
+
 ### [0.13.1](https://github.com/skore-io/nestjs-extensions/compare/v0.13.0...v0.13.1) (2020-11-18)
 
 
