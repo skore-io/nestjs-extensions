@@ -1,6 +1,12 @@
 import { HttpModule, Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
-import { LoginClient, LogoutClient, RefreshTokenClient, UserInfoClient } from './client'
+import {
+  CreateResourceClient,
+  LoginClient,
+  LogoutClient,
+  RefreshTokenClient,
+  UserInfoClient,
+} from './client'
 import { FindUserService, LoginService, LogoutService, RefreshTokenService } from './service'
 import { KeycloakStrategy } from './strategy'
 
@@ -13,6 +19,7 @@ import { KeycloakStrategy } from './strategy'
     LoginClient,
     LogoutClient,
     RefreshTokenClient,
+    CreateResourceClient,
     LoginService,
     LogoutService,
     RefreshTokenService,
