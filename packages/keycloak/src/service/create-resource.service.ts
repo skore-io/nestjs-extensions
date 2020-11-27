@@ -13,6 +13,8 @@ export class CreateResourceService {
     try {
       if (!resource.name || !resource.displayName) throw Error('Name or displayName is missing')
 
+      resource.scopes = Resource.DEFAULT_SCOPES
+
       const {
         data: { access_token: accessToken },
       } = await this.getClientToken.get(realm)
@@ -23,7 +25,6 @@ export class CreateResourceService {
 
       return resource
     } catch (error) {
-      console.log('========', error)
       Logger.error('Error on trying to create resource', error, CreateResourceService.name)
 
       throw error

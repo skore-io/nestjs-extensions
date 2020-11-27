@@ -1,6 +1,14 @@
 import { Expose, Transform } from 'class-transformer'
 
 export class Resource {
+  static readonly DEFAULT_SCOPES = [
+    { name: 'create' },
+    { name: 'update' },
+    { name: 'delete' },
+    { name: 'list' },
+    { name: 'find' },
+  ]
+
   constructor(name: string, displayName: string) {
     this.name = name
     this.displayName = displayName
@@ -16,13 +24,10 @@ export class Resource {
   displayName: string
 
   @Expose()
-  type?: string
-
-  @Expose()
   @Transform(value => value || {})
   attributes?: unknown = {}
 
-  @Transform(value => value || [])
+  @Transform(value => value || Resource.DEFAULT_SCOPES)
   @Expose()
-  scopes?: [{ id: string; name: string }]
+  scopes?: { name: string }[] = Resource.DEFAULT_SCOPES
 }
