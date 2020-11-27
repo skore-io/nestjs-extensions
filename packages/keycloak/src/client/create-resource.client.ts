@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { AxiosResponse } from 'axios'
 import { Resource } from '../domain'
-import { KeycloakClient } from '../client'
+import { KeycloakClient } from './keycloak.client'
 
 @Injectable()
 export class CreateResourceClient extends KeycloakClient {

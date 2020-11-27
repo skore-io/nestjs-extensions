@@ -7,7 +7,7 @@ export class Resource {
   }
 
   @Expose()
-  id: string
+  id?: string
 
   @Expose()
   name: string

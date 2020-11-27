@@ -1,14 +1,21 @@
 import { HttpModule, Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
+import { KeycloakStrategy } from './strategy'
 import {
   CreateResourceClient,
   LoginClient,
   LogoutClient,
   RefreshTokenClient,
   UserInfoClient,
+  GetClientToken,
 } from './client'
-import { FindUserService, LoginService, LogoutService, RefreshTokenService } from './service'
-import { KeycloakStrategy } from './strategy'
+import {
+  CreateResourceService,
+  FindUserService,
+  LoginService,
+  LogoutService,
+  RefreshTokenService,
+} from './service'
 
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }), HttpModule],
@@ -24,6 +31,8 @@ import { KeycloakStrategy } from './strategy'
     LogoutService,
     RefreshTokenService,
     FindUserService,
+    CreateResourceService,
+    GetClientToken,
   ],
 })
 export class KeycloakModule {}
