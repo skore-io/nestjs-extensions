@@ -381,7 +381,45 @@
       "player": []
     }
   },
-  "groups": [],
+  "groups": [
+    {
+      "id": "e06bebef-8e60-4c59-b39a-9f7abcaa5f70",
+      "name": "Skoreans",
+      "path": "/Skoreans",
+      "attributes": {},
+      "realmRoles": [],
+      "clientRoles": {},
+      "subGroups": [
+        {
+          "id": "192ca4af-69f7-430c-bf34-36dc9a4de8e2",
+          "name": "Core",
+          "path": "/Skoreans/Marketing",
+          "attributes": {},
+          "realmRoles": [],
+          "clientRoles": {},
+          "subGroups": []
+        },
+        {
+          "id": "176cd621-b25c-49f0-abb5-9e8c767c8b12",
+          "name": "Professional Services",
+          "path": "/Skoreans/Leaders",
+          "attributes": {},
+          "realmRoles": [],
+          "clientRoles": {},
+          "subGroups": []
+        },
+        {
+          "id": "b5d92534-68ac-421b-9d08-248479bf4bb6",
+          "name": "Engenharia",
+          "path": "/Skoreans/Onboarding",
+          "attributes": {},
+          "realmRoles": [],
+          "clientRoles": {},
+          "subGroups": []
+        }
+      ]
+    }
+  ],
   "defaultRoles": [
     "uma_authorization",
     "offline_access"
@@ -805,30 +843,30 @@
         "policyEnforcementMode": "ENFORCING",
         "resources": [
           {
-            "name": "1",
-            "type": "urn:content:resources:folder:1:contents",
+            "name": "Movies",
+            "type": "urn:folders:Downloads",
             "ownerManagedAccess": false,
-            "displayName": "1",
+            "displayName": "Movies",
             "attributes": {},
             "_id": "18ee88a4-cd72-4e0d-9304-15abe6101b45",
             "uris": [],
             "scopes": [
               {
-                "name": "hasScope"
+                "name": "create"
               }
             ]
           },
           {
-            "name": "content",
-            "type": "urn:content:resources:folder:1:contents",
+            "name": "Downloads",
+            "type": "urn:folders:root",
             "ownerManagedAccess": false,
-            "displayName": "content",
+            "displayName": "Downloads",
             "attributes": {},
             "_id": "9fb6195c-0c07-45d7-af1c-dd1506f31251",
             "uris": [],
             "scopes": [
               {
-                "name": "resourceScope"
+                "name": "delete"
               }
             ]
           }
@@ -836,35 +874,36 @@
         "policies": [
           {
             "id": "72e01a5a-211a-4657-8452-1a4174cbe0fd",
-            "name": "player_policy",
-            "type": "client",
+            "name": "Group Policy",
+            "type": "group",
             "logic": "POSITIVE",
             "decisionStrategy": "UNANIMOUS",
             "config": {
-              "clients": "[\"player\"]"
+              "groups": "[{\"path\":\"/Skoreans\",\"extendChildren\":false}]"
             }
           },
           {
-            "id": "03504b8c-198f-4a78-8360-86aee6acd8e6",
-            "name": "player",
-            "type": "resource",
+            "id": "26bb8f72-e665-47db-8634-ad52d8f76a54",
+            "name": "Skoreans Permission",
+            "description": "",
+            "type": "scope",
             "logic": "POSITIVE",
             "decisionStrategy": "UNANIMOUS",
             "config": {
-              "defaultResourceType": "urn:content:resources:folder:1:contents",
-              "applyPolicies": "[\"player_policy\"]"
+              "resources": "[\"Downloads\"]",
+              "scopes": "[\"delete\"]",
+              "applyPolicies": "[\"Group Policy\"]"
             }
           }
         ],
         "scopes": [
           {
             "id": "f2ee711b-c731-4509-a3eb-f313933f7d42",
-            "name": "hasScope",
-            "displayName": "hasScope"
+            "name": "create"
           },
           {
             "id": "ceeaea14-117a-46e3-9509-cc2bd1126dac",
-            "name": "resourceScope"
+            "name": "delete"
           }
         ],
         "decisionStrategy": "UNANIMOUS"
