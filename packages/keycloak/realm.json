@@ -274,6 +274,24 @@
           "attributes": {}
         }
       ],
+      "folder": [
+        {
+          "id": "ac569207-f353-4079-8681-74a689b09d8c",
+          "name": "admin",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "7a167d98-54d7-4a8a-8464-d25a24b26385",
+          "attributes": {}
+        },
+        {
+          "id": "d80f77c3-e44e-4fa3-becd-7900e7cdf88c",
+          "name": "uma_protection",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "7a167d98-54d7-4a8a-8464-d25a24b26385",
+          "attributes": {}
+        }
+      ],
       "skore-front": [],
       "security-admin-console": [],
       "no-access-client": [],
@@ -357,24 +375,6 @@
           "composite": false,
           "clientRole": true,
           "containerId": "3bf1b8f4-76a3-4daa-8045-c7812b938532",
-          "attributes": {}
-        }
-      ],
-      "content": [
-        {
-          "id": "ac569207-f353-4079-8681-74a689b09d8c",
-          "name": "admin",
-          "composite": false,
-          "clientRole": true,
-          "containerId": "7a167d98-54d7-4a8a-8464-d25a24b26385",
-          "attributes": {}
-        },
-        {
-          "id": "d80f77c3-e44e-4fa3-becd-7900e7cdf88c",
-          "name": "uma_protection",
-          "composite": false,
-          "clientRole": true,
-          "containerId": "7a167d98-54d7-4a8a-8464-d25a24b26385",
           "attributes": {}
         }
       ],
@@ -465,11 +465,11 @@
     {
       "id": "f570ed2d-d782-4bb0-b0a4-6b62ea73dd8a",
       "createdTimestamp": 1599326291580,
-      "username": "service-account-content",
+      "username": "service-account-folder",
       "enabled": true,
       "totp": false,
       "emailVerified": false,
-      "serviceAccountClientId": "content",
+      "serviceAccountClientId": "folder",
       "disableableCredentialTypes": [],
       "requiredActions": [],
       "realmRoles": [
@@ -477,7 +477,7 @@
         "offline_access"
       ],
       "clientRoles": {
-        "content": [
+        "folder": [
           "uma_protection"
         ],
         "account": [
@@ -526,7 +526,7 @@
         "offline_access"
       ],
       "clientRoles": {
-        "content": [
+        "folder": [
           "admin"
         ],
         "account": [
@@ -739,7 +739,7 @@
     },
     {
       "id": "7a167d98-54d7-4a8a-8464-d25a24b26385",
-      "clientId": "content",
+      "clientId": "folder",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
