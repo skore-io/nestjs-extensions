@@ -78,10 +78,10 @@ async someFunction(): Promise<void> {
 ```typescript
 // your_file.service.ts
 
-import { RefreshToken } from '@skore-io/keycloak'
+import { RefreshTokenService } from '@skore-io/keycloak'
 
 constructor(
-  private readonly refreshToken: RefreshToken,
+  private readonly refreshToken: RefreshTokenService,
 ) {}
 ```
 
@@ -90,6 +90,28 @@ constructor(
 ```typescript
 async someFunction(): Promise<void> {
   const result = await this.refreshToken.perform('realm', 'client_id', 'refresh_token')
+}
+```
+
+## Creating resource
+
+1. Import the CreateResource service.
+
+```typescript
+// your_file.service.ts
+
+import { CreateResourceService } from '@skore-io/keycloak'
+
+constructor(
+  private readonly createResourceService: CreateResourceService,
+) {}
+```
+
+2. Call method
+
+```typescript
+async someFunction(): Promise<void> {
+  const result = await this.createResourceService.perform('realm', { name: 'cool name', displayName: 'cool displayName' })
 }
 ```
 
