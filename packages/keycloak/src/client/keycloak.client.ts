@@ -6,6 +6,7 @@ import { AxiosRequestConfig, AxiosResponse } from 'axios'
 export class KeycloakClient {
   private readonly keycloakServerUrl: string
   private readonly _clientId: string
+  private readonly _clientSecret: string
 
   constructor(
     private readonly httpService: HttpService,
@@ -13,10 +14,15 @@ export class KeycloakClient {
   ) {
     this.keycloakServerUrl = this.configService.get('KEYCLOAK_SERVER_URL')
     this._clientId = this.configService.get('KEYCLOAK_CLIENT_ID')
+    this._clientSecret = this.configService.get('KEYCLOAK_CLIENT_SECRET')
   }
 
   get clientId(): string {
     return this._clientId
+  }
+
+  get clientSecret(): string {
+    return this._clientSecret
   }
 
   post(path: string, params: unknown, headers: AxiosRequestConfig): Promise<AxiosResponse> {
