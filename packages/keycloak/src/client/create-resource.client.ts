@@ -11,7 +11,7 @@ export class CreateResourceClient extends KeycloakClient {
       {
         name: resource.name,
         displayName: resource.displayName,
-        resource_scopes: resource.scopes,
+        scopes: resource.scopes,
         attributes: resource.attributes,
       },
       {
