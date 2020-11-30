@@ -26,10 +26,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Node 10
+      - name: Setup Node 14
         uses: actions/setup-node@v1
         with:
-          node-version: '10.x'
+          node-version: '14.x'
           registry-url: 'https://npm.pkg.github.com'
 
       - name: NPM cache
