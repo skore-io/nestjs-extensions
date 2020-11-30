@@ -393,7 +393,7 @@
         {
           "id": "192ca4af-69f7-430c-bf34-36dc9a4de8e2",
           "name": "Core",
-          "path": "/Skoreans/Marketing",
+          "path": "/Skoreans/Core",
           "attributes": {},
           "realmRoles": [],
           "clientRoles": {},
@@ -402,7 +402,7 @@
         {
           "id": "176cd621-b25c-49f0-abb5-9e8c767c8b12",
           "name": "Professional Services",
-          "path": "/Skoreans/Leaders",
+          "path": "/Skoreans/Professional Services",
           "attributes": {},
           "realmRoles": [],
           "clientRoles": {},
@@ -411,7 +411,7 @@
         {
           "id": "b5d92534-68ac-421b-9d08-248479bf4bb6",
           "name": "Engenharia",
-          "path": "/Skoreans/Onboarding",
+          "path": "/Skoreans/Engenharia",
           "attributes": {},
           "realmRoles": [],
           "clientRoles": {},
@@ -844,7 +844,6 @@
         "resources": [
           {
             "name": "Movies",
-            "type": "urn:folders:Downloads",
             "ownerManagedAccess": false,
             "displayName": "Movies",
             "attributes": {},
@@ -858,7 +857,6 @@
           },
           {
             "name": "Downloads",
-            "type": "urn:folders:root",
             "ownerManagedAccess": false,
             "displayName": "Downloads",
             "attributes": {},
