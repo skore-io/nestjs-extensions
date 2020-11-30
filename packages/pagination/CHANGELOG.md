@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.0](https://github.com/skore-io/nestjs-extensions/compare/v0.13.2...v0.14.0) (2020-11-30)
+
+**Note:** Version bump only for package @skore-io/pagination
+
+
+
+
+
 ### [0.13.2](https://github.com/skore-io/nestjs-extensions/compare/v0.13.1...v0.13.2) (2020-11-19)
 
 
