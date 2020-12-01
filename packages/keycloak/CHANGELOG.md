@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.0](https://github.com/skore-io/nestjs-extensions/compare/v0.13.2...v0.14.0) (2020-11-30)
+
+
+### Features 🚀
+
+* **keycloak:** create resource ([#23](https://github.com/skore-io/nestjs-extensions/issues/23)) ([3154bab](https://github.com/skore-io/nestjs-extensions/commit/3154bab5dacbd60ffd8c4dd4ea70c4b2b22d4f12))
+
+
+### Documentation 📝
+
+* **keycloak:** create resource ([#25](https://github.com/skore-io/nestjs-extensions/issues/25)) ([44d85fc](https://github.com/skore-io/nestjs-extensions/commit/44d85fc1e8ac8be4b00ea9f64acb068b1ee92aa6))
+
+
+
 ## [0.13.0](https://github.com/skore-io/nestjs-extensions/compare/v0.12.0...v0.13.0) (2020-11-13)
 
 

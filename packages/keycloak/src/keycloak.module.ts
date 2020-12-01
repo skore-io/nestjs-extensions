@@ -21,7 +21,7 @@ import { KeycloakStrategy } from './strategy'
 
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }), HttpModule],
-  exports: [LoginService, LogoutService, RefreshTokenService],
+  exports: [LoginService, LogoutService, RefreshTokenService, CreateResourceService],
   providers: [
     KeycloakStrategy,
     UserInfoClient,
