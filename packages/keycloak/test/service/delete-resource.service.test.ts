@@ -11,7 +11,7 @@ export class DeleteResourceServiceTest extends BaseTest {
   async 'Given a valid resource then delete'() {
     const resource = await this.createResource()
     const service = super.get(DeleteResourceService)
-    const response = await service.perform('skore', resource.id)
+    const response = await service.perform('skore', resource.name)
 
     expect(response).toBeUndefined()
   }
@@ -23,7 +23,7 @@ export class DeleteResourceServiceTest extends BaseTest {
     try {
       await service.perform('skore', 'not_found')
     } catch (error) {
-      expect(error.message).toEqual('Request failed with status code 404')
+      expect(error.message).toEqual('Resource not found')
     }
   }
 
