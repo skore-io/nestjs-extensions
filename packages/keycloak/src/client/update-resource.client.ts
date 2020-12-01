@@ -9,8 +9,10 @@ export class UpdateResourceClient extends KeycloakClient {
     const params = {}
 
     for (const key in resource) {
-      if (!key) params[key] = resource[key]
+      if (!!resource[key]) params[key] = resource[key]
     }
+
+    delete params['id']
 
     return super.put(`/auth/realms/${realm}/authz/protection/resource_set/${resource.id}`, params, {
       headers: {
