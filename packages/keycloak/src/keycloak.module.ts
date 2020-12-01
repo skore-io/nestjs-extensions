@@ -7,6 +7,7 @@ import {
   LogoutClient,
   RefreshTokenClient,
   UserInfoClient,
+  UpdateResourceClient,
   GetClientToken,
 } from './client'
 import {
@@ -15,11 +16,18 @@ import {
   LoginService,
   LogoutService,
   RefreshTokenService,
+  UpdateResourceService,
 } from './service'
 
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }), HttpModule],
-  exports: [LoginService, LogoutService, RefreshTokenService, CreateResourceService],
+  exports: [
+    LoginService,
+    LogoutService,
+    RefreshTokenService,
+    CreateResourceService,
+    UpdateResourceService,
+  ],
   providers: [
     KeycloakStrategy,
     UserInfoClient,
@@ -27,12 +35,14 @@ import {
     LogoutClient,
     RefreshTokenClient,
     CreateResourceClient,
+    UpdateResourceClient,
+    GetClientToken,
     LoginService,
     LogoutService,
     RefreshTokenService,
     FindUserService,
     CreateResourceService,
-    GetClientToken,
+    UpdateResourceService,
   ],
 })
 export class KeycloakModule {}
