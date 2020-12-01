@@ -27,7 +27,7 @@ export class DeleteResourceServiceTest extends BaseTest {
     }
   }
 
-  async createResource(scopes = []): Promise<Resource> {
+  private async createResource(scopes = []): Promise<Resource> {
     const service = super.get(CreateResourceService)
 
     return service.perform(
