@@ -9,6 +9,7 @@ import {
   UserInfoClient,
   UpdateResourceClient,
   GetClientToken,
+  FindResourceClient,
 } from './client'
 import {
   CreateResourceService,
@@ -36,6 +37,7 @@ import {
     RefreshTokenClient,
     CreateResourceClient,
     UpdateResourceClient,
+    FindResourceClient,
     GetClientToken,
     LoginService,
     LogoutService,
