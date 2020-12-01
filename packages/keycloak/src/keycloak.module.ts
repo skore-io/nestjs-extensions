@@ -9,7 +9,6 @@ import {
   RefreshTokenClient,
   UserInfoClient,
 } from './client'
-import { UserClient } from './client/user.client'
 import {
   CreateResourceService,
   DeleteResourceService,
@@ -38,7 +37,6 @@ import { KeycloakStrategy } from './strategy'
     GetClientToken,
     DeleteResourceService,
     DeleteResourceClient,
-    UserClient,
   ],
 })
 export class KeycloakModule {}
