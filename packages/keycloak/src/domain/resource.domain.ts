@@ -27,6 +27,9 @@ export class Resource {
   @Transform(value => value || {})
   attributes?: unknown = {}
 
+  @Expose()
+  type?: string
+
   @Transform(value => value || Resource.DEFAULT_SCOPES)
   @Expose()
   scopes?: { name: string }[] = Resource.DEFAULT_SCOPES

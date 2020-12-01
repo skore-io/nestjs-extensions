@@ -28,4 +28,8 @@ export class KeycloakClient {
   post(path: string, params: unknown, headers: AxiosRequestConfig): Promise<AxiosResponse> {
     return this.httpService.post(`${this.keycloakServerUrl}${path}`, params, headers).toPromise()
   }
+
+  delete(path: string, headers: AxiosRequestConfig): Promise<AxiosResponse> {
+    return this.httpService.delete(`${this.keycloakServerUrl}${path}`, headers).toPromise()
+  }
 }
