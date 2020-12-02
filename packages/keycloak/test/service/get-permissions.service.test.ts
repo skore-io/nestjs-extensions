@@ -35,11 +35,24 @@ export class GetPermissionsServiceTest extends BaseTest {
   }
 
   @test()
-  async 'Given resources list without permission then return an empty array'() {
+  async 'Given resources list without permission then throw error'() {
     const service = super.get(GetPermissionsService)
 
-    const resourcers = await service.perform('skore', this.userToken, ['Movies'], 'delete')
+    try {
+      await service.perform('skore', this.userToken, ['Movies'], 'delete')
+    } catch (error) {
+      expect(error.message).toEqual('Request failed with status code 403')
+    }
+  }
 
-    expect(resourcers).toHaveLength(0)
+  @test()
+  async 'Given null scope then throw error'() {
+    const service = super.get(GetPermissionsService)
+
+    try {
+      await service.perform('skore', this.userToken, ['Movies'], null)
+    } catch (error) {
+      expect(error.message).toEqual('Invalid params')
+    }
   }
 }
