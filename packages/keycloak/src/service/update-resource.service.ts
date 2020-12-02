@@ -1,13 +1,14 @@
 import { Injectable, Logger } from '@nestjs/common'
-import { UpdateResourceClient, GetClientToken, FindResourceClient } from '../client'
+import { UpdateResourceClient, GetClientToken } from '../client'
 import { Resource } from '../domain'
+import { FindResourceService } from './find-resource.service'
 
 @Injectable()
 export class UpdateResourceService {
   constructor(
     private readonly updateResourceClient: UpdateResourceClient,
     private readonly getClientToken: GetClientToken,
-    private readonly findResourceClient: FindResourceClient,
+    private readonly findResourceService: FindResourceService,
   ) {}
 
   async perform(realm: string, name: string, resource: Resource): Promise<void> {
@@ -16,11 +17,7 @@ export class UpdateResourceService {
         data: { access_token: accessToken },
       } = await this.getClientToken.get(realm)
 
-      const {
-        data: [resourceId],
-      } = await this.findResourceClient.find(realm, accessToken, name)
-
-      if (!resourceId) throw Error('Resource not found')
+      const resourceId = await this.findResourceService.perform(realm, accessToken, name)
 
       resource.id = resourceId
 
