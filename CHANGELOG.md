@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.0](https://github.com/skore-io/nestjs-extensions/compare/v0.14.0...v0.15.0) (2020-12-01)
+
+
+### Features 🚀
+
+* delete resource ([#26](https://github.com/skore-io/nestjs-extensions/issues/26)) ([02afb00](https://github.com/skore-io/nestjs-extensions/commit/02afb00097cbb962783b5f4b628d8da475ca30d7))
+
+
+
 ## [0.14.0](https://github.com/skore-io/nestjs-extensions/compare/v0.13.2...v0.14.0) (2020-11-30)
 
 
