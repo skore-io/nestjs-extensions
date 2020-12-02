@@ -8,6 +8,7 @@ import {
   LogoutClient,
   RefreshTokenClient,
   UserInfoClient,
+  UpdateResourceClient,
   FindResourceClient,
   GetResourcePermissionsClient,
 } from './client'
@@ -18,6 +19,7 @@ import {
   LoginService,
   LogoutService,
   RefreshTokenService,
+  UpdateResourceService,
   FindResourceService,
   GetPermissionsService,
 } from './service'
@@ -30,7 +32,8 @@ import { KeycloakStrategy } from './strategy'
     LogoutService,
     RefreshTokenService,
     CreateResourceService,
-    DeleteResourceClient,
+    UpdateResourceService,
+    DeleteResourceService,
     GetPermissionsService,
   ],
   providers: [
@@ -41,6 +44,7 @@ import { KeycloakStrategy } from './strategy'
     RefreshTokenClient,
     CreateResourceClient,
     DeleteResourceClient,
+    UpdateResourceClient,
     FindResourceClient,
     GetResourcePermissionsClient,
     GetClientToken,
@@ -50,6 +54,7 @@ import { KeycloakStrategy } from './strategy'
     FindUserService,
     CreateResourceService,
     DeleteResourceService,
+    UpdateResourceService,
     FindResourceService,
     GetPermissionsService,
   ],

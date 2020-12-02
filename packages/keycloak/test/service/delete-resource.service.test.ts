@@ -1,15 +1,13 @@
 import { suite, test } from '@testdeck/jest'
-import { plainToClass } from 'class-transformer'
-import * as faker from 'faker'
-import { CreateResourceService, Resource } from '../../src'
 import { DeleteResourceService } from '../../src/service'
-import { BaseTest } from '..//base-test'
+import { BaseTest } from '../base-test'
+import { ResourceFactory } from '../factory'
 
 @suite('Delete Resource Service')
 export class DeleteResourceServiceTest extends BaseTest {
   @test()
   async 'Given a valid resource then delete'() {
-    const resource = await this.createResource()
+    const resource = await new ResourceFactory().create()
     const service = super.get(DeleteResourceService)
     const response = await service.perform('skore', resource.name)
 
@@ -25,18 +23,5 @@ export class DeleteResourceServiceTest extends BaseTest {
     } catch (error) {
       expect(error.message).toEqual('Resource not found')
     }
-  }
-
-  private async createResource(scopes = []): Promise<Resource> {
-    const service = super.get(CreateResourceService)
-
-    return service.perform(
-      'skore',
-      plainToClass(Resource, {
-        name: faker.name.title(),
-        display_name: faker.random.word(),
-        scopes,
-      }),
-    )
   }
 }
