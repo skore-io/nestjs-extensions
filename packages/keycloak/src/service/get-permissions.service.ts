@@ -18,7 +18,7 @@ export class GetPermissionsService {
     try {
       if (resources.length === 0 || !scope) throw Error('Invalid params')
 
-      let permission = null
+      let permission = ''
       for (const resource of resources) permission += `&permission=${resource}%23${scope}`
 
       const { data } = await this.getResourcePermissions.getResources(
