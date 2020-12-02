@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.15.1](https://github.com/skore-io/nestjs-extensions/compare/v0.15.0...v0.15.1) (2020-12-02)
+
+
+### Bug Fixes 🐛
+
+* **@skore-io/keycloak:** exports DeleteResourceService ([#28](https://github.com/skore-io/nestjs-extensions/issues/28)) ([a211a43](https://github.com/skore-io/nestjs-extensions/commit/a211a438490e9bf284f3a91c4d0b571519b2be8d))
+
+
+
 ## [0.15.0](https://github.com/skore-io/nestjs-extensions/compare/v0.14.0...v0.15.0) (2020-12-01)
 
 

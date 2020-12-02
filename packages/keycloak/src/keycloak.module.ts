@@ -31,7 +31,7 @@ import { KeycloakStrategy } from './strategy'
     RefreshTokenService,
     CreateResourceService,
     UpdateResourceService,
-    DeleteResourceClient,
+    DeleteResourceService,
   ],
   providers: [
     KeycloakStrategy,
