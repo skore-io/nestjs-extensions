@@ -29,7 +29,12 @@ export class GetPermissionsServiceTest extends BaseTest {
   async 'Given resources list then those with permission are returned'() {
     const service = super.get(GetPermissionsService)
 
-    const resources = await service.perform('skore', this.userToken, ['Movies'], 'create')
+    const resources = await service.perform(
+      'skore',
+      this.userToken,
+      ['Movies', 'Downloads'],
+      'create',
+    )
 
     expect(resources).toEqual(['Movies'])
   }

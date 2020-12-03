@@ -1,6 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { GetResourcePermissionsClient } from '../../src/client'
+import { stringify } from 'qs'
 
 @Injectable()
 export class GetPermissionsService {
@@ -18,13 +19,15 @@ export class GetPermissionsService {
     try {
       if (resources.length === 0 || !scope) throw Error('Invalid params')
 
-      let permission = ''
-      for (const resource of resources) permission += `&permission=${resource}%23${scope}`
+      let permissions = ''
+      for (const resource of resources) {
+        permissions += `&${stringify({ permission: `${resource}#${scope}` })}`
+      }
 
       const { data } = await this.getResourcePermissions.getResources(
         realm,
         accessToken,
-        permission,
+        permissions,
       )
 
       return data.map(resource => resource.rsname)
