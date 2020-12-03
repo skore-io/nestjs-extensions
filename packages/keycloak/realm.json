@@ -844,7 +844,7 @@
         "resources": [
           {
             "name": "Movies",
-            "ownerManagedAccess": false,
+            "ownerManagedAccess": true,
             "displayName": "Movies",
             "attributes": {},
             "_id": "18ee88a4-cd72-4e0d-9304-15abe6101b45",
@@ -852,6 +852,9 @@
             "scopes": [
               {
                 "name": "create"
+              },
+              {
+                "name": "delete"
               }
             ]
           },
