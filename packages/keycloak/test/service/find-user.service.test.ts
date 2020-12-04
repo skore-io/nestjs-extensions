@@ -14,6 +14,7 @@ export class FindUserServiceTest extends BaseTest {
     expect(user.email).toBeUndefined()
     expect(user.name).toBeUndefined()
     expect(user.organizationId).toBeUndefined()
+    expect(user.accessToken).toEqual(super.commonUserAccessToken())
   }
 
   @test(timeout(10000))

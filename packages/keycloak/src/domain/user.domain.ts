@@ -10,6 +10,9 @@ export class User {
   @Expose()
   email: string
 
+  @Expose()
+  accessToken: string
+
   @Expose({ name: 'preferred_username' })
   username: string
 

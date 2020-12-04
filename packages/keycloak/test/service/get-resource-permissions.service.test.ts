@@ -1,13 +1,14 @@
 import { suite, test } from '@testdeck/jest'
-import { BaseTest } from '../base-test'
 import * as faker from 'faker'
 import { GetClientToken } from '../../src/client'
-import { UserFactory, PolicyFactory } from '../factory'
-import { GetPermissionsService } from '../../src/service'
+import { User } from '../../src/domain'
+import { GetResourcePermissionsService } from '../../src/service'
+import { BaseTest } from '../base-test'
+import { PolicyFactory, UserFactory } from '../factory'
 
 @suite('[Keycloak Module] Get Permissions Service')
-export class GetPermissionsServiceTest extends BaseTest {
-  private userToken: string
+export class GetResourcePermissionsServiceTest extends BaseTest {
+  private user: User
 
   async before() {
     const username = faker.name.firstName()
@@ -22,29 +23,25 @@ export class GetPermissionsServiceTest extends BaseTest {
       new PolicyFactory(accessToken).create([userId]),
     ])
 
-    this.userToken = token
+    this.user = new User()
+    this.user.accessToken = token
   }
 
   @test()
   async 'Given resources list then those with permission are returned'() {
-    const service = super.get(GetPermissionsService)
+    const service = super.get(GetResourcePermissionsService)
 
-    const resources = await service.perform(
-      'skore',
-      this.userToken,
-      ['Movies', 'Downloads'],
-      'create',
-    )
+    const resources = await service.perform(this.user, ['Movies', 'Downloads'], 'create')
 
     expect(resources).toEqual(['Movies'])
   }
 
   @test()
   async 'Given resources list without permission then throw error'() {
-    const service = super.get(GetPermissionsService)
+    const service = super.get(GetResourcePermissionsService)
 
     try {
-      await service.perform('skore', this.userToken, ['Movies'], 'delete')
+      await service.perform(this.user, ['Movies'], 'delete')
     } catch (error) {
       expect(error.message).toEqual('Request failed with status code 403')
     }
@@ -52,10 +49,10 @@ export class GetPermissionsServiceTest extends BaseTest {
 
   @test()
   async 'Given null scope then throw error'() {
-    const service = super.get(GetPermissionsService)
+    const service = super.get(GetResourcePermissionsService)
 
     try {
-      await service.perform('skore', this.userToken, ['Movies'], null)
+      await service.perform(this.user, ['Movies'], null)
     } catch (error) {
       expect(error.message).toEqual('Invalid params')
     }
