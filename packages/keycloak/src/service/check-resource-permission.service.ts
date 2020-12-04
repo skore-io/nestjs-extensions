@@ -1,12 +1,12 @@
 import { Injectable, Logger } from '@nestjs/common'
 import { stringify } from 'querystring'
-import { CheckResourcePermissionsClient } from '../client'
+import { CheckResourcePermissionClient } from '../client'
 import { User } from '../domain'
 import { KeycloakUtils } from '../utils'
 
 @Injectable()
-export class CheckResourcePermissionsService {
-  constructor(private readonly resourceClient: CheckResourcePermissionsClient) {}
+export class CheckResourcePermissionService {
+  constructor(private readonly resourceClient: CheckResourcePermissionClient) {}
 
   async perform(user: User, resources: string[], scope: string): Promise<void> {
     try {
@@ -30,7 +30,7 @@ export class CheckResourcePermissionsService {
       Logger.error(
         'Error on trying to check user permission',
         error,
-        CheckResourcePermissionsService.name,
+        CheckResourcePermissionService.name,
       )
       throw new Error('Permission Denied')
     }

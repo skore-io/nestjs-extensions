@@ -117,15 +117,15 @@ async someFunction(): Promise<void> {
 
 ## Checking user permissions
 
-1. Import the CheckResourcePermissionsService.
+1. Import the CheckResourcePermissionService.
 
 ```typescript
 // your_file.service.ts
 
-import { CheckResourcePermissionsService } from '@skore-io/keycloak'
+import { CheckResourcePermissionService } from '@skore-io/keycloak'
 
 constructor(
-  private readonly checkResourcePermissionsService: CheckResourcePermissionsService,
+  private readonly checkResourcePermissionService: CheckResourcePermissionService,
 ) {}
 ```
 
@@ -133,7 +133,7 @@ constructor(
 
 ```typescript
 async someFunction(): Promise<void> {
-  await this.checkResourcePermissionsService.perform(user, ['Movies', 'Downloads'], 'create')
+  await this.checkResourcePermissionService.perform(user, ['Movies', 'Downloads'], 'create')
 }
 ```
 

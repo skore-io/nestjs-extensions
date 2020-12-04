@@ -4,7 +4,7 @@ import { stringify } from 'qs'
 import { KeycloakClient } from './keycloak.client'
 
 @Injectable()
-export class CheckResourcePermissionsClient extends KeycloakClient {
+export class CheckResourcePermissionClient extends KeycloakClient {
   checkUserPermission(
     realm: string,
     accessToken: string,
