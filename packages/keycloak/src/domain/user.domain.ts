@@ -11,7 +11,7 @@ export class User {
   email: string
 
   @Expose()
-  jwtToken: string
+  accessToken: string
 
   @Expose({ name: 'preferred_username' })
   username: string

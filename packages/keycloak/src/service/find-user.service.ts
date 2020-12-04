@@ -7,7 +7,7 @@ export class FindUserService {
   constructor(private readonly userInfoClient: UserInfoClient) {}
   async perform(realm: string, token: string): Promise<User> {
     const user = await this.userInfoClient.userInfo(realm, token)
-    user.jwtToken = token
+    user.accessToken = token
     return user
   }
 }

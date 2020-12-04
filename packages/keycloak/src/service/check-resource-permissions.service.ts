@@ -18,8 +18,8 @@ export class CheckResourcePermissionsService {
       }
 
       const { data } = await this.resourceClient.checkUserPermission(
-        KeycloakUtils.realmFromToken(user.jwtToken),
-        user.jwtToken,
+        KeycloakUtils.realmFromToken(user.accessToken),
+        user.accessToken,
         permissions,
       )
 

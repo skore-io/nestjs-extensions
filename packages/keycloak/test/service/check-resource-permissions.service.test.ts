@@ -23,7 +23,7 @@ export class CheckResourcePermissionsServiceTest extends BaseTest {
       new PolicyFactory(accessToken).create([userId]),
     ])
     this.user = new User()
-    this.user.jwtToken = token
+    this.user.accessToken = token
   }
   @test()
   async 'Given an user with access in resource dont throws an error'() {

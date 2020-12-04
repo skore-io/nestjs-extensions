@@ -24,7 +24,7 @@ export class GetResourcePermissionsServiceTest extends BaseTest {
     ])
 
     this.user = new User()
-    this.user.jwtToken = token
+    this.user.accessToken = token
   }
 
   @test()
