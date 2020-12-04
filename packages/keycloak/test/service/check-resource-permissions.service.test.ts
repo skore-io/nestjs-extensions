@@ -1,13 +1,14 @@
 import { suite, test } from '@testdeck/jest'
 import * as faker from 'faker'
 import { GetClientToken } from '../../src/client'
+import { User } from '../../src/domain'
 import { CheckResourcePermissionsService } from '../../src/service'
 import { BaseTest } from '../base-test'
 import { PolicyFactory, UserFactory } from '../factory'
 
 @suite('Check Resource Permission Service')
 export class CheckResourcePermissionsServiceTest extends BaseTest {
-  private userToken: string
+  private user: User
 
   async before() {
     const username = faker.name.firstName()
@@ -21,13 +22,13 @@ export class CheckResourcePermissionsServiceTest extends BaseTest {
       new UserFactory(super.commonUserAccessToken()).getToken(username),
       new PolicyFactory(accessToken).create([userId]),
     ])
-
-    this.userToken = token
+    this.user = new User()
+    this.user.jwtToken = token
   }
   @test()
-  async 'Given an user with access in resource dont throw an error'() {
+  async 'Given an user with access in resource dont throws an error'() {
     const service = super.get(CheckResourcePermissionsService)
-    await service.perform('skore', this.userToken, ['Movies', 'Downloads'], 'create')
+    await service.perform(this.user, ['Movies', 'Downloads'], 'create')
   }
 
   @test()
@@ -35,7 +36,7 @@ export class CheckResourcePermissionsServiceTest extends BaseTest {
     expect.assertions(1)
     const service = super.get(CheckResourcePermissionsService)
     try {
-      await service.perform('skore', this.userToken, ['Downloads'], 'create')
+      await service.perform(this.user, ['Downloads'], 'create')
     } catch (error) {
       expect(error.message).toEqual('Permission Denied')
     }

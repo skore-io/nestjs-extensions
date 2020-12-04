@@ -1,17 +1,14 @@
 import { Injectable, Logger } from '@nestjs/common'
 import { stringify } from 'querystring'
 import { CheckResourcePermissionsClient } from '../client'
+import { User } from '../domain'
+import { KeycloakUtils } from '../utils'
 
 @Injectable()
 export class CheckResourcePermissionsService {
   constructor(private readonly resourceClient: CheckResourcePermissionsClient) {}
 
-  async perform(
-    realm: string,
-    accessToken: string,
-    resources: string[],
-    scope: string,
-  ): Promise<void> {
+  async perform(user: User, resources: string[], scope: string): Promise<void> {
     try {
       if (resources.length === 0 || !scope) throw Error('Invalid params')
 
@@ -21,8 +18,8 @@ export class CheckResourcePermissionsService {
       }
 
       const { data } = await this.resourceClient.checkUserPermission(
-        realm,
-        accessToken,
+        KeycloakUtils.realmFromToken(user.jwtToken),
+        user.jwtToken,
         permissions,
       )
 
