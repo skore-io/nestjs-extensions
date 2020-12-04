@@ -115,6 +115,30 @@ async someFunction(): Promise<void> {
 }
 ```
 
+## Checking user permissions
+
+1. Import the CheckResourcePermissionsService.
+
+```typescript
+// your_file.service.ts
+
+import { CheckResourcePermissionsService } from '@skore-io/keycloak'
+
+constructor(
+  private readonly checkResourcePermissionsService: CheckResourcePermissionsService,
+) {}
+```
+
+2. Call method
+
+```typescript
+async someFunction(): Promise<void> {
+  await this.checkResourcePermissionsService.perform(user, ['Movies', 'Downloads'], 'create')
+}
+```
+
+if the user doesn't have the required permission an error will be thrown
+
 ## Protecting actions/queries
 
 Just annotate yout REST actions and Graphql queries/mutations methods with `@Protected()`
