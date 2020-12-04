@@ -5,7 +5,9 @@ import { User } from '../domain'
 @Injectable()
 export class FindUserService {
   constructor(private readonly userInfoClient: UserInfoClient) {}
-  perform(realm: string, token: string): Promise<User> {
-    return this.userInfoClient.userInfo(realm, token)
+  async perform(realm: string, token: string): Promise<User> {
+    const user = await this.userInfoClient.userInfo(realm, token)
+    user.jwtToken = token
+    return user
   }
 }

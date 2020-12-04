@@ -10,6 +10,9 @@ export class User {
   @Expose()
   email: string
 
+  @Expose()
+  jwtToken: string
+
   @Expose({ name: 'preferred_username' })
   username: string
 
