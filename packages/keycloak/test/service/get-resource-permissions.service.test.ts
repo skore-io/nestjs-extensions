@@ -43,7 +43,7 @@ export class GetResourcePermissionsServiceTest extends BaseTest {
     try {
       await service.perform(this.user, ['Movies'], 'delete')
     } catch (error) {
-      expect(error.message).toEqual('Request failed with status code 403')
+      expect(error.message).toEqual('Permission Denied')
     }
   }
 

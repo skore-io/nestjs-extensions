@@ -25,14 +25,17 @@ export class CheckResourcePermissionService {
 
       if (data.result) return
 
-      throw new Error(data.result.message)
+      throw Error(data.result.message)
     } catch (error) {
+      const errorDescription = error.response?.data?.error_description || error
+
       Logger.error(
         'Error on trying to check user permission',
-        error,
+        errorDescription,
         CheckResourcePermissionService.name,
       )
-      throw new Error('Permission Denied')
+
+      throw Error('Permission Denied')
     }
   }
 }

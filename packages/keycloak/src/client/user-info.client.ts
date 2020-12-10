@@ -22,10 +22,9 @@ export class UserInfoClient {
         .toPromise()
       return plainToClass(User, data, { excludeExtraneousValues: true })
     } catch (error) {
-      Logger.error(
-        `Error on getting access token ${error}, ${error.response.data.error_description}`,
-        UserInfoClient.name,
-      )
+      const errorDescription = error.response?.data?.error_description || error
+
+      Logger.error(`Error on getting access token, ${errorDescription}`, UserInfoClient.name)
 
       throw Error(error.response.data.error_description)
     }
