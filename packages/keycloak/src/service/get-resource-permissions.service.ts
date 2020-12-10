@@ -9,9 +9,9 @@ export class GetResourcePermissionsService {
   constructor(private readonly getResourcePermissions: GetResourcePermissionsClient) {}
 
   async perform(user: User, resources: string[], scope: string): Promise<string[]> {
-    try {
-      if (resources.length === 0 || !scope) throw Error('Invalid params')
+    if (resources.length === 0 || !scope) throw Error('Invalid params')
 
+    try {
       let permissions = ''
       for (const resource of resources) {
         permissions += `&${stringify({ permission: `${resource}#${scope}` })}`
@@ -25,9 +25,15 @@ export class GetResourcePermissionsService {
 
       return data.map(resource => resource.rsname)
     } catch (error) {
-      Logger.error('Error on trying to get permissions', error, GetResourcePermissionsService.name)
+      const errorDescription = error.response?.data?.error_description || error
 
-      throw error
+      Logger.error(
+        'Error on trying to get permissions',
+        errorDescription,
+        GetResourcePermissionsService.name,
+      )
+
+      throw new Error('Permission Denied')
     }
   }
 }
