@@ -19,7 +19,7 @@ export class LoginService {
         refreshToken: result['refresh_token'],
       }
     } catch (error) {
-      Logger.error('Error on doing login', error, LoginService.name)
+      Logger.error('Error trying to login', error, LoginService.name)
 
       throw error
     }

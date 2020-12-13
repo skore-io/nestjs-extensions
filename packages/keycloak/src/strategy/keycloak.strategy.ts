@@ -27,7 +27,7 @@ export class KeycloakStrategy extends PassportStrategy(Strategy, 'keycloak') {
 
       return user
     } catch (error) {
-      Logger.debug(`Invalid token message=${error.message}`, KeycloakStrategy.name)
+      Logger.error('Invalid token', error, KeycloakStrategy.name)
 
       if (req.isRest) return null
 
