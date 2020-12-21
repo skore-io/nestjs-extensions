@@ -38,15 +38,16 @@ export class HttpTest extends BaseTest {
   }
 
   @params(
-    { path: 'protected', query: 'protected' },
+    { path: '/protected', query: 'protected' },
     '[@Protected()] valid access token return protected resource',
   )
   async 'Granted access '({ path, query }) {
     const httpServer = await super.httpServerForModule(
       Test.createTestingModule({ imports: [RestModule, GqlModule] }),
     )
-
-    const restResponse = await httpServer.get(`/${path}`).auth(super.token(), { type: 'bearer' })
+    const restResponse = await httpServer
+      .get(path)
+      .auth(super.commonUserAccessToken(), { type: 'bearer' })
     expect(restResponse.status).toBe(200)
 
     const gqlResponse = await httpServer

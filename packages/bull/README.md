@@ -14,7 +14,7 @@ Declaring your queues and enabling `bull-board`
 
 ```typescript
 @Module({
-  imports: [QueueModule.forRoot({ name: 'content' }, { name: 'video' })],
+  imports: [BullModule.forRoot({ name: 'content' }, { name: 'video' })],
 })
 export class AppModule {}
 ```

@@ -24,7 +24,7 @@ export class UserInfoClient {
     } catch (error) {
       const errorDescription = error.response?.data?.error_description || error
 
-      Logger.error(`Error on getting access token, ${errorDescription}`, UserInfoClient.name)
+      Logger.error('Error on getting access token', errorDescription, UserInfoClient.name)
 
       throw Error(error.response.data.error_description)
     }
