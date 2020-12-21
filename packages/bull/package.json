@@ -23,12 +23,13 @@
     "test": "npx jest"
   },
   "dependencies": {
-    "@nestjs/bull": "^0.2.3",
-    "bull": "^3.18.1",
+    "@nestjs/bull": "^0.3.1",
+    "bull": "^3.20.0",
     "bull-board": "^0.10.0",
     "express-basic-auth": "^1.2.0"
   },
   "devDependencies": {
+    "@types/bull": "^3.14.4",
     "@types/bull-board": "^0.6.0"
   }
 }
