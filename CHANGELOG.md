@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.0](https://github.com/skore-io/nestjs-extensions/compare/v0.19.0...v0.20.0) (2020-12-21)
+
+
+### Features 🚀
+
+* **bull:** export bull methods ([#32](https://github.com/skore-io/nestjs-extensions/issues/32)) ([bcced4c](https://github.com/skore-io/nestjs-extensions/commit/bcced4cb367a6a067539640cd36946f8a9bf2ee5))
+
+
+
 ## [0.19.0](https://github.com/skore-io/nestjs-extensions/compare/v0.18.1...v0.19.0) (2020-12-13)
 
 
