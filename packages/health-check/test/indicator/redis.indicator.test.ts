@@ -17,6 +17,8 @@ export class RedisIndicatorTest {
     const indicator = await app.get(RedisIndicator).statusCheck()
 
     expect(indicator.redis.status).toBe('up')
+
+    await app.close()
   }
 
   @test
