@@ -1,11 +1,11 @@
 import { HttpStatus } from '@nestjs/common'
 import { Test } from '@nestjs/testing'
 import { suite, test } from '@testdeck/jest'
-import { MongoIndicator } from '../../src/indicator'
+import { Db } from 'mongodb'
 import request from 'supertest'
 import { TestModule } from '../module/test.module'
 
-@suite('Mongo Indicator')
+@suite('Controller Indicator')
 export class HealthControllerTest {
   @test
   async 'Given /health returns 200'() {
@@ -19,6 +19,7 @@ export class HealthControllerTest {
       .get('/health')
       .expect(HttpStatus.OK)
 
+    expect(body.info.dependencies.status).toBe('up')
     expect(body.info.redis.status).toBe('up')
     expect(body.info.mongodb.status).toBe('up')
 
@@ -30,10 +31,10 @@ export class HealthControllerTest {
     const moduleRef = await Test.createTestingModule({
       imports: [TestModule],
     })
-      .overrideProvider(MongoIndicator)
+      .overrideProvider(Db)
       .useValue({
-        statusCheck: () => {
-          throw Error
+        stats: () => {
+          throw { message: 'Fake DB error' }
         },
       })
       .compile()

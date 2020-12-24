@@ -17,6 +17,8 @@ export class MongoIndicatorTest {
     const indicator = await app.get(MongoIndicator).statusCheck()
 
     expect(indicator.mongodb.status).toBe('up')
+
+    await app.close()
   }
 
   @test
