@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.0](https://github.com/skore-io/nestjs-extensions/compare/v0.20.0...v0.21.0) (2020-12-24)
+
+
+### Features 🚀
+
+* list scoped deps from main package name ([#33](https://github.com/skore-io/nestjs-extensions/issues/33)) ([f0207d8](https://github.com/skore-io/nestjs-extensions/commit/f0207d815ab1e4f55d1ff9533c3501ab477dd584))
+
+
+
 ## [0.20.0](https://github.com/skore-io/nestjs-extensions/compare/v0.19.0...v0.20.0) (2020-12-21)
 
 **Note:** Version bump only for package @skore-io/health-check
