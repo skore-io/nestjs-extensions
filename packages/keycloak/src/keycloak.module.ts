@@ -7,9 +7,6 @@ import {
   FindResourceClient,
   GetClientToken,
   GetResourcePermissionsClient,
-  LoginClient,
-  LogoutClient,
-  RefreshTokenClient,
   UpdateResourceClient,
   UserInfoClient,
 } from './client'
@@ -20,9 +17,6 @@ import {
   FindResourceService,
   FindUserService,
   GetResourcePermissionsService,
-  LoginService,
-  LogoutService,
-  RefreshTokenService,
   UpdateResourceService,
 } from './service'
 import { KeycloakStrategy } from './strategy'
@@ -30,9 +24,6 @@ import { KeycloakStrategy } from './strategy'
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }), HttpModule],
   exports: [
-    LoginService,
-    LogoutService,
-    RefreshTokenService,
     CreateResourceService,
     UpdateResourceService,
     DeleteResourceService,
@@ -42,18 +33,12 @@ import { KeycloakStrategy } from './strategy'
   providers: [
     KeycloakStrategy,
     UserInfoClient,
-    LoginClient,
-    LogoutClient,
-    RefreshTokenClient,
     CreateResourceClient,
     DeleteResourceClient,
     UpdateResourceClient,
     FindResourceClient,
     GetResourcePermissionsClient,
     GetClientToken,
-    LoginService,
-    LogoutService,
-    RefreshTokenService,
     FindUserService,
     CreateResourceService,
     DeleteResourceService,

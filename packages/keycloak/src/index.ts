@@ -1,7 +1,4 @@
 export * from './keycloak.module'
-export * from './service/login.service'
-export * from './service/logout.service'
-export * from './service/refresh-token.service'
 export * from './service/create-resource.service'
 export * from './service/update-resource.service'
 export * from './service/delete-resource.service'
