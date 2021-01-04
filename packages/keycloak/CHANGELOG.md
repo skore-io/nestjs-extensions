@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.0](https://github.com/skore-io/nestjs-extensions/compare/v0.21.0...v0.22.0) (2021-01-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* login, logout and refresh token removed
+
+### Code Refactoring 🎨
+
+* removed login features ([#34](https://github.com/skore-io/nestjs-extensions/issues/34)) ([c5c9ee1](https://github.com/skore-io/nestjs-extensions/commit/c5c9ee118f577d5b063ff82fba1ce2c6b429ac40))
+
+
+
 ## [0.21.0](https://github.com/skore-io/nestjs-extensions/compare/v0.20.0...v0.21.0) (2020-12-24)
 
 
