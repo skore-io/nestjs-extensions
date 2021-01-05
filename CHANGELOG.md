@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.0](https://github.com/skore-io/nestjs-extensions/compare/v0.22.0...v0.23.0) (2021-01-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* organizationId removed from user
+
+### Code Refactoring 🎨
+
+* rename organization to environment ([#35](https://github.com/skore-io/nestjs-extensions/issues/35)) ([95d3fe2](https://github.com/skore-io/nestjs-extensions/commit/95d3fe2c8db3740efc74f7781a618f9703606936))
+
+
+
 ## [0.22.0](https://github.com/skore-io/nestjs-extensions/compare/v0.21.0...v0.22.0) (2021-01-04)
 
 
