@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.23.1](https://github.com/skore-io/nestjs-extensions/compare/v0.23.0...v0.23.1) (2021-01-05)
+
+
+### Documentation 📝
+
+* **@skore.io/keycloak:** update readme ([#36](https://github.com/skore-io/nestjs-extensions/issues/36)) ([b1ab3fb](https://github.com/skore-io/nestjs-extensions/commit/b1ab3fbcf5247832a3b23e15464ce33d83800de1))
+
+
+
 ## [0.23.0](https://github.com/skore-io/nestjs-extensions/compare/v0.22.0...v0.23.0) (2021-01-05)
 
 
