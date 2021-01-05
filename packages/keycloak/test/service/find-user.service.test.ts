@@ -13,7 +13,7 @@ export class FindUserServiceTest extends BaseTest {
     expect(user.username).toEqual('admin')
     expect(user.email).toBeUndefined()
     expect(user.name).toBeUndefined()
-    expect(user.organizationId).toBeUndefined()
+    expect(user.environmentId).toBeUndefined()
     expect(user.accessToken).toEqual(super.commonUserAccessToken())
   }
 
