@@ -21,8 +21,6 @@ export class UserInfoClient {
         )
         .toPromise()
 
-      Logger.debug(`UserInfo ==== ${JSON.stringify(data)}`, UserInfoClient.name)
-
       return plainToClass(User, data)
     } catch (error) {
       const errorDescription = error.response?.data?.error_description || error
