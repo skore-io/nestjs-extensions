@@ -20,8 +20,6 @@ export class KeycloakStrategy extends PassportStrategy(Strategy, 'keycloak') {
     const type = req.protectionType as string
 
     try {
-      Logger.log('Strategy *-*', KeycloakStrategy.name)
-
       const realm = this.realmFromToken(token)
       if (type === PROTECTED) {
         user = await this.findUserService.perform(realm, token)
