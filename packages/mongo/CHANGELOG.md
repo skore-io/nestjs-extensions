@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.23.3](https://github.com/skore-io/nestjs-extensions/compare/v0.23.2...v0.23.3) (2021-01-12)
+
+
+### Code Refactoring 🎨
+
+* **mongo:** support multiple module connections ([#37](https://github.com/skore-io/nestjs-extensions/issues/37)) ([4081de4](https://github.com/skore-io/nestjs-extensions/commit/4081de4cf9c33b39a1ea31dcf35cfd2a4ad4337f))
+
+
+
 ## [0.23.0](https://github.com/skore-io/nestjs-extensions/compare/v0.22.0...v0.23.0) (2021-01-05)
 
 **Note:** Version bump only for package @skore-io/mongo
