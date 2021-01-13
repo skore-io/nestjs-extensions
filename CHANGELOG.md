@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.23.5](https://github.com/skore-io/nestjs-extensions/compare/v0.23.4...v0.23.5) (2021-01-13)
+
+
+### Code Refactoring 🎨
+
+* **mongo:** support database name env var ([479c95e](https://github.com/skore-io/nestjs-extensions/commit/479c95ec2c220426b4b15b5d1c01862ae466d43a))
+
+
+
 ### [0.23.4](https://github.com/skore-io/nestjs-extensions/compare/v0.23.3...v0.23.4) (2021-01-12)
 
 
