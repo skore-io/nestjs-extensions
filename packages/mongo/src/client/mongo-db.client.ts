@@ -7,7 +7,7 @@ export class MongoDbClient implements OnApplicationShutdown {
 
   async db(): Promise<Db> {
     const database = await this.mongoClient.connect()
-    return database.db()
+    return database.db(process.env.MONGO_DATABASE_NAME || '')
   }
 
   async onApplicationShutdown(signal: ShutdownSignal): Promise<void> {
