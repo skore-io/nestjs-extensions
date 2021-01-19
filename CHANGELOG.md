@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.24.0](https://github.com/skore-io/nestjs-extensions/compare/v0.23.5...v0.24.0) (2021-01-19)
+
+
+### Features 🚀
+
+* **bull:** support context injection ([#39](https://github.com/skore-io/nestjs-extensions/issues/39)) ([ba9dd03](https://github.com/skore-io/nestjs-extensions/commit/ba9dd038df1938a7d1d05784fc708a1c42ba0597))
+
+
+### Bug Fixes 🐛
+
+* class trasnformer version ([#40](https://github.com/skore-io/nestjs-extensions/issues/40)) ([1725eea](https://github.com/skore-io/nestjs-extensions/commit/1725eea5e5437476f07c589d04c07084568b1335))
+
+
+
 ### [0.23.5](https://github.com/skore-io/nestjs-extensions/compare/v0.23.4...v0.23.5) (2021-01-13)
 
 
