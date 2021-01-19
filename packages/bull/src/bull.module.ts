@@ -1,4 +1,8 @@
-import { BullModule as NestBullModule, BullModuleAsyncOptions } from '@nestjs/bull'
+import {
+  BullModule as NestBullModule,
+  BullModuleAsyncOptions,
+  BullModuleOptions as NestBullOptions,
+} from '@nestjs/bull'
 import {
   DynamicModule,
   Logger,
@@ -14,7 +18,7 @@ import { BullModuleOptions, BullModuleQueue, BULL_MODULE_OPTS } from './domain'
 
 @Module({})
 export class BullModule implements NestModule, OnModuleInit {
-  private static readonly options: BullModuleQueue[] = []
+  private static readonly options: NestBullOptions[] = []
 
   static bullFactory(queue: BullModuleQueue): BullModuleAsyncOptions {
     return {
