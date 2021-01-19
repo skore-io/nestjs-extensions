@@ -1,4 +1,4 @@
-import { BullModule as NestBullModule, BullModuleOptions } from '@nestjs/bull'
+import { BullModule as NestBullModule, BullModuleAsyncOptions } from '@nestjs/bull'
 import {
   DynamicModule,
   Logger,
@@ -10,25 +10,43 @@ import {
 import Bull from 'bull'
 import { setQueues, UI as bullBoard } from 'bull-board'
 import basicAuth from 'express-basic-auth'
+import { BullModuleOptions, BullModuleQueue, BULL_MODULE_OPTS } from './domain'
 
 @Module({})
 export class BullModule implements NestModule, OnModuleInit {
-  private static options: BullModuleOptions[]
+  private static readonly options: BullModuleQueue[] = []
 
-  static forRoot(...options: BullModuleOptions[]): DynamicModule {
-    const opts: BullModuleOptions[] = [].concat(options)
+  static bullFactory(queue: BullModuleQueue): BullModuleAsyncOptions {
+    return {
+      useFactory: (options: BullModuleQueue) => {
+        const opts = { ...queue, ...options }
+        BullModule.options.push(opts)
 
-    for (const opt of opts) {
-      opt.redis = process.env.REDIS_CONNECTION
+        return opts
+      },
+      inject: [BULL_MODULE_OPTS],
     }
+  }
 
-    BullModule.options = opts
-
+  static forRoot(options: BullModuleOptions, ...queues: BullModuleQueue[]): DynamicModule {
     return {
       module: BullModule,
       global: true,
-      imports: [NestBullModule.registerQueue(...opts)],
-      exports: [NestBullModule],
+      providers: [
+        {
+          provide: BULL_MODULE_OPTS,
+          useFactory: options.useFactory,
+          inject: options.inject,
+        },
+      ],
+      imports: [
+        NestBullModule.registerQueueAsync(
+          ...queues.map(queue => {
+            return { name: queue.name, ...BullModule.bullFactory(queue) }
+          }),
+        ),
+      ],
+      exports: [NestBullModule, BULL_MODULE_OPTS],
     }
   }
 

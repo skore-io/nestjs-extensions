@@ -4,17 +4,23 @@
 
 ### Using bull
 
-Setup redis credentials:
-
-```sh
-REDIS_CONNECTION='redis://default:redispassword@redis:6379'
-```
-
 Declaring your queues and enabling `bull-board`
 
 ```typescript
 @Module({
-  imports: [BullModule.forRoot({ name: 'content' }, { name: 'video' })],
+  imports: [
+    BullModule.forRoot(
+      {
+        useFactory: (configService: ConfigService) => ({
+          redis: configService.get('REDIS_CONNECTION'),
+          prefix: 'test',
+        }),
+        inject: [ConfigService],
+      },
+      { name: 'contents' },
+      { name: 'worksheets' },
+    ),
+  ],
 })
 export class AppModule {}
 ```
