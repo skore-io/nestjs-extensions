@@ -45,9 +45,7 @@ export class HttpTest extends BaseTest {
     const httpServer = await super.httpServerForModule(
       Test.createTestingModule({ imports: [RestModule, GqlModule] }),
     )
-    const restResponse = await httpServer
-      .get(path)
-      .auth(super.commonUserAccessToken(), { type: 'bearer' })
+    const restResponse = await httpServer.get(path).auth(super.token(), { type: 'bearer' })
     expect(restResponse.status).toBe(200)
 
     const gqlResponse = await httpServer

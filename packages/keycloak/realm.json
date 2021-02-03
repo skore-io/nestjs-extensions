@@ -4,7 +4,7 @@
   "notBefore": 0,
   "revokeRefreshToken": false,
   "refreshTokenMaxReuse": 0,
-  "accessTokenLifespan": 300,
+  "accessTokenLifespan": 1200,
   "accessTokenLifespanForImplicitFlow": 900,
   "ssoSessionIdleTimeout": 1800,
   "ssoSessionMaxLifespan": 36000,
@@ -463,6 +463,45 @@
   "webAuthnPolicyPasswordlessAcceptableAaguids": [],
   "users": [
     {
+      "id": "24b0a4bf-e796-4ede-9257-734fa0314a40",
+      "createdTimestamp": 1607192664176,
+      "username": "skore",
+      "enabled": true,
+      "totp": false,
+      "emailVerified": true,
+      "firstName": "Skore",
+      "lastName": "One",
+      "email": "apps@skore.io",
+      "attributes": {
+        "environment_id": [
+          "5f0498070bfd264e7662b434"
+        ]
+      },
+      "credentials": [
+        {
+          "id": "3de1c9e6-d3f4-4f77-827d-b7e4fa4c7cc4",
+          "type": "password",
+          "createdDate": 1607192690535,
+          "secretData": "{\"value\":\"TJLLP0d82/glOjmdn/M8MXj7BUckIKUIVWT1niE/VAM6FbcztAMOaMPSuUvvCc5khQOSWTtlWXmteqVopHAWow==\",\"salt\":\"XqV7I9fialuHRDTATfp6SA==\"}",
+          "credentialData": "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\"}"
+        }
+      ],
+      "disableableCredentialTypes": [],
+      "requiredActions": [],
+      "realmRoles": [
+        "uma_authorization",
+        "offline_access"
+      ],
+      "clientRoles": {
+        "account": [
+          "manage-account",
+          "view-profile"
+        ]
+      },
+      "notBefore": 0,
+      "groups": []
+    },
+    {
       "id": "f570ed2d-d782-4bb0-b0a4-6b62ea73dd8a",
       "createdTimestamp": 1599326291580,
       "username": "service-account-folder",
@@ -874,26 +913,25 @@
         ],
         "policies": [
           {
-            "id": "72e01a5a-211a-4657-8452-1a4174cbe0fd",
-            "name": "Group Policy",
-            "type": "group",
+            "id": "234a9a2d-aa52-4a36-afa8-4af5d6322b1a",
+            "name": "All Skoreans Policy",
+            "type": "user",
             "logic": "POSITIVE",
             "decisionStrategy": "UNANIMOUS",
             "config": {
-              "groups": "[{\"path\":\"/Skoreans\",\"extendChildren\":false}]"
+              "users": "[\"skore\"]"
             }
           },
           {
-            "id": "26bb8f72-e665-47db-8634-ad52d8f76a54",
-            "name": "Skoreans Permission",
+            "id": "280b2205-3ba0-4d06-abd2-84d70d1c445c",
+            "name": "All Folders Permission",
             "description": "",
             "type": "scope",
             "logic": "POSITIVE",
             "decisionStrategy": "UNANIMOUS",
             "config": {
-              "resources": "[\"Downloads\"]",
-              "scopes": "[\"delete\"]",
-              "applyPolicies": "[\"Group Policy\"]"
+              "scopes": "[\"list\",\"update\",\"create\",\"delete\"]",
+              "applyPolicies": "[\"All Skoreans Policy\"]"
             }
           }
         ],
@@ -1336,6 +1374,21 @@
             "id.token.claim": "true",
             "access.token.claim": "true",
             "claim.name": "email",
+            "jsonType.label": "String"
+          }
+        },
+        {
+          "id": "086748db-c28d-4a64-af41-6d1e4f4a5198",
+          "name": "environment_id",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "userinfo.token.claim": "true",
+            "user.attribute": "environment_id",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "environment_id",
             "jsonType.label": "String"
           }
         }

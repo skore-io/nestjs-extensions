@@ -8,13 +8,14 @@ export class FindUserServiceTest extends BaseTest {
   async 'Given a valid access token then return the user info'() {
     const service = super.get(FindUserService)
 
-    const user = await service.perform('master', super.commonUserAccessToken())
+    const user = await service.perform('skore', super.token())
+
     expect(user.id).toBeDefined()
-    expect(user.username).toEqual('admin')
-    expect(user.email).toBeUndefined()
-    expect(user.name).toBeUndefined()
-    expect(user.environmentId).toBeUndefined()
-    expect(user.accessToken).toEqual(super.commonUserAccessToken())
+    expect(user.username).toEqual('skore')
+    expect(user.email).toEqual('apps@skore.io')
+    expect(user.name).toEqual('Skore One')
+    expect(user.environmentId).toEqual('5f0498070bfd264e7662b434')
+    expect(user.accessToken).toEqual(super.token())
   }
 
   @test(timeout(10000))
@@ -22,7 +23,7 @@ export class FindUserServiceTest extends BaseTest {
     const service = super.get(FindUserService)
 
     try {
-      await service.perform('master', super.fakeToken())
+      await service.perform('skore', super.fakeToken())
     } catch (error) {
       expect(error.message).toEqual('Token verification failed')
     }
@@ -33,7 +34,7 @@ export class FindUserServiceTest extends BaseTest {
     const service = super.get(FindUserService)
 
     try {
-      await service.perform('master', null)
+      await service.perform('skore', null)
     } catch (error) {
       expect(error.message).toEqual('Token verification failed')
     }
