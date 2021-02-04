@@ -31,6 +31,7 @@ import { KeycloakStrategy } from './strategy'
     DeleteResourceService,
     GetResourcePermissionsService,
     CheckResourcePermissionService,
+    FindUserByIdService,
   ],
   providers: [
     KeycloakStrategy,
