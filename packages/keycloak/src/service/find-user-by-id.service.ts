@@ -2,6 +2,7 @@ import { Injectable, Logger } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { FindUserClient, GetClientToken } from '../client'
 import { User } from '../domain'
+import { KeycloakUtils } from '../utils'
 
 @Injectable()
 export class FindUserByIdService {
@@ -11,8 +12,10 @@ export class FindUserByIdService {
     private readonly configService: ConfigService,
   ) {}
 
-  async perform(realm: string, id: string): Promise<User> {
+  async perform(token: string, id: string): Promise<User> {
     Logger.log(`Searching user ${id} in keycloak`, FindUserByIdService.name)
+
+    const realm = KeycloakUtils.realmFromToken(token)
 
     const {
       data: { access_token: clientToken },

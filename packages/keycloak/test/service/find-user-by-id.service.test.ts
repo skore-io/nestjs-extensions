@@ -8,7 +8,7 @@ export class FindUserByIdServiceTest extends BaseTest {
   async 'Given an existing user then return the info'() {
     const service = super.get(FindUserByIdService)
 
-    const user = await service.perform('skore', '24b0a4bf-e796-4ede-9257-734fa0314a40')
+    const user = await service.perform(super.token(), '24b0a4bf-e796-4ede-9257-734fa0314a40')
 
     expect(user.id).toBeDefined()
     expect(user.username).toEqual('skore')
@@ -21,7 +21,7 @@ export class FindUserByIdServiceTest extends BaseTest {
     const service = super.get(FindUserByIdService)
 
     try {
-      await service.perform('skore', '24b0a4bf-e796-4ede-9257-734fa0314a41')
+      await service.perform(super.token(), '24b0a4bf-e796-4ede-9257-734fa0314a41')
     } catch (error) {
       expect(error.message).toEqual('User not found')
     }
