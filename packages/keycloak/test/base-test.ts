@@ -22,7 +22,7 @@ export abstract class BaseTest {
     BaseTest.userToken = await BaseTest.getUserToken('skore-front', 'skore', 'skore123')
     BaseTest.clientToken = await BaseTest.getClientToken()
 
-    const noAccessClient = await axios.post(
+    const { data: noAccessClient } = await axios.post(
       `${process.env.KEYCLOAK_SERVER_URL}/auth/realms/skore/protocol/openid-connect/token`,
       stringify({
         client_id: 'no-access-client',
@@ -32,7 +32,7 @@ export abstract class BaseTest {
       { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, timeout: 15000 },
     )
 
-    BaseTest.noAccessToken = noAccessClient.data.access_token
+    BaseTest.noAccessToken = noAccessClient.access_token
   }
 
   before() {
@@ -64,8 +64,8 @@ export abstract class BaseTest {
     const { data } = await axios.post(
       `${process.env.KEYCLOAK_SERVER_URL}/auth/realms/skore/protocol/openid-connect/token`,
       stringify({
-        client_id: process.env.KEYCLOAK_CLIENT_ID,
-        client_secret: process.env.KEYCLOAK_CLIENT_SECRET,
+        client_id: process.env.KEYCLOAK_FOLDER_CLIENT_ID,
+        client_secret: process.env.KEYCLOAK_FOLDER_CLIENT_SECRET,
         grant_type: 'client_credentials',
       }),
       { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, timeout: 15000 },

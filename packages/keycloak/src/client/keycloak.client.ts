@@ -5,24 +5,13 @@ import { AxiosRequestConfig, AxiosResponse } from 'axios'
 @Injectable()
 export class KeycloakClient {
   private readonly keycloakServerUrl: string
-  private readonly _clientId: string
-  private readonly _clientSecret: string
 
-  constructor(
-    private readonly httpService: HttpService,
-    private readonly configService: ConfigService,
-  ) {
+  constructor(private readonly httpService: HttpService, readonly configService: ConfigService) {
     this.keycloakServerUrl = this.configService.get('KEYCLOAK_SERVER_URL')
-    this._clientId = this.configService.get('KEYCLOAK_CLIENT_ID')
-    this._clientSecret = this.configService.get('KEYCLOAK_CLIENT_SECRET')
   }
 
-  get clientId(): string {
-    return this._clientId
-  }
-
-  get clientSecret(): string {
-    return this._clientSecret
+  clientSecret(clientId: string): string {
+    return this.configService.get(`KEYCLOAK_${clientId.toUpperCase()}_CLIENT_SECRET`)
   }
 
   post(path: string, params: unknown, headers: AxiosRequestConfig): Promise<AxiosResponse> {

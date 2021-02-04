@@ -1,4 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
 import { UpdateResourceClient, GetClientToken } from '../client'
 import { Resource } from '../domain'
 import { FindResourceService } from './find-resource.service'
@@ -9,13 +10,17 @@ export class UpdateResourceService {
     private readonly updateResourceClient: UpdateResourceClient,
     private readonly getClientToken: GetClientToken,
     private readonly findResourceService: FindResourceService,
+    private readonly configService: ConfigService,
   ) {}
 
   async perform(realm: string, name: string, resource: Resource): Promise<void> {
     try {
       const {
         data: { access_token: accessToken },
-      } = await this.getClientToken.get(realm)
+      } = await this.getClientToken.getClient(
+        realm,
+        this.configService.get('KEYCLOAK_FOLDER_CLIENT_ID'),
+      )
 
       const resourceId = await this.findResourceService.perform(realm, accessToken, name)
 

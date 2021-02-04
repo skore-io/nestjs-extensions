@@ -10,7 +10,7 @@ export class GetResourcePermissionsClient extends KeycloakClient {
       `/auth/realms/${realm}/protocol/openid-connect/token`,
       stringify({
         grant_type: 'urn:ietf:params:oauth:grant-type:uma-ticket',
-        audience: super.clientId,
+        audience: this.configService.get('KEYCLOAK_FOLDER_CLIENT_ID'),
         response_mode: 'permissions',
       }).concat(permission),
       {
