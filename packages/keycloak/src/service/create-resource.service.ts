@@ -12,6 +12,8 @@ export class CreateResourceService {
   ) {}
 
   async perform(realm: string, resource: Resource): Promise<Resource> {
+    Logger.log(`Creating resource ${resource.name} in keycloak`, CreateResourceClient.name)
+
     try {
       if (!resource.name || !resource.displayName) throw Error('Name or displayName is missing')
 
