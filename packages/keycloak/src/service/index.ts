@@ -1,4 +1,5 @@
 export * from './find-user.service'
+export * from './find-user-by-id.service'
 export * from './create-resource.service'
 export * from './update-resource.service'
 export * from './delete-resource.service'
