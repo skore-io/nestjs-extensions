@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.0](https://github.com/skore-io/nestjs-extensions/compare/v0.24.0...v0.25.0) (2021-02-05)
+
+
+### Features 🚀
+
+* **keycloak:** find user ([#41](https://github.com/skore-io/nestjs-extensions/issues/41)) ([9e6c942](https://github.com/skore-io/nestjs-extensions/commit/9e6c942eef41b1274633e3b388da9db7b2b11028))
+
+
+
 ## [0.24.0](https://github.com/skore-io/nestjs-extensions/compare/v0.23.5...v0.24.0) (2021-01-19)
 
 **Note:** Version bump only for package @skore-io/keycloak
