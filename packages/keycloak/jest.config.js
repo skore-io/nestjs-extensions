@@ -13,4 +13,5 @@ module.exports = {
   forceExit: true,
   coverageReporters: ['lcovonly', 'text'],
   collectCoverageFrom: ['src/**/{!(keycloak.module|index),}.ts'],
+  testTimeout: 10000,
 }

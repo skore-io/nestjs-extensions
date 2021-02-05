@@ -21,13 +21,13 @@ export class UserInfoClient {
         )
         .toPromise()
 
-      return plainToClass(User, data)
+      return plainToClass(User, data, { excludeExtraneousValues: true })
     } catch (error) {
       const errorDescription = error.response?.data?.error_description || error
 
-      Logger.error('Error on getting access token', errorDescription, UserInfoClient.name)
+      Logger.error('Error on getting user info', errorDescription, UserInfoClient.name)
 
-      throw Error(error.response.data.error_description)
+      throw Error(errorDescription)
     }
   }
 }

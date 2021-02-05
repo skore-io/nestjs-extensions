@@ -15,7 +15,7 @@ export class CheckResourcePermissionClient extends KeycloakClient {
       stringify({
         grant_type: 'urn:ietf:params:oauth:grant-type:uma-ticket',
         response_mode: 'decision',
-        audience: super.clientId,
+        audience: this.configService.get('KEYCLOAK_FOLDER_CLIENT_ID'),
       }).concat(permission),
       {
         headers: {

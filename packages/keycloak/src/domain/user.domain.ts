@@ -1,6 +1,12 @@
 import { Expose } from 'class-transformer'
 
 export class User {
+  constructor(username: string, name: string, email: string) {
+    this.username = username
+    this.name = name
+    this.email = email
+  }
+
   @Expose({ name: 'sub' })
   id: string
 
