@@ -9,7 +9,7 @@ export class PolicyFactory {
       `${process.env.KEYCLOAK_SERVER_URL}/auth/realms/skore/authz/protection/uma-policy/18ee88a4-cd72-4e0d-9304-15abe6101b45`,
       {
         name: faker.name.title(),
-        scopes: ['create'],
+        scopes: ['edit'],
         users: userIds,
       },
       {

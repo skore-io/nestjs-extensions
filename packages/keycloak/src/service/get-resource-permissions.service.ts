@@ -2,13 +2,13 @@ import { Injectable, Logger } from '@nestjs/common'
 import { KeycloakUtils } from '../utils'
 import { stringify } from 'qs'
 import { GetResourcePermissionsClient } from '../client'
-import { User } from '../domain'
+import { ScopeType, User } from '../domain'
 
 @Injectable()
 export class GetResourcePermissionsService {
   constructor(private readonly getResourcePermissions: GetResourcePermissionsClient) {}
 
-  async perform(user: User, resources: string[], scope: string): Promise<string[]> {
+  async perform(user: User, resources: string[], scope: ScopeType): Promise<string[]> {
     if (resources.length === 0 || !scope) throw Error('Invalid params')
 
     try {

@@ -923,10 +923,10 @@
             "uris": [],
             "scopes": [
               {
-                "name": "delete"
+                "name": "view"
               },
               {
-                "name": "create"
+                "name": "edit"
               }
             ]
           },
@@ -939,7 +939,7 @@
             "uris": [],
             "scopes": [
               {
-                "name": "delete"
+                "name": "edit"
               }
             ]
           }
@@ -963,7 +963,7 @@
             "logic": "POSITIVE",
             "decisionStrategy": "UNANIMOUS",
             "config": {
-              "scopes": "[\"list\",\"update\",\"create\",\"delete\"]",
+              "scopes": "[\"view\",\"edit\"]",
               "applyPolicies": "[\"All Skoreans Policy\"]"
             }
           }
@@ -971,23 +971,11 @@
         "scopes": [
           {
             "id": "f2ee711b-c731-4509-a3eb-f313933f7d42",
-            "name": "create"
+            "name": "view"
           },
           {
             "id": "de7d83ef-1123-4d3f-8b74-86d2a1b8435a",
-            "name": "delete"
-          },
-          {
-            "id": "7ed9c5a6-c9bc-4f51-b9b9-4dd201712974",
-            "name": "update"
-          },
-          {
-            "id": "d3a8d0d3-bb60-4eef-bc1d-9dc173abad31",
-            "name": "find"
-          },
-          {
-            "id": "f4c5b583-0b77-44bf-8b7b-90807907117c",
-            "name": "list"
+            "name": "edit"
           }
         ],
         "decisionStrategy": "UNANIMOUS"
