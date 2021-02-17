@@ -1,3 +1,4 @@
+export * from './create-permission.client'
 export * from './check-resource-permission.client'
 export * from './create-resource.client'
 export * from './delete-resource.client'
