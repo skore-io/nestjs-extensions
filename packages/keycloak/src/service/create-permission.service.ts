@@ -2,6 +2,7 @@ import { Injectable, Logger } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { CreatePermissionClient, GetClientToken } from '../client'
 import { Permission } from '../domain'
+import { KeycloakUtils } from '../utils'
 
 type CreatePermission = Omit<Permission, 'id' | 'name' | ''>
 
@@ -13,7 +14,7 @@ export class CreatePermissionService {
     private readonly configService: ConfigService,
   ) {}
 
-  async perform(realm: string, createPermission: CreatePermission): Promise<Permission> {
+  async perform(token: string, createPermission: CreatePermission): Promise<Permission> {
     const { group, user, resourceId, scopes } = createPermission
     const name = `${resourceId}_${user || group}`
     const permission = new Permission(name, resourceId, scopes, user, group)
@@ -23,6 +24,8 @@ export class CreatePermissionService {
       if (!permission.resourceId) throw Error('Resource is required')
 
       Logger.log(`Creating permission ${permission.name} in keycloak`, CreatePermissionService.name)
+
+      const realm = KeycloakUtils.realmFromToken(token)
 
       const {
         data: { access_token: accessToken },
