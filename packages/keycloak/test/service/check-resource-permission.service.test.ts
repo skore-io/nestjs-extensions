@@ -1,5 +1,5 @@
 import { suite, test } from '@testdeck/jest'
-import { User } from '../../src/domain'
+import { ScopeType, User } from '../../src/domain'
 import { CheckResourcePermissionService } from '../../src/service'
 import { BaseTest } from '../base-test'
 import { PolicyFactory } from '../factory'
@@ -18,7 +18,7 @@ export class CheckResourcePermissionServiceTest extends BaseTest {
   @test()
   async 'Given an user with access in resource dont throws an error'() {
     const service = super.get(CheckResourcePermissionService)
-    await service.perform(this.user, ['Movies', 'Downloads'], 'create')
+    await service.perform(this.user, ['Movies', 'Downloads'], ScopeType.EDIT)
   }
 
   @test()
@@ -27,7 +27,7 @@ export class CheckResourcePermissionServiceTest extends BaseTest {
     const service = super.get(CheckResourcePermissionService)
 
     try {
-      await service.perform(this.user, ['Downloads'], 'create')
+      await service.perform(this.user, ['Downloads'], ScopeType.EDIT)
     } catch (error) {
       expect(error.message).toEqual('Permission Denied')
     }

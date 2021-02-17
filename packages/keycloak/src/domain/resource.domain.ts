@@ -1,13 +1,8 @@
 import { Expose, Transform } from 'class-transformer'
+import { ScopeType } from './scope-type.domain'
 
 export class Resource {
-  static readonly DEFAULT_SCOPES = [
-    { name: 'create' },
-    { name: 'update' },
-    { name: 'delete' },
-    { name: 'list' },
-    { name: 'find' },
-  ]
+  static readonly DEFAULT_SCOPES = Object.values(ScopeType).map(scopeType => ({ name: scopeType }))
 
   constructor(name: string, displayName: string) {
     this.name = name
@@ -29,5 +24,5 @@ export class Resource {
 
   @Transform(value => value || Resource.DEFAULT_SCOPES)
   @Expose()
-  scopes?: { name: string }[] = Resource.DEFAULT_SCOPES
+  scopes?: { name: ScopeType }[] = Resource.DEFAULT_SCOPES
 }
