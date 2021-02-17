@@ -16,8 +16,6 @@ export class CreatePermissionClient extends KeycloakClient {
     if (permission.group) params.groups = [permission.group]
     if (permission.user) params.users = [permission.user]
 
-    console.log('==============', params)
-
     return super.post(
       `/auth/realms/${realm}/authz/protection/uma-policy/${permission.resourceId}`,
       params,
