@@ -13,6 +13,7 @@ export class CreateResourceClient extends KeycloakClient {
         displayName: resource.displayName,
         scopes: resource.scopes,
         attributes: resource.attributes,
+        ownerManagedAccess: true,
       },
       {
         headers: {

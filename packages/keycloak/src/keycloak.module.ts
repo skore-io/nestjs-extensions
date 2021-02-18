@@ -2,6 +2,7 @@ import { HttpModule, Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import {
   CheckResourcePermissionClient,
+  CreatePermissionClient,
   CreateResourceClient,
   DeleteResourceClient,
   FindResourceClient,
@@ -13,6 +14,7 @@ import {
 } from './client'
 import {
   CheckResourcePermissionService,
+  CreatePermissionService,
   CreateResourceService,
   DeleteResourceService,
   FindResourceService,
@@ -31,6 +33,7 @@ import { KeycloakStrategy } from './strategy'
     DeleteResourceService,
     GetResourcePermissionsService,
     CheckResourcePermissionService,
+    CreatePermissionService,
     FindUserByIdService,
   ],
   providers: [
@@ -43,6 +46,7 @@ import { KeycloakStrategy } from './strategy'
     GetResourcePermissionsClient,
     FindUserClient,
     CheckResourcePermissionClient,
+    CreatePermissionClient,
     GetClientToken,
     FindUserService,
     FindUserByIdService,
@@ -52,6 +56,7 @@ import { KeycloakStrategy } from './strategy'
     FindResourceService,
     GetResourcePermissionsService,
     CheckResourcePermissionService,
+    CreatePermissionService,
   ],
 })
 export class KeycloakModule {}
