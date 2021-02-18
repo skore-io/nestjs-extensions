@@ -8,7 +8,6 @@ export class UpdatePermissionClient extends KeycloakClient {
   update(realm: string, clientToken: string, permission: Permission): Promise<AxiosResponse> {
     const params = {
       name: permission.name,
-      scopes: [permission.scope],
       groups: permission.groups,
       users: permission.users,
     }
