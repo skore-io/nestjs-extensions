@@ -20,7 +20,7 @@ export class CreatePermissionService {
     const permission = new Permission(name, resourceId, scope, users, groups)
 
     try {
-      await Permission.validate(permission)
+      await Permission.validate(permission, 'create')
 
       Logger.log(`Creating permission ${permission.name} in keycloak`, CreatePermissionService.name)
 

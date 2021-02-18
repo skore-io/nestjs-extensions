@@ -18,22 +18,22 @@ export class Permission {
 
   id?: string
 
-  @IsNotEmpty()
+  @IsNotEmpty({ groups: ['create'] })
   name: string
 
-  @IsNotEmpty()
+  @IsNotEmpty({ groups: ['create'] })
   resourceId: string
 
-  @IsNotEmpty()
+  @IsNotEmpty({ groups: ['create'] })
   scope: ScopeType
 
   @ValidateIf(self => !self.groups.length)
-  @ArrayNotEmpty({ message: 'Users or groups should not be empty' })
+  @ArrayNotEmpty({ message: 'Users or groups should not be empty', groups: ['create'] })
   users?: string[] = []
 
   groups?: string[] = []
 
-  static async validate(permission: Permission): Promise<void> {
-    await validateOrReject(permission, { validationError: { target: false } })
+  static async validate(permission: Permission, action: string): Promise<void> {
+    await validateOrReject(permission, { groups: [action] })
   }
 }
