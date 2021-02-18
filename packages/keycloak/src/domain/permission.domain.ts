@@ -16,15 +16,16 @@ export class Permission {
     this.scope = scope
   }
 
+  @IsNotEmpty({ groups: ['update'] })
   id?: string
 
-  @IsNotEmpty({ groups: ['create'] })
+  @IsNotEmpty({ groups: ['create', 'update'] })
   name: string
 
-  @IsNotEmpty({ groups: ['create'] })
+  @IsNotEmpty({ groups: ['create', 'update'] })
   resourceId: string
 
-  @IsNotEmpty({ groups: ['create'] })
+  @IsNotEmpty({ groups: ['create', 'update'] })
   scope: ScopeType
 
   @ValidateIf(self => !self.groups.length)
