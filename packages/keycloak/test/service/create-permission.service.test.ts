@@ -37,7 +37,7 @@ export class CreatePermissionServiceTest extends BaseTest {
   }
 
   @test()
-  async 'Given an permission without target then throw error'() {
+  async 'Given a permission without target then throw error'() {
     const service = super.get(CreatePermissionService)
     const promise = service.perform(super.token(), { resourceId: null, scopes: [] })
 
@@ -45,7 +45,7 @@ export class CreatePermissionServiceTest extends BaseTest {
   }
 
   @test()
-  async 'Given an permission without resource then throw error'() {
+  async 'Given a permission without resource then throw error'() {
     const service = super.get(CreatePermissionService)
     const promise = service.perform(super.token(), { resourceId: null, scopes: [], user: '12345' })
 

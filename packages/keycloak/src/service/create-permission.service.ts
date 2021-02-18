@@ -4,7 +4,7 @@ import { CreatePermissionClient, GetClientToken } from '../client'
 import { Permission } from '../domain'
 import { KeycloakUtils } from '../utils'
 
-type CreatePermission = Omit<Permission, 'id' | 'name' | ''>
+type CreatePermission = Omit<Permission, 'id' | 'name'>
 
 @Injectable()
 export class CreatePermissionService {

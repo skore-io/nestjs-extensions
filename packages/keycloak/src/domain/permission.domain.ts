@@ -1,4 +1,3 @@
-import { Expose } from 'class-transformer'
 import { ScopeType } from './scope-type.domain'
 
 export class Permission {
@@ -16,21 +15,10 @@ export class Permission {
     this.scopes = scopes
   }
 
-  @Expose()
   id?: string
-
-  @Expose()
   name: string
-
-  @Expose({ name: 'resource_id' })
   resourceId: string
-
-  @Expose()
   scopes: ScopeType[]
-
-  @Expose()
   user?: string
-
-  @Expose()
   group?: string
 }
