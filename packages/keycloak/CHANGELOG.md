@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.0](https://github.com/skore-io/nestjs-extensions/compare/v0.25.1...v0.26.0) (2021-02-18)
+
+
+### Features 🚀
+
+* **keycloak:** create permission ([#43](https://github.com/skore-io/nestjs-extensions/issues/43)) ([8d9e250](https://github.com/skore-io/nestjs-extensions/commit/8d9e250efc292d6b5509b1384b906be6d9335957))
+
+
+
 ### [0.25.1](https://github.com/skore-io/nestjs-extensions/compare/v0.25.0...v0.25.1) (2021-02-17)
 
 
