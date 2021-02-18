@@ -48,9 +48,15 @@ export class CreatePermissionService {
 
       return permission
     } catch (error) {
-      Logger.error('Error on trying to create permission', error, CreatePermissionService.name)
+      const errorDescription = error.response?.data?.error_description || error
 
-      throw error
+      Logger.error(
+        'Error on trying to create permission',
+        errorDescription,
+        CreatePermissionService.name,
+      )
+
+      throw errorDescription
     }
   }
 }
