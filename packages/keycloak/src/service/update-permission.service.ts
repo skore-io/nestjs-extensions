@@ -31,7 +31,7 @@ export class UpdatePermissionService {
 
       return permission
     } catch (error) {
-      Logger.error('Error on trying to create permission', error, UpdatePermissionClient.name)
+      Logger.error('Error on trying to update permission', error, UpdatePermissionClient.name)
 
       throw error
     }
