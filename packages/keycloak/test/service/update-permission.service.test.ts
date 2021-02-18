@@ -38,8 +38,7 @@ export class UpdatePermissionServiceTest extends BaseTest {
     const resource = await new ResourceFactory().create()
 
     const service = super.get(CreatePermissionService)
-    return service.perform(super.token(), {
-      resourceId: resource.id,
+    return service.perform(super.token(), resource.name, {
       scope: ScopeType.VIEW,
       groups: ['Skoreans'],
       users: ['24b0a4bf-e796-4ede-9257-734fa0314a40'],
