@@ -12,6 +12,7 @@ import {
   UserInfoClient,
   FindUserClient,
   UpdatePermissionClient,
+  FindResourcePermissionsClient,
 } from './client'
 import {
   CheckResourcePermissionService,
@@ -19,6 +20,7 @@ import {
   CreateResourceService,
   DeleteResourceService,
   FindResourceService,
+  FindResourcePermissionsService,
   FindUserService,
   FindUserByIdService,
   GetResourcePermissionsService,
@@ -36,6 +38,8 @@ import { KeycloakStrategy } from './strategy'
     GetResourcePermissionsService,
     CheckResourcePermissionService,
     CreatePermissionService,
+    UpdatePermissionService,
+    FindResourcePermissionsService,
     FindUserByIdService,
   ],
   providers: [
@@ -49,6 +53,8 @@ import { KeycloakStrategy } from './strategy'
     FindUserClient,
     CheckResourcePermissionClient,
     CreatePermissionClient,
+    UpdatePermissionClient,
+    FindResourcePermissionsClient,
     GetClientToken,
     FindUserService,
     FindUserByIdService,
@@ -60,7 +66,7 @@ import { KeycloakStrategy } from './strategy'
     CheckResourcePermissionService,
     CreatePermissionService,
     UpdatePermissionService,
-    UpdatePermissionClient,
+    FindResourcePermissionsService,
   ],
 })
 export class KeycloakModule {}
