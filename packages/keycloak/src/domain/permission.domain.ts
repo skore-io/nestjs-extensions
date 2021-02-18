@@ -27,7 +27,7 @@ export class Permission {
   @IsNotEmpty({ groups: ['create'] })
   scope: ScopeType
 
-  @ValidateIf(self => !self.groups.length)
+  @ValidateIf(self => !self.groups.length, { groups: ['create'] })
   @ArrayNotEmpty({ message: 'Users or groups should not be empty', groups: ['create'] })
   users?: string[] = []
 
