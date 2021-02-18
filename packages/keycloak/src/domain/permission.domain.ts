@@ -1,24 +1,39 @@
 import { ScopeType } from './scope-type.domain'
+import { ArrayNotEmpty, IsNotEmpty, ValidateIf, validateOrReject } from 'class-validator'
 
 export class Permission {
   constructor(
     name: string,
     resourceId: string,
-    scopes: ScopeType[],
-    user?: string,
-    group?: string,
+    scope: ScopeType,
+    users?: string[],
+    groups?: string[],
   ) {
     this.name = name
-    this.user = user
-    this.group = group
+    this.users = users || []
+    this.groups = groups || []
     this.resourceId = resourceId
-    this.scopes = scopes
+    this.scope = scope
   }
 
   id?: string
+
+  @IsNotEmpty()
   name: string
+
+  @IsNotEmpty()
   resourceId: string
-  scopes: ScopeType[]
-  user?: string
-  group?: string
+
+  @IsNotEmpty()
+  scope: ScopeType
+
+  @ValidateIf(self => !self.groups.length)
+  @ArrayNotEmpty({ message: 'Users or groups should not be empty' })
+  users?: string[] = []
+
+  groups?: string[] = []
+
+  static async validate(permission: Permission): Promise<void> {
+    await validateOrReject(permission, { validationError: { target: false } })
+  }
 }

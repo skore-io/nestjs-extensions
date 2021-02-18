@@ -7,48 +7,46 @@ import { ScopeType } from '../../src/domain'
 @suite('[Keycloak Module] Create Permission Service')
 export class CreatePermissionServiceTest extends BaseTest {
   @test()
-  async 'Given an user permission then create'() {
+  async 'Given a permission with users and groups then create'() {
     const resource = await new ResourceFactory().create()
     const service = super.get(CreatePermissionService)
     const response = await service.perform(super.token(), {
       resourceId: resource.id,
-      scopes: [ScopeType.VIEW],
-      user: '24b0a4bf-e796-4ede-9257-734fa0314a40',
+      scope: ScopeType.VIEW,
+      groups: ['Skoreans'],
+      users: ['24b0a4bf-e796-4ede-9257-734fa0314a40'],
     })
 
     expect(response.id).toBeDefined()
-    expect(response.scopes).toEqual([ScopeType.VIEW])
-    expect(response.name).toEqual(`${resource.id}_24b0a4bf-e796-4ede-9257-734fa0314a40`)
+    expect(response.scope).toEqual(ScopeType.VIEW)
+    expect(response.name).toEqual(`${resource.id}_${ScopeType.VIEW}`)
+    expect(response.users).toHaveLength(1)
+    expect(response.groups).toHaveLength(1)
   }
 
   @test()
-  async 'Given a group permission then create'() {
-    const resource = await new ResourceFactory().create()
+  async 'Given a permission without resourceId then throw error'() {
     const service = super.get(CreatePermissionService)
-    const response = await service.perform(super.token(), {
-      resourceId: resource.id,
-      scopes: [ScopeType.EDIT],
-      group: 'Skoreans',
-    })
 
-    expect(response.id).toBeDefined()
-    expect(response.scopes).toEqual([ScopeType.EDIT])
-    expect(response.name).toEqual(`${resource.id}_Skoreans`)
+    try {
+      await service.perform(super.token(), {
+        resourceId: null,
+        scope: ScopeType.EDIT,
+        users: ['12345'],
+      })
+    } catch ([error]) {
+      expect(error.constraints.isNotEmpty).toEqual('resourceId should not be empty')
+    }
   }
 
   @test()
-  async 'Given a permission without target then throw error'() {
+  async 'Given a permission without users and groups then throw error'() {
     const service = super.get(CreatePermissionService)
-    const promise = service.perform(super.token(), { resourceId: null, scopes: [] })
 
-    await expect(promise).rejects.toThrow('User or group is required')
-  }
-
-  @test()
-  async 'Given a permission without resource then throw error'() {
-    const service = super.get(CreatePermissionService)
-    const promise = service.perform(super.token(), { resourceId: null, scopes: [], user: '12345' })
-
-    await expect(promise).rejects.toThrow('Resource is required')
+    try {
+      await service.perform(super.token(), { resourceId: '12345', scope: ScopeType.VIEW })
+    } catch ([error]) {
+      expect(error.constraints.arrayNotEmpty).toEqual('Users or groups should not be empty')
+    }
   }
 }

@@ -15,13 +15,12 @@ export class CreatePermissionService {
   ) {}
 
   async perform(token: string, createPermission: CreatePermission): Promise<Permission> {
-    const { group, user, resourceId, scopes } = createPermission
-    const name = `${resourceId}_${user || group}`
-    const permission = new Permission(name, resourceId, scopes, user, group)
+    const { groups, users, resourceId, scope } = createPermission
+    const name = `${resourceId}_${scope}`
+    const permission = new Permission(name, resourceId, scope, users, groups)
 
     try {
-      if (!permission.user && !permission.group) throw Error('User or group is required')
-      if (!permission.resourceId) throw Error('Resource is required')
+      await Permission.validate(permission)
 
       Logger.log(`Creating permission ${permission.name} in keycloak`, CreatePermissionService.name)
 
