@@ -50,7 +50,7 @@ export class UpdatePermissionServiceTest extends BaseTest {
     const client = super.get(HttpService)
     const { data } = await client
       .get(
-        `http://localhost:8080/auth/realms/skore/authz/protection/uma-policy?name=${permission.name}`,
+        `${process.env.KEYCLOAK_SERVER_URL}/auth/realms/skore/authz/protection/uma-policy?name=${permission.name}`,
         {
           headers: {
             Authorization: `Bearer ${super.clientToken()}`,
