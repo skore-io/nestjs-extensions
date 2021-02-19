@@ -73,6 +73,52 @@ async someFunction(): Promise<void> {
 
 if the user doesn't have the required permission an error will be thrown
 
+## Creating resource permission
+
+1. Import the CreatePermissionService.
+
+```typescript
+// your_file.service.ts
+
+import { CreatePermissionService } from '@skore-io/keycloak'
+
+constructor(
+  private readonly createPermissionService: CreatePermissionService,
+) {}
+```
+
+2. Call method
+
+```typescript
+async someFunction(): Promise<void> {
+  const result = await this.createPermissionService.perform('user_token', 'resource_name', { scope: 'view', groups: ['Skoreans'], users: ['skore'] })
+}
+```
+
+The permission name will be `${RESOURCE_ID}_${SCOPE}`
+
+## Updating resource permission
+
+1. Import the UpdatePermissionService.
+
+```typescript
+// your_file.service.ts
+
+import { UpdatePermissionService } from '@skore-io/keycloak'
+
+constructor(
+  private readonly updatePermissionService: UpdatePermissionService,
+) {}
+```
+
+2. Call method
+
+```typescript
+async someFunction(): Promise<void> {
+  const result = await this.updatePermissionService.perform('user_token', { name: 'teste', groups: ['Skoreans'], users: ['skore'] })
+}
+```
+
 ## Protecting actions/queries
 
 Just annotate yout REST actions and Graphql queries/mutations methods with `@Protected()`
