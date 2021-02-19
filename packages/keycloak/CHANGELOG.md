@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.0](https://github.com/skore-io/nestjs-extensions/compare/v0.28.0...v0.29.0) (2021-02-19)
+
+
+### Features 🚀
+
+* **keycloak:** return permissions array in find method ([18f4e3e](https://github.com/skore-io/nestjs-extensions/commit/18f4e3e3b383ece68f7680347e0699660ca9e3b5))
+
+
+
 ## [0.28.0](https://github.com/skore-io/nestjs-extensions/compare/v0.27.1...v0.28.0) (2021-02-19)
 
 
