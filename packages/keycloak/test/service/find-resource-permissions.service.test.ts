@@ -34,7 +34,7 @@ export class FindResourcePermissionsServiceTest extends BaseTest {
     return service.perform(super.token(), resourceName, {
       scope: ScopeType.VIEW,
       groups: ['Skoreans'],
-      users: ['24b0a4bf-e796-4ede-9257-734fa0314a40'],
+      users: ['skore'],
     })
   }
 }

@@ -14,7 +14,7 @@ export class FindResourcePermissionsService {
     private readonly findResourceService: FindResourceService,
   ) {}
 
-  async perform(token: string, resourceName: string): Promise<Permission> {
+  async perform(token: string, resourceName: string): Promise<Permission[]> {
     try {
       const realm = KeycloakUtils.realmFromToken(token)
       const {
