@@ -25,7 +25,7 @@ export class UpdatePermissionServiceTest extends BaseTest {
   }
 
   @test()
-  async 'Given a not fout user throws UNPROCESSABLE_ENTITY'() {
+  async 'Given a not found user throws UNPROCESSABLE_ENTITY'() {
     const permission = await this.createPermission()
 
     permission.users = ['user-not-found']
