@@ -1,5 +1,6 @@
 import { HttpService } from '@nestjs/common'
 import { suite, test } from '@testdeck/jest'
+import { Error } from '../../src/errors'
 import { Permission, ScopeType } from '../../src/domain'
 import { CreatePermissionService, UpdatePermissionService } from '../../src/service'
 import { BaseTest } from '../base-test'
@@ -21,6 +22,17 @@ export class UpdatePermissionServiceTest extends BaseTest {
     expect(updatedPermission.name).toEqual(`${permission.resourceId}_${ScopeType.VIEW}`)
     expect(updatedPermission.users).toHaveLength(0)
     expect(updatedPermission.groups).toHaveLength(1)
+  }
+
+  @test()
+  async 'Given a not found user throws UNPROCESSABLE_ENTITY'() {
+    const permission = await this.createPermission()
+
+    permission.users = ['user-not-found']
+    const service = super.get(UpdatePermissionService)
+    const promise = service.perform(super.token(), permission)
+
+    await expect(promise).rejects.toThrow(Error.UNPROCESSABLE_ENTITY)
   }
 
   @test()
