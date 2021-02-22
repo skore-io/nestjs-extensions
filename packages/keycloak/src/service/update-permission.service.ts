@@ -2,6 +2,7 @@ import { Injectable, Logger } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { GetClientToken, UpdatePermissionClient } from '../client'
 import { Permission } from '../domain'
+import { Error } from '../errors'
 import { KeycloakUtils } from '../utils'
 
 @Injectable()
@@ -32,6 +33,10 @@ export class UpdatePermissionService {
       return permission
     } catch (error) {
       Logger.error('Error on trying to update permission', error, UpdatePermissionClient.name)
+
+      if (error.message.match(/status code 500/)) {
+        throw Error.UNPROCESSABLE_ENTITY
+      }
 
       throw error
     }
