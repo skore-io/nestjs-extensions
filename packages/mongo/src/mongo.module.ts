@@ -1,33 +1,21 @@
-import { DynamicModule } from '@nestjs/common'
-import { Db, MongoClient } from 'mongodb'
+import { Module } from '@nestjs/common'
+import { Db } from 'mongodb'
 import { MongoDbClient } from './client'
-import { MongoConnection, MongoModuleOptions, MONGO_MODULE_OPTS } from './domain'
 import { EnsureIndexesService } from './service'
 
 /**
  *  Module to init a mongodb connection
  *
- *  This module creates a new mongodb connection for each import
- *  by design, the reason for it is an application that connects
- *  to multiple databases with differents username/password or
- *  even different databases hosts.
- *
  *  This module provide two providers `Db` and `EnsureIndex` decorator
- *
- *  @param options - FactoryProvider which returns `connection: string` in useFactory method
  *
  *  @example <caption>Using Nest's ConfigModule</caption>
  *  ```typescript
- *  MongoModule.register({
- *    useFactory: (configService: ConfigService) => ({
- *      connection: configService.get('MONGO_CONNECTION_URI'),
- *    }),
- *    inject: [ConfigService],
+ *  @module({
+ *    imports: [MongoModule]
  *  })
  *  ```
- *
- *  Note: You can pass a hard-coded connection string without inject
- *  and params on useFactory function.
+ *  It expects a `MONGO_CONNECTION_URI` environment variable
+ *  and optionally you can overwrite database with `MONGO_DATABASE_NAME` env var
  *
  *  @example <caption>Using Db in a provider</caption>
  *
@@ -56,35 +44,17 @@ import { EnsureIndexesService } from './service'
  *
  *  If shutdown hooks is disabled connections will remain after app shutdown.
  */
-export class MongoModule {
-  static register(options: MongoModuleOptions): DynamicModule {
-    return {
-      module: MongoModule,
-      providers: [
-        EnsureIndexesService,
-        {
-          provide: MongoDbClient,
-          useFactory: async (options: MongoConnection): Promise<MongoDbClient> => {
-            const connection = await MongoClient.connect(options.connection, {
-              useUnifiedTopology: true,
-              useNewUrlParser: true,
-            })
-            return new MongoDbClient(connection)
-          },
-          inject: [MONGO_MODULE_OPTS],
-        },
-        {
-          provide: MONGO_MODULE_OPTS,
-          useFactory: options.useFactory,
-          inject: options.inject,
-        },
-        {
-          provide: Db,
-          useFactory: (mongoClient: MongoDbClient) => mongoClient.db(),
-          inject: [MongoDbClient],
-        },
-      ],
-      exports: [Db],
-    }
-  }
-}
+@Module({
+  providers: [
+    EnsureIndexesService,
+    MongoDbClient,
+    {
+      provide: Db,
+      useFactory: async (): Promise<Db> => {
+        return new MongoDbClient().init()
+      },
+    },
+  ],
+  exports: [Db],
+})
+export class MongoModule {}
