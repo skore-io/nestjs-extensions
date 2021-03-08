@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.31.0](https://github.com/skore-io/nestjs-extensions/compare/v0.30.0...v0.31.0) (2021-03-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* rollback mongo module config (#48)
+
+### Code Refactoring 🎨
+
+* rollback mongo module config ([#48](https://github.com/skore-io/nestjs-extensions/issues/48)) ([440129f](https://github.com/skore-io/nestjs-extensions/commit/440129f2b845f9b39505c7f59b387d3976febcf1))
+
+
+
 ## [0.30.0](https://github.com/skore-io/nestjs-extensions/compare/v0.29.0...v0.30.0) (2021-02-22)
 
 
