@@ -1,0 +1,36 @@
+{
+  "name": "@skore-io/google-auth",
+  "version": "0.31.0",
+  "description": "Google's auth jwt decorator",
+  "homepage": "https://github.com/skore-io/nestjs-extensions#readme",
+  "bugs": {
+    "url": "https://github.com/skore-io/nestjs-extensions/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skore-io/nestjs-extensions.git"
+  },
+  "license": "ISC",
+  "author": "Skore",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "directories": {
+    "dist": "dist"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "npx rimraf dist",
+    "build": "nest build",
+    "test": "npx jest"
+  },
+  "dependencies": {
+    "@nestjs/passport": "^7.1.5",
+    "google-auth-library": "^7.0.2",
+    "passport-http-bearer": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/passport-http-bearer": "^1.0.36"
+  }
+}
