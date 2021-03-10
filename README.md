@@ -10,6 +10,7 @@ A collection of NestJS extensions used by Skore.
 | [`Version`](./packages/version)          | Document versioning based on mongodb triggers                           |
 | [`Keycloak`](./packages/keycloak)        | Provides authorization through annotations                              |
 | [`Bull`](./packages/bull)                | Setup bull queues along with bull-board                                 |
+| [`GoogleAuth`](./packages/google-auth)   | Validate google-auth tokens                                             |
 
 **Local Development**
 
