@@ -23,7 +23,7 @@ export class GoogleAuthStrategy extends PassportStrategy(Strategy, 'GoogleAuth')
         .some(
           (aud: string) => ticket.getPayload().email_verified && ticket.getPayload().email === aud,
         )
-    } catch (_) {
+    } catch {
       throw new UnauthorizedException()
     }
   }

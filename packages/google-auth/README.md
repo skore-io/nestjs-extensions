@@ -28,7 +28,7 @@ import { GoogleAuth } from '@skore-io/google-auth'
 export class AppController {
   @Get()
   @GoogleAuth()
-  hello() {
+  hello(): string {
     return 'Hello authenticated'
   }
 }
