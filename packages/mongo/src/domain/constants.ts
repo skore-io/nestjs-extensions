@@ -1,0 +1,1 @@
+export const MONGO_MODULE_OPTS = Symbol('MONGO_MODULE_OPTS')
