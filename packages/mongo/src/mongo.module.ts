@@ -2,7 +2,12 @@ import { DiscoveryModule, DiscoveryService } from '@golevelup/nestjs-discovery'
 import { DynamicModule } from '@nestjs/common'
 import { Db, MongoClient } from 'mongodb'
 import { MongoDbClient } from './client'
-import { MongoConnection, MongoModuleOptions, MONGO_MODULE_OPTS } from './domain'
+import {
+  DEFAULT_CONNECTION_NAME,
+  MongoConnection,
+  MongoModuleOptions,
+  MONGO_MODULE_OPTS,
+} from './domain'
 import { EnsureIndexesService } from './service'
 
 /**
@@ -70,7 +75,7 @@ export class MongoModule {
               useUnifiedTopology: true,
               useNewUrlParser: true,
             })
-            return new MongoDbClient(connection, options.connectionName)
+            return new MongoDbClient(connection, options.connectionName || DEFAULT_CONNECTION_NAME)
           },
           inject: [MONGO_MODULE_OPTS],
         },
@@ -91,7 +96,11 @@ export class MongoModule {
             options: MongoConnection,
             discoveryService: DiscoveryService,
           ): Promise<EnsureIndexesService> => {
-            return new EnsureIndexesService(db, options.connectionName, discoveryService)
+            return new EnsureIndexesService(
+              db,
+              options.connectionName || DEFAULT_CONNECTION_NAME,
+              discoveryService,
+            )
           },
           inject: [Db, MONGO_MODULE_OPTS, DiscoveryService],
         },
