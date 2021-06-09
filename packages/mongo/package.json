@@ -21,5 +21,8 @@
     "prebuild": "npx rimraf dist",
     "build": "nest build",
     "test": "npx jest"
+  },
+  "dependencies": {
+    "@golevelup/nestjs-discovery": "^2.3.1"
   }
 }

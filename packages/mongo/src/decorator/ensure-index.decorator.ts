@@ -1,11 +1,11 @@
+import { SetMetadata } from '@nestjs/common'
 import { IndexSpecification } from 'mongodb'
-import { EnsureIndexesService } from '../service'
 
-export function EnsureIndex(
-  collection: string,
-  ensureIndexOptions: IndexSpecification[],
-): Function {
-  return function(): void {
-    ensureIndexOptions.map(option => EnsureIndexesService.registerIndex(collection, option))
-  }
+export type EnsureIndexOptions = {
+  collection: string
+  ensureIndexOptions: IndexSpecification[]
+  connectionName?: string
 }
+
+export const EnsureIndex = (options: EnsureIndexOptions): ClassDecorator =>
+  SetMetadata('ENSURE_INDEX', options)

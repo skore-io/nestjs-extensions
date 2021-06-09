@@ -9,6 +9,7 @@ export type MongoConnection = {
    *
    * */
   connection: string
+  connectionName?: string
 }
 
 export type MongoModuleOptions = Omit<FactoryProvider<MongoConnection>, 'provide'>
