@@ -9,6 +9,13 @@ export type MongoConnection = {
    *
    * */
   connection: string
+  /**
+   * represents this connection
+   *
+   * @example <caption>Identifies this connection with a given name</caption>
+   * `SomeConnection`
+   *
+   * */
   connectionName?: string
 }
 

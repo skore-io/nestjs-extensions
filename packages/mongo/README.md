@@ -7,7 +7,11 @@
 Just annotate the class with @EnsureIndex()
 
 ```typescript
-@EnsureIndex('test', [{ name: 'my_cool_index', key: { public: 1 } }])
+@EnsureIndex({
+  connectionName: 'SameNameDefinedAtMongoModuleImport' //optional
+  collection: 'test',
+  ensureIndexOptions: [{ name: 'my_cool_index', key: { public: 1 } }],
+})
 @Injectable()
 export class TestDocument {}
 ```
