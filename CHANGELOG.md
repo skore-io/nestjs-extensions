@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.33.0](https://github.com/skore-io/nestjs-extensions/compare/v0.32.0...v0.33.0) (2021-06-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* allow multiple databases (#50)
+
+### Features 🚀
+
+* allow multiple databases ([#50](https://github.com/skore-io/nestjs-extensions/issues/50)) ([3c8d971](https://github.com/skore-io/nestjs-extensions/commit/3c8d971f332c58a34e1dbab534c6f3cb1bc58483)), closes [#48](https://github.com/skore-io/nestjs-extensions/issues/48)
+
+
+
 ## [0.32.0](https://github.com/skore-io/nestjs-extensions/compare/v0.31.0...v0.32.0) (2021-03-10)
 
 
