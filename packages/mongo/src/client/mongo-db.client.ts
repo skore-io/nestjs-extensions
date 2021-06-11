@@ -1,28 +1,25 @@
 import { Injectable, Logger, OnApplicationShutdown, ShutdownSignal } from '@nestjs/common'
 import { Db, MongoClient } from 'mongodb'
-
 @Injectable()
 export class MongoDbClient implements OnApplicationShutdown {
-  private static connection: MongoClient
+  constructor(
+    private readonly mongoClient: MongoClient,
+    private readonly mongoConnectionName: String,
+  ) {}
 
-  async init(): Promise<Db> {
-    MongoDbClient.connection = await this.mongoClient()
-
-    return MongoDbClient.connection.db(process.env.DATABASE_NAME)
+  async db(): Promise<Db> {
+    const database = await this.mongoClient.connect()
+    return database.db(process.env.MONGO_DATABASE_NAME || '')
   }
 
   async onApplicationShutdown(signal: ShutdownSignal): Promise<void> {
-    Logger.debug(`Application received shutdown with signal: ${signal}.`, MongoDbClient.name)
+    Logger.debug(
+      `Application received shutdown with signal: ${signal}. for ${this.mongoConnectionName}`,
+      MongoDbClient.name,
+    )
 
-    if (MongoDbClient.connection?.isConnected()) await MongoDbClient.connection.close()
+    if (this.mongoClient?.isConnected()) await this.mongoClient.close()
 
     Logger.debug('Connection with MongoDb closed. ', MongoDbClient.name)
-  }
-
-  private async mongoClient(): Promise<MongoClient> {
-    return MongoClient.connect(process.env.MONGO_CONNECTION_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
   }
 }
