@@ -1,10 +1,10 @@
 import { ExecutionContext } from '@nestjs/common'
 import { params, suite } from '@testdeck/jest'
 import { CompanyGuard } from '../../src/guard'
-import { NestHelper } from '../nest.helper'
+import { BaseTest } from '../base-test'
 
-@suite('[Guard] Company Guard')
-export class CompanyGuardTest extends NestHelper {
+@suite('[Auth] Company Guard')
+export class CompanyGuardTest extends BaseTest {
   @params(
     {
       authorization: '',

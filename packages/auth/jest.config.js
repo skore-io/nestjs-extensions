@@ -1,24 +1,16 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+const { defaults: tsjPreset } = require('ts-jest/presets')
+
 module.exports = {
-  rootDir: '.',
-  preset: 'ts-jest',
-  transform: {
-    '^.+\\.ts$': 'ts-jest',
-  },
+  displayName: '@skore-io/auth',
+  name: '@skore-io/auth',
+  transform: tsjPreset.transform,
+  coverageDirectory: 'coverage',
+  setupFiles: ['../../jest-setup.js'],
   testMatch: ['<rootDir>/test/**/*.test.ts'],
   testEnvironment: 'node',
-  restoreMocks: true,
-  clearMocks: true,
-  resetMocks: true,
-  coverageDirectory: 'coverage',
-  coveragePathIgnorePatterns: ['/node_modules/', '/test/'],
-  collectCoverageFrom: ['src/**/{!(security.module|index|rest.template),}.ts'],
-  coverageReporters: ['json', 'lcovonly', 'text', 'clover'],
-  coverageThreshold: {
-    global: {
-      branches: 80,
-      functions: 80,
-      lines: 80,
-      statements: 80,
-    },
-  },
+  collectCoverage: true,
+  forceExit: true,
+  coverageReporters: ['lcovonly', 'text'],
+  collectCoverageFrom: ['src/**/{!(index),}.ts'],
 }

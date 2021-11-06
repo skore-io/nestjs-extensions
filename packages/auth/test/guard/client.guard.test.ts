@@ -1,11 +1,11 @@
-import { ExecutionContext, HttpStatus } from '@nestjs/common'
+import { ExecutionContext } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { suite, test, params } from '@testdeck/jest'
-import { NestHelper } from '../nest.helper'
+import { BaseTest } from '../base-test'
 import { ClientGuard } from '../../src/guard'
 
-@suite('[Guard] Client Guard Test')
-export class ClientGuardTest extends NestHelper{
+@suite('[Auth] Client Guard Test')
+export class ClientGuardTest extends BaseTest{
   @params(
     {
       authorization: '',

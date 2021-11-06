@@ -4,10 +4,10 @@ import { suite, params, test } from '@testdeck/jest'
 import { User } from '../../src/domain'
 import { WorkspaceClient } from '../../src/client'
 import { UserGuard } from '../../src/guard'
-import { NestHelper } from '../nest.helper'
+import { BaseTest } from '../base-test'
 
-@suite('[Guard] User Guard')
-export class UserGuardTest extends NestHelper {
+@suite('[Auth] User Guard')
+export class UserGuardTest extends BaseTest {
   @params(
     {
       authorization: '',

@@ -5,7 +5,7 @@ import { OAuth2Client } from 'google-auth-library'
 import { User } from './domain'
 import { ClientGuard, CompanyGuard, UserGuard } from './guard'
 import { RestTemplate } from './template'
-import { WorkspaceClient } from '../src/client'
+import { WorkspaceClient } from './client'
 
 @Module({
   imports: [ConfigModule.forRoot(), HttpModule],
@@ -30,4 +30,4 @@ import { WorkspaceClient } from '../src/client'
     User,
   ],
 })
-export class SecurityModule {}
+export class AuthModule {}
