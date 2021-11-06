@@ -1,4 +1,4 @@
-## @nest-firebase/security
+## @skore-io/auth
 
 ## Description
 
@@ -7,16 +7,17 @@ This module provides protection to actions/queries through decorators.
 ## Installation
 
 ```bash
-$ npm install --save @nest-firebase/security
+$ npm install --save @skore-io/auth
 ```
 
 ## Methods
 
-| Name           | Description                                                                                                                                                                                      | .env           |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- |
-| @isUser()      | Acccepts an array of string roles and validate if token is valid and user has one of the requested roles to proceed. <br> If no role is informed, it only check if token belongs to a valid user | USER_AUTH_URL  |
-| @isClient()    | Use google-auth-library to verify the integrity of the ID token                                                                                                                                  | OAUTH_AUDIENCE |
-| @CurrentUser() | Get a payload with token owner data.                                                                                                                                                             |                |
+| Name              | Description                                                                                                                                                                                                                                    |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| @IsUser()         | Authenticate using an user or session token. Acccepts an array of string roles and validate if token is valid and user has one of the requested roles to proceed. <br> If no role is informed, it only check if token belongs to a valid user. |
+| @IsCompany()      | Authenticate using a company token (M2M).                                                                                                                                                                                                      |
+| @CurrentUser()    | Combine with @IsUser() to get a payload with user data.                                                                                                                                                                                        |
+| @CurrentCompany() | Combine with @IsCompany() to get a payload with company data.                                                                                                                                                                                  |
 
 ## Usage
 
@@ -24,26 +25,34 @@ Just annotate yout REST actions and Graphql queries/mutations methods with decor
 
 The client should send a Bearer authorization header e.g., `'Authorization: Bearer JWT_TOKEN'`.
 
-You can also use the `@CurrentUser` param annotation to get access to the current user.
-
-1. Add `USER_AUTH_URL` or `OAUTH_AUDIENCE` to **.env**
+1. Add `AUTH_URL` to **.env**
 
 ```env
-USER_AUTH_URL='https://knowledge-staging.skore.io/workspace/v1/users/current'
-OAUTH_AUDIENCE='https://test.skore.io'
+AUTH_URL='https://knowledge-staging.skore.io/workspace/v1/users/current'
 ```
 
 2. Import the decorator and have fun
 
 ```typescript
-import { IsUser, CurrentUser } from '@nest-firebase/security'
-
-@Controller('users')
-export class UserController {
-  @IsUser(['admin', 'expert'])
+import { IsUser, CurrentUser } from '@skore-io/auth'
+@Controller('contents')
+export class ContentController {
+  @IsUser([UserRole.admin, UserRole.expert])
   @Get()
-  async hello(@CurrentUser() user: any): string {
+  async hello(@CurrentUser() user: User): string {
     return user.companyId
+  }
+}
+```
+
+```typescript
+import { IsCompany, CurrentCompany } from '@skore-io/auth'
+@Controller('contents')
+export class ContentController {
+  @IsCompany()
+  @Get()
+  async hello(@CurrentCompany() company: Company): string {
+    return company.id
   }
 }
 ```

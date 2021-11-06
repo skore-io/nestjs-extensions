@@ -4,6 +4,7 @@ A collection of NestJS extensions used by Skore.
 
 | Name                                     | Description                                                             |
 | ---------------------------------------- | ----------------------------------------------------------------------- |
+| [`Auth`](./packages/auth)                | Authenticate and provide access to users and companies                  |
 | [`Mongo`](./packages/mongo)              | Ensure mongodb index through decorators and manages mongodb connections |
 | [`Pagination`](./packages/pagination)    | Paginate graphql queries                                                |
 | [`HealthCheck`](./packages/health-check) | Create health checks with easy setup                                    |
