@@ -13,14 +13,12 @@ import {
   OnModuleInit,
 } from '@nestjs/common'
 import Bull from 'bull'
-import { createBullBoard } from 'bull-board'
-import { BullAdapter } from 'bull-board/bullAdapter'
+import { setQueues, UI as bullBoard } from 'bull-board'
 import { BullModuleOptions, BullModuleQueue, BULL_MODULE_OPTS } from './domain'
 
 @Module({})
 export class BullModule implements NestModule, OnModuleInit {
   private static readonly options: NestBullOptions[] = []
-  private static router: any
 
   static bullFactory(queue: BullModuleQueue): BullModuleAsyncOptions {
     return {
@@ -60,15 +58,14 @@ export class BullModule implements NestModule, OnModuleInit {
     const options = BullModule.options
     const queues = options.map(option => new Bull(option.name, { redis: option.redis }))
 
-    const { router } = createBullBoard(queues.map(queue => new BullAdapter(queue)))
-    BullModule.router = router
+    setQueues(queues)
 
     Logger.log(`${queues.length} queues registered`, BullModule.name)
   }
 
   configure(consumer: MiddlewareConsumer): void {
     consumer
-      .apply(basicAuth({ users: { bull: 'board' }, challenge: true, realm: 'bull' }), BullModule.router)
+      .apply(basicAuth({ users: { bull: 'board' }, challenge: true, realm: 'bull' }), bullBoard)
       .forRoutes('/admin/queues')
 
     Logger.log("Route 'admin/queues' registered", BullModule.name)
