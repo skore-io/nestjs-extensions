@@ -1,6 +1,8 @@
-import { Injectable, HttpService } from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
+import { HttpService } from '@nestjs/axios'
 import { ConfigService } from '@nestjs/config'
 import { AxiosRequestConfig, AxiosResponse } from 'axios'
+import { lastValueFrom } from 'rxjs'
 
 @Injectable()
 export class KeycloakClient {
@@ -15,18 +17,22 @@ export class KeycloakClient {
   }
 
   post(path: string, params: unknown, headers: AxiosRequestConfig): Promise<AxiosResponse> {
-    return this.httpService.post(`${this.keycloakServerUrl}${path}`, params, headers).toPromise()
+    const request = this.httpService.post(`${this.keycloakServerUrl}${path}`, params, headers)
+    return lastValueFrom(request)
   }
 
   put(path: string, params: unknown, headers: AxiosRequestConfig): Promise<AxiosResponse> {
-    return this.httpService.put(`${this.keycloakServerUrl}${path}`, params, headers).toPromise()
+    const request = this.httpService.put(`${this.keycloakServerUrl}${path}`, params, headers)
+    return lastValueFrom(request)
   }
 
   delete(path: string, headers: AxiosRequestConfig): Promise<AxiosResponse> {
-    return this.httpService.delete(`${this.keycloakServerUrl}${path}`, headers).toPromise()
+    const request = this.httpService.delete(`${this.keycloakServerUrl}${path}`, headers)
+    return lastValueFrom(request)
   }
 
   get(path: string, headers: AxiosRequestConfig): Promise<AxiosResponse> {
-    return this.httpService.get(`${this.keycloakServerUrl}${path}`, headers).toPromise()
+    const request = this.httpService.get(`${this.keycloakServerUrl}${path}`, headers)
+    return lastValueFrom(request)
   }
 }

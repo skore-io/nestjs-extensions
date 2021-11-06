@@ -14,13 +14,11 @@ export class DeleteResourceService {
 
   async perform(realm: string, name: string): Promise<void> {
     try {
-      const {
-        data: { access_token: accessToken },
-      } = await this.getClientToken.getClient(
+      const { data } = await this.getClientToken.getClient(
         realm,
         this.configService.get('KEYCLOAK_FOLDER_CLIENT_ID'),
       )
-
+      const accessToken = data['access_token']
       const resourceId = await this.findResourceService.perform(realm, accessToken, name)
 
       if (!resourceId) throw Error('Resource not found')

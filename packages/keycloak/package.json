@@ -1,6 +1,6 @@
 {
   "name": "@skore-io/keycloak",
-  "version": "0.33.0",
+  "version": "0.33.1",
   "description": "Provides authorization through annotations",
   "repository": {
     "type": "git",
@@ -22,8 +22,8 @@
     "test": "npx jest --detectOpenHandles"
   },
   "dependencies": {
-    "@nestjs/passport": "^7.1.0",
-    "apollo-server-express": "^2.17.0",
+    "@nestjs/passport": "^8.0.1",
+    "apollo-server-express": "^3.5.0",
     "passport": "^0.4.1",
     "passport-http-bearer": "^1.0.1"
   },

@@ -1,3 +1,4 @@
+import basicAuth from 'express-basic-auth'
 import {
   BullModule as NestBullModule,
   BullModuleAsyncOptions,
@@ -13,7 +14,6 @@ import {
 } from '@nestjs/common'
 import Bull from 'bull'
 import { setQueues, UI as bullBoard } from 'bull-board'
-import basicAuth from 'express-basic-auth'
 import { BullModuleOptions, BullModuleQueue, BULL_MODULE_OPTS } from './domain'
 
 @Module({})
@@ -56,10 +56,10 @@ export class BullModule implements NestModule, OnModuleInit {
 
   async onModuleInit(): Promise<void> {
     const options = BullModule.options
-
     const queues = options.map(option => new Bull(option.name, { redis: option.redis }))
 
     setQueues(queues)
+
     Logger.log(`${queues.length} queues registered`, BullModule.name)
   }
 

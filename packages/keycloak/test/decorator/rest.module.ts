@@ -1,4 +1,5 @@
-import { Controller, Get, HttpModule, Module } from '@nestjs/common'
+import { Controller, Get, Module } from '@nestjs/common'
+import { HttpModule } from '@nestjs/axios'
 import { KeycloakModule } from '../../src'
 import { Protected } from '../../src/decorator'
 
