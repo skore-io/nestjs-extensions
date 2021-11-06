@@ -17,12 +17,12 @@ export class GetResourcePermissionsService {
         permissions += `&${stringify({ permission: `${resource}#${scope}` })}`
       }
 
-      const { data } = await this.getResourcePermissions.getResources(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const { data }: any = await this.getResourcePermissions.getResources(
         KeycloakUtils.realmFromToken(user.accessToken),
         user.accessToken,
         permissions,
       )
-
       return data.map(resource => resource.rsname)
     } catch (error) {
       const errorDescription = error.response?.data?.error_description || error

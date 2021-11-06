@@ -19,16 +19,14 @@ export class CreateResourceService {
 
       resource.scopes = Resource.DEFAULT_SCOPES
 
-      const {
-        data: { access_token: accessToken },
-      } = await this.getClientToken.getClient(
+      const { data: client } = await this.getClientToken.getClient(
         realm,
         this.configService.get('KEYCLOAK_FOLDER_CLIENT_ID'),
       )
 
-      const { data } = await this.createResourceClient.create(realm, accessToken, resource)
+      const { data } = await this.createResourceClient.create(realm, client['access_token'], resource)
 
-      resource.id = data._id
+      resource.id = data['_id']
 
       return resource
     } catch (error) {

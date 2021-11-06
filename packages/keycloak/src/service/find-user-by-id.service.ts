@@ -17,13 +17,11 @@ export class FindUserByIdService {
 
     const realm = KeycloakUtils.realmFromToken(token)
 
-    const {
-      data: { access_token: clientToken },
-    } = await this.getClientToken.getClient(
+    const { data } = await this.getClientToken.getClient(
       realm,
       this.configService.get('KEYCLOAK_USER_CLIENT_ID'),
     )
 
-    return this.findUserClient.info(realm, clientToken, id)
+    return this.findUserClient.info(realm, data['access_token'], id)
   }
 }

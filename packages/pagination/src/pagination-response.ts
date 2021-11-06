@@ -1,7 +1,6 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql'
-import { ClassType } from 'class-transformer/ClassTransformer'
+import { ClassType } from 'class-transformer/esm5'
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function PaginationResponse<ItemType>(ItemClass: ClassType<ItemType>) {
   @ObjectType({ isAbstract: true })
   abstract class PaginationResponseClass {

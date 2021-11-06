@@ -23,12 +23,10 @@
     "test": "npx jest"
   },
   "dependencies": {
-    "@nestjs/bull": "^0.2.2",
-    "@nestjs/terminus": "^7.0.1",
-    "bull": "^3.18.0",
-    "nestjs-redis": "^1.2.8"
+    "@nestjs/bull": "^0.4.2",
+    "bull": "^3.29.2"
   },
   "devDependencies": {
-    "@types/bull": "^3.14.4"
+    "@types/bull": "^3.15.5"
   }
 }

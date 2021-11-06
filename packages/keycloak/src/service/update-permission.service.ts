@@ -21,14 +21,12 @@ export class UpdatePermissionService {
 
       const realm = KeycloakUtils.realmFromToken(token)
 
-      const {
-        data: { access_token: accessToken },
-      } = await this.getClientToken.getClient(
+      const { data } = await this.getClientToken.getClient(
         realm,
         this.configService.get('KEYCLOAK_FOLDER_CLIENT_ID'),
       )
 
-      await this.updatePermissionClient.update(realm, accessToken, permission)
+      await this.updatePermissionClient.update(realm, data['access_token'], permission)
 
       return permission
     } catch (error) {

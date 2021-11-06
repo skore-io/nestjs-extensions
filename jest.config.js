@@ -7,7 +7,7 @@ module.exports = {
   transform: tsjPreset.transform,
   coverageDirectory: 'coverage',
   setupFiles: ['./jest-setup.js'],
-  collectCoverageFrom: ['packages/*/src/**/{!(app.module|index|main),}.ts'],
+  collectCoverageFrom: ['packages/*/src/**/{!(index|main),}.ts'],
   coveragePathIgnorePatterns: ['/node_modules/', '/test/'],
   coverageReporters: ['lcovonly'],
   coverageThreshold: {

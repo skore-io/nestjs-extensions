@@ -1,10 +1,11 @@
-import { HttpService } from '@nestjs/common'
+import { HttpService } from '@nestjs/axios'
 import { suite, test } from '@testdeck/jest'
 import { Error } from '../../src/errors'
 import { Permission, ScopeType } from '../../src/domain'
 import { CreatePermissionService, UpdatePermissionService } from '../../src/service'
 import { BaseTest } from '../base-test'
 import { ResourceFactory } from '../factory'
+import { lastValueFrom } from 'rxjs'
 
 @suite('[Keycloak Module] Update Permission Service')
 export class UpdatePermissionServiceTest extends BaseTest {
@@ -59,7 +60,7 @@ export class UpdatePermissionServiceTest extends BaseTest {
 
   private async findPermission(permission: Permission): Promise<Permission> {
     const client = super.get(HttpService)
-    const { data } = await client
+    const request = client
       .get(
         `${process.env.KEYCLOAK_SERVER_URL}/auth/realms/skore/authz/protection/uma-policy?name=${permission.name}`,
         {
@@ -68,7 +69,7 @@ export class UpdatePermissionServiceTest extends BaseTest {
           },
         },
       )
-      .toPromise()
+    const { data } = await lastValueFrom(request)
 
     return new Permission(
       data[0].name,

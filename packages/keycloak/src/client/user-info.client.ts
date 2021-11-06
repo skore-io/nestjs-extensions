@@ -1,7 +1,9 @@
-import { HttpService, Injectable, Logger } from '@nestjs/common'
+import { Injectable, Logger } from '@nestjs/common'
+import { HttpService } from '@nestjs/axios'
 import { ConfigService } from '@nestjs/config'
 import { plainToClass } from 'class-transformer'
 import { User } from '../domain'
+import { lastValueFrom } from 'rxjs'
 
 @Injectable()
 export class UserInfoClient {
@@ -12,14 +14,15 @@ export class UserInfoClient {
 
   async userInfo(realm: string, token: string): Promise<User> {
     try {
-      const { data } = await this.httpService
+      const request = this.httpService
         .get(
           `${this.configService.get(
             'KEYCLOAK_SERVER_URL',
           )}/auth/realms/${realm}/protocol/openid-connect/userinfo`,
           { headers: { Authorization: `Bearer ${token}` } },
         )
-        .toPromise()
+
+      const { data } = await lastValueFrom(request)
 
       return plainToClass(User, data, { excludeExtraneousValues: true })
     } catch (error) {
