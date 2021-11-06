@@ -14,6 +14,8 @@ A collection of NestJS extensions used by Skore.
 
 **Local Development**
 
+This project uses [lerna](https://www.npmjs.com/package/lerna) package to handle sub repo dependencies.
+
 1.  Use correct node version
 
 ```bash
@@ -23,12 +25,38 @@ A collection of NestJS extensions used by Skore.
 2.  Install dependencies
 
 ```bash
-  $ npm i -g lerna
-  $ lerna bootstrap --hoist
+  $ npm run setup
 ```
 
-3. Run tests
+## Test
 
 ```bash
-  $ npm t
+$ npm run test
 ```
+
+### Running locally
+
+You can link projects to test new features before publishing a new release.
+Follow these steps:
+
+1. In this project
+
+```bash
+npm run build
+cd ./packages/auth
+npm link
+```
+
+2. In external project
+
+```bash
+npm link @skore-io/auth
+```
+
+**Important:** Both the projects must be using the same _node version_
+
+### Husky Install <sub><sup>(required to commit)</sup></sub> \*
+
+We use [husky](https://www.npmjs.com/package/husky) to handle some hooks like `pre-commit` and `commit-msg`. To install it, you need to run `npm run prepare` or `npx husky install`.
+
+**_If you don't run this command, your code will go up badly indented causing conflicts in the project's code base._**

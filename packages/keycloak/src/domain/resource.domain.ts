@@ -19,10 +19,10 @@ export class Resource {
   displayName: string
 
   @Expose()
-  @Transform(value => value || {})
+  @Transform(({ value }) => value || {})
   attributes?: unknown = {}
 
-  @Transform(value => value || Resource.DEFAULT_SCOPES)
+  @Transform(({ value }) => value || Resource.DEFAULT_SCOPES)
   @Expose()
   scopes?: { name: ScopeType }[] = Resource.DEFAULT_SCOPES
 }
