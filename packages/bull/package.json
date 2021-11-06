@@ -1,6 +1,6 @@
 {
   "name": "@skore-io/bull",
-  "version": "0.33.0",
+  "version": "0.33.1",
   "description": "Setup bull queues along with bull-board",
   "homepage": "https://github.com/skore-io/nestjs-extensions#readme",
   "repository": {
