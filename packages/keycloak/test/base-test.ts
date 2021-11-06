@@ -1,8 +1,8 @@
+import axios from 'axios'
+import request, { SuperTest } from 'supertest'
+import { stringify } from 'qs'
 import { INestApplication, Type } from '@nestjs/common'
 import { Test, TestingModuleBuilder } from '@nestjs/testing'
-import axios from 'axios'
-import { stringify } from 'qs'
-import request, { SuperTest } from 'supertest'
 import { KeycloakModule } from '../src'
 
 export abstract class BaseTest {
@@ -22,7 +22,7 @@ export abstract class BaseTest {
     BaseTest.userToken = await BaseTest.getUserToken('skore-front', 'skore', 'skore123')
     BaseTest.clientToken = await BaseTest.getClientToken()
 
-    const { data: noAccessClient } = await axios.post(
+    const { data: noAccessClient }: any = await axios.post(
       `${process.env.KEYCLOAK_SERVER_URL}/auth/realms/skore/protocol/openid-connect/token`,
       stringify({
         client_id: 'no-access-client',
@@ -46,7 +46,7 @@ export abstract class BaseTest {
   }
 
   private static async getUserToken(clientId: string, username: string, password: string) {
-    const { data } = await axios.post(
+    const { data }: any = await axios.post(
       `${process.env.KEYCLOAK_SERVER_URL}/auth/realms/skore/protocol/openid-connect/token`,
       stringify({
         client_id: clientId,
@@ -61,7 +61,7 @@ export abstract class BaseTest {
   }
 
   private static async getClientToken() {
-    const { data } = await axios.post(
+    const { data }: any = await axios.post(
       `${process.env.KEYCLOAK_SERVER_URL}/auth/realms/skore/protocol/openid-connect/token`,
       stringify({
         client_id: process.env.KEYCLOAK_FOLDER_CLIENT_ID,

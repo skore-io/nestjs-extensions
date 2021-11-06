@@ -4,6 +4,7 @@
     "source.fixAll.eslint": true
   },
   "eslint.validate": ["json"],
+  "eslint.enable": true,
   "[javascript]": {
     "editor.formatOnSave": false
   },

@@ -27,12 +27,11 @@ export class CreatePermissionService {
       if (!resourceName) throw Error('Resource is required')
 
       const realm = KeycloakUtils.realmFromToken(token)
-      const {
-        data: { access_token: accessToken },
-      } = await this.getClientToken.getClient(
+      const { data: client } = await this.getClientToken.getClient(
         realm,
         this.configService.get('KEYCLOAK_FOLDER_CLIENT_ID'),
       )
+      const accessToken = client['access_token']
 
       const resourceId = await this.findResourceService.perform(realm, accessToken, resourceName)
       const name = `${resourceId}_${scope}`
@@ -44,7 +43,7 @@ export class CreatePermissionService {
 
       const { data } = await this.createPermissionClient.create(realm, accessToken, permission)
 
-      permission.id = data.id
+      permission.id = data['id']
 
       return permission
     } catch (error) {

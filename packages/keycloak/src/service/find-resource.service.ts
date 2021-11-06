@@ -7,9 +7,8 @@ export class FindResourceService {
 
   async perform(realm: string, accessToken: string, name: string): Promise<string> {
     try {
-      const {
-        data: [resourceId],
-      } = await this.findResourceClient.find(realm, accessToken, name)
+      const { data }: any = await this.findResourceClient.find(realm, accessToken, name)
+      const [resourceId] = data
 
       if (!resourceId) throw Error('Resource not found')
 

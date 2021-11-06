@@ -23,9 +23,9 @@ export class CheckResourcePermissionService {
         permissions,
       )
 
-      if (data.result) return
+      if (data['result']) return
 
-      throw Error(data.result.message)
+      throw Error(data['result'].message)
     } catch (error) {
       const errorDescription = error.response?.data?.error_description || error
 

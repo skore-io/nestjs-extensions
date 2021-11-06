@@ -1,3 +1,4 @@
+import basicAuth from 'express-basic-auth'
 import {
   BullModule as NestBullModule,
   BullModuleAsyncOptions,
@@ -12,13 +13,14 @@ import {
   OnModuleInit,
 } from '@nestjs/common'
 import Bull from 'bull'
-import { setQueues, UI as bullBoard } from 'bull-board'
-import basicAuth from 'express-basic-auth'
+import { createBullBoard } from 'bull-board'
+import { BullAdapter } from 'bull-board/bullAdapter'
 import { BullModuleOptions, BullModuleQueue, BULL_MODULE_OPTS } from './domain'
 
 @Module({})
 export class BullModule implements NestModule, OnModuleInit {
   private static readonly options: NestBullOptions[] = []
+  private static router: any
 
   static bullFactory(queue: BullModuleQueue): BullModuleAsyncOptions {
     return {
@@ -56,16 +58,17 @@ export class BullModule implements NestModule, OnModuleInit {
 
   async onModuleInit(): Promise<void> {
     const options = BullModule.options
-
     const queues = options.map(option => new Bull(option.name, { redis: option.redis }))
 
-    setQueues(queues)
+    const { router } = createBullBoard(queues.map(queue => new BullAdapter(queue)))
+    BullModule.router = router
+
     Logger.log(`${queues.length} queues registered`, BullModule.name)
   }
 
   configure(consumer: MiddlewareConsumer): void {
     consumer
-      .apply(basicAuth({ users: { bull: 'board' }, challenge: true, realm: 'bull' }), bullBoard)
+      .apply(basicAuth({ users: { bull: 'board' }, challenge: true, realm: 'bull' }), BullModule.router)
       .forRoutes('/admin/queues')
 
     Logger.log("Route 'admin/queues' registered", BullModule.name)

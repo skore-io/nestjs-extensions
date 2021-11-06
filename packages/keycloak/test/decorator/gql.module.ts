@@ -1,4 +1,5 @@
-import { HttpModule, Logger, Module } from '@nestjs/common'
+import { Logger, Module } from '@nestjs/common'
+import { HttpModule } from '@nestjs/axios'
 import { GraphQLModule, Query, Resolver } from '@nestjs/graphql'
 import { KeycloakModule } from '../../src'
 import { GetUser, Protected } from '../../src/decorator'
