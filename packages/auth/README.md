@@ -25,10 +25,10 @@ Just annotate yout REST actions and Graphql queries/mutations methods with decor
 
 The client should send a Bearer authorization header e.g., `'Authorization: Bearer JWT_TOKEN'`.
 
-1. Add `AUTH_URL` to **.env**
+1. Add `AUTH_BASE_URL` to **.env** in your project.
 
 ```env
-AUTH_URL='https://knowledge-staging.skore.io/workspace/v1/users/current'
+AUTH_BASE_URL='https://knowledge-staging.skore.io'
 ```
 
 2. Import the decorator and have fun

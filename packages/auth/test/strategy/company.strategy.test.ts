@@ -10,7 +10,7 @@ export class CompanyStrategyTest extends BaseTest {
   async 'Given a valid token, then return company'() {
     jest.spyOn(this.get(WorkspaceClient), 'getCompany').mockResolvedValue({ id: '1' })
 
-    const companyStrategy = await super.get(CompanyStrategy).validate('SHOULD_ASSERT_OK')
+    const companyStrategy = await super.get(CompanyStrategy).validate(null, 'SHOULD_ASSERT_OK')
     expect(companyStrategy.id).toEqual('1')
   }
 
@@ -19,7 +19,7 @@ export class CompanyStrategyTest extends BaseTest {
     jest.spyOn(this.get(WorkspaceClient), 'getCompany').mockResolvedValue(null)
 
     try {
-      await super.get(CompanyStrategy).validate('SHOULD_ASSERT_OK')
+      await super.get(CompanyStrategy).validate(null, 'SHOULD_ASSERT_OK')
     } catch (error) {
       expect(error).toEqual(new ForbiddenException())
     }

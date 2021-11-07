@@ -7,38 +7,36 @@ import { Company, User } from '../domain'
 
 @Injectable()
 export class WorkspaceClient {
+  private readonly authBaseUrl: string
+
   constructor(
     private readonly configService: ConfigService,
     private readonly httpService: HttpService,
-  ) {}
+  ) {
+    this.authBaseUrl = this.configService.get('AUTH_BASE_URL')
+  }
 
   async getUser(token: string): Promise<User> {
-    const environment = this.configService.get('NODE_ENV')
-    console.log('enviroment:', environment)
-    console.log('process.env.enviroment', process.env.NODE_ENV)
-
-    const request = this.httpService.get(
-      `https://knowledge-staging.skore.io/workspace/v1/users/current`,
-      {
-        headers: { Authorization: token },
-      },
-    )
+    const request = this.httpService.get(`${this.authBaseUrl}/workspace/v1/users/current`, {
+      headers: { Authorization: token },
+    })
 
     const { data } = await lastValueFrom(request)
 
-    return plainToClass(User, data)
+    return plainToClass(User, data, { excludeExtraneousValues: true })
   }
 
   async getCompany(token: string): Promise<Company> {
-    const request = this.httpService.get(
-      `https://knowledge-staging.skore.io/api/v1/companies/current`,
-      {
-        headers: { Authorization: token },
-      },
-    )
+    const request = this.httpService.get(`${this.authBaseUrl}/api/v1/companies/current`, {
+      headers: { Authorization: token },
+    })
 
     const { data } = await lastValueFrom(request)
 
-    return plainToClass(Company, data)
+    return plainToClass(
+      Company,
+      { ...data, id: String(data.company_id) },
+      { excludeExtraneousValues: true },
+    )
   }
 }

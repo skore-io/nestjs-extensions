@@ -12,7 +12,7 @@ export class CompanyStrategy extends PassportStrategy(Strategy, 'company') {
     super({ passReqToCallback: true })
   }
 
-  async validate(token: string): Promise<Company> {
+  async validate(_request: unknown, token: string): Promise<Company> {
     try {
       const company = await this.workspaceClient.getCompany(token)
 

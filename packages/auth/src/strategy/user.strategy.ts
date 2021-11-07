@@ -1,6 +1,5 @@
 import { ExecutionContext, ForbiddenException, Injectable, Logger } from '@nestjs/common'
 import { Reflector } from '@nestjs/core'
-import { plainToClass } from 'class-transformer'
 import { PassportStrategy } from '@nestjs/passport'
 import { Strategy } from 'passport-http-bearer'
 import { WorkspaceClient } from '../client'
@@ -27,7 +26,7 @@ export class UserStrategy extends PassportStrategy(Strategy, 'user') {
         throw Error('User does not have the role required to access this resource')
       }
 
-      return plainToClass(User, user, { excludeExtraneousValues: true })
+      return user
     } catch (error) {
       this.logger.error(`Error in trying to activate user: ${error}`)
       throw new ForbiddenException()
