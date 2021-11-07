@@ -1,26 +1,18 @@
-import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common'
-import { WorkspaceClient } from '../client'
+import { ExecutionContext, ForbiddenException, Injectable } from '@nestjs/common'
+import { AuthGuard } from '@nestjs/passport'
+import { Request } from 'express'
 import { authorizationHeader, getRequestFromContext } from '../util'
 
 @Injectable()
-export class CompanyGuard implements CanActivate {
-  constructor(private readonly workspaceClient: WorkspaceClient) {}
-
-  async canActivate(context: ExecutionContext): Promise<boolean> {
+export class CompanyGuard extends AuthGuard('company') {
+  getRequest(context: ExecutionContext): Request {
     const request = getRequestFromContext(context)
-
     const token = authorizationHeader(request.headers)
-    if (!token) return false
 
-    try {
-      const company = await this.workspaceClient.getCompany(token)
-      if (!company) return false
+    if (!token) throw new ForbiddenException()
 
-      request.company = company
-      return true
-    } catch (error) {
-      console.error('Error in trying to activate company', error)
-      return false
-    }
+    request.context = context
+
+    return request
   }
 }

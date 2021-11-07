@@ -4,5 +4,5 @@ import { ExecutionContext } from '@nestjs/common'
 export const getRequestFromContext = (context: ExecutionContext): any => {
   const graphqlReq = context.getArgByIndex(2).req
 
-  return !!graphqlReq ? graphqlReq : context.switchToHttp().getRequest()
+  return graphqlReq || context.switchToHttp().getRequest()
 }

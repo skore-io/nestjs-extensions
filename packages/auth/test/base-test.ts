@@ -2,6 +2,7 @@ import { INestApplication, Type } from '@nestjs/common'
 import { Test } from '@nestjs/testing'
 import request, { SuperTest } from 'supertest'
 import { WorkspaceClient } from '../src/client'
+import { UserRole } from '../src/enum'
 import { AuthModule } from '../src/auth.module'
 
 export abstract class BaseTest {
@@ -17,8 +18,8 @@ export abstract class BaseTest {
         getUser: () => ({
           id: '1',
           companyId: '114',
-          role: 'admin',
           name: 'Bilu',
+          role: UserRole.admin,
         }),
         getCompany: () => ({
           id: '114',

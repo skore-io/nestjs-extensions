@@ -1,8 +1,5 @@
-import { ExecutionContext } from '@nestjs/common'
-import { Reflector } from '@nestjs/core'
-import { suite, params, test } from '@testdeck/jest'
-import { User } from '../../src/domain'
-import { WorkspaceClient } from '../../src/client'
+import { ExecutionContext, ForbiddenException } from '@nestjs/common'
+import { suite, params } from '@testdeck/jest'
 import { UserGuard } from '../../src/guard'
 import { BaseTest } from '../base-test'
 
@@ -11,61 +8,46 @@ export class UserGuardTest extends BaseTest {
   @params(
     {
       authorization: '',
-      expected: false,
-      role: 'admin',
+      expected: 'error',
     },
-    '[User admin] No authorization header should return error',
+    'No authorization header should return error',
   )
   @params(
     {
       authorization: 'bilu',
-      expected: false,
-      role: 'admin',
+      expected: 'error',
     },
-    '[User admin] An authorization header without bearer should return false',
+    'An authorization header without bearer should return false',
   )
   @params(
     {
       authorization: 'Bearer SHOULD_ASSERT_OK',
       expected: true,
-      role: 'admin',
     },
-    '[User admin] A valid token should return true',
+    'A valid token should return true',
   )
   @params(
     {
       authorization: '',
-      expected: false,
-      role: 'student',
+      expected: 'error',
     },
-    '[User student] No authorization header should return error',
+    'No authorization header should return error',
   )
   @params(
     {
       authorization: 'bilu',
-      expected: false,
-      role: 'student',
+      expected: 'error',
     },
-    '[User student] An authorization header without bearer should return false',
+    'An authorization header without bearer should return false',
   )
   @params(
     {
       authorization: 'Bearer SHOULD_ASSERT_OK',
-      expected: true,
-      role: 'student',
+      expected: 'success',
     },
-    '[User student] A valid token should return true',
+    'A valid token should return true',
   )
-  async testUserGuardToken({ authorization, role, expected }) {
-    const userGuard = this.get(UserGuard)
-
-    jest.spyOn(this.get(WorkspaceClient), 'getUser').mockResolvedValue({
-      id: '1',
-      companyId: '114',
-      role,
-      name: 'Bilu',
-    } as User)
-
+  testUserGuardToken({ authorization, expected }) {
     const context = {
       getArgByIndex: () => [],
       switchToHttp: () => ({
@@ -78,70 +60,15 @@ export class UserGuardTest extends BaseTest {
       getHandler: () => [],
     } as unknown as ExecutionContext
 
-    jest.spyOn(this.get(Reflector), 'get').mockReturnValue([role])
-
-    const guardCanActivate = await userGuard.canActivate(context)
-
-    expect(guardCanActivate).toBe(expected)
-  }
-
-  @test
-  async 'A user with different role should return false'() {
-    const userGuard = this.get(UserGuard)
-
-    jest.spyOn(this.get(WorkspaceClient), 'getUser').mockResolvedValue({
-      id: '1',
-      companyId: '114',
-      role: 'student',
-      name: 'Bilu',
-    } as User)
-
-    const context = {
-      getArgByIndex: () => [],
-      switchToHttp: () => ({
-        getRequest: () => ({
-          headers: {
-            authorization: 'Bearer SHOULD_ASSERT_OK',
-          },
-        }),
-      }),
-      getHandler: () => [],
-    } as unknown as ExecutionContext
-
-    jest.spyOn(this.get(Reflector), 'get').mockReturnValue(['admin'])
-
-    const guardCanActivate = await userGuard.canActivate(context)
-
-    expect(guardCanActivate).toBe(false)
-  }
-
-  @test
-  async 'A validation with more than one role should work'() {
-    const userGuard = this.get(UserGuard)
-
-    jest.spyOn(this.get(WorkspaceClient), 'getUser').mockResolvedValue({
-      id: '1',
-      companyId: '114',
-      role: 'student',
-      name: 'Bilu',
-    } as User)
-
-    const context = {
-      getArgByIndex: () => [],
-      switchToHttp: () => ({
-        getRequest: () => ({
-          headers: {
-            authorization: 'Bearer SHOULD_ASSERT_OK',
-          },
-        }),
-      }),
-      getHandler: () => [],
-    } as unknown as ExecutionContext
-
-    jest.spyOn(this.get(Reflector), 'get').mockReturnValue(['admin', 'student'])
-
-    const guardCanActivate = await userGuard.canActivate(context)
-
-    expect(guardCanActivate).toBe(true)
+    if (expected === 'error') {
+      try {
+        super.get(UserGuard).getRequest(context)
+      } catch (error) {
+        expect(error).toEqual(new ForbiddenException())
+      }
+    } else {
+      const request: any = super.get(UserGuard).getRequest(context)
+      expect(request.context).not.toBeNull()
+    }
   }
 }

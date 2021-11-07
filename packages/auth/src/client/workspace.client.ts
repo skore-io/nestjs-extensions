@@ -14,10 +14,11 @@ export class WorkspaceClient {
 
   async getUser(token: string): Promise<User> {
     const environment = this.configService.get('NODE_ENV')
-    console.log(environment)
+    console.log('enviroment:', environment)
+    console.log('process.env.enviroment', process.env.NODE_ENV)
 
     const request = this.httpService.get(
-      `${this.configService.get('WORKSPACE_URL')}/workspace/v1/users/current`,
+      `https://knowledge-staging.skore.io/workspace/v1/users/current`,
       {
         headers: { Authorization: token },
       },
@@ -30,7 +31,7 @@ export class WorkspaceClient {
 
   async getCompany(token: string): Promise<Company> {
     const request = this.httpService.get(
-      `${this.configService.get('WORKSPACE_URL')}/api/v1/companies/current`,
+      `https://knowledge-staging.skore.io/api/v1/companies/current`,
       {
         headers: { Authorization: token },
       },

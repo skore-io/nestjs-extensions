@@ -1,4 +1,4 @@
-import { ExecutionContext } from '@nestjs/common'
+import { ExecutionContext, ForbiddenException } from '@nestjs/common'
 import { params, suite } from '@testdeck/jest'
 import { CompanyGuard } from '../../src/guard'
 import { BaseTest } from '../base-test'
@@ -8,27 +8,25 @@ export class CompanyGuardTest extends BaseTest {
   @params(
     {
       authorization: '',
-      expected: false,
+      expected: 'error',
     },
     'No authorization header should return error',
   )
   @params(
     {
       authorization: 'bilu',
-      expected: false,
+      expected: 'error',
     },
     'An authorization header without bearer should return false',
   )
   @params(
     {
       authorization: 'Bearer SHOULD_ASSERT_OK',
-      expected: true,
+      expected: 'success',
     },
     'A valid token should return true',
   )
-  async testCompanyGuardToken({ authorization, expected }) {
-    const companyGuard = this.get(CompanyGuard)
-
+  testCompanyGuardToken({ authorization, expected }) {
     const context = {
       getArgByIndex: () => [],
       switchToHttp: () => ({
@@ -41,8 +39,15 @@ export class CompanyGuardTest extends BaseTest {
       getHandler: () => [],
     } as unknown as ExecutionContext
 
-    const guardCanActivate = await companyGuard.canActivate(context)
-
-    expect(guardCanActivate).toBe(expected)
+    if (expected === 'error') {
+      try {
+        super.get(CompanyGuard).getRequest(context)
+      } catch (error) {
+        expect(error).toEqual(new ForbiddenException())
+      }
+    } else {
+      const request: any = super.get(CompanyGuard).getRequest(context)
+      expect(request.context).not.toBeNull()
+    }
   }
 }
