@@ -24,7 +24,7 @@ export class ControllerTest {
       .overrideProvider(GoogleAuthStrategy)
       .useValue(
         new GoogleAuthStrategy(
-          ({
+          {
             verifyIdToken: () =>
               Promise.resolve({
                 getPayload: () => ({
@@ -32,8 +32,8 @@ export class ControllerTest {
                   email: 'some-project@appspot.gserviceaccount.com',
                 }),
               } as LoginTicket),
-          } as unknown) as OAuth2Client,
-          ({ get: () => 'some-project@appspot.gserviceaccount.com' } as unknown) as ConfigService,
+          } as unknown as OAuth2Client,
+          { get: () => 'some-project@appspot.gserviceaccount.com' } as unknown as ConfigService,
         ),
       )
       .compile()

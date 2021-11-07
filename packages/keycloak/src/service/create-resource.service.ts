@@ -24,7 +24,11 @@ export class CreateResourceService {
         this.configService.get('KEYCLOAK_FOLDER_CLIENT_ID'),
       )
 
-      const { data } = await this.createResourceClient.create(realm, client['access_token'], resource)
+      const { data } = await this.createResourceClient.create(
+        realm,
+        client['access_token'],
+        resource,
+      )
 
       resource.id = data['_id']
 

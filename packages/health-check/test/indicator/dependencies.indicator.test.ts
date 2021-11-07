@@ -1,7 +1,7 @@
 import { suite, test } from '@testdeck/jest'
 import { DependenciesIndicator } from '../../src/indicator'
 
-@suite('Dependencies Indicator')
+@suite('[Health Check] Dependencies Indicator')
 export class DependenciesIndicatorTest {
   @test
   async 'Given package without scoped dependencies then return no deps'() {

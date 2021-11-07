@@ -60,15 +60,14 @@ export class UpdatePermissionServiceTest extends BaseTest {
 
   private async findPermission(permission: Permission): Promise<Permission> {
     const client = super.get(HttpService)
-    const request = client
-      .get(
-        `${process.env.KEYCLOAK_SERVER_URL}/auth/realms/skore/authz/protection/uma-policy?name=${permission.name}`,
-        {
-          headers: {
-            Authorization: `Bearer ${super.clientToken()}`,
-          },
+    const request = client.get(
+      `${process.env.KEYCLOAK_SERVER_URL}/auth/realms/skore/authz/protection/uma-policy?name=${permission.name}`,
+      {
+        headers: {
+          Authorization: `Bearer ${super.clientToken()}`,
         },
-      )
+      },
+    )
     const { data } = await lastValueFrom(request)
 
     return new Permission(

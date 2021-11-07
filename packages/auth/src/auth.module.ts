@@ -7,16 +7,7 @@ import { WorkspaceClient } from './client'
 
 @Module({
   imports: [ConfigModule.forRoot(), HttpModule],
-  providers: [
-    WorkspaceClient,
-    UserGuard,
-    CompanyGuard,
-    User,
-  ],
-  exports: [
-    CompanyGuard,
-    UserGuard,
-    User,
-  ],
+  providers: [WorkspaceClient, UserGuard, CompanyGuard, User],
+  exports: [CompanyGuard, UserGuard, User],
 })
 export class AuthModule {}

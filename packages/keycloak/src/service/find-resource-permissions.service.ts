@@ -21,7 +21,11 @@ export class FindResourcePermissionsService {
         realm,
         this.configService.get('KEYCLOAK_FOLDER_CLIENT_ID'),
       )
-      const resourceId = await this.findResourceService.perform(realm, client['access_token'], resourceName)
+      const resourceId = await this.findResourceService.perform(
+        realm,
+        client['access_token'],
+        resourceName,
+      )
 
       Logger.log(
         `Finding permissions for resource ${resourceId}`,
@@ -36,7 +40,7 @@ export class FindResourcePermissionsService {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const permissions: any = data
 
-      return permissions.map(permission => {
+      return permissions.map((permission) => {
         return {
           ...new Permission(
             permission.name,

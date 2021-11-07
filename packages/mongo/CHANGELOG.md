@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.33.2](https://github.com/skore-io/nestjs-extensions/compare/v0.33.1...v0.33.2) (2021-11-07)
+
+
+### Styles 💅🏻
+
+* lint errors ([#53](https://github.com/skore-io/nestjs-extensions/issues/53)) ([8138420](https://github.com/skore-io/nestjs-extensions/commit/813842091629a964f280a63c800d027b31636a30))
+
+
+
 ## [0.33.0](https://github.com/skore-io/nestjs-extensions/compare/v0.32.0...v0.33.0) (2021-06-11)
 
 

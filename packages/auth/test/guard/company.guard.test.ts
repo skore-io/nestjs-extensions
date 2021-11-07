@@ -29,7 +29,7 @@ export class CompanyGuardTest extends BaseTest {
   async testCompanyGuardToken({ authorization, expected }) {
     const companyGuard = this.get(CompanyGuard)
 
-    const context = ({
+    const context = {
       getArgByIndex: () => [],
       switchToHttp: () => ({
         getRequest: () => ({
@@ -39,7 +39,7 @@ export class CompanyGuardTest extends BaseTest {
         }),
       }),
       getHandler: () => [],
-    } as unknown) as ExecutionContext
+    } as unknown as ExecutionContext
 
     const guardCanActivate = await companyGuard.canActivate(context)
 

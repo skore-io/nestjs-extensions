@@ -1,6 +1,4 @@
-export const authorizationHeader = (headers: {
-  authorization: string
-}): string => {
+export const authorizationHeader = (headers: { authorization: string }): string => {
   const authHeader = headers.authorization as string
 
   if (!authHeader) {

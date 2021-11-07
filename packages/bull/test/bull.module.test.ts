@@ -47,14 +47,12 @@ export class BullModuleTest {
     const moduleRef = await Test.createTestingModule({ imports: [TestModule] }).compile()
     const app = await moduleRef.createNestApplication().init()
 
-    const { status } = await request(app.getHttpServer())
-      .get('/admin/queues')
-      .auth('bull', 'board')
+    const { status } = await request(app.getHttpServer()).get('/admin/queues').auth('bull', 'board')
 
     expect(status).toBe(HttpStatus.OK)
   }
 
   private waitForProcess() {
-    return new Promise(resolve => setTimeout(resolve, 1000))
+    return new Promise((resolve) => setTimeout(resolve, 1000))
   }
 }

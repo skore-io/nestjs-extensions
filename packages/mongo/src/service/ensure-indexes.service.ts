@@ -16,8 +16,8 @@ export class EnsureIndexesService implements OnModuleInit {
       ENSURE_INDEX,
     )
     const indexOptions = providers
-      .filter(provider => provider.meta.connectionName === this.connectionName)
-      .map(provider => provider.meta)
+      .filter((provider) => provider.meta.connectionName === this.connectionName)
+      .map((provider) => provider.meta)
 
     for (const option of indexOptions) {
       Logger.debug(

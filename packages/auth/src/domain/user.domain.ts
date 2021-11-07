@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Expose, Transform, Type } from 'class-transformer'
 import { Team } from './team.domain'
 

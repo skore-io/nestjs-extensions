@@ -66,7 +66,7 @@ export class UserGuardTest extends BaseTest {
       name: 'Bilu',
     } as User)
 
-    const context = ({
+    const context = {
       getArgByIndex: () => [],
       switchToHttp: () => ({
         getRequest: () => ({
@@ -76,7 +76,7 @@ export class UserGuardTest extends BaseTest {
         }),
       }),
       getHandler: () => [],
-    } as unknown) as ExecutionContext
+    } as unknown as ExecutionContext
 
     jest.spyOn(this.get(Reflector), 'get').mockReturnValue([role])
 
@@ -96,7 +96,7 @@ export class UserGuardTest extends BaseTest {
       name: 'Bilu',
     } as User)
 
-    const context = ({
+    const context = {
       getArgByIndex: () => [],
       switchToHttp: () => ({
         getRequest: () => ({
@@ -106,7 +106,7 @@ export class UserGuardTest extends BaseTest {
         }),
       }),
       getHandler: () => [],
-    } as unknown) as ExecutionContext
+    } as unknown as ExecutionContext
 
     jest.spyOn(this.get(Reflector), 'get').mockReturnValue(['admin'])
 
@@ -126,7 +126,7 @@ export class UserGuardTest extends BaseTest {
       name: 'Bilu',
     } as User)
 
-    const context = ({
+    const context = {
       getArgByIndex: () => [],
       switchToHttp: () => ({
         getRequest: () => ({
@@ -136,7 +136,7 @@ export class UserGuardTest extends BaseTest {
         }),
       }),
       getHandler: () => [],
-    } as unknown) as ExecutionContext
+    } as unknown as ExecutionContext
 
     jest.spyOn(this.get(Reflector), 'get').mockReturnValue(['admin', 'student'])
 

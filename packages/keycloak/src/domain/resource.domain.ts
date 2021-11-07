@@ -2,7 +2,11 @@ import { Expose, Transform } from 'class-transformer'
 import { ScopeType } from './scope-type.domain'
 
 export class Resource {
-  static readonly DEFAULT_SCOPES = Object.values(ScopeType).map(scopeType => ({ name: scopeType }))
+  static readonly DEFAULT_SCOPES: { name: ScopeType }[] = Object.values(ScopeType).map(
+    (scopeType) => ({
+      name: scopeType,
+    }),
+  )
 
   constructor(name: string, displayName: string) {
     this.name = name

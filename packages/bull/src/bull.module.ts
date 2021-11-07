@@ -22,7 +22,7 @@ export class BullModule implements NestModule, OnModuleInit {
 
   static bullFactory(queue: BullModuleQueue): BullModuleAsyncOptions {
     return {
-      useFactory: (options: BullModuleQueue) => {
+      useFactory: (options: BullModuleQueue): object => {
         const opts = { ...queue, ...options }
         BullModule.options.push(opts)
 
@@ -45,7 +45,7 @@ export class BullModule implements NestModule, OnModuleInit {
       ],
       imports: [
         NestBullModule.registerQueueAsync(
-          ...queues.map(queue => {
+          ...queues.map((queue) => {
             return { name: queue.name, ...BullModule.bullFactory(queue) }
           }),
         ),
@@ -56,7 +56,7 @@ export class BullModule implements NestModule, OnModuleInit {
 
   async onModuleInit(): Promise<void> {
     const options = BullModule.options
-    const queues = options.map(option => new Bull(option.name, { redis: option.redis }))
+    const queues = options.map((option) => new Bull(option.name, { redis: option.redis }))
 
     setQueues(queues)
 
