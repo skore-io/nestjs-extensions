@@ -4,7 +4,7 @@ import { Db } from 'mongodb'
 import { MongoIndicator } from '../../src/indicator'
 import { TestModule } from '../module/test.module'
 
-@suite('Mongo Indicator')
+@suite('[Health Check] Mongo Indicator')
 export class MongoIndicatorTest {
   @test
   async 'Given MongoDB status up'() {
@@ -23,20 +23,20 @@ export class MongoIndicatorTest {
 
   @test
   async 'Given MongoDB status down'() {
-    const indicator = await new MongoIndicator(({
+    const indicator = await new MongoIndicator({
       stats: () => ({ ok: false }),
-    } as unknown) as Db).statusCheck()
+    } as unknown as Db).statusCheck()
 
     expect(indicator.mongodb.status).toBe('down')
   }
 
   @test
   async 'Given MongoDB status check throws an exception'() {
-    const indicator = new MongoIndicator(({
+    const indicator = new MongoIndicator({
       stats: () => {
         throw new Error('MongoDB check status failed')
       },
-    } as unknown) as Db)
+    } as unknown as Db)
 
     try {
       await indicator.statusCheck()

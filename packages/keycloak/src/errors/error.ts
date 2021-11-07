@@ -1,5 +1,7 @@
-import { UnprocessableEntityException } from '@nestjs/common'
+import { HttpException, UnprocessableEntityException } from '@nestjs/common'
 
 export class Error {
-  static UNPROCESSABLE_ENTITY = new UnprocessableEntityException('UNPROCESSABLE_ENTITY')
+  static UNPROCESSABLE_ENTITY: HttpException = new UnprocessableEntityException(
+    'UNPROCESSABLE_ENTITY',
+  )
 }

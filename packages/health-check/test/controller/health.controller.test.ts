@@ -5,7 +5,7 @@ import { Db } from 'mongodb'
 import request from 'supertest'
 import { TestModule } from '../module/test.module'
 
-@suite('Controller Indicator')
+@suite('[Health Check] Controller Indicator')
 export class HealthControllerTest {
   @test
   async 'Given /health returns 200'() {
@@ -15,9 +15,7 @@ export class HealthControllerTest {
 
     const app = await moduleRef.createNestApplication().init()
 
-    const { body } = await request(app.getHttpServer())
-      .get('/health')
-      .expect(HttpStatus.OK)
+    const { body } = await request(app.getHttpServer()).get('/health').expect(HttpStatus.OK)
 
     expect(body.info.dependencies.status).toBe('up')
     expect(body.info.redis.status).toBe('up')
@@ -41,9 +39,7 @@ export class HealthControllerTest {
 
     const app = await moduleRef.createNestApplication().init()
 
-    await request(app.getHttpServer())
-      .get('/health')
-      .expect(HttpStatus.SERVICE_UNAVAILABLE)
+    await request(app.getHttpServer()).get('/health').expect(HttpStatus.SERVICE_UNAVAILABLE)
 
     await app.close()
   }

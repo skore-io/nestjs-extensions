@@ -13,11 +13,10 @@ export class FindUserClient {
 
   async info(realm: string, clientToken: string, id: string): Promise<User> {
     try {
-      const request = await this.httpService
-        .get(
-          `${this.configService.get('KEYCLOAK_SERVER_URL')}/auth/admin/realms/${realm}/users/${id}`,
-          { headers: { Authorization: `Bearer ${clientToken}` } },
-        )
+      const request = await this.httpService.get(
+        `${this.configService.get('KEYCLOAK_SERVER_URL')}/auth/admin/realms/${realm}/users/${id}`,
+        { headers: { Authorization: `Bearer ${clientToken}` } },
+      )
 
       const { data } = await lastValueFrom(request)
 

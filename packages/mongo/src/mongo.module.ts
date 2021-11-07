@@ -86,7 +86,7 @@ export class MongoModule {
         },
         {
           provide: Db,
-          useFactory: (mongoClient: MongoDbClient) => mongoClient.db(),
+          useFactory: (mongoClient: MongoDbClient): Promise<unknown> => mongoClient.db(),
           inject: [MongoDbClient],
         },
         {
