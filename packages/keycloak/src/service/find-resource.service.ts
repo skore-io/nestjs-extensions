@@ -7,6 +7,7 @@ export class FindResourceService {
 
   async perform(realm: string, accessToken: string, name: string): Promise<string> {
     try {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const { data }: any = await this.findResourceClient.find(realm, accessToken, name)
       const [resourceId] = data
 

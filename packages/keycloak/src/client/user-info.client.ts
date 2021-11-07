@@ -14,13 +14,12 @@ export class UserInfoClient {
 
   async userInfo(realm: string, token: string): Promise<User> {
     try {
-      const request = this.httpService
-        .get(
-          `${this.configService.get(
-            'KEYCLOAK_SERVER_URL',
-          )}/auth/realms/${realm}/protocol/openid-connect/userinfo`,
-          { headers: { Authorization: `Bearer ${token}` } },
-        )
+      const request = this.httpService.get(
+        `${this.configService.get(
+          'KEYCLOAK_SERVER_URL',
+        )}/auth/realms/${realm}/protocol/openid-connect/userinfo`,
+        { headers: { Authorization: `Bearer ${token}` } },
+      )
 
       const { data } = await lastValueFrom(request)
 

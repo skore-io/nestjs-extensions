@@ -4,7 +4,7 @@ import { readFileSync } from 'fs'
 
 @Injectable()
 export class DependenciesIndicator extends HealthIndicator {
-  constructor(@Optional() private readonly filename = 'package.json') {
+  constructor(@Optional() private readonly filename: string = 'package.json') {
     super()
   }
 
@@ -17,9 +17,9 @@ export class DependenciesIndicator extends HealthIndicator {
       const packageScope = this.scope(pkg.name)
 
       const scopedPackages = Object.entries(pkg.dependencies)
-        .filter(dependency => this.isScoped(dependency[0]))
-        .filter(dependency => this.scope(dependency[0]) === packageScope)
-        .map(dependency => ({ [dependency[0]]: dependency[1] }))
+        .filter((dependency) => this.isScoped(dependency[0]))
+        .filter((dependency) => this.scope(dependency[0]) === packageScope)
+        .map((dependency) => ({ [dependency[0]]: dependency[1] }))
 
       pkg.scopedPackages = scopedPackages
     }

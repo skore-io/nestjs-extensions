@@ -23,7 +23,7 @@ export class GetResourcePermissionsService {
         user.accessToken,
         permissions,
       )
-      return data.map(resource => resource.rsname)
+      return data.map((resource) => resource.rsname)
     } catch (error) {
       const errorDescription = error.response?.data?.error_description || error
 
