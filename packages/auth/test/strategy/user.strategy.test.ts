@@ -1,7 +1,6 @@
 import { suite, test } from '@testdeck/jest'
 import { User } from '../../src/domain'
 import { UserRole } from '../../src/enum'
-import { WorkspaceClient } from '../../src/client'
 import { UserStrategy } from '../../src/strategy'
 import { BaseTest } from '../base-test'
 import { ExecutionContext, ForbiddenException } from '@nestjs/common'
@@ -10,10 +9,6 @@ import { Reflector } from '@nestjs/core'
 @suite('[Auth] User Strategy')
 export class UserStrategyTest extends BaseTest {
   private readonly user: User = { id: '1', name: 'Bilu', role: UserRole.student } as User
-
-  async before() {
-    jest.spyOn(this.get(WorkspaceClient), 'getUser').mockResolvedValue(this.user)
-  }
 
   @test
   async 'Given an user with valid role, then return it'() {
