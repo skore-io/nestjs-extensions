@@ -20,7 +20,7 @@ export class CompanyStrategy extends PassportStrategy(Strategy, 'company') {
 
       return company
     } catch (error) {
-      this.logger.error(`Error in trying to activate company: ${error}`)
+      this.logger.error(`Error in trying to authenticate company: ${error}`)
       throw new ForbiddenException()
     }
   }

@@ -12,12 +12,12 @@ $ npm install --save @skore-io/auth
 
 ## Methods
 
-| Name              | Description                                                                                                                                                                                                                                    |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| @IsUser()         | Authenticate using an user or session token. Acccepts an array of string roles and validate if token is valid and user has one of the requested roles to proceed. <br> If no role is informed, it only check if token belongs to a valid user. |
-| @IsCompany()      | Authenticate using a company token (M2M).                                                                                                                                                                                                      |
-| @CurrentUser()    | Combine with @IsUser() to get a payload with user data.                                                                                                                                                                                        |
-| @CurrentCompany() | Combine with @IsCompany() to get a payload with company data.                                                                                                                                                                                  |
+| Name              | Description                                                                                                                                                                                                                                   |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| @IsUser()         | Authenticate using a user or session token. Acccepts an array of string roles and validate if token is valid and user has one of the requested roles to proceed. <br> If no role is informed, it only check if token belongs to a valid user. |
+| @IsCompany()      | Authenticate using a company token (M2M).                                                                                                                                                                                                     |
+| @CurrentUser()    | Combine with @IsUser() to get a payload with user data.                                                                                                                                                                                       |
+| @CurrentCompany() | Combine with @IsCompany() to get a payload with company data.                                                                                                                                                                                 |
 
 ## Usage
 

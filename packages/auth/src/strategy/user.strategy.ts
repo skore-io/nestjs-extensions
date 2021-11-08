@@ -28,7 +28,7 @@ export class UserStrategy extends PassportStrategy(Strategy, 'user') {
 
       return user
     } catch (error) {
-      this.logger.error(`Error in trying to activate user: ${error}`)
+      this.logger.error(`Error in trying to authenticate user: ${error}`)
       throw new ForbiddenException()
     }
   }
