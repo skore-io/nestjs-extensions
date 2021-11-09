@@ -31,10 +31,25 @@ The client should send a Bearer authorization header e.g., `'Authorization: Bear
 AUTH_BASE_URL='https://knowledge-staging.skore.io'
 ```
 
-2. Import the decorator and have fun
+2. Import the Auth module.
 
 ```typescript
-import { IsUser, CurrentUser } from '@skore-io/auth'
+// app.module.ts
+
+import { AuthModule } from '@skore-io/auth'
+
+@Module({
+  imports: [AuthModule],
+})
+export class AppModule {}
+```
+
+3. Import the decorator and have fun.
+
+```typescript
+// your_file.controller.ts
+
+import { CurrentUser, IsUser, User, UserRole } from '@skore-io/auth'
 @Controller('contents')
 export class ContentController {
   @IsUser([UserRole.admin, UserRole.expert])
@@ -46,7 +61,9 @@ export class ContentController {
 ```
 
 ```typescript
-import { IsCompany, CurrentCompany } from '@skore-io/auth'
+// your_file.controller.ts
+
+import { Company, CurrentCompany, IsCompany } from '@skore-io/auth'
 @Controller('contents')
 export class ContentController {
   @IsCompany()
