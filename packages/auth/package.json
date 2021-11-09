@@ -1,0 +1,29 @@
+{
+  "name": "@skore-io/auth",
+  "version": "0.33.2",
+  "description": "Package to authenticate users and companies",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:skore-io/nestjs-extensions.git"
+  },
+  "license": "UNLICENSED",
+  "author": "Skore",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "directories": {
+    "dist": "dist"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "test": "npx jest"
+  },
+  "dependencies": {
+    "@nestjs/passport": "^8.0.1",
+    "passport": "^0.5.0",
+    "passport-http-bearer": "^1.0.1"
+  }
+}
