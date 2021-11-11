@@ -4,21 +4,17 @@ import {
   BullModuleAsyncOptions,
   BullModuleOptions as NestBullOptions,
 } from '@nestjs/bull'
-import {
-  DynamicModule,
-  Logger,
-  MiddlewareConsumer,
-  Module,
-  NestModule,
-  OnModuleInit,
-} from '@nestjs/common'
+import { DynamicModule, Logger, MiddlewareConsumer, Module, NestModule } from '@nestjs/common'
 import Bull from 'bull'
-import { setQueues, UI as bullBoard } from 'bull-board'
+import { createBullBoard } from '@bull-board/api'
+import { BullAdapter } from '@bull-board/api/bullAdapter'
+import { ExpressAdapter } from '@bull-board/express'
 import { BullModuleOptions, BullModuleQueue, BULL_MODULE_OPTS } from './domain'
 
 @Module({})
-export class BullModule implements NestModule, OnModuleInit {
+export class BullModule implements NestModule {
   private static readonly options: NestBullOptions[] = []
+  private static readonly logger: Logger = new Logger(BullModule.name)
 
   static bullFactory(queue: BullModuleQueue): BullModuleAsyncOptions {
     return {
@@ -45,29 +41,34 @@ export class BullModule implements NestModule, OnModuleInit {
       ],
       imports: [
         NestBullModule.registerQueueAsync(
-          ...queues.map((queue) => {
-            return { name: queue.name, ...BullModule.bullFactory(queue) }
-          }),
+          ...queues.map((queue) => ({ name: queue.name, ...BullModule.bullFactory(queue) })),
         ),
       ],
       exports: [NestBullModule, BULL_MODULE_OPTS],
     }
   }
 
-  async onModuleInit(): Promise<void> {
+  configure(consumer: MiddlewareConsumer): void {
     const options = BullModule.options
     const queues = options.map((option) => new Bull(option.name, { redis: option.redis }))
 
-    setQueues(queues)
+    BullModule.logger.log(`${queues.length} queues registered`)
 
-    Logger.log(`${queues.length} queues registered`, BullModule.name)
-  }
+    const serverAdapter = new ExpressAdapter()
+    createBullBoard({
+      queues: queues.map((q) => new BullAdapter(q)),
+      serverAdapter,
+    })
 
-  configure(consumer: MiddlewareConsumer): void {
+    serverAdapter.setBasePath('/admin/queues')
+
     consumer
-      .apply(basicAuth({ users: { bull: 'board' }, challenge: true, realm: 'bull' }), bullBoard)
+      .apply(
+        basicAuth({ users: { bull: 'board' }, challenge: true, realm: 'bull' }),
+        serverAdapter.getRouter(),
+      )
       .forRoutes('/admin/queues')
 
-    Logger.log("Route 'admin/queues' registered", BullModule.name)
+    BullModule.logger.log("Route 'admin/queues' registered")
   }
 }

@@ -3,7 +3,11 @@ import { AdvancedSettings, RateLimiter } from 'bull'
 
 export type BullModuleOptions = Omit<
   FactoryProvider<{
-    redis: string
+    redis: {
+      port: number
+      host: string
+      password: string
+    }
     prefix?: string
     settings?: AdvancedSettings
     limiter?: RateLimiter
