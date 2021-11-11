@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.35.0](https://github.com/skore-io/nestjs-extensions/compare/v0.34.1...v0.35.0) (2021-11-11)
+
+
+### Features 🚀
+
+* **bull:** bump bull-board ([#56](https://github.com/skore-io/nestjs-extensions/issues/56)) ([31de6f9](https://github.com/skore-io/nestjs-extensions/commit/31de6f992a78eedbffc2d8610b99d6c4e796d4a2))
+
+
+
 ### [0.34.1](https://github.com/skore-io/nestjs-extensions/compare/v0.34.0...v0.34.1) (2021-11-10)
 
 
