@@ -1,10 +1,12 @@
 # `@skore-io/bull`
 
-## Setup bull queues along with bull-board
+## Description
 
-### Using bull
+This module setup bull queues along with bull-board
 
-Declaring your queues and enabling `bull-board`
+### Usage
+
+Add `REDIS_HOST`, `REDIS_PORT`, and `REDIS_PASSWORD` to **.env** in your project.
 
 ```typescript
 @Module({
@@ -12,8 +14,12 @@ Declaring your queues and enabling `bull-board`
     BullModule.forRoot(
       {
         useFactory: (configService: ConfigService) => ({
-          redis: configService.get('REDIS_CONNECTION'),
-          prefix: 'test',
+          redis: {
+            host: configService.get('REDIS_HOST'),
+            port: configService.get('REDIS_PORT'),
+            password: configService.get('REDIS_PASSWORD'),
+          },
+          prefix: 'my_application',
         }),
         inject: [ConfigService],
       },
@@ -34,5 +40,4 @@ Start your app
 Once started you can access bull-board on: [localhost](http://localhost:3000/admin/queues)
 
 User: bull
-
 Password: board
