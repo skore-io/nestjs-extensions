@@ -21,15 +21,9 @@ export abstract class BaseTest {
           name: 'Bilu',
           role: UserRole.admin,
         }),
-        getCompany: (id?: string) => {
-          if (id && id !== '114') {
-            return null
-          }
-
-          return {
-            id: '114',
-          }
-        },
+        getCompany: () => ({
+          id: '114',
+        }),
       })
       .compile()
 

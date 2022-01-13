@@ -1,10 +1,10 @@
 import { ExecutionContext, ForbiddenException } from '@nestjs/common'
 import { suite, params } from '@testdeck/jest'
-import { UserOrCompanyGuard } from '../../src/guard'
+import { AdminOrCompanyGuard } from '../../src/guard'
 import { BaseTest } from '../base-test'
 
-@suite('[Auth] UserOrCompanyGuard')
-export class UserOrCompanyGuardTest extends BaseTest {
+@suite('[Auth] AdminOrCompanyGuard')
+export class AdminOrCompanyGuardTest extends BaseTest {
   @params(
     {
       authorization: '',
@@ -26,7 +26,7 @@ export class UserOrCompanyGuardTest extends BaseTest {
     },
     'A valid token should return true',
   )
-  testUserGuardToken({ authorization, expected }) {
+  testAdminOrCompanyGuardToken({ authorization, expected }) {
     const context = {
       getArgByIndex: () => [],
       switchToHttp: () => ({
@@ -41,12 +41,12 @@ export class UserOrCompanyGuardTest extends BaseTest {
 
     if (expected === 'error') {
       try {
-        super.get(UserOrCompanyGuard).getRequest(context)
+        super.get(AdminOrCompanyGuard).getRequest(context)
       } catch (error) {
         expect(error).toEqual(new ForbiddenException())
       }
     } else {
-      const request: any = super.get(UserOrCompanyGuard).getRequest(context)
+      const request: any = super.get(AdminOrCompanyGuard).getRequest(context)
       expect(request.context).not.toBeNull()
     }
   }

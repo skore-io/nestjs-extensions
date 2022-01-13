@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common'
 import { HttpModule } from '@nestjs/axios'
 import { ConfigModule } from '@nestjs/config'
 import { User } from './domain'
-import { CompanyGuard, UserGuard, UserOrCompanyGuard } from './guard'
+import { CompanyGuard, UserGuard, AdminOrCompanyGuard } from './guard'
 import { WorkspaceClient } from './client'
-import { UserStrategy, CompanyStrategy, UserOrCompanyStrategy } from './strategy'
+import { UserStrategy, CompanyStrategy, AdminOrCompanyStrategy } from './strategy'
 
 @Module({
   imports: [ConfigModule.forRoot(), HttpModule],
@@ -12,12 +12,12 @@ import { UserStrategy, CompanyStrategy, UserOrCompanyStrategy } from './strategy
     WorkspaceClient,
     UserGuard,
     CompanyGuard,
-    UserOrCompanyGuard,
+    AdminOrCompanyGuard,
     User,
     CompanyStrategy,
     UserStrategy,
-    UserOrCompanyStrategy,
+    AdminOrCompanyStrategy,
   ],
-  exports: [CompanyGuard, UserGuard, UserOrCompanyGuard, User],
+  exports: [CompanyGuard, UserGuard, AdminOrCompanyGuard, User],
 })
 export class AuthModule {}
