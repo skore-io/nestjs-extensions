@@ -1,7 +1,6 @@
-import { applyDecorators, SetMetadata, UseGuards } from '@nestjs/common'
-import { UserRole } from '../enum'
+import { UseGuards } from '@nestjs/common'
 import { AdminOrCompanyGuard } from '../guard'
 
-export const IsAdminOrCompany = (roles?: UserRole[]): MethodDecorator & ClassDecorator => {
-  return applyDecorators(SetMetadata('roles', roles), UseGuards(AdminOrCompanyGuard))
+export const IsAdminOrCompany = (): MethodDecorator & ClassDecorator => {
+  return UseGuards(AdminOrCompanyGuard)
 }
