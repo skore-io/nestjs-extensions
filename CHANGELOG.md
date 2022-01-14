@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.36.2](https://github.com/skore-io/nestjs-extensions/compare/v0.36.1...v0.36.2) (2022-01-14)
+
+
+### Bug Fixes 🐛
+
+* adding try catch to method validate ([#59](https://github.com/skore-io/nestjs-extensions/issues/59)) ([09a7f64](https://github.com/skore-io/nestjs-extensions/commit/09a7f641e85ef3648fc6aa39eaa55a29440b80f5))
+
+
+
 ### [0.36.1](https://github.com/skore-io/nestjs-extensions/compare/v0.36.0...v0.36.1) (2022-01-14)
 
 
