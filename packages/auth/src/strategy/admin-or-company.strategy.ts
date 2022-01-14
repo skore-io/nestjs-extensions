@@ -20,30 +20,35 @@ export class AdminOrCompanyStrategy extends PassportStrategy(Strategy, 'admin-or
   }
 
   async validate(request, token: string): Promise<User | Company> {
-    const decodedToken = jwt.decode(token, { complete: true })
-    if (!decodedToken) {
-      throw new UnauthorizedException('Token could not be decoded')
-    }
+    try {
+      const decodedToken = jwt.decode(token, { complete: true })
+      if (!decodedToken) {
+        throw new UnauthorizedException('Token could not be decoded')
+      }
 
-    const alg = decodedToken.header.alg
-    if (alg === UserOrCompanyAlg.USER) {
-      const user = await this.workspaceClient.getUser(token)
+      const alg = decodedToken.header.alg
+      if (alg === UserOrCompanyAlg.USER) {
+        const user = await this.workspaceClient.getUser(token)
 
-      if (user.role !== UserRole.admin) {
-        this.logger.error(`User does not have the role required to access this resource`)
+        if (user.role !== UserRole.admin) {
+          this.logger.error(`User does not have the role required to access this resource`)
+          throw new ForbiddenException()
+        }
+
+        return user
+      }
+
+      const company = await this.workspaceClient.getCompany(token)
+      if (!company) {
+        this.logger.error(`Error in trying to authenticate company`)
         throw new ForbiddenException()
       }
 
-      return user
-    }
-
-    const company = await this.workspaceClient.getCompany(token)
-    if (!company) {
-      this.logger.error(`Error in trying to authenticate company`)
+      request['company'] = company
+      return company
+    } catch (error) {
+      this.logger.error(error.message)
       throw new ForbiddenException()
     }
-
-    request['company'] = company
-    return company
   }
 }
