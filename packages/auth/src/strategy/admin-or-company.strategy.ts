@@ -1,3 +1,4 @@
+import { UserRole } from './../enum/user-role.enum'
 import { UnauthorizedException, ForbiddenException, Injectable, Logger } from '@nestjs/common'
 import { Reflector } from '@nestjs/core'
 import { PassportStrategy } from '@nestjs/passport'
@@ -26,10 +27,9 @@ export class AdminOrCompanyStrategy extends PassportStrategy(Strategy, 'admin-or
 
     const alg = decodedToken.header.alg
     if (alg === UserOrCompanyAlg.USER) {
-      const roles = this.reflector.get<string[]>('roles', request.context.getHandler())
       const user = await this.workspaceClient.getUser(token)
 
-      if (roles && !roles.includes(user.role)) {
+      if (user.role !== UserRole.admin) {
         this.logger.error(`User does not have the role required to access this resource`)
         throw new ForbiddenException()
       }
