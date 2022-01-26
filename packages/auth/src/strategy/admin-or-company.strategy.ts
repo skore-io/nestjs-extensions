@@ -5,8 +5,8 @@ import { PassportStrategy } from '@nestjs/passport'
 import jwt from 'jsonwebtoken'
 import { Strategy } from 'passport-http-bearer'
 import { WorkspaceClient } from '../client'
-import { User, Company } from '../domain'
 import { UserOrCompanyAlg } from '../enum'
+import { UserOrCompany } from '../domain'
 
 @Injectable()
 export class AdminOrCompanyStrategy extends PassportStrategy(Strategy, 'admin-or-company') {
@@ -19,7 +19,7 @@ export class AdminOrCompanyStrategy extends PassportStrategy(Strategy, 'admin-or
     super({ passReqToCallback: true })
   }
 
-  async validate(request, token: string): Promise<User | Company> {
+  async validate(request: any, token: string): Promise<UserOrCompany> {
     try {
       const decodedToken = jwt.decode(token, { complete: true })
       if (!decodedToken) {
@@ -35,7 +35,12 @@ export class AdminOrCompanyStrategy extends PassportStrategy(Strategy, 'admin-or
           throw new ForbiddenException()
         }
 
-        return user
+        const current = {
+          user,
+          company: undefined,
+        }
+        request['current'] = current
+        return current
       }
 
       const company = await this.workspaceClient.getCompany(token)
@@ -44,8 +49,12 @@ export class AdminOrCompanyStrategy extends PassportStrategy(Strategy, 'admin-or
         throw new ForbiddenException()
       }
 
-      request['company'] = company
-      return company
+      const current = {
+        user: undefined,
+        company,
+      }
+      request['current'] = current
+      return current
     } catch (error) {
       this.logger.error(error.message)
       throw new ForbiddenException()

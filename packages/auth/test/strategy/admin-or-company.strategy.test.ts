@@ -20,7 +20,7 @@ export class AdminOrCompanyStrategy extends BaseTest {
     const companyToken = jwt.sign({ companyId: '114' }, 'secretkey', { algorithm: 'HS384' })
     const companyStrategy = await super.get(Strategy).validate({ context }, companyToken)
 
-    expect(companyStrategy.id).toEqual(this.company.id)
+    expect(companyStrategy.company.id).toEqual(this.company.id)
   }
 
   @test
@@ -31,7 +31,7 @@ export class AdminOrCompanyStrategy extends BaseTest {
     const userToken = jwt.sign(this.user, 'secretkey', { algorithm: UserOrCompanyAlg.USER })
     const userStrategy = await super.get(Strategy).validate({ context }, userToken)
 
-    expect(userStrategy.id).toEqual(this.user.id)
+    expect(userStrategy.user.id).toEqual(this.user.id)
   }
 
   @test
@@ -42,7 +42,7 @@ export class AdminOrCompanyStrategy extends BaseTest {
     const userToken = jwt.sign(this.user, 'secretkey', { algorithm: UserOrCompanyAlg.USER })
     const userStrategy = await super.get(Strategy).validate({ context }, userToken)
 
-    expect(userStrategy.id).toEqual(this.user.id)
+    expect(userStrategy.user.id).toEqual(this.user.id)
   }
 
   @test
