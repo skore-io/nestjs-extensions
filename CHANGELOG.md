@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.37.0](https://github.com/skore-io/nestjs-extensions/compare/v0.36.2...v0.37.0) (2022-01-26)
+
+
+### Features 🚀
+
+* add auth current decorator ([#60](https://github.com/skore-io/nestjs-extensions/issues/60)) ([a345ba9](https://github.com/skore-io/nestjs-extensions/commit/a345ba98983f505694e72a8235562409fd9443f8))
+
+
+
 ### [0.36.2](https://github.com/skore-io/nestjs-extensions/compare/v0.36.1...v0.36.2) (2022-01-14)
 
 
