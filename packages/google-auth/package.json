@@ -1,6 +1,6 @@
 {
   "name": "@skore-io/google-auth",
-  "version": "0.37.0",
+  "version": "0.37.1",
   "description": "Google's auth jwt decorator",
   "homepage": "https://github.com/skore-io/nestjs-extensions#readme",
   "bugs": {
