@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common'
+import { ConfigModule } from '@nestjs/config'
 import { OAuth2Client } from 'google-auth-library'
+import { GoogleAuthGuard } from './guard'
 import { GoogleAuthStrategy } from './strategy'
 /**
  * Passport strategy for google tokens
@@ -20,6 +22,12 @@ import { GoogleAuthStrategy } from './strategy'
  * **Note**: ConfigModule must be exported either by `isGlobal: true` or `exports: [ConfigModule]`
  */
 @Module({
-  providers: [GoogleAuthStrategy, { provide: OAuth2Client, useValue: new OAuth2Client() }],
+  imports: [ConfigModule.forRoot()],
+  providers: [
+    GoogleAuthGuard,
+    GoogleAuthStrategy,
+    { provide: OAuth2Client, useValue: new OAuth2Client() },
+  ],
+  exports: [GoogleAuthGuard],
 })
 export class GoogleAuthModule {}

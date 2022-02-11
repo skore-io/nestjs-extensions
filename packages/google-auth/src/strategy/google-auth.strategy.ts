@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common'
+import { Injectable, Logger, UnauthorizedException } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { PassportStrategy } from '@nestjs/passport'
 import { OAuth2Client } from 'google-auth-library'
@@ -6,6 +6,8 @@ import { Strategy } from 'passport-http-bearer'
 
 @Injectable()
 export class GoogleAuthStrategy extends PassportStrategy(Strategy, 'GoogleAuth') {
+  private readonly logger: Logger = new Logger(GoogleAuthStrategy.name)
+
   constructor(
     private readonly oauth2Client: OAuth2Client,
     private readonly configService: ConfigService,
@@ -23,7 +25,9 @@ export class GoogleAuthStrategy extends PassportStrategy(Strategy, 'GoogleAuth')
         .some(
           (aud: string) => ticket.getPayload().email_verified && ticket.getPayload().email === aud,
         )
-    } catch {
+    } catch (error) {
+      this.logger.error('Error in trying to authenticate with google', error)
+
       throw new UnauthorizedException()
     }
   }
