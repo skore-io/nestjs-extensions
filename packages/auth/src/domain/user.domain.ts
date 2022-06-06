@@ -42,7 +42,7 @@ export class User {
 
   @Transform(({ value }) => Number(value))
   @Expose({ name: 'session_id' })
-  sessionId!: Number
+  sessionId!: number
 
   get teamIds(): string[] {
     return this.teams.map((team) => team.id)
