@@ -40,6 +40,10 @@ export class User {
   @Expose({ name: 'created_at' })
   createdAt!: Date
 
+  @Transform(({ value }) => Number(value))
+  @Expose({ name: 'session_id' })
+  sessionId!: Number
+
   get teamIds(): string[] {
     return this.teams.map((team) => team.id)
   }
