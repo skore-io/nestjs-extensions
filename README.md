@@ -44,7 +44,7 @@ Follow these steps:
 
 ```bash
 npm run build
-cd ./packages/auth
+cd ./packages/{package}
 npm pack
 ```
 
