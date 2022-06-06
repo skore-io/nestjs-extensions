@@ -51,7 +51,7 @@ npm pack
 2. In the other project
 
 ```bash
-npm install  @skore-io-auth-{version}.tgz
+npm install @skore-io-auth-{version}.tgz
 ```
 
 ### Husky Install <sub><sup>(required to commit)</sup></sub> \*
