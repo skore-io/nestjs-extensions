@@ -20,7 +20,7 @@ export abstract class BaseTest {
           companyId: '114',
           name: 'Bilu',
           role: UserRole.admin,
-          sessionId: 99
+          sessionId: 99,
         }),
         getCompany: () => ({
           id: '114',
