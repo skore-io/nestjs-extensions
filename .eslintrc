@@ -22,15 +22,24 @@
   "rules": {
     "@typescript-eslint/no-inferrable-types": "off",
     "@typescript-eslint/explicit-function-return-type": "warn",
-    "@typescript-eslint/typedef": ["warn", {
-      "parameter": true,
-      "memberVariableDeclaration": true,
-      "propertyDeclaration": true
-    }],
+    "@typescript-eslint/typedef": [
+      "warn",
+      {
+        "parameter": true,
+        "memberVariableDeclaration": true,
+        "propertyDeclaration": true
+      }
+    ],
     "@typescript-eslint/prefer-readonly": "error",
     "@typescript-eslint/camelcase": "off",
     "@typescript-eslint/ban-types": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off"
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   },
   "settings": {
     "import/resolver": {

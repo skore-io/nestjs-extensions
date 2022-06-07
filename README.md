@@ -44,17 +44,15 @@ Follow these steps:
 
 ```bash
 npm run build
-cd ./packages/auth
-npm link
+cd ./packages/{package}
+npm pack
 ```
 
-2. In external project
+2. In the other project
 
 ```bash
-npm link @skore-io/auth
+npm install @skore-io-{package}-{version}.tgz
 ```
-
-**Important:** Both the projects must be using the same _node version_
 
 ### Husky Install <sub><sup>(required to commit)</sup></sub> \*
 
