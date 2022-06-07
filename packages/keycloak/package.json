@@ -1,6 +1,6 @@
 {
   "name": "@skore-io/keycloak",
-  "version": "0.37.0",
+  "version": "0.38.0",
   "description": "Provides authorization through annotations",
   "repository": {
     "type": "git",

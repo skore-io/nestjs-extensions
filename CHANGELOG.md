@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.38.0](https://github.com/skore-io/nestjs-extensions/compare/v0.37.1...v0.38.0) (2022-06-07)
+
+
+### Features 🚀
+
+* **user_domain:** session_id ([#62](https://github.com/skore-io/nestjs-extensions/issues/62)) ([4189bf0](https://github.com/skore-io/nestjs-extensions/commit/4189bf0d4de9752f63b320f15feeb28518c116b2))
+
+
+### Bug Fixes 🐛
+
+* **lint:** auth base_test ([#63](https://github.com/skore-io/nestjs-extensions/issues/63)) ([f7e7617](https://github.com/skore-io/nestjs-extensions/commit/f7e76174cdcc2909616d7865e3f1c681f1967e84))
+
+
+
 ### [0.37.1](https://github.com/skore-io/nestjs-extensions/compare/v0.37.0...v0.37.1) (2022-02-11)
 
 
