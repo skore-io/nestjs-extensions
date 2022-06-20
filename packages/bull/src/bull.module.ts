@@ -14,7 +14,7 @@ import { BullModuleOptions, BullModuleQueue, BULL_MODULE_OPTS } from './domain'
 @Module({})
 export class BullModule implements NestModule {
   private static readonly options: NestBullOptions[] = []
-  private static readonly logger: Logger = new Logger(BullModule.name)
+  private static readonly logger: Logger = new Logger('BullModule')
 
   static bullFactory(queue: BullModuleQueue): BullModuleAsyncOptions {
     return {
