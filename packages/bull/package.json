@@ -25,7 +25,7 @@
   "dependencies": {
     "@bull-board/api": "^4.0.0",
     "@bull-board/express": "^4.0.0",
-    "@nestjs/bull": "^0.5.5",
+    "@nestjs/bull": "^0.4.2",
     "bull": "^4.8.4",
     "express-basic-auth": "^1.2.0"
   },
