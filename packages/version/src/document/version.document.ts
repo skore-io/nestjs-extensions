@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import { plainToClass } from 'class-transformer'
+import { plainToInstance } from 'class-transformer'
 import { Collection, Db, ObjectID } from 'mongodb'
 import { Version } from '../domain'
 
@@ -17,7 +17,7 @@ export class VersionDocument {
       .sort({ created_at: -1 })
       .toArray()
 
-    return plainToClass(Version, versions)
+    return versions.map((version: T) => plainToInstance(Version, version))
   }
 
   async findLatestVersionFor<T>(
@@ -32,6 +32,6 @@ export class VersionDocument {
       { sort: { created_at: -1 } },
     )
 
-    return plainToClass(Version, version)
+    return plainToInstance(Version, version) as Version<T>
   }
 }

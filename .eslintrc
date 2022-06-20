@@ -4,6 +4,7 @@
     "jest": true
   },
   "extends": [
+    "prettier",
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:import/typescript",
@@ -11,35 +12,25 @@
     "plugin:prettier/recommended"
   ],
   "ignorePatterns": ["coverage/", "dist", "node_modules/", "package-lock.json", "tsconfig.json"],
-  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 2018,
+    "ecmaVersion": 2022,
     "sourceType": "module",
     "project": "./tsconfig.json",
     "tsconfigRootDir": "."
   },
   "plugins": ["json-format"],
   "rules": {
-    "@typescript-eslint/no-inferrable-types": "off",
-    "@typescript-eslint/explicit-function-return-type": "warn",
-    "@typescript-eslint/typedef": [
-      "warn",
-      {
-        "parameter": true,
-        "memberVariableDeclaration": true,
-        "propertyDeclaration": true
-      }
-    ],
-    "@typescript-eslint/prefer-readonly": "error",
-    "@typescript-eslint/camelcase": "off",
-    "@typescript-eslint/ban-types": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "no-console": "warn",
+    "no-return-await": "error",
     "prettier/prettier": [
       "error",
       {
         "endOfLine": "auto"
       }
-    ]
+    ],
+    "@typescript-eslint/prefer-readonly": "error",
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   },
   "settings": {
     "import/resolver": {

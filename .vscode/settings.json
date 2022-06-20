@@ -5,11 +5,7 @@
   },
   "eslint.validate": ["json"],
   "eslint.enable": true,
-  "[javascript]": {
-    "editor.formatOnSave": false
-  },
-  "[typescript]": {
-    "editor.formatOnSave": false
-  },
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "[javascript, typescript]": {
+    "editor.formatOnSave": true
+  }
 }

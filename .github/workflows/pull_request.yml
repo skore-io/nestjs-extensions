@@ -13,6 +13,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Check PR title
+        uses: amannn/action-semantic-pull-request@v3.4.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          subjectPattern: ^(?![A-Z]).+$
+
       - name: Read .nvmrc
         run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
         id: nvm
@@ -36,6 +43,9 @@ jobs:
 
       - name: Dependencies
         run: npm run setup
+
+      - name: Run lint
+        run: npm run lint
 
       - name: Test environment
         run: docker-compose up -d
