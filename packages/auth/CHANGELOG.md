@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.39.0](https://github.com/skore-io/nestjs-extensions/compare/v0.38.0...v0.39.0) (2022-06-20)
+
+
+### Features 🚀
+
+* support redis prefix in bull-board ([#64](https://github.com/skore-io/nestjs-extensions/issues/64)) ([5cc336b](https://github.com/skore-io/nestjs-extensions/commit/5cc336bd9bd1601dea42fd135a9f7f0e56faa9fe))
+
+
+
 ## [0.38.0](https://github.com/skore-io/nestjs-extensions/compare/v0.37.1...v0.38.0) (2022-06-07)
 
 
