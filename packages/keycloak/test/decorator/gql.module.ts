@@ -4,6 +4,7 @@ import { GraphQLModule, Query, Resolver } from '@nestjs/graphql'
 import { KeycloakModule } from '../../src'
 import { GetUser, Protected } from '../../src/decorator'
 import { User } from '../../src/domain'
+import { ApolloDriver } from '@nestjs/apollo'
 
 @Resolver(() => String)
 class ResolverOne {
@@ -22,7 +23,11 @@ class ResolverOne {
 @Module({
   imports: [
     KeycloakModule,
-    GraphQLModule.forRoot({ autoSchemaFile: true, context: ({ req }) => req }),
+    GraphQLModule.forRoot({
+      driver: ApolloDriver,
+      autoSchemaFile: true,
+      context: ({ req }) => req,
+    }),
     HttpModule,
   ],
   providers: [ResolverOne],

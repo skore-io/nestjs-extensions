@@ -1,6 +1,6 @@
 import { Test } from '@nestjs/testing'
 import { suite, test } from '@testdeck/jest'
-import { RedisService } from 'nestjs-redis'
+import { RedisService } from '@liaoliaots/nestjs-redis'
 import { RedisIndicator } from '../../src/indicator'
 import { TestModule } from '../module/test.module'
 

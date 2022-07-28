@@ -23,10 +23,11 @@
     "test": "npx jest"
   },
   "dependencies": {
-    "@bull-board/api": "^4.0.0",
-    "@bull-board/express": "^4.0.0",
-    "@nestjs/bull": "^0.4.2",
-    "bull": "^4.8.4",
+    "@bull-board/api": "^4.1.1",
+    "@bull-board/express": "^4.1.0",
+    "@liaoliaots/nestjs-redis": "^9.0.1",
+    "@nestjs/bull": "^0.6.0",
+    "bull": "^4.8.5",
     "express-basic-auth": "^1.2.0"
   },
   "devDependencies": {
