@@ -1,6 +1,6 @@
 {
   "name": "@skore-io/auth",
-  "version": "0.39.0",
+  "version": "0.39.1",
   "description": "Package to authenticate users and companies",
   "repository": {
     "type": "git",
