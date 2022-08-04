@@ -1,8 +1,11 @@
 import { suite, test } from '@testdeck/jest'
-import { SendEvent, AttributesActionEnum, AttributesTypeEnum } from '..'
-import { EventName, PubSubClient } from '../src/client'
+import { PubSubClient } from '../../src/client/pub-sub'
+import { ClientEventName } from '../../src/enum/client'
+import { PerformDto } from '../../src/dto/send-event'
+import { SendEvent } from '../../src/service/send-event'
+import { PubSubActionEnum, PubSubTypeEnum } from '../../src/enum/pub-sub'
 
-@suite('[Event Module]')
+@suite('[Event Module - SendEvent]')
 export class SendEventTest {
   @test()
   async 'Call perform with pubsub client with succeffully'() {
@@ -10,14 +13,13 @@ export class SendEventTest {
       .spyOn(PubSubClient.prototype, 'publish')
       .mockImplementation(() => undefined)
 
-    const sendEvent = await new SendEvent(EventName.PubSub)
+    const sendEvent = await new SendEvent(ClientEventName.PubSub)
 
-    const dtoFake = {
+    const dtoFake: PerformDto = {
       gcp_events_project: 'skore-events-staging',
-      action: AttributesActionEnum.Accessed,
-      created_at: Date.now(),
+      action: PubSubActionEnum.Accessed,
       source: 'workspace:???.ts',
-      type: AttributesTypeEnum.Content,
+      type: PubSubTypeEnum.Content,
     }
 
     const bodyFake = {
@@ -27,6 +29,7 @@ export class SendEventTest {
     }
 
     await sendEvent.perform(dtoFake, bodyFake)
+
     expect(clientFake).toBeCalledWith(dtoFake, bodyFake)
   }
 }

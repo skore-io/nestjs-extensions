@@ -1,3 +1,4 @@
-export * from './src/send-event'
-export * from './src/send-event.dto'
-export * from './src/client/pub-sub/pub-sub.enum'
+export * from './src/service/send-event'
+export * from './src/enum/pub-sub'
+export * from './src/enum/client'
+export * from './src/dto/pub-sub'

@@ -1,4 +1,4 @@
-export enum AttributesTypeEnum {
+export enum PubSubTypeEnum {
   Content = 'io.skore.events.content',
   Session = 'io.skore.events.session',
   Enrollment = 'io.skore.events.enrollment',
@@ -6,7 +6,7 @@ export enum AttributesTypeEnum {
   Team = 'io.skore.events.team',
 }
 
-export enum AttributesActionEnum {
+export enum PubSubActionEnum {
   Accessed = 'accessed',
   PartialConsumed = 'partial_consumed',
   Consumed = 'consumed',

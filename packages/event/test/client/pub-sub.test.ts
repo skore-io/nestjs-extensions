@@ -1,16 +1,13 @@
 import { Logger } from '@nestjs/common'
 import { suite, test } from '@testdeck/jest'
-import {
-  AttributesPubSubDto,
-  PubSubClient,
-  AttributesActionEnum,
-  AttributesTypeEnum,
-} from '../../../src/client'
+import { PubSubActionEnum, PubSubTypeEnum } from '../../src/enum/pub-sub'
+import { PubSubClient } from '../../src/client/pub-sub'
+import { PubSubAttributes } from '../../src/dto/pub-sub'
 
-@suite('[PubSubClient Module]')
+@suite('[Event Module] - PubSubClient')
 export class GetClientTest {
   @test()
-  async 'Should publish event in Pub Sub with successfully'() {
+  async 'Should publish event at Pub Sub with successfully'() {
     const request = jest.fn().mockResolvedValue(undefined)
     const getClient = jest.fn().mockResolvedValue({ request })
     const dataFake = Date.now()
@@ -18,29 +15,28 @@ export class GetClientTest {
 
     const pubSubClient = new PubSubClient({ getClient })
 
-    const attributesPubSubDtoFake: AttributesPubSubDto = {
-      action: AttributesActionEnum.Accessed,
-      created_at: Date.now(),
+    const pubSubAttributesFake: PubSubAttributes = {
+      action: PubSubActionEnum.Accessed,
       gcp_events_project: 'skore-events-staging',
-      type: AttributesTypeEnum.Team,
+      type: PubSubTypeEnum.Team,
       source: 'workspace:???.ts',
     }
 
     const bodyFake = {}
 
-    await pubSubClient.publish(attributesPubSubDtoFake, bodyFake)
+    await pubSubClient.publish(pubSubAttributesFake, bodyFake)
 
     const defaultAttributes = { created_at: String(Date.now()) }
 
     expect(getClient).toHaveBeenCalledTimes(1)
     expect(request).toHaveBeenCalledWith({
-      url: `https://pubsub.googleapis.com/v1/projects/${attributesPubSubDtoFake.gcp_events_project}/topics/events:publish`,
+      url: `https://pubsub.googleapis.com/v1/projects/${pubSubAttributesFake.gcp_events_project}/topics/events:publish`,
       method: 'POST',
       data: {
         messages: [
           {
             data: Buffer.from(JSON.stringify(bodyFake)).toString('base64'),
-            attributes: { ...defaultAttributes, ...attributesPubSubDtoFake },
+            attributes: { ...defaultAttributes, ...pubSubAttributesFake },
           },
         ],
       },
@@ -48,7 +44,7 @@ export class GetClientTest {
   }
 
   @test()
-  async 'Should throw error in publish event'() {
+  async 'Should throw error to publish event'() {
     const errorFake = new Error('yolo error')
     const request = jest.fn().mockRejectedValue(errorFake)
     const getClient = jest.fn().mockResolvedValue({ request })
@@ -59,11 +55,10 @@ export class GetClientTest {
 
     const pubSubClient = new PubSubClient({ getClient })
 
-    const attributesPubSubDtoFake: AttributesPubSubDto = {
-      action: AttributesActionEnum.Accessed,
-      created_at: Date.now(),
+    const attributesPubSubDtoFake: PubSubAttributes = {
+      action: PubSubActionEnum.Accessed,
       gcp_events_project: 'skore-events-staging',
-      type: AttributesTypeEnum.Team,
+      type: PubSubTypeEnum.Team,
       source: 'workspace:???.ts',
     }
 

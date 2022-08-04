@@ -12,10 +12,15 @@
   },
   "license": "UNLICENSED",
   "author": "Skore",
+  "main": "dist/index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
+    "build": "rimraf dist && nest build",
     "test": "npx jest"
+  },
+  "dependencies": {
+    "class-validator": "^0.13.2"
   }
 }

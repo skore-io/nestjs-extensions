@@ -1,7 +1,8 @@
 import { GoogleAuth } from 'google-auth-library'
 import { Logger } from '@nestjs/common'
-import { AttributesPubSubDto } from '..'
-import { EventClient } from '../client'
+import { validateOrReject } from 'class-validator'
+import { EventClient } from '../interface/client'
+import { PubSubAttributes } from '../dto/pub-sub'
 
 export class PubSubClient implements EventClient {
   private readonly googleAuth: GoogleAuth
@@ -14,7 +15,19 @@ export class PubSubClient implements EventClient {
       })
   }
 
-  async publish(attributes: AttributesPubSubDto, body: object): Promise<void> {
+  async validate(attributes: PubSubAttributes): Promise<void> {
+    try {
+      const attributesPubSubDto = new PubSubAttributes(attributes)
+
+      await validateOrReject(attributesPubSubDto)
+    } catch (error) {
+      Logger.error(`Error on trying to validation attributes ${error}`)
+
+      throw error
+    }
+  }
+
+  async publish(attributes: PubSubAttributes, body: object): Promise<void> {
     const pubSubClient = await this.googleAuth.getClient()
     const defaultAttributes = { created_at: String(Date.now()) }
 
