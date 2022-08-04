@@ -2,21 +2,20 @@
   "name": "@skore-io/event",
   "version": "1.0.0",
   "description": "Client manager for sending events",
-  "main": "index.ts",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "test": "npx jest"
+  "homepage": "https://github.com/skore-io/nestjs-extensions#readme",
+  "bugs": {
+    "url": "https://github.com/skore-io/nestjs-extensions/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/skore-io/nestjs-extensions.git"
   },
-  "author": "Skore",
   "license": "UNLICENSED",
-  "bugs": {
-    "url": "https://github.com/skore-io/nestjs-extensions/issues"
+  "author": "Skore",
+  "directories": {
+    "test": "test"
   },
-  "homepage": "https://github.com/skore-io/nestjs-extensions#readme"
+  "scripts": {
+    "test": "npx jest"
+  }
 }
