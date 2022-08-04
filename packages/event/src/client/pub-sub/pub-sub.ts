@@ -33,6 +33,7 @@ export class PubSubClient implements EventClient {
       })
     } catch (error) {
       Logger.error(`Error on trying to publish event=${error}`)
+      throw error
     }
   }
 }

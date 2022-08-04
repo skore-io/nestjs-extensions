@@ -8,7 +8,7 @@ export enum EventName {
   PubSub = 'pubsub',
 }
 
-export function getClient(name: string, client = null): EventClient {
+export function getClient(name: string, client: EventClient = null): EventClient {
   const clients = {
     pubsub: client || new PubSubClient(),
   }
