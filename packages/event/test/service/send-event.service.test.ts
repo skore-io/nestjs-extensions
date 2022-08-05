@@ -1,9 +1,8 @@
 import { suite, test } from '@testdeck/jest'
-import { PubSubClient } from '../../src/client/pub-sub'
-import { ClientEventName } from '../../src/enum/client'
-import { PerformDto } from '../../src/dto/send-event'
-import { SendEvent } from '../../src/service/send-event'
-import { PubSubActionEnum, PubSubTypeEnum } from '../../src/enum/pub-sub'
+import { PubSubClient } from '../../src/client'
+import { EventAttributesDto } from '../../src/dto'
+import { SendEventService } from '../../src/service'
+import { PubSubActionEnum, PubSubTypeEnum, ClientEventNameEnum } from '../../src/enum'
 
 @suite('[Event Module - SendEvent]')
 export class SendEventTest {
@@ -13,9 +12,9 @@ export class SendEventTest {
       .spyOn(PubSubClient.prototype, 'publish')
       .mockImplementation(() => undefined)
 
-    const sendEvent = await new SendEvent(ClientEventName.PubSub)
+    const sendEvent = await new SendEventService(ClientEventNameEnum.PubSub)
 
-    const dtoFake: PerformDto = {
+    const dtoFake: EventAttributesDto = {
       gcp_events_project: 'skore-events-staging',
       action: PubSubActionEnum.Accessed,
       source: 'workspace:???.ts',

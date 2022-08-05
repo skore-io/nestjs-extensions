@@ -12,10 +12,13 @@
   },
   "license": "UNLICENSED",
   "author": "Skore",
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "directories": {
-    "test": "test"
+    "dist": "dist"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rimraf dist && nest build",
     "test": "npx jest"

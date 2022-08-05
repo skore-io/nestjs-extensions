@@ -1,8 +1,9 @@
 import { Logger } from '@nestjs/common'
 import { suite, test } from '@testdeck/jest'
-import { PubSubActionEnum, PubSubTypeEnum } from '../../src/enum/pub-sub'
-import { PubSubClient } from '../../src/client/pub-sub'
-import { PubSubAttributes } from '../../src/dto/pub-sub'
+import { PubSubActionEnum, PubSubTypeEnum } from '../../src/enum'
+import { PubSubClient } from '../../src/client'
+import { PubSubAttributesDto } from '../../src'
+import { ValidationAttributesError, PublishPubSubError } from '../../src/error'
 
 @suite('[Event Module] - PubSubClient')
 export class GetClientTest {
@@ -15,7 +16,7 @@ export class GetClientTest {
 
     const pubSubClient = new PubSubClient({ getClient })
 
-    const pubSubAttributesFake: PubSubAttributes = {
+    const pubSubAttributesFake: PubSubAttributesDto = {
       action: PubSubActionEnum.Accessed,
       gcp_events_project: 'skore-events-staging',
       type: PubSubTypeEnum.Team,
@@ -55,7 +56,7 @@ export class GetClientTest {
 
     const pubSubClient = new PubSubClient({ getClient })
 
-    const attributesPubSubDtoFake: PubSubAttributes = {
+    const attributesPubSubDtoFake: PubSubAttributesDto = {
       action: PubSubActionEnum.Accessed,
       gcp_events_project: 'skore-events-staging',
       type: PubSubTypeEnum.Team,
@@ -72,7 +73,33 @@ export class GetClientTest {
     }
 
     expect(getClient).toHaveBeenCalledTimes(1)
-    expect(err).toBeInstanceOf(Error)
     expect(loggerErrorMock).toBeCalledWith(`Error on trying to publish event=${errorFake}`)
+    expect(err).toBeInstanceOf(PublishPubSubError)
+  }
+
+  @test()
+  async 'Should throw ValidationAttributesError at validate attributes'() {
+    const getClient = {}
+
+    const pubSubClient = new PubSubClient({ getClient })
+
+    const attributesPubSubDtoFake = {
+      action: 'yolo',
+      gcp_events_project: 1,
+      source: 'workspace:???.ts',
+    }
+
+    let err = null
+    try {
+      /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+      // @ts-ignore
+      await pubSubClient.validate(attributesPubSubDtoFake)
+    } catch (error) {
+      err = error
+    }
+
+    expect(err).toBeInstanceOf(ValidationAttributesError)
+    expect((err as ValidationAttributesError).code).toEqual('VALIDATION_FAILED')
+    expect((err as ValidationAttributesError).message).toEqual('Invalid attributes data')
   }
 }
