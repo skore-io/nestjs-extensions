@@ -2,7 +2,7 @@ import { suite, test } from '@testdeck/jest'
 import { PubSubClient } from '../../src/client'
 import { EventAttributeDto } from '../../src/dto'
 import { SendEventService } from '../../src/service'
-import { PubSubActionEnum, ClientEventNameEnum, PubSubTypeCommandEnum } from '../../src/enum'
+import { PubSubActionEnum, ClientEventNameEnum, PubSubTypeEventEnum } from '../../src/enum'
 import { ClientNotFoundError } from '../../src/error/client-not-found.error'
 
 @suite('[Event Service - SendEvent]')
@@ -18,7 +18,7 @@ export class SendEventTest {
     const dtoFake: EventAttributeDto = {
       action: PubSubActionEnum.Accessed,
       source: 'workspace:???.ts',
-      type: PubSubTypeCommandEnum.Outbound,
+      type: PubSubTypeEventEnum.Outbound,
     }
 
     const bodyFake = {
