@@ -1,10 +1,15 @@
 import { IsNotEmpty, IsEnum } from 'class-validator'
-import { PubSubTypeEnum, PubSubActionEnum } from '../enum'
+import {
+  PubSubTypeEventEnum,
+  PubSubTypeCommandEnum,
+  PubSubTypeMessageEnum,
+  PubSubActionEnum,
+} from '../enum'
 
 export class PubSubAttributeDto {
   @IsNotEmpty()
-  @IsEnum(PubSubTypeEnum)
-  type: PubSubTypeEnum
+  @IsEnum({ ...PubSubTypeEventEnum, ...PubSubTypeCommandEnum, ...PubSubTypeMessageEnum })
+  type: PubSubTypeEventEnum | PubSubTypeCommandEnum | PubSubTypeMessageEnum
 
   @IsNotEmpty()
   @IsEnum(PubSubActionEnum)

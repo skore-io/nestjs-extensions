@@ -1,5 +1,5 @@
 import { suite, test } from '@testdeck/jest'
-import { PubSubActionEnum, PubSubTypeEnum } from '../../src/enum'
+import { PubSubActionEnum, PubSubTypeCommandEnum, PubSubTypeMessageEnum } from '../../src/enum'
 import { PubSubClient } from '../../src/client'
 import { PubSubAttributeDto } from '../../src'
 import { ValidationAttributeError, PublishPubSubError } from '../../src/error'
@@ -18,8 +18,8 @@ export class GetClientTest {
     const pubSubClient = new PubSubClient({ getClient })
 
     const pubSubAttributeFake: PubSubAttributeDto = {
-      action: PubSubActionEnum.Accessed,
-      type: PubSubTypeEnum.Team,
+      action: PubSubActionEnum.Sent,
+      type: PubSubTypeMessageEnum.Conversation,
       source: 'workspace:???.ts',
     }
 
@@ -54,7 +54,7 @@ export class GetClientTest {
 
     const attributePubSubDtoFake: PubSubAttributeDto = {
       action: PubSubActionEnum.Accessed,
-      type: PubSubTypeEnum.Team,
+      type: PubSubTypeCommandEnum.Outbound,
       source: 'workspace:???.ts',
     }
 
