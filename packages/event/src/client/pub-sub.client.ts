@@ -2,8 +2,8 @@ import { GoogleAuth } from 'google-auth-library'
 import { Logger } from '@nestjs/common'
 import { validateOrReject } from 'class-validator'
 import { EventClientInterface } from '../interface'
-import { PubSubAttributesDto } from '../dto'
-import { PublishPubSubError, ValidationAttributesError } from '../error'
+import { PubSubAttributeDto } from '../dto'
+import { PublishPubSubError, ValidationAttributeError } from '../error'
 
 export class PubSubClient implements EventClientInterface {
   private readonly googleAuth: GoogleAuth
@@ -16,25 +16,25 @@ export class PubSubClient implements EventClientInterface {
       })
   }
 
-  async validate(attributes: PubSubAttributesDto): Promise<void> {
+  async validate(attributes: PubSubAttributeDto): Promise<void> {
     try {
-      const attributesPubSubDto = new PubSubAttributesDto(attributes)
+      const attributesPubSubDto = new PubSubAttributeDto(attributes)
 
       await validateOrReject(attributesPubSubDto)
     } catch (error) {
       Logger.error(`Error on trying to validation attributes ${error}`)
 
-      throw new ValidationAttributesError(error)
+      throw new ValidationAttributeError(error)
     }
   }
 
-  async publish(attributes: PubSubAttributesDto, body: object): Promise<void> {
+  async publish(attributes: PubSubAttributeDto, body: object): Promise<void> {
     const pubSubClient = await this.googleAuth.getClient()
-    const defaultAttributes = { created_at: String(Date.now()) }
+    const defaultAttributes = { createdAt: String(Date.now()) }
 
     try {
       await pubSubClient.request({
-        url: `https://pubsub.googleapis.com/v1/projects/${attributes.gcp_events_project}/topics/events:publish`,
+        url: process.env.GCP_EVENTS_PROJECT_URL,
         method: 'POST',
         data: {
           messages: [

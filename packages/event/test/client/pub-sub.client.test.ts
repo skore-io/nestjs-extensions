@@ -2,13 +2,16 @@ import { Logger } from '@nestjs/common'
 import { suite, test } from '@testdeck/jest'
 import { PubSubActionEnum, PubSubTypeEnum } from '../../src/enum'
 import { PubSubClient } from '../../src/client'
-import { PubSubAttributesDto } from '../../src'
-import { ValidationAttributesError, PublishPubSubError } from '../../src/error'
+import { PubSubAttributeDto } from '../../src'
+import { ValidationAttributeError, PublishPubSubError } from '../../src/error'
 
-@suite('[Event Module] - PubSubClient')
+@suite('[Event Client] - PubSubClient')
 export class GetClientTest {
   @test()
   async 'Should publish event at Pub Sub with successfully'() {
+    process.env.GCP_EVENTS_PROJECT_URL =
+      'https://pubsub.googleapis.com/v1/projects/skore-events-staging/topics/events:publish'
+
     const request = jest.fn().mockResolvedValue(undefined)
     const getClient = jest.fn().mockResolvedValue({ request })
     const dataFake = Date.now()
@@ -16,28 +19,27 @@ export class GetClientTest {
 
     const pubSubClient = new PubSubClient({ getClient })
 
-    const pubSubAttributesFake: PubSubAttributesDto = {
+    const pubSubAttributeFake: PubSubAttributeDto = {
       action: PubSubActionEnum.Accessed,
-      gcp_events_project: 'skore-events-staging',
       type: PubSubTypeEnum.Team,
       source: 'workspace:???.ts',
     }
 
     const bodyFake = {}
 
-    await pubSubClient.publish(pubSubAttributesFake, bodyFake)
+    await pubSubClient.publish(pubSubAttributeFake, bodyFake)
 
-    const defaultAttributes = { created_at: String(Date.now()) }
+    const defaultAttributes = { createdAt: String(Date.now()) }
 
     expect(getClient).toHaveBeenCalledTimes(1)
     expect(request).toHaveBeenCalledWith({
-      url: `https://pubsub.googleapis.com/v1/projects/${pubSubAttributesFake.gcp_events_project}/topics/events:publish`,
+      url: `https://pubsub.googleapis.com/v1/projects/skore-events-staging/topics/events:publish`,
       method: 'POST',
       data: {
         messages: [
           {
             data: Buffer.from(JSON.stringify(bodyFake)).toString('base64'),
-            attributes: { ...defaultAttributes, ...pubSubAttributesFake },
+            attributes: { ...defaultAttributes, ...pubSubAttributeFake },
           },
         ],
       },
@@ -56,9 +58,8 @@ export class GetClientTest {
 
     const pubSubClient = new PubSubClient({ getClient })
 
-    const attributesPubSubDtoFake: PubSubAttributesDto = {
+    const attributePubSubDtoFake: PubSubAttributeDto = {
       action: PubSubActionEnum.Accessed,
-      gcp_events_project: 'skore-events-staging',
       type: PubSubTypeEnum.Team,
       source: 'workspace:???.ts',
     }
@@ -67,7 +68,7 @@ export class GetClientTest {
 
     let err = null
     try {
-      await pubSubClient.publish(attributesPubSubDtoFake, bodyFake)
+      await pubSubClient.publish(attributePubSubDtoFake, bodyFake)
     } catch (error) {
       err = error
     }
@@ -83,7 +84,7 @@ export class GetClientTest {
 
     const pubSubClient = new PubSubClient({ getClient })
 
-    const attributesPubSubDtoFake = {
+    const attributePubSubDtoFake = {
       action: 'yolo',
       gcp_events_project: 1,
       source: 'workspace:???.ts',
@@ -93,13 +94,13 @@ export class GetClientTest {
     try {
       /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
       // @ts-ignore
-      await pubSubClient.validate(attributesPubSubDtoFake)
+      await pubSubClient.validate(attributePubSubDtoFake)
     } catch (error) {
       err = error
     }
 
-    expect(err).toBeInstanceOf(ValidationAttributesError)
-    expect((err as ValidationAttributesError).code).toEqual('VALIDATION_FAILED')
-    expect((err as ValidationAttributesError).message).toEqual('Invalid attributes data')
+    expect(err).toBeInstanceOf(ValidationAttributeError)
+    expect((err as ValidationAttributeError).code).toEqual('VALIDATION_FAILED')
+    expect((err as ValidationAttributeError).message).toEqual('Invalid attributes data')
   }
 }

@@ -1,6 +1,6 @@
-import { EventAttributesDto } from '../dto'
+import { EventAttributeDto } from '../dto'
 
 export interface EventClientInterface {
-  publish(attributes: EventAttributesDto, body: object): Promise<void>
-  validate(attributes: EventAttributesDto): Promise<void>
+  publish(attributes: EventAttributeDto, body: object): Promise<void>
+  validate(attributes: EventAttributeDto): Promise<void>
 }

@@ -1,7 +1,8 @@
 import { EventClientInterface } from '../interface'
-import { EventAttributesDto } from '../dto'
+import { EventAttributeDto } from '../dto'
 import { ClientEventNameEnum } from '../enum'
 import { PubSubClient } from '../client'
+import { ClientNotFoundError } from '../error'
 
 export class SendEventService {
   private readonly client: EventClientInterface
@@ -15,10 +16,14 @@ export class SendEventService {
       pubsub: client || new PubSubClient(),
     }
 
+    if (!clients[name]) {
+      throw new ClientNotFoundError()
+    }
+
     return clients[name]
   }
 
-  async perform(attributes: EventAttributesDto, body: object): Promise<void> {
+  async perform(attributes: EventAttributeDto, body: object): Promise<void> {
     await this.client.validate(attributes)
 
     await this.client.publish(attributes, body)

@@ -1,10 +1,11 @@
 import { suite, test } from '@testdeck/jest'
 import { PubSubClient } from '../../src/client'
-import { EventAttributesDto } from '../../src/dto'
+import { EventAttributeDto } from '../../src/dto'
 import { SendEventService } from '../../src/service'
 import { PubSubActionEnum, PubSubTypeEnum, ClientEventNameEnum } from '../../src/enum'
+import { ClientNotFoundError } from '../../src/error/client-not-found.error'
 
-@suite('[Event Module - SendEvent]')
+@suite('[Event Service - SendEvent]')
 export class SendEventTest {
   @test()
   async 'Call perform with pubsub client with succeffully'() {
@@ -14,8 +15,7 @@ export class SendEventTest {
 
     const sendEvent = await new SendEventService(ClientEventNameEnum.PubSub)
 
-    const dtoFake: EventAttributesDto = {
-      gcp_events_project: 'skore-events-staging',
+    const dtoFake: EventAttributeDto = {
       action: PubSubActionEnum.Accessed,
       source: 'workspace:???.ts',
       type: PubSubTypeEnum.Content,
@@ -30,5 +30,19 @@ export class SendEventTest {
     await sendEvent.perform(dtoFake, bodyFake)
 
     expect(clientFake).toBeCalledWith(dtoFake, bodyFake)
+  }
+
+  @test()
+  async 'Should return client not found error'() {
+    let err = null
+    try {
+      /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+      // @ts-ignore
+      await new SendEventService('yolo')
+    } catch (error) {
+      err = error
+    }
+
+    expect(err).toBeInstanceOf(ClientNotFoundError)
   }
 }

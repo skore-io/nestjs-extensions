@@ -1,11 +1,7 @@
-import { IsString, IsNotEmpty, IsEnum } from 'class-validator'
+import { IsNotEmpty, IsEnum } from 'class-validator'
 import { PubSubTypeEnum, PubSubActionEnum } from '../enum'
 
-export class PubSubAttributesDto {
-  @IsString()
-  @IsNotEmpty()
-  gcp_events_project: string
-
+export class PubSubAttributeDto {
   @IsNotEmpty()
   @IsEnum(PubSubTypeEnum)
   type: PubSubTypeEnum
