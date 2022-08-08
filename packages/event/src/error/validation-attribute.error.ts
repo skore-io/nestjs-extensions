@@ -1,5 +1,5 @@
 import { ValidationError } from 'class-validator'
-import { CodedError } from './error'
+import { CodedError } from './coded.error'
 
 export class ValidationAttributeError extends CodedError {
   constructor(details: ValidationError[]) {

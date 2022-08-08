@@ -1,4 +1,3 @@
-import { Logger } from '@nestjs/common'
 import { suite, test } from '@testdeck/jest'
 import { PubSubActionEnum, PubSubTypeEnum } from '../../src/enum'
 import { PubSubClient } from '../../src/client'
@@ -9,8 +8,7 @@ import { ValidationAttributeError, PublishPubSubError } from '../../src/error'
 export class GetClientTest {
   @test()
   async 'Should publish event at Pub Sub with successfully'() {
-    process.env.GCP_EVENTS_PROJECT_URL =
-      'https://pubsub.googleapis.com/v1/projects/skore-events-staging/topics/events:publish'
+    process.env.GCP_EVENTS_PROJECT_URL = 'https://bilu.com.br/yolo'
 
     const request = jest.fn().mockResolvedValue(undefined)
     const getClient = jest.fn().mockResolvedValue({ request })
@@ -33,7 +31,7 @@ export class GetClientTest {
 
     expect(getClient).toHaveBeenCalledTimes(1)
     expect(request).toHaveBeenCalledWith({
-      url: `https://pubsub.googleapis.com/v1/projects/skore-events-staging/topics/events:publish`,
+      url: `https://bilu.com.br/yolo`,
       method: 'POST',
       data: {
         messages: [
@@ -51,10 +49,6 @@ export class GetClientTest {
     const errorFake = new Error('yolo error')
     const request = jest.fn().mockRejectedValue(errorFake)
     const getClient = jest.fn().mockResolvedValue({ request })
-    const dataFake = Date.now()
-
-    jest.spyOn(Date, 'now').mockImplementation(() => dataFake)
-    const loggerErrorMock = jest.spyOn(Logger, 'error').mockImplementation(() => undefined)
 
     const pubSubClient = new PubSubClient({ getClient })
 
@@ -74,12 +68,13 @@ export class GetClientTest {
     }
 
     expect(getClient).toHaveBeenCalledTimes(1)
-    expect(loggerErrorMock).toBeCalledWith(`Error on trying to publish event=${errorFake}`)
     expect(err).toBeInstanceOf(PublishPubSubError)
+    expect((err as PublishPubSubError).code).toEqual('PUBLISH_PUBSUB_FAILED')
+    expect((err as PublishPubSubError).message).toEqual('fail to publish event')
   }
 
   @test()
-  async 'Should throw ValidationAttributesError at validate attributes'() {
+  async 'Should throw ValidationAttributeError at validate attributes'() {
     const getClient = {}
 
     const pubSubClient = new PubSubClient({ getClient })

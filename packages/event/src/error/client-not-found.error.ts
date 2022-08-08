@@ -1,4 +1,4 @@
-import { CodedError } from './error'
+import { CodedError } from './coded.error'
 
 export class ClientNotFoundError extends CodedError {
   constructor() {

@@ -7,6 +7,7 @@ import { PublishPubSubError, ValidationAttributeError } from '../error'
 
 export class PubSubClient implements EventClientInterface {
   private readonly googleAuth: GoogleAuth
+  private readonly logger: Logger = new Logger(PubSubClient.name)
 
   constructor(googleAuth = null) {
     this.googleAuth =
@@ -22,7 +23,7 @@ export class PubSubClient implements EventClientInterface {
 
       await validateOrReject(attributesPubSubDto)
     } catch (error) {
-      Logger.error(`Error on trying to validation attributes ${error}`)
+      this.logger.error(`Error on trying to validate attributes ${error}`)
 
       throw new ValidationAttributeError(error)
     }
@@ -46,7 +47,7 @@ export class PubSubClient implements EventClientInterface {
         },
       })
     } catch (error) {
-      Logger.error(`Error on trying to publish event=${error}`)
+      this.logger.error(`Error on trying to publish event=${error}`)
 
       throw new PublishPubSubError(error)
     }

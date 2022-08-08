@@ -16,9 +16,7 @@ export class SendEventService {
       pubsub: client || new PubSubClient(),
     }
 
-    if (!clients[name]) {
-      throw new ClientNotFoundError()
-    }
+    if (!clients[name]) throw new ClientNotFoundError()
 
     return clients[name]
   }

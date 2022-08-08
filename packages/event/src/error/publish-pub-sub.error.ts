@@ -1,4 +1,4 @@
-import { CodedError } from './error'
+import { CodedError } from './coded.error'
 
 export class PublishPubSubError extends CodedError {
   constructor(details: Error) {
