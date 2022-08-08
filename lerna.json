@@ -78,5 +78,5 @@
     "packages/*"
   ],
   "includeMergedTags": true,
-  "version": "0.39.1"
+  "version": "1.1.0"
 }
