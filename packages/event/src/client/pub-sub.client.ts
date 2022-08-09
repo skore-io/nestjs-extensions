@@ -25,7 +25,7 @@ export class PubSubClient implements EventClientInterface {
     } catch (error) {
       this.logger.error(`Error on trying to validate attributes ${error}`)
 
-      throw new ValidationAttributeError(error)
+      throw new ValidationAttributeError()
     }
   }
 

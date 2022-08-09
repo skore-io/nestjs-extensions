@@ -16,9 +16,9 @@ export class SendEventTest {
     const sendEvent = await new SendEventService(ClientEventNameEnum.PubSub)
 
     const dtoFake: EventAttributeDto = {
-      action: PubSubActionEnum.Accessed,
+      action: PubSubActionEnum.accessed,
       source: 'workspace:???.ts',
-      type: PubSubTypeEventEnum.Outbound,
+      type: PubSubTypeEventEnum['io.skore.events.content'],
     }
 
     const bodyFake = {

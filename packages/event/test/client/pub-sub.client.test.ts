@@ -18,8 +18,8 @@ export class GetClientTest {
     const pubSubClient = new PubSubClient({ getClient })
 
     const pubSubAttributeFake: PubSubAttributeDto = {
-      action: PubSubActionEnum.Sent,
-      type: PubSubTypeEventEnum.Conversation,
+      action: PubSubActionEnum.sent,
+      type: PubSubTypeEventEnum['io.skore.events.messaging.conversation'],
       source: 'workspace:???.ts',
     }
 
@@ -53,8 +53,8 @@ export class GetClientTest {
     const pubSubClient = new PubSubClient({ getClient })
 
     const attributePubSubDtoFake: PubSubAttributeDto = {
-      action: PubSubActionEnum.Accessed,
-      type: PubSubTypeEventEnum.Outbound,
+      action: PubSubActionEnum.accessed,
+      type: PubSubTypeEventEnum['io.skore.commands.outbound'],
       source: 'workspace:???.ts',
     }
 
