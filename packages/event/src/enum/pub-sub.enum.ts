@@ -4,6 +4,7 @@ export enum PubSubTypeEventEnum {
   'io.skore.events.enrollment' = 'io.skore.events.enrollment',
   'io.skore.events.user' = 'io.skore.events.user',
   'io.skore.events.team' = 'io.skore.events.team',
+  'io.skore.events.notification' = 'io.skore.events.notification',
   'io.skore.events.messaging.message' = 'io.skore.events.messaging.message',
   'io.skore.events.messaging.postback' = 'io.skore.events.messaging.postback',
   'io.skore.events.messaging.conversation' = 'io.skore.events.messaging.conversation',
@@ -27,4 +28,5 @@ export enum PubSubActionEnum {
   sent = 'sent',
   triggered = 'triggered',
   send_notification = 'send_notification',
+  created = 'created',
 }
