@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.0](https://github.com/skore-io/nestjs-extensions/compare/v1.1.2...v1.2.0) (2022-08-11)
+
+
+### Features 🚀
+
+* add enum to event lib ([#70](https://github.com/skore-io/nestjs-extensions/issues/70)) ([cf596cf](https://github.com/skore-io/nestjs-extensions/commit/cf596cf6c20a9aacae3bd756fda15b72675f3fa4))
+
+
+
 ## [1.1.2](https://github.com/skore-io/nestjs-extensions/compare/v1.1.1...v1.1.2) (2022-08-09)
 
 
