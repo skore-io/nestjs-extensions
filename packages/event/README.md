@@ -12,10 +12,10 @@ npm i @skore-io/event
 
 ### Setup
 
-Set environment variables in the project
+1. Set environment variables in the project
 
 ```sh
-GCP_EVENTS_PROJECT_URL='https://pubsub.googleapis.com/v1/projects/skore-events-staging/topics/events:publish'
+GCP_EVENTS_PROJECT_URL='https://pubsub.googleapis.com/v1/projects/{{project_name}}/topics/events:publish'
 GOOGLE_APPLICATION_CREDENTIALS='gcloud-service-account.json'
 ```
 
@@ -57,4 +57,6 @@ const body = {
 }
 
 await sendEvent.perform(attributes, body)
+
+this.logger.log('New message send with succeffully!')
 ```
