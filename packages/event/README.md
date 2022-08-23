@@ -23,7 +23,7 @@ GOOGLE_APPLICATION_CREDENTIALS='gcloud-service-account.json'
 
 ### Usage
 
-import and create attributes
+1. import and create attributes
 
 ```typescript
 import {
@@ -43,24 +43,18 @@ const attributes: PubSubAttributeDto = {
 }
 ```
 
-Create instance for the send event class
+2. Create an instance of the SendEventService class with enum client name
 
 ```typescript
-    try {
-      const sendEvent = new SendEventService(ClientEventNameEnum.PubSub)
+const sendEvent = new SendEventService(ClientEventNameEnum.PubSub)
 ```
 
-Call method "perform" with attributes and body
+3. Call method "perform" with attributes and body to send event
 
 ```typescript
-      const body = {
-         test: 'yolo',
-      }
+const body = {
+  test: 'yolo',
+}
 
-      await sendEvent.perform(attributes, body)
-
-      this.logger.log(`New message send with succeffully!`)
-    } catch (error) {
-      this.logger.error(error)
-    }
+await sendEvent.perform(attributes, body)
 ```
