@@ -1,3 +1,4 @@
+import { HttpModule } from '@nestjs/axios'
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { OAuth2Client } from 'google-auth-library'
@@ -23,13 +24,13 @@ import { GoogleAuthStrategy } from './strategy'
  * **Note**: ConfigModule must be exported either by `isGlobal: true` or `exports: [ConfigModule]`
  */
 @Module({
-  imports: [ConfigModule.forRoot()],
+  imports: [ConfigModule.forRoot(), HttpModule],
   providers: [
     AuthedRequest,
     GoogleAuthGuard,
     GoogleAuthStrategy,
     { provide: OAuth2Client, useValue: new OAuth2Client() },
   ],
-  exports: [AuthedRequest, GoogleAuthGuard],
+  exports: [AuthedRequest, GoogleAuthGuard, HttpModule],
 })
 export class GoogleAuthModule {}

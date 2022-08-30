@@ -1,5 +1,6 @@
 import { HttpService } from '@nestjs/axios'
 import { Injectable } from '@nestjs/common'
+import { AxiosResponse } from 'axios'
 import { Compute, GoogleAuth, JWT } from 'google-auth-library'
 import { MemoryCache } from 'ts-method-cache'
 import { lastValueFrom } from 'rxjs'
@@ -11,7 +12,7 @@ export class AuthedRequest {
 
   constructor(private readonly httpService: HttpService) {}
 
-  async request(url: string, method: RequestMethodEnum) {
+  async request(url: string, method: RequestMethodEnum): Promise<AxiosResponse> {
     const token = await this.fetchToken(url)
 
     const request = this.httpService.request({
@@ -26,14 +27,14 @@ export class AuthedRequest {
     return lastValueFrom(request)
   }
 
-  async graphql(url: string, query: string, variables?: unknown) {
+  async graphql(url: string, query: string, variables?: unknown): Promise<AxiosResponse> {
     const token = await this.fetchToken(url)
 
     const request = this.httpService.post(
       url,
       {
         query,
-        variables,
+        variables: variables || null,
       },
       {
         headers: {
@@ -47,7 +48,7 @@ export class AuthedRequest {
   }
 
   @MemoryCache({ ttl: AuthedRequest.THIRTY_MINUTES_IN_SECONDS })
-  async fetchToken(url: string) {
+  async fetchToken(url: string): Promise<string> {
     const client = (await new GoogleAuth().getClient()) as JWT | Compute
 
     const { protocol, host } = new URL(url)

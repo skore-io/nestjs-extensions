@@ -53,6 +53,8 @@ export class ControllerTest {
 
     const app = await module.createNestApplication().init()
 
+    jest.spyOn(app.get(GoogleAuthStrategy), 'validate').mockResolvedValue(false)
+
     const response = await request(app.getHttpServer())
       .get('/ctrl1')
       .set('Authorization', 'Bearer invalid')
