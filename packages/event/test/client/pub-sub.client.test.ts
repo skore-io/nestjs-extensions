@@ -1,3 +1,4 @@
+import * as validator from 'class-validator'
 import { suite, test } from '@testdeck/jest'
 import { PubSubActionEnum, PubSubTypeEventEnum } from '../../src/enum'
 import { PubSubClient } from '../../src/client'
@@ -128,5 +129,34 @@ export class GetClientTest {
     expect((err as ValidationAttributeError).details).toEqual({
       message: 'action should not be empty',
     })
+  }
+
+  @test()
+  async 'Should throw internal error '() {
+    const errorFake = new Error('yolo')
+    jest.spyOn(validator, 'validateOrReject').mockRejectedValue(errorFake)
+
+    const getClient = {}
+
+    const pubSubClient = new PubSubClient({ getClient })
+
+    const attributePubSubDtoFake = {
+      type: PubSubTypeEventEnum['io.skore.events.messaging.conversation'],
+      source: 'workspace:???.ts',
+    }
+
+    let err = null
+    try {
+      /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+      // @ts-ignore
+      await pubSubClient.validate(attributePubSubDtoFake)
+    } catch (error) {
+      err = error
+    }
+
+    expect(err).toBeInstanceOf(ValidationAttributeError)
+    expect((err as ValidationAttributeError).code).toEqual('VALIDATION_FAILED')
+    expect((err as ValidationAttributeError).message).toEqual('Invalid attributes data')
+    expect((err as ValidationAttributeError).details).toEqual(errorFake)
   }
 }

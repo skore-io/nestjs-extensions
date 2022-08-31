@@ -21,21 +21,25 @@ export class PubSubClient implements EventClientInterface {
 
       await validateOrReject(attributesPubSubDto)
     } catch (error) {
-      const errorsValidations: ValidationError[] = error
-      let objectError = {}
-      for (const item of errorsValidations) {
-        for (const key in item.constraints) {
-          if (key) {
-            objectError = {
-              message: item.constraints[key],
-              ...(item.value && { informedValue: item.value }),
-            }
+      const throwError = Array.isArray(error) ? this.formatValidationError(error) : error
+
+      throw new ValidationAttributeError(throwError)
+    }
+  }
+
+  private formatValidationError(error: ValidationError[]): object {
+    let objectError = {}
+    for (const item of error) {
+      for (const key in item.constraints) {
+        if (key) {
+          objectError = {
+            message: item.constraints[key],
+            ...(item.value && { informedValue: item.value }),
           }
         }
       }
-
-      throw new ValidationAttributeError(objectError)
     }
+    return objectError
   }
 
   async publish(attributes: PubSubAttributeDto, body: object): Promise<void> {
