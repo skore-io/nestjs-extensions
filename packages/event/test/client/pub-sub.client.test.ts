@@ -71,6 +71,7 @@ export class GetClientTest {
     expect(err).toBeInstanceOf(PublishPubSubError)
     expect((err as PublishPubSubError).code).toEqual('PUBLISH_PUBSUB_FAILED')
     expect((err as PublishPubSubError).message).toEqual('fail to publish event')
+    expect((err as PublishPubSubError).details).toEqual(errorFake)
   }
 
   @test()
@@ -81,7 +82,7 @@ export class GetClientTest {
 
     const attributePubSubDtoFake = {
       action: 'yolo',
-      gcp_events_project: 1,
+      type: PubSubTypeEventEnum['io.skore.events.messaging.conversation'],
       source: 'workspace:???.ts',
     }
 
@@ -96,6 +97,36 @@ export class GetClientTest {
 
     expect(err).toBeInstanceOf(ValidationAttributeError)
     expect((err as ValidationAttributeError).code).toEqual('VALIDATION_FAILED')
-    expect((err as ValidationAttributeError).message).toEqual('Invalid attributes data')
+    expect((err as ValidationAttributeError).details).toEqual({
+      message: 'action must be a valid enum value',
+      informedValue: 'yolo',
+    })
+  }
+
+  @test()
+  async 'Should throw ValidationAttributeError at validate attributes empty '() {
+    const getClient = {}
+
+    const pubSubClient = new PubSubClient({ getClient })
+
+    const attributePubSubDtoFake = {
+      type: PubSubTypeEventEnum['io.skore.events.messaging.conversation'],
+      source: 'workspace:???.ts',
+    }
+
+    let err = null
+    try {
+      /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+      // @ts-ignore
+      await pubSubClient.validate(attributePubSubDtoFake)
+    } catch (error) {
+      err = error
+    }
+
+    expect(err).toBeInstanceOf(ValidationAttributeError)
+    expect((err as ValidationAttributeError).code).toEqual('VALIDATION_FAILED')
+    expect((err as ValidationAttributeError).details).toEqual({
+      message: 'action should not be empty',
+    })
   }
 }

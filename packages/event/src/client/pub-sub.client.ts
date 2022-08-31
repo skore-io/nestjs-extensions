@@ -1,13 +1,11 @@
 import { GoogleAuth } from 'google-auth-library'
-import { Logger } from '@nestjs/common'
-import { validateOrReject } from 'class-validator'
+import { validateOrReject, ValidationError } from 'class-validator'
 import { EventClientInterface } from '../interface'
 import { PubSubAttributeDto } from '../dto'
 import { PublishPubSubError, ValidationAttributeError } from '../error'
 
 export class PubSubClient implements EventClientInterface {
   private readonly googleAuth: GoogleAuth
-  private readonly logger: Logger = new Logger(PubSubClient.name)
 
   constructor(googleAuth = null) {
     this.googleAuth =
@@ -23,9 +21,20 @@ export class PubSubClient implements EventClientInterface {
 
       await validateOrReject(attributesPubSubDto)
     } catch (error) {
-      this.logger.error(`Error on trying to validate attributes ${error}`)
+      const errorsValidations: ValidationError[] = error
+      let objectError = {}
+      for (const item of errorsValidations) {
+        for (const key in item.constraints) {
+          if (key) {
+            objectError = {
+              message: item.constraints[key],
+              ...(item.value && { informedValue: item.value }),
+            }
+          }
+        }
+      }
 
-      throw new ValidationAttributeError()
+      throw new ValidationAttributeError(objectError)
     }
   }
 
@@ -47,9 +56,7 @@ export class PubSubClient implements EventClientInterface {
         },
       })
     } catch (error) {
-      this.logger.error(`Error on trying to publish event=${error}`)
-
-      throw new PublishPubSubError()
+      throw new PublishPubSubError(error)
     }
   }
 }

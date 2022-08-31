@@ -57,6 +57,4 @@ const body = {
 }
 
 await sendEvent.perform(attributes, body)
-
-this.logger.log('New message send with succeffully!')
 ```
