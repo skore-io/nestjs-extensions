@@ -66,7 +66,7 @@ export class AuthedRequestTest {
     expect(this.fetchToken).toHaveBeenCalledWith(url)
     expect(request).toHaveBeenCalledWith(
       url,
-      { query: 'query { test() }' },
+      { query: 'query { test() }', variables: {} },
       { headers: { Authorization: 'Bearer token', 'Content-Type': 'application/json' } },
     )
   }
