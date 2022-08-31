@@ -12,7 +12,7 @@ export class AuthedRequest {
 
   constructor(private readonly httpService: HttpService) {}
 
-  async request(url: string, method: RequestMethodEnum): Promise<AxiosResponse> {
+  async rest(url: string, method: RequestMethodEnum): Promise<AxiosResponse> {
     const token = await this.fetchToken(url)
 
     const request = this.httpService.request({

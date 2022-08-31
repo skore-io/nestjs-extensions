@@ -9,6 +9,7 @@ import { RequestMethodEnum } from '../../src/enum'
 @suite('[Service] Authed Request')
 export class AuthedRequestTest {
   app: INestApplication
+  fetchToken: jest.SpyInstance
 
   async before() {
     const moduleRef = await Test.createTestingModule({
@@ -17,32 +18,15 @@ export class AuthedRequestTest {
 
     this.app = moduleRef.createNestApplication()
     this.app = await this.app.init()
-  }
 
-  @test
-  async '[request] The fetchToken method should be called properly'() {
-    const fetchToken = jest
+    this.fetchToken = jest
       .spyOn(this.app.get(AuthedRequest), 'fetchToken')
       .mockResolvedValue('token')
-
-    jest.spyOn(HttpService.prototype, 'request').mockImplementationOnce(() =>
-      of({
-        data: { bilu: 'bilu' },
-        status: 200,
-        statusText: 'bilu',
-        headers: {},
-        config: {},
-      }),
-    )
-
-    await this.app.get(AuthedRequest).request('https://bilu.com', RequestMethodEnum.POST)
-
-    expect(fetchToken).toHaveBeenCalledWith('https://bilu.com')
   }
 
   @test
-  async '[request] The request method should be called properly'() {
-    jest.spyOn(this.app.get(AuthedRequest), 'fetchToken').mockResolvedValue('token')
+  async '[request] Should call methods properly'() {
+    const url = 'https://bilu.com'
 
     const request = jest.spyOn(HttpService.prototype, 'request').mockImplementationOnce(() =>
       of({
@@ -54,40 +38,19 @@ export class AuthedRequestTest {
       }),
     )
 
-    await this.app.get(AuthedRequest).request('https://bilu.com', RequestMethodEnum.POST)
+    await this.app.get(AuthedRequest).rest(url, RequestMethodEnum.POST)
 
+    expect(this.fetchToken).toHaveBeenCalledWith(url)
     expect(request).toHaveBeenCalledWith({
       headers: { Authorization: 'Bearer token', 'Content-Type': 'application/json' },
       method: 'post',
-      url: 'https://bilu.com',
+      url,
     })
   }
 
   @test
-  async '[graphql] The fetchToken method should be called properly'() {
-    const fetchToken = jest
-      .spyOn(this.app.get(AuthedRequest), 'fetchToken')
-      .mockResolvedValue('token')
-
-    jest.spyOn(HttpService.prototype, 'post').mockImplementationOnce(() =>
-      of({
-        data: { bilu: 'bilu' },
-        status: 200,
-        statusText: 'bilu',
-        headers: {},
-        config: {},
-      }),
-    )
-
-    await this.app.get(AuthedRequest).graphql('https://bilu.com', `query { test() }`)
-
-    expect(fetchToken).toHaveBeenCalledWith('https://bilu.com')
-  }
-
-  @test
-  async '[graphql] The request method should be called properly'() {
-    jest.spyOn(this.app.get(AuthedRequest), 'fetchToken').mockResolvedValue('token')
-
+  async '[graphql] Should call methods properly'() {
+    const url = 'https://bilu.com'
     const request = jest.spyOn(HttpService.prototype, 'post').mockImplementationOnce(() =>
       of({
         data: { bilu: 'bilu' },
@@ -98,10 +61,11 @@ export class AuthedRequestTest {
       }),
     )
 
-    await this.app.get(AuthedRequest).graphql('https://bilu.com', 'query { test() }')
+    await this.app.get(AuthedRequest).graphql(url, `query { test() }`)
 
+    expect(this.fetchToken).toHaveBeenCalledWith(url)
     expect(request).toHaveBeenCalledWith(
-      'https://bilu.com',
+      url,
       {
         query: 'query { test() }',
         variables: null,
