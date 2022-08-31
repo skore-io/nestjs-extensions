@@ -66,10 +66,30 @@ export class AuthedRequestTest {
     expect(this.fetchToken).toHaveBeenCalledWith(url)
     expect(request).toHaveBeenCalledWith(
       url,
-      {
-        query: 'query { test() }',
-        variables: null,
-      },
+      { query: 'query { test() }' },
+      { headers: { Authorization: 'Bearer token', 'Content-Type': 'application/json' } },
+    )
+  }
+
+  @test
+  async '[graphql] Should call request method with variables'() {
+    const url = 'https://bilu.com'
+    const request = jest.spyOn(HttpService.prototype, 'post').mockImplementationOnce(() =>
+      of({
+        data: { bilu: 'bilu' },
+        status: 200,
+        statusText: 'bilu',
+        headers: {},
+        config: {},
+      }),
+    )
+
+    await this.app.get(AuthedRequest).graphql(url, `query { test() }`, { company_id: 114 })
+
+    expect(this.fetchToken).toHaveBeenCalledWith(url)
+    expect(request).toHaveBeenCalledWith(
+      url,
+      { query: 'query { test() }', variables: { company_id: 114 } },
       { headers: { Authorization: 'Bearer token', 'Content-Type': 'application/json' } },
     )
   }

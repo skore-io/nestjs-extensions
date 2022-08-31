@@ -30,19 +30,15 @@ export class AuthedRequest {
   async graphql(url: string, query: string, variables?: unknown): Promise<AxiosResponse> {
     const token = await this.fetchToken(url)
 
-    const request = this.httpService.post(
-      url,
-      {
-        query,
-        variables: variables || null,
+    const data = { query }
+    if (variables) Object.assign(data, { variables })
+
+    const request = this.httpService.post(url, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
       },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      },
-    )
+    })
 
     return lastValueFrom(request)
   }
