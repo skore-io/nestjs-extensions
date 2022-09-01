@@ -11,6 +11,13 @@ export class PubSubClient implements EventClientInterface {
     this.googleAuth =
       googleAuth ||
       new GoogleAuth({
+        ...(process.env.GCP_EVENTS_EMAIL &&
+          process.env.GCP_PRIVATE_KEY && {
+            credentials: {
+              client_email: process.env.GCP_EVENTS_EMAIL,
+              private_key: process.env.GCP_PRIVATE_KEY,
+            },
+          }),
         scopes: ['https://www.googleapis.com/auth/cloud-platform'],
       })
   }
