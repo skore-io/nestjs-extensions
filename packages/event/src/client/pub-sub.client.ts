@@ -15,7 +15,7 @@ export class PubSubClient implements EventClientInterface {
           process.env.GCP_PRIVATE_KEY && {
             credentials: {
               client_email: process.env.GCP_EVENTS_EMAIL,
-              private_key: process.env.GCP_PRIVATE_KEY,
+              private_key: process.env.GCP_PRIVATE_KEY.replace(/\\n/g, '\n'),
             },
           }),
         scopes: ['https://www.googleapis.com/auth/cloud-platform'],
