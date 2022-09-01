@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.2](https://github.com/skore-io/nestjs-extensions/compare/v1.3.1...v1.3.2) (2022-09-01)
+
+
+### Bug Fixes 🐛
+
+* **event:** fix auth in google auth ([#74](https://github.com/skore-io/nestjs-extensions/issues/74)) ([e04c9a8](https://github.com/skore-io/nestjs-extensions/commit/e04c9a8fb8aeedba92a9dadee541a8f03bddd15f))
+
+
+
 ## [1.3.1](https://github.com/skore-io/nestjs-extensions/compare/v1.3.0...v1.3.1) (2022-08-31)
 
 
