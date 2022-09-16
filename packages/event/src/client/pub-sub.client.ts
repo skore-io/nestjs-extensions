@@ -51,7 +51,7 @@ export class PubSubClient implements EventClientInterface {
 
   async publish(attributes: PubSubAttributeDto, body: object): Promise<void> {
     const pubSubClient = await this.googleAuth.getClient()
-    const defaultAttributes = { createdAt: String(Date.now()) }
+    const defaultAttributes = { created_at: String(Date.now()) }
 
     try {
       await pubSubClient.request({
