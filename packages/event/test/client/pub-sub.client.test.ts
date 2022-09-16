@@ -28,7 +28,7 @@ export class GetClientTest {
 
     await pubSubClient.publish(pubSubAttributeFake, bodyFake)
 
-    const defaultAttributes = { createdAt: String(Date.now()) }
+    const defaultAttributes = { created_at: String(Date.now()) }
 
     expect(getClient).toHaveBeenCalledTimes(1)
     expect(request).toHaveBeenCalledWith({
