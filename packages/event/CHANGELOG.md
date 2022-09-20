@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.0](https://github.com/skore-io/nestjs-extensions/compare/v1.3.4...v1.4.0) (2022-09-20)
+
+
+### Features 🚀
+
+* add reindex category to enum ([#78](https://github.com/skore-io/nestjs-extensions/issues/78)) ([196657b](https://github.com/skore-io/nestjs-extensions/commit/196657b67d59dae0a1556268b9d89fdb81cfb282))
+
+
+
 ## [1.3.4](https://github.com/skore-io/nestjs-extensions/compare/v1.3.3...v1.3.4) (2022-09-16)
 
 
