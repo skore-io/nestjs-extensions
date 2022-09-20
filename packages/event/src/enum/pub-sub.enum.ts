@@ -11,6 +11,7 @@ export enum PubSubTypeEventEnum {
   'io.skore.events.messaging.intent' = 'io.skore.events.messaging.intent',
   'io.skore.commands.outbound' = 'io.skore.commands.outbound',
   'io.skore.commands.integration' = 'io.skore.commands.integration',
+  'io.skore.commands.category' = 'io.skore.commands.category',
 }
 
 export enum PubSubActionEnum {
@@ -31,4 +32,5 @@ export enum PubSubActionEnum {
   triggered = 'triggered',
   send_notification = 'send_notification',
   created = 'created',
+  reindex = 'reindex',
 }
