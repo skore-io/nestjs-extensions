@@ -11,7 +11,7 @@ export enum PubSubTypeEventEnum {
   'io.skore.events.messaging.intent' = 'io.skore.events.messaging.intent',
   'io.skore.commands.outbound' = 'io.skore.commands.outbound',
   'io.skore.commands.integration' = 'io.skore.commands.integration',
-  'io.skore.commands.category' = 'io.skore.commands.category',
+  'io.skore.commands.space' = 'io.skore.commands.space',
 }
 
 export enum PubSubActionEnum {
