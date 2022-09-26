@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/skore-io/nestjs-extensions/compare/v1.4.0...v1.4.1) (2022-09-26)
+
+
+### Bug Fixes 🐛
+
+* event type ([#80](https://github.com/skore-io/nestjs-extensions/issues/80)) ([db75f66](https://github.com/skore-io/nestjs-extensions/commit/db75f6611c0715290c6c0cac5966a5cc5b1bfb77))
+
+
+
 ## [1.4.0](https://github.com/skore-io/nestjs-extensions/compare/v1.3.4...v1.4.0) (2022-09-20)
 
 
