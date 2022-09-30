@@ -1,4 +1,4 @@
-# Event
+# Description
 
 Lib to send events according to the selected client
 

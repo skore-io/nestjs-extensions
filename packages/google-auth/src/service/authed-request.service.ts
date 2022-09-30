@@ -46,7 +46,17 @@ export class AuthedRequest {
 
   @MemoryCache({ ttl: AuthedRequest.THIRTY_MINUTES_IN_SECONDS })
   async fetchToken(url: string): Promise<string> {
-    const client = (await new GoogleAuth().getClient()) as JWT | Compute
+    const googleAuth = new GoogleAuth({
+      ...(process.env.GCP_PRIVATE_KEY && {
+        credentials: {
+          client_email: process.env.GCP_PROJECT_EMAIL,
+          private_key: process.env.GCP_PRIVATE_KEY.replace(/\\n/g, '\n'),
+        },
+      }),
+      scopes: ['https://www.googleapis.com/auth/cloud-platform'],
+    })
+
+    const client = googleAuth.getClient() as unknown as JWT | Compute
 
     const { protocol, host } = new URL(url)
 
