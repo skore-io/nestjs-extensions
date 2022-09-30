@@ -53,10 +53,9 @@ export class AuthedRequest {
           private_key: process.env.GCP_PRIVATE_KEY.replace(/\\n/g, '\n'),
         },
       }),
-      scopes: ['https://www.googleapis.com/auth/cloud-platform'],
     })
 
-    const client = googleAuth.getClient() as unknown as JWT | Compute
+    const client = (await googleAuth.getClient()) as unknown as JWT | Compute
 
     const { protocol, host } = new URL(url)
 

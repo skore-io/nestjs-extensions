@@ -21,7 +21,7 @@ GOOGLE_APPLICATION_CREDENTIALS='gcloud-service-account.json'
 
 2. Add the following two envs <sub><sup>(recommended for serverless)</sup></sub>
 ```sh
-GCP_EVENTS_EMAIL='project-email@appspot.gserviceaccount.com'
+GCP_PROJECT_EMAIL='project-email@appspot.gserviceaccount.com'
 GCP_PRIVATE_KEY='----BEGIN PRIVATE
 lorem ipsum
 n-----END PRIVATE KEY-----\n',
