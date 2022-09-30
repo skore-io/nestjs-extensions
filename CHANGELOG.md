@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.0](https://github.com/skore-io/nestjs-extensions/compare/v1.4.1...v1.5.0) (2022-09-30)
+
+
+### Features 🚀
+
+* **authed_request:** support envs and service account file ([#81](https://github.com/skore-io/nestjs-extensions/issues/81)) ([1fbee4b](https://github.com/skore-io/nestjs-extensions/commit/1fbee4ba1c81fcf2fae38d9cd14ab29ab85aa689))
+
+
+
 ## [1.4.1](https://github.com/skore-io/nestjs-extensions/compare/v1.4.0...v1.4.1) (2022-09-26)
 
 
