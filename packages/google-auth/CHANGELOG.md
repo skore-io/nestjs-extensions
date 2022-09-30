@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.1](https://github.com/skore-io/nestjs-extensions/compare/v1.5.0...v1.5.1) (2022-09-30)
+
+
+### Bug Fixes 🐛
+
+* add await to promise ([#82](https://github.com/skore-io/nestjs-extensions/issues/82)) ([021edad](https://github.com/skore-io/nestjs-extensions/commit/021edad474922888b80e5b994967a6a6d2a15202))
+
+
+
 ## [1.5.0](https://github.com/skore-io/nestjs-extensions/compare/v1.4.1...v1.5.0) (2022-09-30)
 
 
