@@ -4,15 +4,15 @@ export enum PubSubTypeEventEnum {
   'io.skore.events.enrollment' = 'io.skore.events.enrollment',
   'io.skore.events.user' = 'io.skore.events.user',
   'io.skore.events.team' = 'io.skore.events.team',
-  'io.skore.events.base_notification' = 'io.skore.events.base_notification',
   'io.skore.events.messaging.message' = 'io.skore.events.messaging.message',
   'io.skore.events.messaging.postback' = 'io.skore.events.messaging.postback',
   'io.skore.events.messaging.conversation' = 'io.skore.events.messaging.conversation',
   'io.skore.events.messaging.intent' = 'io.skore.events.messaging.intent',
+  'io.skore.events.notification' = 'io.skore.events.notification',
+  'io.skore.commands.notification' = 'io.skore.commands.notification',
   'io.skore.commands.outbound' = 'io.skore.commands.outbound',
   'io.skore.commands.integration' = 'io.skore.commands.integration',
   'io.skore.commands.space' = 'io.skore.commands.space',
-  'io.skore.commands.base_notification' = 'io.skore.commands.base_notification',
 }
 
 export enum PubSubActionEnum {
@@ -32,7 +32,8 @@ export enum PubSubActionEnum {
   sent = 'sent',
   triggered = 'triggered',
   send_notification = 'send_notification',
+  base_notification_created = 'base_notification_created',
+  base_notification_dispatch = 'base_notification_dispatch',
   created = 'created',
   reindex = 'reindex',
-  dispatch = 'dispatch',
 }
