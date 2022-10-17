@@ -46,15 +46,26 @@ const attributes: PubSubAttributeDto = {
 2. Create an instance of the EventService class with enum client name
 
 ```typescript
-const sendEvent = new EventService(ClientEventNameEnum.PubSub)
+const eventService = new EventService(ClientEventNameEnum.PubSub)
 ```
 
-3. Call method "perform" with attributes and body to send event
+3. Call method "send" with attributes and body to send event
 
 ```typescript
 const body = {
   test: 'yolo',
 }
 
-await sendEvent.perform(attributes, body)
+await eventService.send(attributes, body)
+```
+
+3. If you want to send events in batch, call method "sendInBatch" with attributes and an array of messages to send
+
+```typescript
+const body = [
+  { test: 'yolo' },
+  { test: 'bilu' }
+]
+
+await eventService.sendInBatch(attributes, body)
 ```
