@@ -1,19 +1,19 @@
 import { suite, test } from '@testdeck/jest'
 import { PubSubClient } from '../../src/client'
 import { EventAttributeDto } from '../../src/dto'
-import { SendEventService } from '../../src/service'
+import { EventService } from '../../src/service'
 import { PubSubActionEnum, ClientEventNameEnum, PubSubTypeEventEnum } from '../../src/enum'
 import { ClientNotFoundError } from '../../src/error/client-not-found.error'
 
-@suite('[Event Service - SendEvent]')
-export class SendEventTest {
+@suite('Event Service')
+export class EventServiceTest {
   @test()
-  async 'Call perform with pubsub client with succeffully'() {
+  async 'Call send with pubsub client with succeffully'() {
     const clientFake = jest
       .spyOn(PubSubClient.prototype, 'publish')
       .mockImplementation(() => undefined)
 
-    const sendEvent = await new SendEventService(ClientEventNameEnum.PubSub)
+    const eventService = new EventService(ClientEventNameEnum.PubSub)
 
     const dtoFake: EventAttributeDto = {
       action: PubSubActionEnum.accessed,
@@ -27,7 +27,7 @@ export class SendEventTest {
       user_id: '126340',
     }
 
-    await sendEvent.perform(dtoFake, bodyFake)
+    await eventService.send(dtoFake, bodyFake)
 
     expect(clientFake).toBeCalledWith(dtoFake, bodyFake)
   }
@@ -38,7 +38,7 @@ export class SendEventTest {
     try {
       /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
       // @ts-ignore
-      await new SendEventService('yolo')
+      await new EventService('yolo')
     } catch (error) {
       err = error
     }

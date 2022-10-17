@@ -1,1 +1,1 @@
-export * from './send-event.service'
+export * from './event.service'
