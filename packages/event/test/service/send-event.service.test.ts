@@ -8,7 +8,7 @@ import { ClientNotFoundError } from '../../src/error/client-not-found.error'
 @suite('[Event Service - SendEvent]')
 export class SendEventTest {
   @test()
-  async 'Call perform with pubsub client with succeffully'() {
+  async 'Call unique with pubsub client with succeffully'() {
     const clientFake = jest
       .spyOn(PubSubClient.prototype, 'publish')
       .mockImplementation(() => undefined)
@@ -27,7 +27,7 @@ export class SendEventTest {
       user_id: '126340',
     }
 
-    await sendEvent.perform(dtoFake, bodyFake)
+    await sendEvent.unique(dtoFake, bodyFake)
 
     expect(clientFake).toBeCalledWith(dtoFake, bodyFake)
   }

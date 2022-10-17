@@ -21,9 +21,15 @@ export class SendEventService {
     return clients[name]
   }
 
-  async perform(attributes: EventAttributeDto, body: object): Promise<void> {
+  async unique(attributes: EventAttributeDto, body: object): Promise<void> {
     await this.client.validate(attributes)
 
     await this.client.publish(attributes, body)
+  }
+
+  async batch(attributes: EventAttributeDto, body: object[]): Promise<void> {
+    await this.client.validate(attributes)
+
+    await this.client.publishInBatch(attributes, body)
   }
 }
