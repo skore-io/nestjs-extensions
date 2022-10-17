@@ -2,6 +2,6 @@ import { EventAttributeDto } from '../dto'
 
 export interface EventClientInterface {
   publish(attributes: EventAttributeDto, body: object): Promise<void>
-  publishInBatch(attributes: EventAttributeDto, body: object[]): Promise<void>
+  publishInBatch(attributes: EventAttributeDto, messages: object[]): Promise<void>
   validate(attributes: EventAttributeDto): Promise<void>
 }

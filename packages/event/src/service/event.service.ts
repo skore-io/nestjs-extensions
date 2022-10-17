@@ -27,9 +27,9 @@ export class EventService {
     await this.client.publish(attributes, body)
   }
 
-  async sendInBatch(attributes: EventAttributeDto, body: object[]): Promise<void> {
+  async sendInBatch(attributes: EventAttributeDto, messages: object[]): Promise<void> {
     await this.client.validate(attributes)
 
-    await this.client.publishInBatch(attributes, body)
+    await this.client.publishInBatch(attributes, messages)
   }
 }
