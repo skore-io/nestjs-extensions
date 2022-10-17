@@ -4,7 +4,7 @@ import { ClientEventNameEnum } from '../enum'
 import { PubSubClient } from '../client'
 import { ClientNotFoundError } from '../error'
 
-export class SendEventService {
+export class EventService {
   private readonly client: EventClientInterface
 
   constructor(clientName: ClientEventNameEnum) {
@@ -21,13 +21,13 @@ export class SendEventService {
     return clients[name]
   }
 
-  async unique(attributes: EventAttributeDto, body: object): Promise<void> {
+  async send(attributes: EventAttributeDto, body: object): Promise<void> {
     await this.client.validate(attributes)
 
     await this.client.publish(attributes, body)
   }
 
-  async batch(attributes: EventAttributeDto, body: object[]): Promise<void> {
+  async sendInBatch(attributes: EventAttributeDto, body: object[]): Promise<void> {
     await this.client.validate(attributes)
 
     await this.client.publishInBatch(attributes, body)

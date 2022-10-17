@@ -73,8 +73,8 @@ export class PubSubClient implements EventClientInterface {
     }
   }
 
-  async publishInBatch(attributes: PubSubAttributeDto, bodies: object[]): Promise<void> {
-    if (bodies.length > this.BATCH_SIZE)
+  async publishInBatch(attributes: PubSubAttributeDto, messages: object[]): Promise<void> {
+    if (messages.length > this.BATCH_SIZE)
       throw new PublishPubSubError({ code: 400, message: 'Exceeded maximum events limit' })
 
     const pubSubClient = new PubSub({ projectId: process.env.GCP_EVENTS_PROJECT })
@@ -87,10 +87,10 @@ export class PubSubClient implements EventClientInterface {
       },
     })
 
-    for (let index = 0; index < bodies.length; index++) {
+    for (let index = 0; index < messages.length; index++) {
       await batchPublisher.publishMessage({
         attributes: { ...defaultAttributes, ...attributes },
-        data: Buffer.from(JSON.stringify(bodies[index])),
+        data: Buffer.from(JSON.stringify(messages[index])),
       })
     }
   }

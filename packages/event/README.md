@@ -27,7 +27,7 @@ GOOGLE_APPLICATION_CREDENTIALS='gcloud-service-account.json'
 
 ```typescript
 import {
-  SendEventService,
+  EventService,
   PubSubAttributeDto,
   PubSubActionEnum,
   PubSubTypeEventEnum,
@@ -43,10 +43,10 @@ const attributes: PubSubAttributeDto = {
 }
 ```
 
-2. Create an instance of the SendEventService class with enum client name
+2. Create an instance of the EventService class with enum client name
 
 ```typescript
-const sendEvent = new SendEventService(ClientEventNameEnum.PubSub)
+const sendEvent = new EventService(ClientEventNameEnum.PubSub)
 ```
 
 3. Call method "perform" with attributes and body to send event
