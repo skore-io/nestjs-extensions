@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.0](https://github.com/skore-io/nestjs-extensions/compare/v1.6.0...v1.7.0) (2022-10-17)
+
+
+### Features 🚀
+
+* add publish event in batch ([#84](https://github.com/skore-io/nestjs-extensions/issues/84)) ([9556ac5](https://github.com/skore-io/nestjs-extensions/commit/9556ac5f0b4f4db86fe6f21d436c91023f44ad1c))
+
+
+
 ## [1.6.0](https://github.com/skore-io/nestjs-extensions/compare/v1.5.1...v1.6.0) (2022-10-14)
 
 
