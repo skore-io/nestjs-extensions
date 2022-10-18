@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.2](https://github.com/skore-io/nestjs-extensions/compare/v1.7.1...v1.7.2) (2022-10-18)
+
+
+### Bug Fixes 🐛
+
+* max_messages ([#87](https://github.com/skore-io/nestjs-extensions/issues/87)) ([46594ed](https://github.com/skore-io/nestjs-extensions/commit/46594ed6bf0365141818d565d9acefaecf2bc451))
+
+
+
 ## [1.7.1](https://github.com/skore-io/nestjs-extensions/compare/v1.7.0...v1.7.1) (2022-10-18)
 
 
