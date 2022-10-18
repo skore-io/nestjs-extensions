@@ -82,7 +82,7 @@ export class PubSubClient implements EventClientInterface {
 
     const batchPublisher = pubSubClient.topic('events', {
       batching: {
-        maxMessages: this.BATCH_SIZE,
+        maxMessages: messages.length,
         maxMilliseconds: 60 * 1000,
       },
     })
