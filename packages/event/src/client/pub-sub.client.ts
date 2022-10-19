@@ -8,6 +8,7 @@ import { PublishPubSubError, ValidationAttributeError } from '../error'
 export class PubSubClient implements EventClientInterface {
   private readonly googleAuth: GoogleAuth
   private readonly BATCH_SIZE: 1000
+  private readonly pubSubClient: PubSub
 
   constructor(googleAuth = null) {
     this.googleAuth =
@@ -22,6 +23,8 @@ export class PubSubClient implements EventClientInterface {
           }),
         scopes: ['https://www.googleapis.com/auth/cloud-platform'],
       })
+
+    this.pubSubClient = new PubSub({ projectId: process.env.GCP_EVENTS_PROJECT })
   }
 
   async validate(attributes: PubSubAttributeDto): Promise<void> {
@@ -77,20 +80,21 @@ export class PubSubClient implements EventClientInterface {
     if (messages.length > this.BATCH_SIZE)
       throw new PublishPubSubError({ code: 400, message: 'Exceeded maximum events limit' })
 
-    const pubSubClient = new PubSub({ projectId: process.env.GCP_EVENTS_PROJECT })
     const defaultAttributes = { created_at: String(Date.now()) }
 
-    const batchPublisher = pubSubClient.topic('events', {
+    const batchPublisher = this.pubSubClient.topic('events', {
       batching: {
         maxMessages: this.BATCH_SIZE,
       },
     })
 
-    for (let index = 0; index < messages.length; index++) {
-      await batchPublisher.publishMessage({
-        attributes: { ...defaultAttributes, ...attributes },
-        data: Buffer.from(JSON.stringify(messages[index])),
-      })
-    }
+    await Promise.all(
+      messages.map((message) => {
+        batchPublisher.publishMessage({
+          attributes: { ...defaultAttributes, ...attributes },
+          data: Buffer.from(JSON.stringify(message)),
+        })
+      }),
+    )
   }
 }
