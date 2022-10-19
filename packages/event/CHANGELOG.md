@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.0](https://github.com/skore-io/nestjs-extensions/compare/v1.7.3...v1.8.0) (2022-10-19)
+
+
+### Features 🚀
+
+* add parallel execution ([#89](https://github.com/skore-io/nestjs-extensions/issues/89)) ([b0f9560](https://github.com/skore-io/nestjs-extensions/commit/b0f95607dbb9687df9acd3d03b1e0f5693c93add))
+
+
+
 ## [1.7.3](https://github.com/skore-io/nestjs-extensions/compare/v1.7.2...v1.7.3) (2022-10-18)
 
 
