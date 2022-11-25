@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.0](https://github.com/skore-io/nestjs-extensions/compare/v1.8.0...v1.9.0) (2022-11-25)
+
+
+### Features 🚀
+
+* **pagination:** add type pagination ([#90](https://github.com/skore-io/nestjs-extensions/issues/90)) ([421d603](https://github.com/skore-io/nestjs-extensions/commit/421d6037d11eb94457426baaa8fb564f0dd33bdf))
+
+
+
 ## [0.39.1](https://github.com/skore-io/nestjs-extensions/compare/v0.39.0...v0.39.1) (2022-07-28)
 
 
