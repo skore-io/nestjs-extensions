@@ -17,6 +17,7 @@ export enum PubSubTypeEventEnum {
 
 export enum PubSubActionEnum {
   send_push = 'send_push',
+  attended = 'attended',
   accessed = 'accessed',
   partial_consumed = 'partial_consumed',
   consumed = 'consumed',
