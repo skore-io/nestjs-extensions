@@ -1,5 +1,6 @@
 export enum PubSubTypeEventEnum {
   'io.skore.events.content' = 'io.skore.events.content',
+  'io.skore.events.content.live_course' = 'io.skore.events.content.live_course',
   'io.skore.events.session' = 'io.skore.events.session',
   'io.skore.events.enrollment' = 'io.skore.events.enrollment',
   'io.skore.events.user' = 'io.skore.events.user',
@@ -37,4 +38,6 @@ export enum PubSubActionEnum {
   base_notification_dispatch = 'base_notification_dispatch',
   created = 'created',
   reindex = 'reindex',
+  enrollment_file_uploaded = 'enrollment_file_uploaded',
+  enrollment_row_processed = 'enrollment_row_processed',
 }
