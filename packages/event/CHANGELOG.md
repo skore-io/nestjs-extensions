@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.3](https://github.com/skore-io/nestjs-extensions/compare/v1.9.2...v1.9.3) (2022-12-13)
+
+
+### Miscellaneous Chores 🧰
+
+* **event:** add news enums to feature live course ([#94](https://github.com/skore-io/nestjs-extensions/issues/94)) ([b18c198](https://github.com/skore-io/nestjs-extensions/commit/b18c198b078748bea252083544f5ef30761c9ce7))
+
+
+
 ## [1.9.2](https://github.com/skore-io/nestjs-extensions/compare/v1.9.1...v1.9.2) (2022-12-01)
 
 
