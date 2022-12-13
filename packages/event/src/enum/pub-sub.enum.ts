@@ -39,5 +39,5 @@ export enum PubSubActionEnum {
   created = 'created',
   reindex = 'reindex',
   enrollment_file_uploaded = 'enrollment_file_uploaded',
-  subscription_row_processed = 'subscription_row_processed',
+  enrollment_row_processed = 'enrollment_row_processed',
 }
