@@ -15,6 +15,7 @@ import { BullModuleOptions, BullModuleQueue, BULL_MODULE_OPTS } from './domain'
 export class BullModule implements NestModule {
   private static readonly options: NestBullOptions[] = []
   private static readonly logger: Logger = new Logger('BullModule')
+  private static bullBoardPath = '/admin/queues'
 
   static bullFactory(queue: BullModuleQueue): BullModuleAsyncOptions {
     return {
@@ -29,6 +30,8 @@ export class BullModule implements NestModule {
   }
 
   static forRoot(options: BullModuleOptions, ...queues: BullModuleQueue[]): DynamicModule {
+    if (options.bullBoardPath) BullModule.bullBoardPath = options.bullBoardPath
+
     return {
       module: BullModule,
       global: true,
@@ -60,19 +63,20 @@ export class BullModule implements NestModule {
     BullModule.logger.log(`${queues.length} queues registered`)
 
     const serverAdapter = new ExpressAdapter()
+
     createBullBoard({
       queues: queues.map((q) => new BullAdapter(q)),
       serverAdapter,
     })
 
-    serverAdapter.setBasePath('/admin/queues')
+    serverAdapter.setBasePath(BullModule.bullBoardPath)
 
     consumer
       .apply(
         basicAuth({ users: { bull: 'board' }, challenge: true, realm: 'bull' }),
         serverAdapter.getRouter(),
       )
-      .forRoutes('/admin/queues')
+      .forRoutes(BullModule.bullBoardPath)
 
     BullModule.logger.log("Route 'admin/queues' registered")
   }

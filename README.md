@@ -51,7 +51,7 @@ npm pack
 2. In the other project
 
 ```bash
-npm install @skore-io-{package}-{version}.tgz
+npm install path-to-generated-file/skore-io-{package}-{version}.tgz
 ```
 
 ### Husky Install <sub><sup>(required to commit)</sup></sub> \*

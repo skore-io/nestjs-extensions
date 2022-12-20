@@ -19,6 +19,7 @@ export class AdminOrCompanyStrategy extends PassportStrategy(Strategy, 'admin-or
     super({ passReqToCallback: true })
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async validate(request: any, token: string): Promise<UserOrCompany> {
     try {
       const decodedToken = jwt.decode(token, { complete: true })
