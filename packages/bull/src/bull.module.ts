@@ -78,6 +78,6 @@ export class BullModule implements NestModule {
       )
       .forRoutes(BullModule.bullBoardPath)
 
-    BullModule.logger.log("Route 'admin/queues' registered")
+    BullModule.logger.log(`Route '${BullModule.bullBoardPath}' registered`)
   }
 }

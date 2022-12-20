@@ -37,7 +37,7 @@ Start your app
   npm run start:dev
 ```
 
-Once started you can access bull-board on: [localhost](http://localhost:3000/admin/queues)
+Once started you can access bull-board on: [localhost](http://localhost:3000/admin/queues) or if you need to change this route pass a value for `bullBoardPath`.
 
 User: bull
 Password: board
