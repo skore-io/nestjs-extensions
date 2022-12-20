@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.0](https://github.com/skore-io/nestjs-extensions/compare/v1.9.4...v1.10.0) (2022-12-20)
+
+
+### Features 🚀
+
+* **bull:** add dynamic path to bull board ([#96](https://github.com/skore-io/nestjs-extensions/issues/96)) ([9ea2397](https://github.com/skore-io/nestjs-extensions/commit/9ea2397697fdd73b58df14d5fc29840f96b97b6d))
+
+
+
 ## [1.9.4](https://github.com/skore-io/nestjs-extensions/compare/v1.9.3...v1.9.4) (2022-12-20)
 
 
