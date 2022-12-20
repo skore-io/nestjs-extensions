@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.2](https://github.com/skore-io/nestjs-extensions/compare/v1.10.1...v1.10.2) (2022-12-20)
+
+
+### Bug Fixes 🐛
+
+* **bull:** add base path ([6be18d4](https://github.com/skore-io/nestjs-extensions/commit/6be18d4690a8282446fe7d77fdb1e7d66de76029))
+
+
+
 ## [1.10.1](https://github.com/skore-io/nestjs-extensions/compare/v1.10.0...v1.10.1) (2022-12-20)
 
 
