@@ -15,7 +15,7 @@ import { BullModuleOptions, BullModuleQueue, BULL_MODULE_OPTS } from './domain'
 export class BullModule implements NestModule {
   private static readonly options: NestBullOptions[] = []
   private static readonly logger: Logger = new Logger('BullModule')
-  private static bullBoardPath = '/admin/queues'
+  private static bullBoardBasePath = ''
 
   static bullFactory(queue: BullModuleQueue): BullModuleAsyncOptions {
     return {
@@ -30,7 +30,7 @@ export class BullModule implements NestModule {
   }
 
   static forRoot(options: BullModuleOptions, ...queues: BullModuleQueue[]): DynamicModule {
-    if (options.bullBoardPath) BullModule.bullBoardPath = options.bullBoardPath
+    if (options.bullBoardBasePath) BullModule.bullBoardBasePath = options.bullBoardBasePath
 
     return {
       module: BullModule,
@@ -63,21 +63,25 @@ export class BullModule implements NestModule {
     BullModule.logger.log(`${queues.length} queues registered`)
 
     const serverAdapter = new ExpressAdapter()
+    let bullBoardPath = '/admin/queues'
+
+    if (BullModule.bullBoardBasePath)
+      bullBoardPath = `/${BullModule.bullBoardBasePath}`.concat(bullBoardPath)
+
+    serverAdapter.setBasePath(bullBoardPath)
 
     createBullBoard({
       queues: queues.map((q) => new BullAdapter(q)),
       serverAdapter,
     })
 
-    serverAdapter.setBasePath(BullModule.bullBoardPath)
-
     consumer
       .apply(
         basicAuth({ users: { bull: 'board' }, challenge: true, realm: 'bull' }),
         serverAdapter.getRouter(),
       )
-      .forRoutes(BullModule.bullBoardPath)
+      .forRoutes('/admin/queues')
 
-    BullModule.logger.log(`Route '${BullModule.bullBoardPath}' registered`)
+    BullModule.logger.log(`Route '${bullBoardPath}' registered`)
   }
 }
