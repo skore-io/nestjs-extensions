@@ -13,4 +13,4 @@ export type BullModuleOptions = Omit<
     limiter?: RateLimiter
   }>,
   'provide'
->
+> & { bullBoardPath?: string }
