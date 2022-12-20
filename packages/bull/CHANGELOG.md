@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.1](https://github.com/skore-io/nestjs-extensions/compare/v1.10.0...v1.10.1) (2022-12-20)
+
+
+### Code Refactoring 🎨
+
+* **bull:** log registered bull-board route ([5ac5ff6](https://github.com/skore-io/nestjs-extensions/commit/5ac5ff6f758f17be653db2a3b68ad3d6a2d8b0ee))
+
+
+
 ## [1.10.0](https://github.com/skore-io/nestjs-extensions/compare/v1.9.4...v1.10.0) (2022-12-20)
 
 
