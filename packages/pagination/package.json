@@ -1,6 +1,6 @@
 {
   "name": "@skore-io/pagination",
-  "version": "1.9.1",
+  "version": "1.9.4",
   "description": "Provides pagination response",
   "repository": {
     "type": "git",
