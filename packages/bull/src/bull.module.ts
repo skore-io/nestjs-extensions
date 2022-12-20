@@ -64,12 +64,12 @@ export class BullModule implements NestModule {
 
     const serverAdapter = new ExpressAdapter()
 
+    serverAdapter.setBasePath(BullModule.bullBoardPath)
+
     createBullBoard({
       queues: queues.map((q) => new BullAdapter(q)),
       serverAdapter,
     })
-
-    serverAdapter.setBasePath(BullModule.bullBoardPath)
 
     consumer
       .apply(
