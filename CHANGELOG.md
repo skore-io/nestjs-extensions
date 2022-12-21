@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.4](https://github.com/skore-io/nestjs-extensions/compare/v1.10.3...v1.10.4) (2022-12-21)
+
+
+### Miscellaneous Chores 🧰
+
+* export onqueuecompleted event listener ([#98](https://github.com/skore-io/nestjs-extensions/issues/98)) ([4554f2e](https://github.com/skore-io/nestjs-extensions/commit/4554f2e6307b9590813993f63c1b9dc0a00a632b))
+
+
+
 ## [1.10.3](https://github.com/skore-io/nestjs-extensions/compare/v1.10.2...v1.10.3) (2022-12-20)
 
 
