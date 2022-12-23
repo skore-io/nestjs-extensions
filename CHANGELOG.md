@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.11.0](https://github.com/skore-io/nestjs-extensions/compare/v1.10.4...v1.11.0) (2022-12-23)
+
+
+### Features 🚀
+
+* add delete sessions enum ([#99](https://github.com/skore-io/nestjs-extensions/issues/99)) ([c99cb01](https://github.com/skore-io/nestjs-extensions/commit/c99cb01020d47c54b8fc73d1b977224e1779c489))
+
+
+
 ## [1.10.4](https://github.com/skore-io/nestjs-extensions/compare/v1.10.3...v1.10.4) (2022-12-21)
 
 
