@@ -14,6 +14,7 @@ export enum PubSubTypeEventEnum {
   'io.skore.commands.outbound' = 'io.skore.commands.outbound',
   'io.skore.commands.integration' = 'io.skore.commands.integration',
   'io.skore.commands.space' = 'io.skore.commands.space',
+  'io.skore.commands.user' = 'io.skore.commands.user',
 }
 
 export enum PubSubActionEnum {
@@ -40,4 +41,5 @@ export enum PubSubActionEnum {
   reindex = 'reindex',
   enrollment_file_uploaded = 'enrollment_file_uploaded',
   enrollment_row_processed = 'enrollment_row_processed',
+  delete_sessions = 'delete_sessions',
 }
