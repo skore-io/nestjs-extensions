@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.11.1](https://github.com/skore-io/nestjs-extensions/compare/v1.11.0...v1.11.1) (2023-01-31)
+
+
+### Miscellaneous Chores 🧰
+
+* **event:** update enums ([#100](https://github.com/skore-io/nestjs-extensions/issues/100)) ([ee099e6](https://github.com/skore-io/nestjs-extensions/commit/ee099e65f93d73239d828c04c9fcc9563b024e1a))
+
+
+
 ## [1.11.0](https://github.com/skore-io/nestjs-extensions/compare/v1.10.4...v1.11.0) (2022-12-23)
 
 
