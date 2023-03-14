@@ -10,6 +10,7 @@ export enum PubSubTypeEventEnum {
   'io.skore.events.messaging.conversation' = 'io.skore.events.messaging.conversation',
   'io.skore.events.messaging.intent' = 'io.skore.events.messaging.intent',
   'io.skore.events.notification' = 'io.skore.events.notification',
+  'io.skore.events.user.team' = 'io.skore.events.user.team',
   'io.skore.commands.notification' = 'io.skore.commands.notification',
   'io.skore.commands.outbound' = 'io.skore.commands.outbound',
   'io.skore.commands.integration' = 'io.skore.commands.integration',
@@ -44,4 +45,6 @@ export enum PubSubActionEnum {
   attendance_file_uploaded = 'attendance_file_uploaded',
   attendance_row_processed = 'attendance_row_processed',
   delete_sessions = 'delete_sessions',
+  added = 'added',
+  removed = 'removed',
 }
