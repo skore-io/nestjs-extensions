@@ -13,10 +13,9 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
-
-      - name: Fetch git history
-        run: git fetch --prune --unshallow
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Git Identity
         run: |
@@ -27,17 +26,17 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Read .nvmrc
-        run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
+        run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_OUTPUT
         id: nvm
 
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
           registry-url: 'https://npm.pkg.github.com'
 
       - name: NPM cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         env:
           cache-name: cache-node-modules
         with:
@@ -55,7 +54,7 @@ jobs:
         run: docker-compose up -d
 
       - name: Tests
-        run: npm test
+        run: npm run test
 
       - name: Build project
         run: npm run build
