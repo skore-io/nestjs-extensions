@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.11.2](https://github.com/skore-io/nestjs-extensions/compare/v1.11.1...v1.11.2) (2023-03-17)
+
+
+### Miscellaneous Chores 🧰
+
+* **event:** update enums ([#102](https://github.com/skore-io/nestjs-extensions/issues/102)) ([ffe66de](https://github.com/skore-io/nestjs-extensions/commit/ffe66dee97ed34c315194820476f7e6f46844f5b))
+* set lerna version ([#103](https://github.com/skore-io/nestjs-extensions/issues/103)) ([50a9030](https://github.com/skore-io/nestjs-extensions/commit/50a9030255f6b57e693f38eb8210ec590a252c47))
+
+
+### Bug Fixes 🐛
+
+* change lerna version ([#104](https://github.com/skore-io/nestjs-extensions/issues/104)) ([9c81852](https://github.com/skore-io/nestjs-extensions/commit/9c8185211aa7ce757426f93c8977cf671d649dc7))
+
+
+### Continuous Integration 🤖
+
+* bump setup-node version ([221b604](https://github.com/skore-io/nestjs-extensions/commit/221b6043b9ec5cd34509a8aecdcaebc8262999d0))
+* fix lerna version ([4804e90](https://github.com/skore-io/nestjs-extensions/commit/4804e90f68e0ac12f44dee3f29e78d283b8f020b))
+* get correct lerna version ([60a9d53](https://github.com/skore-io/nestjs-extensions/commit/60a9d536d5469924efd371c24e04dbb5cf078826))
+
+
+
 ## [1.11.1](https://github.com/skore-io/nestjs-extensions/compare/v1.11.0...v1.11.1) (2023-01-31)
 
 
