@@ -4,6 +4,7 @@
     "build": "lerna run build",
     "lint": "eslint --ext .js,.ts,.json ./",
     "prepare": "husky install",
+    "publish": "git update-index --assume-unchanged package-lock.json && lerna publish --yes",
     "setup": "npm i && lerna bootstrap --hoist",
     "setup:ci": "npm ci && lerna bootstrap --hoist",
     "test": "lerna run test --parallel"
