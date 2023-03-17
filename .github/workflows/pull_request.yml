@@ -29,20 +29,16 @@ jobs:
         with:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
 
-      - name: Cache node modules
+      - name: Application cache
         uses: actions/cache@v3
-        env:
-          cache-name: cache-node-modules
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+          path: |
+            ./node_modules
+            ./dist
+          key: ${{ runner.os }}-build-${{ github.sha }}
 
       - name: Dependencies
-        run: npm run setup
+        run: npm run setup:ci
 
       - name: Run lint
         run: npm run lint
