@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.11.3](https://github.com/skore-io/nestjs-extensions/compare/v1.11.2...v1.11.3) (2023-04-28)
+
+
+### Miscellaneous Chores 🧰
+
+* **bull:** add tls parameter ([57a7cbd](https://github.com/skore-io/nestjs-extensions/commit/57a7cbd4ca0e46b20555d6ef33cee4a41576be31))
+
+
+
 ## [1.10.4](https://github.com/skore-io/nestjs-extensions/compare/v1.10.3...v1.10.4) (2022-12-21)
 
 
