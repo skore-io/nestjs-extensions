@@ -7,6 +7,7 @@ export type BullModuleOptions = Omit<
       port: number
       host: string
       password: string
+      tls?: boolean
     }
     prefix?: string
     settings?: AdvancedSettings
