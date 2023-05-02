@@ -48,4 +48,9 @@ export enum PubSubActionEnum {
   added = 'added',
   removed = 'removed',
   row_processed = 'row_processed',
+  batch_processed = 'batch_processed',
+  indexed = 'indexed',
+  updated = 'updated',
+  invite = 'invite',
+  send_max_seats_email = 'send_max_seats_email',
 }
