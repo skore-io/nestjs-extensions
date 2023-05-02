@@ -47,5 +47,5 @@ export enum PubSubActionEnum {
   delete_sessions = 'delete_sessions',
   added = 'added',
   removed = 'removed',
-  row_processed = 'row_processed'
+  row_processed = 'row_processed',
 }
