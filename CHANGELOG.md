@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.0](https://github.com/skore-io/nestjs-extensions/compare/v1.11.3...v1.12.0) (2023-05-02)
+
+
+### Features 🚀
+
+* add action enum ([#105](https://github.com/skore-io/nestjs-extensions/issues/105)) ([429cb0a](https://github.com/skore-io/nestjs-extensions/commit/429cb0a937911fe286d1cc00f9979097deed8555))
+
+
+
 ## [1.11.3](https://github.com/skore-io/nestjs-extensions/compare/v1.11.2...v1.11.3) (2023-04-28)
 
 
