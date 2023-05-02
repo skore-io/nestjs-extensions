@@ -54,13 +54,13 @@ export class PubSubClient implements EventClientInterface {
     return objectError
   }
 
-  async publish(attributes: PubSubAttributeDto, body: object): Promise<void> {
+  async publish(attributes: PubSubAttributeDto, body: object, url: string): Promise<void> {
     const pubSubClient = await this.googleAuth.getClient()
     const defaultAttributes = { created_at: String(Date.now()) }
 
     try {
       await pubSubClient.request({
-        url: process.env.GCP_EVENTS_PROJECT_URL,
+        url,
         method: 'POST',
         data: {
           messages: [
