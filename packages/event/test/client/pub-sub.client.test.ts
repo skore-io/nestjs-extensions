@@ -26,13 +26,51 @@ export class GetClientTest {
 
     const bodyFake = {}
 
-    await pubSubClient.publish(pubSubAttributeFake, bodyFake)
+    await pubSubClient.publish(pubSubAttributeFake, bodyFake, null)
 
     const defaultAttributes = { created_at: String(Date.now()) }
 
     expect(getClient).toHaveBeenCalledTimes(1)
     expect(request).toHaveBeenCalledWith({
       url: `https://bilu.com.br/yolo`,
+      method: 'POST',
+      data: {
+        messages: [
+          {
+            data: Buffer.from(JSON.stringify(bodyFake)).toString('base64'),
+            attributes: { ...defaultAttributes, ...pubSubAttributeFake },
+          },
+        ],
+      },
+    })
+  }
+
+  @test()
+  async 'Should publish event at Pub Sub with different environment variable'() {
+    process.env.GCP_EVENTS_PROJECT_URL = 'https://bilu.com.br/yolo'
+
+    const request = jest.fn().mockResolvedValue(undefined)
+    const getClient = jest.fn().mockResolvedValue({ request })
+    const dataFake = Date.now()
+    jest.spyOn(Date, 'now').mockImplementation(() => dataFake)
+
+    const pubSubClient = new PubSubClient({ getClient })
+
+    const pubSubAttributeFake: PubSubAttributeDto = {
+      action: PubSubActionEnum.sent,
+      type: PubSubTypeEventEnum['io.skore.events.messaging.conversation'],
+      source: 'workspace:???.ts',
+    }
+
+    const bodyFake = {}
+
+    await pubSubClient.publish(pubSubAttributeFake, bodyFake, 'https://test.com')
+
+    const defaultAttributes = { created_at: String(Date.now()) }
+
+    expect(getClient).toHaveBeenCalledTimes(1)
+    expect(request).toHaveBeenCalledWith({
+      url: 'https://test.com',
       method: 'POST',
       data: {
         messages: [
@@ -63,7 +101,7 @@ export class GetClientTest {
 
     let err = null
     try {
-      await pubSubClient.publish(attributePubSubDtoFake, bodyFake)
+      await pubSubClient.publish(attributePubSubDtoFake, bodyFake, null)
     } catch (error) {
       err = error
     }

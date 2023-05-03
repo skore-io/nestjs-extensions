@@ -27,7 +27,7 @@ export class EventServiceTest {
       user_id: '126340',
     }
 
-    await eventService.send(dtoFake, bodyFake)
+    await eventService.send(dtoFake, bodyFake, null)
 
     expect(clientFake).toBeCalledWith(dtoFake, bodyFake)
   }
