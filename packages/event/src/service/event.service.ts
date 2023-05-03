@@ -21,10 +21,12 @@ export class EventService {
     return clients[name]
   }
 
-  async send(attributes: EventAttributeDto, body: object): Promise<void> {
+  async send(attributes: EventAttributeDto, body: object, url?: string): Promise<void> {
     await this.client.validate(attributes)
 
-    await this.client.publish(attributes, body)
+    const eventUrl = url || process.env.GCP_EVENTS_PROJECT_URL
+
+    await this.client.publish(attributes, body, eventUrl)
   }
 
   async sendInBatch(attributes: EventAttributeDto, messages: object[]): Promise<void> {
