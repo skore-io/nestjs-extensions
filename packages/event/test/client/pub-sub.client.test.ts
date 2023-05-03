@@ -26,7 +26,7 @@ export class GetClientTest {
 
     const bodyFake = {}
 
-    await pubSubClient.publish(pubSubAttributeFake, bodyFake, null)
+    await pubSubClient.publish(pubSubAttributeFake, bodyFake, 'https://bilu.com.br/yolo')
 
     const defaultAttributes = { created_at: String(Date.now()) }
 
