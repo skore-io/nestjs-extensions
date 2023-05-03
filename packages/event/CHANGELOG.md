@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.0](https://github.com/skore-io/nestjs-extensions/compare/v1.13.0...v1.14.0) (2023-05-03)
+
+
+### Features 🚀
+
+* use event url param ([#107](https://github.com/skore-io/nestjs-extensions/issues/107)) ([38c108c](https://github.com/skore-io/nestjs-extensions/commit/38c108c0bc7c2ea43d44692ca9ede50d830bd935))
+
+
+
 ## [1.13.0](https://github.com/skore-io/nestjs-extensions/compare/v1.12.0...v1.13.0) (2023-05-02)
 
 
