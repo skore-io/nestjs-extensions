@@ -1,6 +1,6 @@
 import { KeycloakTokenTypeEnum } from '../enum'
 
-export type TokenKeyCloakType = {
+export type TokenKeycloakType = {
   access_token: string
   expires_in: number
   refresh_expires_in: number

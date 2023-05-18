@@ -5,7 +5,7 @@ import { suite, test } from '@testdeck/jest'
 import { KeycloakClient } from '../../src/client'
 import { of } from 'rxjs'
 import { KeycloakTokenTypeEnum } from '../../src/enum'
-import { TokenKeyCloakType, ValidateTokeType } from '../../src/type'
+import { TokenKeycloakType, ValidateTokeType } from '../../src/type'
 import { BadRequestException, UnauthorizedException } from '@nestjs/common'
 import qs from 'qs'
 
@@ -13,7 +13,7 @@ import qs from 'qs'
 export class KeyCloakClientTest {
   private authBaseUrlFake: string
   private configService: Partial<ConfigService>
-  private responseHttpService: TokenKeyCloakType | ValidateTokeType
+  private responseHttpService: TokenKeycloakType | ValidateTokeType
   private httpService: Partial<HttpService>
   private keycloakCredential: string
   private readonly clientIdFake: string = 'client'
@@ -24,8 +24,6 @@ export class KeyCloakClientTest {
     this.keycloakCredential = Buffer.from(`${this.clientIdFake}:${this.clientSecretFake}`).toString(
       'base64',
     )
-
-    console.log(this.keycloakCredential)
 
     this.configService = {
       get: jest
@@ -55,7 +53,6 @@ export class KeyCloakClientTest {
           this.responseHttpService = {
             active: true,
           }
-
           return of({
             data: this.responseHttpService,
           })
