@@ -23,11 +23,11 @@
   },
   "dependencies": {
     "@nestjs/passport": "^9.0.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "passport": "^0.6.0",
     "passport-http-bearer": "^1.0.1"
   },
   "devDependencies": {
-    "@types/jsonwebtoken": "^8.5.7"
+    "@types/jsonwebtoken": "^9.0.0"
   }
 }

@@ -1,7 +1,7 @@
 import { INestApplication, Type } from '@nestjs/common'
 import { Test } from '@nestjs/testing'
 import request, { SuperTest } from 'supertest'
-import { WorkspaceClient } from '../src/client'
+import { KeycloakClient, WorkspaceClient } from '../src/client'
 import { UserRole } from '../src/enum'
 import { AuthModule } from '../src/auth.module'
 
@@ -24,6 +24,12 @@ export abstract class BaseTest {
         }),
         getCompany: () => ({
           id: '114',
+        }),
+      })
+      .overrideProvider(KeycloakClient)
+      .useValue({
+        validateToken: () => ({
+          active: true,
         }),
       })
       .compile()
