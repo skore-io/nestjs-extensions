@@ -4,6 +4,7 @@ import { MemoryCache } from 'ts-method-cache'
 import { RequestMethodEnum } from '../enum'
 import { lastValueFrom } from 'rxjs'
 import { KeycloakClient } from '../client'
+import { AxiosResponse } from 'axios'
 
 @Injectable()
 export class AuthedRequest {
@@ -14,7 +15,7 @@ export class AuthedRequest {
     private readonly httpService: HttpService,
   ) {}
 
-  async rest(url: string, method: RequestMethodEnum, data?: object): Promise<any> {
+  async rest(url: string, method: RequestMethodEnum, data?: object): Promise<AxiosResponse> {
     const token = await this.fetchToken()
 
     const request = this.httpService.request({
@@ -30,7 +31,7 @@ export class AuthedRequest {
     return lastValueFrom(request)
   }
 
-  async graphql(url: string, query: string, variables: unknown = {}): Promise<any> {
+  async graphql(url: string, query: string, variables: unknown = {}): Promise<AxiosResponse> {
     const token = await this.fetchToken()
 
     const request = this.httpService.post(

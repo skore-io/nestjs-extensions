@@ -12,6 +12,7 @@ export class KeyCloakClientTest {
   private keycloakClient: Partial<KeycloakClient>
   private httpService: Partial<HttpService>
   private responseClientKeycloak: TokenKeycloakType
+  private responseFake
   private paramsFake: {
     url: string
     method: RequestMethodEnum
@@ -21,6 +22,10 @@ export class KeyCloakClientTest {
   }
 
   before() {
+    this.responseFake = {
+      data: { test: 'yolo' },
+    }
+
     this.paramsFake = {
       data: { bilu: 'test' },
       method: RequestMethodEnum.DELETE,
@@ -44,16 +49,8 @@ export class KeyCloakClientTest {
     }
 
     this.httpService = {
-      request: jest.fn().mockImplementationOnce(() =>
-        of({
-          data: { test: 'yolo' },
-        }),
-      ),
-      post: jest.fn().mockImplementationOnce(() =>
-        of({
-          data: { test: 'yolo' },
-        }),
-      ),
+      request: jest.fn().mockImplementationOnce(() => of(this.responseFake)),
+      post: jest.fn().mockImplementationOnce(() => of(this.responseFake)),
     }
   }
 
@@ -78,6 +75,8 @@ export class KeyCloakClientTest {
       },
       data,
     })
+
+    expect(response).toEqual(this.responseFake)
   }
 
   @test
@@ -102,5 +101,7 @@ export class KeyCloakClientTest {
         },
       },
     )
+
+    expect(response).toEqual(this.responseFake)
   }
 }
