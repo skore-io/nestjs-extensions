@@ -68,7 +68,7 @@ export class KeyCloakClientTest {
 
     expect(this.httpService.request).toBeCalledWith({
       url,
-      method,
+      method: method.toLowerCase(),
       headers: {
         Authorization: `Bearer ${this.responseClientKeycloak.access_token}`,
         'Content-Type': 'application/json',

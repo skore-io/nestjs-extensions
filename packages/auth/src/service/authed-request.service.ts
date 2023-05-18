@@ -20,7 +20,7 @@ export class AuthedRequest {
 
     const request = this.httpService.request({
       url,
-      method,
+      method: method.toLowerCase(),
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',

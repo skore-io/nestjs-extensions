@@ -1,7 +1,7 @@
 export enum RequestMethodEnum {
-  DELETE = 'delete',
-  GET = 'get',
-  PATCH = 'patch',
-  POST = 'post',
-  PUT = 'put',
+  DELETE = 'DELETE',
+  GET = 'GET',
+  PATCH = 'PATCH',
+  POST = 'POST',
+  PUT = 'PUT',
 }
