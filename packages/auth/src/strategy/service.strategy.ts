@@ -13,7 +13,9 @@ export class ServiceStrategy extends PassportStrategy(Strategy, 'service') {
     const validateToken = await this.keycloakClient.validateToken(token)
 
     if (!validateToken.active) {
-      throw new UnauthorizedException('Invalid token')
+      throw new UnauthorizedException(null, {
+        description: 'Invalid token',
+      })
     }
 
     return true
