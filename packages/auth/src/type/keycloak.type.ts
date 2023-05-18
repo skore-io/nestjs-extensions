@@ -7,7 +7,7 @@ export type GetTokenType = {
   scope: string
 }
 
-export type ValidateTokeType = {
+export type ValidateTokenType = {
   exp?: number
   iat?: number
   jti?: string

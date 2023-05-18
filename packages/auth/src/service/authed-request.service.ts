@@ -50,6 +50,8 @@ export class AuthedRequest {
 
   @MemoryCache({ ttl: AuthedRequest.TWO_HUNDRED_NINETY_FIVE_SECONDS })
   async fetchToken(): Promise<string> {
-    return (await this.keycloakClient.getToken()).access_token
+    const { access_token } = await this.keycloakClient.getToken()
+
+    return access_token
   }
 }

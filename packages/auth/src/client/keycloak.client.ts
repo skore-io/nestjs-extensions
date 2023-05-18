@@ -3,7 +3,7 @@ import { Injectable, Logger } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { lastValueFrom } from 'rxjs'
 import qs from 'qs'
-import { GetTokenType, ValidateTokeType } from '../type'
+import { GetTokenType, ValidateTokenType } from '../type'
 
 @Injectable()
 export class KeycloakClient {
@@ -43,7 +43,7 @@ export class KeycloakClient {
     }
   }
 
-  async validateToken(token: string): Promise<ValidateTokeType> {
+  async validateToken(token: string): Promise<ValidateTokenType> {
     try {
       const { clientId, clientSecret } = this.decodeTokenCredential()
 

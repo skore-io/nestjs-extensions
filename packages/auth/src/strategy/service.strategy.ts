@@ -10,9 +10,9 @@ export class ServiceStrategy extends PassportStrategy(Strategy, 'service') {
   }
 
   async validate(_: unknown, token: string): Promise<boolean> {
-    const validateToken = await this.keycloakClient.validateToken(token)
+    const { active } = await this.keycloakClient.validateToken(token)
 
-    if (!validateToken.active) {
+    if (!active) {
       throw new UnauthorizedException(null, {
         description: 'Invalid token',
       })
