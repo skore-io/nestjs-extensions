@@ -4,8 +4,7 @@ import { ConfigService } from '@nestjs/config'
 import { suite, test } from '@testdeck/jest'
 import { KeycloakClient } from '../../src/client'
 import { of } from 'rxjs'
-import { KeycloakTokenTypeEnum } from '../../src/enum'
-import { TokenKeycloakType, ValidateTokeType } from '../../src/type'
+import { GetTokenType, ValidateTokeType } from '../../src/type'
 import { BadRequestException, UnauthorizedException } from '@nestjs/common'
 import qs from 'qs'
 
@@ -13,7 +12,7 @@ import qs from 'qs'
 export class KeyCloakClientTest {
   private authBaseUrlFake: string
   private configService: Partial<ConfigService>
-  private responseHttpService: TokenKeycloakType | ValidateTokeType
+  private responseHttpService: GetTokenType | ValidateTokeType
   private httpService: Partial<HttpService>
   private keycloakCredential: string
   private readonly clientIdFake: string = 'client'
@@ -40,7 +39,7 @@ export class KeyCloakClientTest {
             access_token: 'string',
             expires_in: 300,
             refresh_expires_in: 300,
-            token_type: KeycloakTokenTypeEnum.BEARER,
+            token_type: 'Bearer',
             'not-before-policy': 300,
             scope: 'string',
           }

@@ -1,10 +1,8 @@
-import { KeycloakTokenTypeEnum } from '../enum'
-
-export type TokenKeycloakType = {
+export type GetTokenType = {
   access_token: string
   expires_in: number
   refresh_expires_in: number
-  token_type: KeycloakTokenTypeEnum
+  token_type: string
   'not-before-policy': number
   scope: string
 }
@@ -15,7 +13,7 @@ export type ValidateTokeType = {
   jti?: string
   iss?: string
   sub?: string
-  typ?: KeycloakTokenTypeEnum
+  typ?: string
   azp?: string
   preferred_username?: string
   email_verified?: boolean

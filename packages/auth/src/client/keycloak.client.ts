@@ -3,7 +3,7 @@ import { Injectable, Logger } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { lastValueFrom } from 'rxjs'
 import qs from 'qs'
-import { TokenKeycloakType, ValidateTokeType } from '../type'
+import { GetTokenType, ValidateTokeType } from '../type'
 
 @Injectable()
 export class KeycloakClient {
@@ -20,7 +20,7 @@ export class KeycloakClient {
     this.credential = this.configService.get('KEYCLOAK_CREDENTIAL')
   }
 
-  async getToken(): Promise<TokenKeycloakType> {
+  async getToken(): Promise<GetTokenType> {
     try {
       const request = this.httpService.post(
         `${this.authBaseUrl}/auth/realms/learningrocks/protocol/openid-connect/token`,
