@@ -23,7 +23,7 @@ export class KeycloakClient {
   async getToken(): Promise<GetTokenType> {
     try {
       const request = this.httpService.post(
-        `${this.authBaseUrl}/auth/realms/learningrocks/protocol/openid-connect/token`,
+        `${this.authBaseUrl}/token`,
         qs.stringify({ grant_type: 'client_credentials' }),
         {
           headers: {
@@ -48,7 +48,7 @@ export class KeycloakClient {
       const { clientId, clientSecret } = this.decodeTokenCredential()
 
       const request = this.httpService.post(
-        `${this.authBaseUrl}/auth/realms/learningrocks/protocol/openid-connect/token/introspect`,
+        `${this.authBaseUrl}/token/introspect`,
         qs.stringify({
           token,
           client_id: clientId,

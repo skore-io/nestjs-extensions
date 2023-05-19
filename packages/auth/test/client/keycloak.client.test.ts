@@ -70,7 +70,7 @@ export class KeyCloakClientTest {
     const response = await client.getToken()
 
     expect(this.httpService.post).toBeCalledWith(
-      `${this.authBaseUrlFake}/auth/realms/learningrocks/protocol/openid-connect/token`,
+      `${this.authBaseUrlFake}/token`,
       qs.stringify({ grant_type: 'client_credentials' }),
       {
         headers: {
@@ -120,7 +120,7 @@ export class KeyCloakClientTest {
     const response = await client.validateToken(fakeToken)
 
     expect(this.httpService.post).toBeCalledWith(
-      `${this.authBaseUrlFake}/auth/realms/learningrocks/protocol/openid-connect/token/introspect`,
+      `${this.authBaseUrlFake}/token/introspect`,
       qs.stringify({
         token: fakeToken,
         client_id: this.clientIdFake,
