@@ -16,7 +16,7 @@ export class KeycloakClient {
     private readonly configService: ConfigService,
     private readonly httpService: HttpService,
   ) {
-    this.authBaseUrl = this.configService.get('AUTH_BASE_URL')
+    this.authBaseUrl = this.configService.get('KEYCLOAK_BASE_URL')
     this.credential = this.configService.get('KEYCLOAK_CREDENTIAL')
   }
 
