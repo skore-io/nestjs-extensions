@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.0](https://github.com/skore-io/nestjs-extensions/compare/v1.14.0...v1.15.0) (2023-05-23)
+
+
+### Features 🚀
+
+* new authed request for keycloak ([#108](https://github.com/skore-io/nestjs-extensions/issues/108)) ([6f0f055](https://github.com/skore-io/nestjs-extensions/commit/6f0f055cb108324c00fccc5c2f1fa263dbb44282))
+
+
+### Bug Fixes 🐛
+
+* **auth:**  fix exception ([4764ae3](https://github.com/skore-io/nestjs-extensions/commit/4764ae36d69f69b4af9aa77dbdb163733a076a59))
+
+
+
 ## [1.14.0](https://github.com/skore-io/nestjs-extensions/compare/v1.13.0...v1.14.0) (2023-05-03)
 
 
