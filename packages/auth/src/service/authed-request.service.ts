@@ -1,6 +1,5 @@
 import { HttpService } from '@nestjs/axios'
 import { Injectable } from '@nestjs/common'
-import { MemoryCache } from 'ts-method-cache'
 import { RequestMethodEnum } from '../enum'
 import { lastValueFrom } from 'rxjs'
 import { KeycloakClient } from '../client'
@@ -8,8 +7,6 @@ import { AxiosResponse } from 'axios'
 
 @Injectable()
 export class AuthedRequest {
-  private static readonly TWO_HUNDRED_NINETY_FIVE_SECONDS = 295
-
   constructor(
     private readonly keycloakClient: KeycloakClient,
     private readonly httpService: HttpService,
@@ -48,7 +45,6 @@ export class AuthedRequest {
     return lastValueFrom(request)
   }
 
-  @MemoryCache({ ttl: AuthedRequest.TWO_HUNDRED_NINETY_FIVE_SECONDS })
   async fetchToken(): Promise<string> {
     const { access_token: accessToken } = await this.keycloakClient.getToken()
 
