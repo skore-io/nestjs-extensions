@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.1](https://github.com/skore-io/nestjs-extensions/compare/v1.15.0...v1.15.1) (2023-05-29)
+
+
+### Bug Fixes 🐛
+
+* **auth:** remove cache ([fa6a441](https://github.com/skore-io/nestjs-extensions/commit/fa6a441e28625785268a7154c40032be877fe6de))
+
+
+
 ## [1.15.0](https://github.com/skore-io/nestjs-extensions/compare/v1.14.0...v1.15.0) (2023-05-23)
 
 
