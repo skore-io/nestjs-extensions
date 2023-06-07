@@ -1,5 +1,5 @@
 import { FactoryProvider } from '@nestjs/common'
-import { AdvancedSettings, RateLimiter } from 'bull'
+import { AdvancedSettings, JobOptions, RateLimiter } from 'bull'
 
 export type BullModuleOptions = Omit<
   FactoryProvider<{
@@ -12,6 +12,7 @@ export type BullModuleOptions = Omit<
     prefix?: string
     settings?: AdvancedSettings
     limiter?: RateLimiter
+    defaultJobOptions?: JobOptions
   }>,
   'provide'
 > & { bullBoardBasePath?: string }
