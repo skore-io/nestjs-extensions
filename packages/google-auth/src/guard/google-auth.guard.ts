@@ -1,15 +1,15 @@
 import { ExecutionContext, Injectable } from '@nestjs/common'
-import { Request } from 'express'
 import { AuthGuard } from '@nestjs/passport'
+import { Observable } from 'rxjs'
 
 @Injectable()
 export class GoogleAuthGuard extends AuthGuard('GoogleAuth') {
-  getRequest(context: ExecutionContext): Request {
+  canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean> {
     const graphqlReq = context.getArgByIndex(2).req
     const request = graphqlReq || context.switchToHttp().getRequest()
 
     request.context = context
 
-    return request
+    return super.canActivate(context)
   }
 }

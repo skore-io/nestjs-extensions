@@ -44,7 +44,7 @@ jobs:
           key: ${{ runner.os }}-build-${{ github.sha }}
 
       - name: Dependencies
-        run: npm run setup:ci
+        run: npm i
 
       - name: Test environment
         run: docker-compose up -d

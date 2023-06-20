@@ -1,5 +1,5 @@
 <p align="center">
-A collection of NestJS extensions used by Skore.
+A collection of NestJS extensions used by Learning.rocks.
 </p>
 
 | Name                                     | Description                                                             |
@@ -26,7 +26,7 @@ This project uses [lerna](https://www.npmjs.com/package/lerna) package to handle
 2.  Install dependencies
 
 ```bash
-  $ npm run setup
+  $ npm i
 ```
 
 ## Test
@@ -54,7 +54,7 @@ npm pack
 npm install path-to-generated-file/skore-io-{package}-{version}.tgz
 ```
 
-### Husky Install <sub><sup>(required to commit)</sup></sub> \*
+### Husky Install <sub><sup>(required to commit)</sup></sub>
 
 We use [husky](https://www.npmjs.com/package/husky) to handle some hooks like `pre-commit` and `commit-msg`. To install it, you need to run `npm run prepare` or `npx husky install`.
 

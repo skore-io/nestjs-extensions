@@ -1,9 +1,9 @@
-import { Controller, Get } from '@nestjs/common'
+import { default as request } from 'supertest'
+import { Controller, Get, HttpStatus } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { Test } from '@nestjs/testing'
 import { suite, test } from '@testdeck/jest'
 import { LoginTicket, OAuth2Client } from 'google-auth-library'
-import { default as request } from 'supertest'
 import { GoogleAuth, GoogleAuthModule } from '../../src'
 import { GoogleAuthStrategy } from '../../src/strategy'
 
@@ -16,7 +16,7 @@ class Ctrl1 {
   }
 }
 
-@suite('[Controller] Controller')
+@suite
 export class ControllerTest {
   @test
   async 'Given request with valid token then return 200'() {
@@ -44,22 +44,36 @@ export class ControllerTest {
       .get('/ctrl1')
       .set('Authorization', 'Bearer valid')
 
-    expect(response.status).toBe(200)
+    expect(response.status).toBe(HttpStatus.OK)
   }
 
   @test
   async 'Given request with invalid token then return 401'() {
-    const module = await this.moduleRef().compile()
+    const module = await this.moduleRef()
+      .overrideProvider(GoogleAuthStrategy)
+      .useValue(
+        new GoogleAuthStrategy(
+          {
+            verifyIdToken: () =>
+              Promise.resolve({
+                getPayload: () => ({
+                  email_verified: true,
+                  email: 'some-project@appspot.gserviceaccount.com',
+                }),
+              } as LoginTicket),
+          } as unknown as OAuth2Client,
+          { get: () => 'unmatch-email@appspot.gserviceaccount.com' } as unknown as ConfigService,
+        ),
+      )
+      .compile()
 
     const app = await module.createNestApplication().init()
-
-    jest.spyOn(app.get(GoogleAuthStrategy), 'validate').mockResolvedValue(false)
 
     const response = await request(app.getHttpServer())
       .get('/ctrl1')
       .set('Authorization', 'Bearer invalid')
 
-    expect(response.status).toBe(401)
+    expect(response.status).toBe(HttpStatus.UNAUTHORIZED)
   }
 
   @test
@@ -70,7 +84,7 @@ export class ControllerTest {
 
     const response = await request(app.getHttpServer()).get('/ctrl1')
 
-    expect(response.status).toBe(401)
+    expect(response.status).toBe(HttpStatus.UNAUTHORIZED)
   }
 
   private moduleRef() {

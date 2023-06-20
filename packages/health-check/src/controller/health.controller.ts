@@ -5,14 +5,13 @@ import {
   HealthCheckService,
   HealthIndicatorResult,
 } from '@nestjs/terminus'
-import { DependenciesIndicator, MongoIndicator, RedisIndicator } from '../indicator'
+import { DependenciesIndicator, MongoIndicator } from '../indicator'
 
 @Controller('health')
 export class HealthController {
   constructor(
     private readonly health: HealthCheckService,
     private readonly mongoIndicator: MongoIndicator,
-    private readonly redisIndicator: RedisIndicator,
     private readonly dependenciesIndicator: DependenciesIndicator,
   ) {}
 
@@ -24,7 +23,6 @@ export class HealthController {
 
     return this.health.check([
       (): Promise<HealthIndicatorResult> => this.mongoIndicator.statusCheck(),
-      (): Promise<HealthIndicatorResult> => this.redisIndicator.statusCheck(),
       (): Promise<HealthIndicatorResult> => this.dependenciesIndicator.statusCheck(),
     ])
   }

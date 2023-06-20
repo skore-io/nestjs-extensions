@@ -4,7 +4,7 @@ import { WorkspaceClient } from '../../src/client'
 import { CompanyStrategy } from '../../src/strategy'
 import { BaseTest } from '../base-test'
 
-@suite('[Auth] Company Strategy')
+@suite
 export class CompanyStrategyTest extends BaseTest {
   @test
   async 'Given a valid token, then return company'() {

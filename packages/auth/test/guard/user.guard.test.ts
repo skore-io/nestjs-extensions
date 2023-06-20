@@ -3,7 +3,7 @@ import { suite, params } from '@testdeck/jest'
 import { UserGuard } from '../../src/guard'
 import { BaseTest } from '../base-test'
 
-@suite('[Auth] User Guard')
+@suite
 export class UserGuardTest extends BaseTest {
   @params(
     {

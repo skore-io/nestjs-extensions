@@ -4,7 +4,7 @@ import { BaseTest } from '../base-test'
 import { GqlModule } from './gql.module'
 import { RestModule } from './rest.module'
 
-@suite('HTTP')
+@suite
 export class HttpTest extends BaseTest {
   @test
   async 'Given public route then return text'() {

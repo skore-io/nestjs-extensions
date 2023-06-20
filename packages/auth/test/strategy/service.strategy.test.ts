@@ -4,7 +4,7 @@ import { ServiceStrategy } from '../../src/strategy'
 import { UnauthorizedException } from '@nestjs/common'
 import { KeycloakClient } from '../../src/client'
 
-@suite('[Auth] Service Strategy')
+@suite
 export class ServiceStrategyTest {
   private keycloakClient: Partial<KeycloakClient>
 

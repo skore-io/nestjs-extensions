@@ -1,4 +1,4 @@
-import { ExecutionContext, ForbiddenException } from '@nestjs/common'
+import { ExecutionContext, UnauthorizedException } from '@nestjs/common'
 import { Request } from 'express'
 import { authorizationHeader } from '.'
 
@@ -13,7 +13,7 @@ export const processRequest = (context: ExecutionContext): Request => {
   const request = getRequestFromContext(context)
   const token = authorizationHeader(request.headers)
 
-  if (!token) throw new ForbiddenException()
+  if (!token) throw new UnauthorizedException()
 
   request.context = context
 
