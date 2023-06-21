@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.1](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/auth@1.16.0...@skore-io/auth@1.16.1) (2023-06-21)
+
+### Bug Fixes 🐛
+
+- **auth:** use getContext method instead of canActivate ([#111](https://github.com/skore-io/nestjs-extensions/issues/111)) ([aefd364](https://github.com/skore-io/nestjs-extensions/commit/aefd3647dbd21ece5ecec3e30f524c8375213b73))
+
 ## 1.16.0 (2023-06-21)
 
 ### Miscellaneous Chores 🧰
