@@ -1,4 +1,4 @@
-import { ExecutionContext, ForbiddenException } from '@nestjs/common'
+import { ExecutionContext, UnauthorizedException } from '@nestjs/common'
 import { params, suite } from '@testdeck/jest'
 import { ServiceGuard } from '../../src/guard'
 import { BaseTest } from '../base-test'
@@ -43,7 +43,7 @@ export class ServiceGuardTest extends BaseTest {
       try {
         super.get(ServiceGuard).getRequest(context)
       } catch (error) {
-        expect(error).toEqual(new ForbiddenException())
+        expect(error).toEqual(new UnauthorizedException())
       }
     } else {
       const request: any = super.get(ServiceGuard).getRequest(context)

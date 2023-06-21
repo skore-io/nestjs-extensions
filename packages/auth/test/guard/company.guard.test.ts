@@ -1,4 +1,4 @@
-import { ExecutionContext, ForbiddenException } from '@nestjs/common'
+import { ExecutionContext, UnauthorizedException } from '@nestjs/common'
 import { params, suite } from '@testdeck/jest'
 import { CompanyGuard } from '../../src/guard'
 import { BaseTest } from '../base-test'
@@ -43,7 +43,7 @@ export class CompanyGuardTest extends BaseTest {
       try {
         super.get(CompanyGuard).getRequest(context)
       } catch (error) {
-        expect(error).toEqual(new ForbiddenException())
+        expect(error).toEqual(new UnauthorizedException())
       }
     } else {
       const request: any = super.get(CompanyGuard).getRequest(context)
