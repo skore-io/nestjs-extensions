@@ -78,5 +78,5 @@
     "packages/*"
   ],
   "includeMergedTags": true,
-  "version": "1.16.0"
+  "version": "independent"
 }
