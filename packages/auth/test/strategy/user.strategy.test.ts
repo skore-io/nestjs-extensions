@@ -6,7 +6,7 @@ import { BaseTest } from '../base-test'
 import { ExecutionContext, ForbiddenException } from '@nestjs/common'
 import { Reflector } from '@nestjs/core'
 
-@suite('[Auth] User Strategy')
+@suite
 export class UserStrategyTest extends BaseTest {
   private readonly user: User = { id: '1', name: 'Bilu', role: UserRole.student } as User
 

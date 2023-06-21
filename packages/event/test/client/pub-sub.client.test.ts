@@ -137,7 +137,9 @@ export class GetClientTest {
     expect(err).toBeInstanceOf(ValidationAttributeError)
     expect((err as ValidationAttributeError).code).toEqual('VALIDATION_FAILED')
     expect((err as ValidationAttributeError).details).toEqual({
-      message: 'action must be a valid enum value',
+      message: `action must be one of the following values: ${Object.values(PubSubActionEnum).join(
+        ', ',
+      )}`,
       informedValue: 'yolo',
     })
   }

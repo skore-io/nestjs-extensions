@@ -3,7 +3,7 @@ import { suite, params } from '@testdeck/jest'
 import { AdminOrCompanyGuard } from '../../src/guard'
 import { BaseTest } from '../base-test'
 
-@suite('[Auth] AdminOrCompanyGuard')
+@suite
 export class AdminOrCompanyGuardTest extends BaseTest {
   @params(
     {

@@ -1,13 +1,13 @@
+import jwt from 'jsonwebtoken'
 import { ExecutionContext, ForbiddenException } from '@nestjs/common'
 import { Reflector } from '@nestjs/core'
 import { suite, test } from '@testdeck/jest'
-import jwt from 'jsonwebtoken'
 import { BaseTest } from '../base-test'
 import { User, Company } from '../../src/domain'
 import { UserRole, UserOrCompanyAlg } from '../../src/enum'
 import { AdminOrCompanyStrategy as Strategy } from '../../src/strategy'
 
-@suite('[Auth] Admin Or Company Strategy')
+@suite
 export class AdminOrCompanyStrategy extends BaseTest {
   private readonly user: User = { id: '1', name: 'Bilu', role: UserRole.admin } as User
   private readonly company: Company = { id: '114' }

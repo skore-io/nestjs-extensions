@@ -22,7 +22,7 @@
     "test": "npx jest --detectOpenHandles"
   },
   "dependencies": {
-    "@nestjs/passport": "^9.0.0",
+    "@nestjs/passport": "^10.0.0",
     "passport": "^0.6.0",
     "passport-http-bearer": "^1.0.1"
   },

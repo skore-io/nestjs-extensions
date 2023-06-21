@@ -8,7 +8,7 @@ import { GetTokenType, ValidateTokenType } from '../../src/type'
 import { BadRequestException, UnauthorizedException } from '@nestjs/common'
 import qs from 'qs'
 
-@suite('[Auth] Keycloak Client')
+@suite
 export class KeyCloakClientTest {
   private authBaseUrlFake: string
   private configService: Partial<ConfigService>

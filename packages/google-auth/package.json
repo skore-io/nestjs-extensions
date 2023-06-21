@@ -26,12 +26,12 @@
     "test": "npx jest"
   },
   "dependencies": {
-    "@nestjs/passport": "^9.0.0",
-    "google-auth-library": "^7.12.0",
+    "@nestjs/passport": "^10.0.0",
+    "google-auth-library": "^8.8.0",
     "passport-http-bearer": "^1.0.1",
     "ts-method-cache": "^3.3.1"
   },
   "devDependencies": {
-    "@types/passport-http-bearer": "^1.0.36"
+    "@types/passport-http-bearer": "^1.0.37"
   }
 }

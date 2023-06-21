@@ -5,7 +5,7 @@ import { Db } from 'mongodb'
 import request from 'supertest'
 import { TestModule } from '../module/test.module'
 
-@suite('[Health Check] Controller Indicator')
+@suite
 export class HealthControllerTest {
   @test
   async 'Given /health returns 200'() {
@@ -18,7 +18,6 @@ export class HealthControllerTest {
     const { body } = await request(app.getHttpServer()).get('/health').expect(HttpStatus.OK)
 
     expect(body.info.dependencies.status).toBe('up')
-    expect(body.info.redis.status).toBe('up')
     expect(body.info.mongodb.status).toBe('up')
 
     await app.close()

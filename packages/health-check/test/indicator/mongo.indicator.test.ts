@@ -4,7 +4,7 @@ import { Db } from 'mongodb'
 import { MongoIndicator } from '../../src/indicator'
 import { TestModule } from '../module/test.module'
 
-@suite('[Health Check] Mongo Indicator')
+@suite
 export class MongoIndicatorTest {
   @test
   async 'Given MongoDB status up'() {

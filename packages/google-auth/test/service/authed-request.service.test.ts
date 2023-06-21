@@ -3,10 +3,11 @@ import { AuthedRequest, GoogleAuthModule } from '../../src'
 import { Test } from '@nestjs/testing'
 import { INestApplication } from '@nestjs/common'
 import { HttpService } from '@nestjs/axios'
+import { AxiosResponse } from 'axios'
 import { of } from 'rxjs'
 import { RequestMethodEnum } from '../../src/enum'
 
-@suite('[Service] Authed Request')
+@suite
 export class AuthedRequestTest {
   app: INestApplication
   fetchToken: jest.SpyInstance
@@ -16,7 +17,7 @@ export class AuthedRequestTest {
       imports: [GoogleAuthModule],
     }).compile()
 
-    this.app = moduleRef.createNestApplication()
+    this.app = moduleRef.createNestApplication() as INestApplication
     this.app = await this.app.init()
 
     this.fetchToken = jest
@@ -35,7 +36,7 @@ export class AuthedRequestTest {
         statusText: 'bilu',
         headers: {},
         config: {},
-      }),
+      } as AxiosResponse),
     )
 
     await this.app.get(AuthedRequest).rest(url, RequestMethodEnum.POST)
@@ -58,7 +59,7 @@ export class AuthedRequestTest {
         statusText: 'bilu',
         headers: {},
         config: {},
-      }),
+      } as AxiosResponse),
     )
 
     await this.app.get(AuthedRequest).graphql(url, `query { test() }`)
@@ -81,7 +82,7 @@ export class AuthedRequestTest {
         statusText: 'bilu',
         headers: {},
         config: {},
-      }),
+      } as AxiosResponse),
     )
 
     await this.app.get(AuthedRequest).graphql(url, `query { test() }`, { company_id: 114 })

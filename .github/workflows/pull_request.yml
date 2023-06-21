@@ -38,7 +38,7 @@ jobs:
           key: ${{ runner.os }}-build-${{ github.sha }}
 
       - name: Dependencies
-        run: npm run setup:ci
+        run: npm i
 
       - name: Run lint
         run: npm run lint

@@ -22,12 +22,12 @@
     "test": "npx jest"
   },
   "dependencies": {
-    "@nestjs/passport": "^9.0.0",
+    "@nestjs/passport": "^10.0.0",
     "jsonwebtoken": "^9.0.0",
     "passport": "^0.6.0",
     "passport-http-bearer": "^1.0.1"
   },
   "devDependencies": {
-    "@types/jsonwebtoken": "^9.0.0"
+    "@types/jsonwebtoken": "^9.0.2"
   }
 }

@@ -7,7 +7,7 @@ import { GetTokenType } from '../../src/type'
 import { AuthedRequest } from '../../src/service'
 import { of } from 'rxjs'
 
-@suite('[Auth] AuthedRequest Service')
+@suite
 export class AuthedRequestServiceTest {
   private keycloakClient: Partial<KeycloakClient>
   private httpService: Partial<HttpService>
