@@ -27,7 +27,7 @@ export class WorkspaceClient {
   }
 
   async getCompany(token: string): Promise<Company> {
-    const request = this.httpService.get(`${this.authBaseUrl}/api/v1/companies/current`, {
+    const request = this.httpService.get(`${this.authBaseUrl}/workspace/v1/companies/current`, {
       headers: { Authorization: token },
     })
 
