@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.2](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/auth@1.16.1...@skore-io/auth@1.16.2) (2023-07-12)
+
+### Bug Fixes 🐛
+
+- use correct workspace domain ([#112](https://github.com/skore-io/nestjs-extensions/issues/112)) ([2d492fc](https://github.com/skore-io/nestjs-extensions/commit/2d492fca3f13d9239fc911afa7227c4286e86736))
+
 ## [1.16.1](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/auth@1.16.0...@skore-io/auth@1.16.1) (2023-06-21)
 
 ### Bug Fixes 🐛
