@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.15.0...@skore-io/event@1.16.0) (2023-07-18)
+
+### Features 🚀
+
+- **event:** add pub-sub enum ([#113](https://github.com/skore-io/nestjs-extensions/issues/113)) ([3a68b09](https://github.com/skore-io/nestjs-extensions/commit/3a68b0988b8864bf44f9759d92fbe887ac4d52a5))
+
 ## 1.15.0 (2023-06-21)
 
 ### Miscellaneous Chores 🧰
