@@ -54,4 +54,5 @@ export enum PubSubActionEnum {
   updated = 'updated',
   invite = 'invite',
   send_max_seats_email = 'send_max_seats_email',
+  leader_added = 'leader_added',
 }
