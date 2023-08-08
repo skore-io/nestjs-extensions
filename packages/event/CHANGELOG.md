@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.18.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.17.0...@skore-io/event@1.18.0) (2023-08-08)
+
+### Features 🚀
+
+- add leader_removed action enum ([#115](https://github.com/skore-io/nestjs-extensions/issues/115)) ([2da8368](https://github.com/skore-io/nestjs-extensions/commit/2da83685879bb790b7600b5c353ea3ca8a0b527a))
+
 ## [1.17.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.16.0...@skore-io/event@1.17.0) (2023-07-28)
 
 ### Features 🚀
