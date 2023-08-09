@@ -142,7 +142,7 @@ export class GetClientTest {
         attributes: {
           action: PubSubActionEnum.completed,
           type: PubSubTypeEventEnum['io.skore.events.content'],
-          source: 'file.ts',
+          source: 'file2.ts',
           created_at: String(createdAt),
         },
         body: { user_id: '1234', content_id: '4321' },
@@ -158,6 +158,15 @@ export class GetClientTest {
         created_at: String(createdAt),
         source: 'file.ts',
         type: 'io.skore.events.messaging.conversation',
+      },
+      data: expect.any(Buffer),
+    })
+    expect(publishMessageSpy).toHaveBeenNthCalledWith(2, {
+      attributes: {
+        action: PubSubActionEnum.completed,
+        created_at: String(createdAt),
+        source: 'file2.ts',
+        type: 'io.skore.events.content',
       },
       data: expect.any(Buffer),
     })
