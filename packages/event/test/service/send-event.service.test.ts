@@ -3,12 +3,12 @@ import { PubSubClient } from '../../src/client'
 import { EventAttributeDto } from '../../src/dto'
 import { EventService } from '../../src/service'
 import { PubSubActionEnum, ClientEventNameEnum, PubSubTypeEventEnum } from '../../src/enum'
-import { ClientNotFoundError } from '../../src/error/client-not-found.error'
+import { ClientNotFoundError } from '../../src/error'
 
 @suite('Event Service')
 export class EventServiceTest {
-  @test()
-  async 'Call send with pubsub client with succeffully'() {
+  @test
+  async '[send] Call send with pubsub client with succeffully'() {
     process.env.GCP_EVENTS_PROJECT_URL = 'https://bilu.com.br/yolo'
 
     const clientFake = jest
@@ -34,8 +34,8 @@ export class EventServiceTest {
     expect(clientFake).toBeCalledWith(dtoFake, bodyFake, 'https://bilu.com.br/yolo')
   }
 
-  @test()
-  async 'Should call pub sub client with correct url'() {
+  @test
+  async '[send] Should call pub sub client with correct url'() {
     process.env.GCP_EVENTS_PROJECT_URL = 'https://bilu.com.br/yolo'
 
     const clientFake = jest
@@ -61,13 +61,42 @@ export class EventServiceTest {
     expect(clientFake).toBeCalledWith(dtoFake, bodyFake, 'http://test.com')
   }
 
-  @test()
+  @test
+  async '[publishInBatch] Should call pubsub client with correct data'() {
+    process.env.GCP_EVENTS_PROJECT_URL = 'https://bilu.com.br/yolo'
+
+    const clientFake = jest
+      .spyOn(PubSubClient.prototype, 'publishEventsInBatch')
+      .mockImplementation(() => undefined)
+
+    const eventService = new EventService(ClientEventNameEnum.PubSub)
+
+    const events = [
+      {
+        attributes: {
+          action: PubSubActionEnum.accessed,
+          source: 'file.ts',
+          type: PubSubTypeEventEnum['io.skore.events.content'],
+          created_at: String(Date.now()),
+        },
+        body: {
+          company_id: '114',
+          content_id: '123',
+          user_id: '126340',
+        },
+      },
+    ]
+
+    await eventService.publishInBatch(events)
+
+    expect(clientFake).toBeCalledWith(events)
+  }
+
+  @test
   async 'Should return client not found error'() {
     let err = null
     try {
-      /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
-      // @ts-ignore
-      await new EventService('yolo')
+      new EventService('yolo' as never)
     } catch (error) {
       err = error
     }

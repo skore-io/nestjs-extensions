@@ -4,11 +4,12 @@ import { PubSubActionEnum, PubSubTypeEventEnum } from '../../src/enum'
 import { PubSubClient } from '../../src/client'
 import { PubSubAttributeDto } from '../../src'
 import { ValidationAttributeError, PublishPubSubError } from '../../src/error'
+import { PubSub } from '@google-cloud/pubsub'
 
 @suite('[Event Client] - PubSubClient')
 export class GetClientTest {
-  @test()
-  async 'Should publish event at Pub Sub with successfully'() {
+  @test
+  async '[publish] Should publish event at Pub Sub with successfully'() {
     process.env.GCP_EVENTS_PROJECT_URL = 'https://bilu.com.br/yolo'
 
     const request = jest.fn().mockResolvedValue(undefined)
@@ -32,7 +33,7 @@ export class GetClientTest {
 
     expect(getClient).toHaveBeenCalledTimes(1)
     expect(request).toHaveBeenCalledWith({
-      url: `https://bilu.com.br/yolo`,
+      url: 'https://bilu.com.br/yolo',
       method: 'POST',
       data: {
         messages: [
@@ -45,8 +46,8 @@ export class GetClientTest {
     })
   }
 
-  @test()
-  async 'Should publish event at Pub Sub with different environment variable'() {
+  @test
+  async '[publish] Should publish event at Pub Sub with different environment variable'() {
     process.env.GCP_EVENTS_PROJECT_URL = 'https://bilu.com.br/yolo'
 
     const request = jest.fn().mockResolvedValue(undefined)
@@ -83,8 +84,8 @@ export class GetClientTest {
     })
   }
 
-  @test()
-  async 'Should throw error to publish event'() {
+  @test
+  async '[publish] Should throw error to publish event'() {
     const errorFake = new Error('yolo error')
     const request = jest.fn().mockRejectedValue(errorFake)
     const getClient = jest.fn().mockResolvedValue({ request })
@@ -113,7 +114,77 @@ export class GetClientTest {
     expect((err as PublishPubSubError).details).toEqual(errorFake)
   }
 
-  @test()
+  @test
+  async '[publishEventsInBatch] Should publish batch of events in PubSub with successfully'() {
+    process.env.GCP_EVENTS_PROJECT_URL = 'https://bilu.com.br/yolo'
+
+    const pubSubClient = new PubSubClient()
+
+    const publishMessageSpy = jest.fn()
+
+    jest
+      .spyOn(PubSub.prototype, 'topic')
+      .mockImplementation(() => ({ publishMessage: publishMessageSpy } as never))
+
+    const createdAt = Date.now()
+
+    const events = [
+      {
+        attributes: {
+          action: PubSubActionEnum.sent,
+          type: PubSubTypeEventEnum['io.skore.events.messaging.conversation'],
+          source: 'file.ts',
+          created_at: String(createdAt),
+        },
+        body: { user_id: '1234' },
+      },
+      {
+        attributes: {
+          action: PubSubActionEnum.completed,
+          type: PubSubTypeEventEnum['io.skore.events.content'],
+          source: 'file2.ts',
+          created_at: String(createdAt),
+        },
+        body: { user_id: '1234', content_id: '4321' },
+      },
+    ]
+
+    await pubSubClient.publishEventsInBatch(events)
+
+    expect(publishMessageSpy).toHaveBeenCalledTimes(2)
+    expect(publishMessageSpy).toHaveBeenNthCalledWith(1, {
+      attributes: {
+        action: PubSubActionEnum.sent,
+        created_at: String(createdAt),
+        source: 'file.ts',
+        type: 'io.skore.events.messaging.conversation',
+      },
+      data: expect.any(Buffer),
+    })
+    expect(publishMessageSpy).toHaveBeenNthCalledWith(2, {
+      attributes: {
+        action: PubSubActionEnum.completed,
+        created_at: String(createdAt),
+        source: 'file2.ts',
+        type: 'io.skore.events.content',
+      },
+      data: expect.any(Buffer),
+    })
+  }
+
+  @test
+  async '[publishEventsInBatch] Given an array with more than 1000 items, then throw error'() {
+    const pubSubClient = new PubSubClient()
+
+    const mockArray = []
+    mockArray.length = 1001
+
+    await expect(pubSubClient.publishEventsInBatch(mockArray)).rejects.toThrow(
+      'fail to publish event',
+    )
+  }
+
+  @test
   async 'Should throw ValidationAttributeError at validate attributes'() {
     const getClient = {}
 
@@ -127,9 +198,7 @@ export class GetClientTest {
 
     let err = null
     try {
-      /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
-      // @ts-ignore
-      await pubSubClient.validate(attributePubSubDtoFake)
+      await pubSubClient.validate(attributePubSubDtoFake as never)
     } catch (error) {
       err = error
     }
@@ -144,8 +213,8 @@ export class GetClientTest {
     })
   }
 
-  @test()
-  async 'Should throw ValidationAttributeError at validate attributes empty '() {
+  @test
+  async '[validate] Should throw ValidationAttributeError at validate attributes empty '() {
     const getClient = {}
 
     const pubSubClient = new PubSubClient({ getClient })
@@ -157,9 +226,7 @@ export class GetClientTest {
 
     let err = null
     try {
-      /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
-      // @ts-ignore
-      await pubSubClient.validate(attributePubSubDtoFake)
+      await pubSubClient.validate(attributePubSubDtoFake as never)
     } catch (error) {
       err = error
     }
@@ -171,8 +238,8 @@ export class GetClientTest {
     })
   }
 
-  @test()
-  async 'Should throw internal error '() {
+  @test
+  async '[validate] Should throw internal error '() {
     const errorFake = new Error('yolo')
     jest.spyOn(validator, 'validateOrReject').mockRejectedValue(errorFake)
 
@@ -187,9 +254,7 @@ export class GetClientTest {
 
     let err = null
     try {
-      /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
-      // @ts-ignore
-      await pubSubClient.validate(attributePubSubDtoFake)
+      await pubSubClient.validate(attributePubSubDtoFake as never)
     } catch (error) {
       err = error
     }

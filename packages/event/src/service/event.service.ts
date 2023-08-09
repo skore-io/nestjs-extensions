@@ -3,6 +3,7 @@ import { EventAttributeDto } from '../dto'
 import { ClientEventNameEnum } from '../enum'
 import { PubSubClient } from '../client'
 import { ClientNotFoundError } from '../error'
+import { PubSubEvent } from '../type'
 
 export class EventService {
   private readonly client: EventClientInterface
@@ -29,9 +30,19 @@ export class EventService {
     await this.client.publish(attributes, body, eventUrl)
   }
 
+  /**
+   * @deprecated Use {@link publishInBatch} instead.
+   */
   async sendInBatch(attributes: EventAttributeDto, messages: object[]): Promise<void> {
     await this.client.validate(attributes)
 
     await this.client.publishInBatch(attributes, messages)
+  }
+
+  /**
+   * The maximum value of items in the batch is 1000
+   */
+  async publishInBatch(events: PubSubEvent[]): Promise<void> {
+    await this.client.publishEventsInBatch(events)
   }
 }
