@@ -23,7 +23,7 @@ GOOGLE_APPLICATION_CREDENTIALS='gcloud-service-account.json'
 
 ### Usage
 
-1. import and create attributes
+1. Import and create attributes
 
 ```typescript
 import {
@@ -59,13 +59,24 @@ const body = {
 await eventService.send(attributes, body)
 ```
 
-3. If you want to send events in batch, call method "sendInBatch" with attributes and an array of messages to send
+_If you want to send events in batch, call method "publishInBatch" with an array of attributes and messages_
 
 ```typescript
-const body = [
-  { test: 'yolo' },
-  { test: 'bilu' }
+const events = [
+  {
+    attributes: {
+      type: 'io.skore.events.content',
+      action: 'attended',
+      source: 'file.ts',
+      created_at: '1691600045063'
+    },
+    body: {
+      user_id: '3763039',
+      company_id: '17157',
+      live_class_id: 'd08753a0-ff90-458c-bf8e-48e6f7846b97'
+    }
+  }
 ]
 
-await eventService.sendInBatch(attributes, body)
+await eventService.publishInBatch(events)
 ```
