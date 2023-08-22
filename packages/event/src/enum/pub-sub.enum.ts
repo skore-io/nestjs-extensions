@@ -11,6 +11,7 @@ export enum PubSubTypeEventEnum {
   'io.skore.events.messaging.intent' = 'io.skore.events.messaging.intent',
   'io.skore.events.notification' = 'io.skore.events.notification',
   'io.skore.events.user.team' = 'io.skore.events.user.team',
+  'io.skore.events.space.team' = 'io.skore.events.space.team',
   'io.skore.events.batch' = 'io.skore.events.batch',
   'io.skore.events.invitation' = 'io.skore.events.invitation',
   'io.skore.events.section' = 'io.skore.events.section',
