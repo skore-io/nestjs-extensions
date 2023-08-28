@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.26.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.25.0...@skore-io/event@1.26.0) (2023-08-28)
+
+### Features 🚀
+
+- add bulk_enrollment_mission action ([#124](https://github.com/skore-io/nestjs-extensions/issues/124)) ([13c912f](https://github.com/skore-io/nestjs-extensions/commit/13c912fbed982ce36f6464f23c6c975c36abd27d))
+
 ## [1.25.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.24.0...@skore-io/event@1.25.0) (2023-08-28)
 
 ### Features 🚀
