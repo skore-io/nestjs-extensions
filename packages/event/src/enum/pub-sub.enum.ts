@@ -46,7 +46,7 @@ export enum PubSubActionEnum {
   reindex = 'reindex',
   enrollment_file_uploaded = 'enrollment_file_uploaded',
   enrollment_row_processed = 'enrollment_row_processed',
-  enrollment_live_course = 'enrollment_live_course',
+  enrollment_created = 'enrollment_created',
   attendance_file_uploaded = 'attendance_file_uploaded',
   attendance_row_processed = 'attendance_row_processed',
   delete_sessions = 'delete_sessions',
