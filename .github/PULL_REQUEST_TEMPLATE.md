@@ -1,4 +1,4 @@
-![gif-or-image]()
+![your incredible giphy](url)
 
 ### What?
 
@@ -8,6 +8,8 @@
 
 <!-- Tell the world why is this so important -->
 
-### Task: ![asana-icon](https://i.imgur.com/mIiCCQu.png) [card_title](card_url/f)
+---
+
+#### <img src="https://qulturerocks.atlassian.net/s/1jmxwi/b/8/b6b48b2829824b869586ac216d119363/_/favicon-software.ico" width="13"> Jira Task: [card_title](card_url)
 
 <!-- Add task card link -->
