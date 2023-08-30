@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.28.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.27.0...@skore-io/event@1.28.0) (2023-08-30)
+
+### Features 🚀
+
+- **pub_sub_enum:** map feedback form event and action ([#126](https://github.com/skore-io/nestjs-extensions/issues/126)) ([3f9d89f](https://github.com/skore-io/nestjs-extensions/commit/3f9d89fc67b4cce04158752b6bd6919dea568a6c))
+
 ## [1.27.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.26.0...@skore-io/event@1.27.0) (2023-08-29)
 
 ### Features 🚀
