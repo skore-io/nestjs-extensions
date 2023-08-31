@@ -30,6 +30,12 @@ export class EventService {
     await this.client.publish(attributes, body, eventUrl)
   }
 
+  async sendToTopic(attributes: EventAttributeDto, body: object, url: string): Promise<void> {
+    if (!url) throw new Error('Topic url is required')
+
+    await this.client.publish(attributes, body, url)
+  }
+
   /**
    * @deprecated Use {@link publishInBatch} instead.
    */
