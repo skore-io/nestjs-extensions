@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.28.0...@skore-io/event@1.29.0) (2023-08-31)
+
+### Features 🚀
+
+- **event:** add enum for enrollment action ([#127](https://github.com/skore-io/nestjs-extensions/issues/127)) ([5b8d656](https://github.com/skore-io/nestjs-extensions/commit/5b8d6569410adba059e0150b9af0acf1251665ae))
+
 ## [1.28.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.27.0...@skore-io/event@1.28.0) (2023-08-30)
 
 ### Features 🚀
