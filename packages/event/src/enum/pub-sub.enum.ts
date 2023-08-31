@@ -49,6 +49,8 @@ export enum PubSubActionEnum {
   enrollment_file_uploaded = 'enrollment_file_uploaded',
   enrollment_row_processed = 'enrollment_row_processed',
   enrollment_created = 'enrollment_created',
+  enrollment_approved = 'enrollment_approved',
+  enrollment_rejected = 'enrollment_rejected',
   attendance_file_uploaded = 'attendance_file_uploaded',
   attendance_row_processed = 'attendance_row_processed',
   delete_sessions = 'delete_sessions',
