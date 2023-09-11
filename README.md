@@ -4,14 +4,12 @@ A collection of NestJS extensions used by Learning.rocks.
 
 | Name                                     | Description                                                             |
 | ---------------------------------------- | ----------------------------------------------------------------------- |
-| [`Auth`](./packages/auth)                | Authenticate and provide access to users and companies                  |
+| [`Auth`](./packages/auth)                | Authenticate and provide access to users, services and companies        |
 | [`Mongo`](./packages/mongo)              | Ensure mongodb index through decorators and manages mongodb connections |
 | [`Pagination`](./packages/pagination)    | Paginate graphql queries                                                |
 | [`HealthCheck`](./packages/health-check) | Create health checks with easy setup                                    |
 | [`Version`](./packages/version)          | Document versioning based on mongodb triggers                           |
-| [`Keycloak`](./packages/keycloak)        | Provides authorization through annotations                              |
 | [`Bull`](./packages/bull)                | Setup bull queues along with bull-board                                 |
-| [`GoogleAuth`](./packages/google-auth)   | Validate google-auth tokens                                             |
 
 **Local Development**
 
@@ -20,13 +18,13 @@ This project uses [lerna](https://www.npmjs.com/package/lerna) package to handle
 1.  Use correct node version
 
 ```bash
-  $ nvm use
+$ nvm use
 ```
 
 2.  Install dependencies
 
 ```bash
-  $ npm i
+$ npm i
 ```
 
 ## Test

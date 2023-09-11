@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Expose, Transform, Type } from 'class-transformer'
 import { Team } from './team.domain'
+import { TransformerUtil } from '../util'
+import { UserRole } from '../enum'
 
-export class User {
+export class User extends TransformerUtil {
   @Transform(({ value }) => String(value))
   @Expose()
   id!: string
@@ -12,25 +14,26 @@ export class User {
   companyId!: string
 
   @Expose()
-  role!: string
+  role!: UserRole
 
   @Expose()
   name!: string
 
   @Expose()
-  username: string
+  username?: string
 
   @Expose()
-  email: string
+  email?: string
 
   @Expose()
-  avatar: string
+  avatar?: string
 
   @Expose()
-  metadata: any
+  metadata?: any
 
   @Expose()
-  preferences: any
+  @Transform(({ value }) => value || {})
+  preferences?: any
 
   @Type(() => Team)
   @Transform(({ value }) => value || [])
@@ -38,7 +41,7 @@ export class User {
   teams: Team[] = []
 
   @Expose({ name: 'created_at' })
-  createdAt!: Date
+  createdAt!: number
 
   @Transform(({ value }) => Number(value))
   @Expose({ name: 'session_id' })
@@ -46,5 +49,17 @@ export class User {
 
   get teamIds(): string[] {
     return this.teams.map((team) => team.id)
+  }
+
+  isAdmin(): boolean {
+    return this.role === UserRole.admin
+  }
+
+  isExpert(): boolean {
+    return this.role === UserRole.expert
+  }
+
+  isStudent(): boolean {
+    return this.role === UserRole.student
   }
 }
