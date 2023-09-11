@@ -22,7 +22,7 @@ export class WorkspaceClient {
 
     const { data } = await lastValueFrom(request)
 
-    return User.toInstance(data)
+    return User.toInstance({ ...data, token: token.replace('Bearer ', '') })
   }
 
   async getCompany(token: string): Promise<Company> {

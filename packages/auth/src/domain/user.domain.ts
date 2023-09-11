@@ -29,6 +29,9 @@ export class User extends TransformerUtil {
   avatar?: string
 
   @Expose()
+  token: string
+
+  @Expose()
   metadata?: any
 
   @Expose()
