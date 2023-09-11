@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/auth@1.16.2...@skore-io/auth@1.17.0) (2023-09-11)
+
+### Features 🚀
+
+- **user:** add methods to check user role ([#129](https://github.com/skore-io/nestjs-extensions/issues/129)) ([86e2c3f](https://github.com/skore-io/nestjs-extensions/commit/86e2c3f44c5b54332868021a91090977d7934120))
+
 ## [1.16.2](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/auth@1.16.1...@skore-io/auth@1.16.2) (2023-07-12)
 
 ### Bug Fixes 🐛
