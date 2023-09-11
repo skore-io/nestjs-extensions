@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.18.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/auth@1.17.0...@skore-io/auth@1.18.0) (2023-09-11)
+
+### Features 🚀
+
+- **user:** enrich user with token ([#130](https://github.com/skore-io/nestjs-extensions/issues/130)) ([cb3213c](https://github.com/skore-io/nestjs-extensions/commit/cb3213c63fba3ab3d49c3ff25555f6769a1cebd7))
+
 ## [1.17.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/auth@1.16.2...@skore-io/auth@1.17.0) (2023-09-11)
 
 ### Features 🚀
