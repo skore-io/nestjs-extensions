@@ -1,7 +1,6 @@
 import { HttpService } from '@nestjs/axios'
 import { ForbiddenException, Injectable } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
-import { plainToClass } from 'class-transformer'
 import { lastValueFrom } from 'rxjs'
 import { Company, User } from '../domain'
 
@@ -23,7 +22,7 @@ export class WorkspaceClient {
 
     const { data } = await lastValueFrom(request)
 
-    return plainToClass(User, data, { excludeExtraneousValues: true })
+    return User.toInstance(data)
   }
 
   async getCompany(token: string): Promise<Company> {
@@ -35,10 +34,6 @@ export class WorkspaceClient {
 
     if (data.token_type !== 'company') throw new ForbiddenException()
 
-    return plainToClass(
-      Company,
-      { ...data, id: String(data.company_id) },
-      { excludeExtraneousValues: true },
-    )
+    return Company.toInstance({ ...data, id: String(data.company_id) })
   }
 }

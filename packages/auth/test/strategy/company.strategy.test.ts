@@ -3,12 +3,13 @@ import { test, suite } from '@testdeck/jest'
 import { WorkspaceClient } from '../../src/client'
 import { CompanyStrategy } from '../../src/strategy'
 import { BaseTest } from '../base-test'
+import { Company } from '../../src/domain'
 
 @suite
 export class CompanyStrategyTest extends BaseTest {
   @test
   async 'Given a valid token, then return company'() {
-    jest.spyOn(this.get(WorkspaceClient), 'getCompany').mockResolvedValue({ id: '1' })
+    jest.spyOn(this.get(WorkspaceClient), 'getCompany').mockResolvedValue({ id: '1' } as Company)
 
     const companyStrategy = await super.get(CompanyStrategy).validate({}, 'SHOULD_ASSERT_OK')
     expect(companyStrategy.id).toEqual('1')

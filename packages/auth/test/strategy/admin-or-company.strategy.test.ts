@@ -9,8 +9,8 @@ import { AdminOrCompanyStrategy as Strategy } from '../../src/strategy'
 
 @suite
 export class AdminOrCompanyStrategy extends BaseTest {
-  private readonly user: User = { id: '1', name: 'Bilu', role: UserRole.admin } as User
-  private readonly company: Company = { id: '114' }
+  private readonly user = { id: '1', name: 'Bilu', role: UserRole.admin } as User
+  private readonly company = { id: '114' } as Company
 
   @test
   async 'Given a company with valid token, then return success'() {
