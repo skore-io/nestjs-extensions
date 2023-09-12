@@ -81,7 +81,7 @@ export class ContentController {
 
 ```env
 KEYCLOAK_BASE_URL=https://keycloak.learningrocks.info/auth/realms/learningrocks/protocol/openid-connect
-KEYCLOAK_CREDENTIAL=bGVhcm5pbmdyb2Nrcy1pbmZvOm1MOHNlOVRPTURhdXRHekduMjRJWE1hWm1IcXNiaW5v
+KEYCLOAK_CREDENTIAL=xpto
 ```
 
 - ## request with token
