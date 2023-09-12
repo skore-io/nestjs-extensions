@@ -2,14 +2,13 @@
 A collection of NestJS extensions used by Learning.rocks.
 </p>
 
-| Name                                     | Description                                                             |
-| ---------------------------------------- | ----------------------------------------------------------------------- |
-| [`Auth`](./packages/auth)                | Authenticate and provide access to users, services and companies        |
-| [`Mongo`](./packages/mongo)              | Ensure mongodb index through decorators and manages mongodb connections |
-| [`Pagination`](./packages/pagination)    | Paginate graphql queries                                                |
-| [`HealthCheck`](./packages/health-check) | Create health checks with easy setup                                    |
-| [`Version`](./packages/version)          | Document versioning based on mongodb triggers                           |
-| [`Bull`](./packages/bull)                | Setup bull queues along with bull-board                                 |
+| Name                                     | Description                                                      |
+| ---------------------------------------- | -----------------------------------------------------------------|
+| [`Auth`](./packages/auth)                | Authenticate and provide access to users, services and companies |
+| [`Pagination`](./packages/pagination)    | Paginate graphql queries                                         |
+| [`HealthCheck`](./packages/health-check) | Create health checks with easy setup                             |
+| [`Version`](./packages/version)          | Document versioning based on mongodb triggers                    |
+| [`Bull`](./packages/bull)                | Setup bull queues along with bull-board                          |
 
 **Local Development**
 
