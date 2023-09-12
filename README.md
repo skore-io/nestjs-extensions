@@ -5,10 +5,9 @@ A collection of NestJS extensions used by Learning.rocks.
 | Name                                     | Description                                                      |
 | ---------------------------------------- | -----------------------------------------------------------------|
 | [`Auth`](./packages/auth)                | Authenticate and provide access to users, services and companies |
-| [`Pagination`](./packages/pagination)    | Paginate graphql queries                                         |
-| [`HealthCheck`](./packages/health-check) | Create health checks with easy setup                             |
-| [`Version`](./packages/version)          | Document versioning based on mongodb triggers                    |
 | [`Bull`](./packages/bull)                | Setup bull queues along with bull-board                          |
+| [`Event`](./packages/event)              | Publish events to a topic in Pub/Sub                             |
+| [`Pagination`](./packages/pagination)    | Paginate graphql queries                                         |
 
 **Local Development**
 
