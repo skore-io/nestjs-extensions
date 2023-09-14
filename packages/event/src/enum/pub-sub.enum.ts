@@ -23,6 +23,7 @@ export enum PubSubTypeEventEnum {
   'io.skore.commands.integration' = 'io.skore.commands.integration',
   'io.skore.commands.space' = 'io.skore.commands.space',
   'io.skore.commands.user' = 'io.skore.commands.user',
+  'io.skore.commands.content' = 'io.skore.commands.content',
 }
 
 export enum PubSubActionEnum {
@@ -71,4 +72,5 @@ export enum PubSubActionEnum {
   team_removed = 'team_removed',
   bulk_create = 'bulk_create',
   bulk_enrollment_mission = 'bulk_enrollment_mission',
+  delete_consume = 'delete_consume',
 }
