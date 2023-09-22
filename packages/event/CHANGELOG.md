@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.33.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.32.0...@skore-io/event@1.33.0) (2023-09-22)
+
+### Features 🚀
+
+- **event:** add reset worksheet action ([#135](https://github.com/skore-io/nestjs-extensions/issues/135)) ([43d4709](https://github.com/skore-io/nestjs-extensions/commit/43d4709504d566e9df5efa14182a5d9c3dede652))
+
 ## [1.32.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.31.0...@skore-io/event@1.32.0) (2023-09-14)
 
 ### Features 🚀
