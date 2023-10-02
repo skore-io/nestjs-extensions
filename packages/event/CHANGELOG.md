@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.34.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.33.0...@skore-io/event@1.34.0) (2023-10-02)
+
+### Features 🚀
+
+- **event:** add reset scorm enrollment action ([#136](https://github.com/skore-io/nestjs-extensions/issues/136)) ([9b07ba0](https://github.com/skore-io/nestjs-extensions/commit/9b07ba06a5ba13ba7b65e541113b57804b7665e0))
+
 ## [1.33.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.32.0...@skore-io/event@1.33.0) (2023-09-22)
 
 ### Features 🚀
