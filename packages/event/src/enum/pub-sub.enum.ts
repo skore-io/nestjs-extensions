@@ -74,5 +74,5 @@ export enum PubSubActionEnum {
   bulk_enrollment_mission = 'bulk_enrollment_mission',
   delete_consume = 'delete_consume',
   reset_worksheet = 'reset_worksheet',
-  reset_scorm_enrollment = 'reset_scorm_enrollment',
+  reset_scorm = 'reset_scorm',
 }
