@@ -1,7 +1,6 @@
 export enum PubSubTypeEventEnum {
   'io.skore.events.content' = 'io.skore.events.content',
   'io.skore.events.content.live_course' = 'io.skore.events.content.live_course',
-  'io.skore.events.consume.feedback' = 'io.skore.events.consume.feedback',
   'io.skore.events.feedback_form' = 'io.skore.events.feedback_form',
   'io.skore.events.session' = 'io.skore.events.session',
   'io.skore.events.enrollment' = 'io.skore.events.enrollment',
@@ -31,7 +30,6 @@ export enum PubSubActionEnum {
   send_push = 'send_push',
   attended = 'attended',
   accessed = 'accessed',
-  answered = 'answered',
   feedback_sent = 'feedback_sent',
   partial_consumed = 'partial_consumed',
   consumed = 'consumed',
