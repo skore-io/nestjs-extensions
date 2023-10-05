@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.36.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.35.0...@skore-io/event@1.36.0) (2023-10-05)
+
+### Features 🚀
+
+- **enum:** remove old feedback type and action ([#138](https://github.com/skore-io/nestjs-extensions/issues/138)) ([3cbb049](https://github.com/skore-io/nestjs-extensions/commit/3cbb049d1f4362354a7e09cdf699f91cb98c8667))
+
 ## [1.35.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.34.0...@skore-io/event@1.35.0) (2023-10-04)
 
 ### Features 🚀
