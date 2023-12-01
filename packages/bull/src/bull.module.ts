@@ -10,6 +10,7 @@ import { createBullBoard } from '@bull-board/api'
 import { BullAdapter } from '@bull-board/api/bullAdapter'
 import { ExpressAdapter } from '@bull-board/express'
 import { BullModuleOptions, BullModuleQueue, BULL_MODULE_OPTS } from './domain'
+import Redis from 'ioredis'
 
 @Module({})
 export class BullModule implements NestModule {
@@ -53,11 +54,22 @@ export class BullModule implements NestModule {
 
   configure(consumer: MiddlewareConsumer): void {
     const options = BullModule.options
-    const queues = options.map((option) => {
-      const bullOptions: QueueOptions = { redis: option.redis }
-      if (option.prefix) bullOptions.prefix = option.prefix
 
-      return new Bull(option.name, bullOptions)
+    const queues = options.map((option: any) => {
+      const clusterNodes = [{ host: option.redis.host, port: option.redis.port }]
+
+      const redisClient = new Redis.Cluster(clusterNodes, {
+        enableReadyCheck: true,
+      })
+      const bullOptions: QueueOptions = { redis: option.redis }
+
+      if (option.prefix) bullOptions.prefix = option.prefix
+      return new Bull(option.name, {
+        ...bullOptions,
+        createClient: function () {
+          return redisClient
+        },
+      })
     })
 
     BullModule.logger.log(`${queues.length} queues registered`)
