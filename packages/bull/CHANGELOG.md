@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.2](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/bull@1.17.1...@skore-io/bull@1.17.2) (2023-12-01)
+
+### Miscellaneous Chores 🧰
+
+- add new config to redis bull ([ee0c82f](https://github.com/skore-io/nestjs-extensions/commit/ee0c82fb6229dd6d08484dc582828f060a7269f0))
+
 ## [1.17.1](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/bull@1.17.0...@skore-io/bull@1.17.1) (2023-12-01)
 
 ### Miscellaneous Chores 🧰
