@@ -8,6 +8,7 @@ export type BullModuleOptions = Omit<
       host: string
       password: string
       tls?: boolean
+      role?: string
     }
     prefix?: string
     settings?: AdvancedSettings
