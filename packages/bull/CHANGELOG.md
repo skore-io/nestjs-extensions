@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.5](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/bull@1.17.4...@skore-io/bull@1.17.5) (2023-12-01)
+
+### Miscellaneous Chores 🧰
+
+- rollback ([d0e0b2a](https://github.com/skore-io/nestjs-extensions/commit/d0e0b2a4e15ab92c8705e4883565c723cd068eae))
+
 ## [1.17.4](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/bull@1.17.3...@skore-io/bull@1.17.4) (2023-12-01)
 
 ### Miscellaneous Chores 🧰
