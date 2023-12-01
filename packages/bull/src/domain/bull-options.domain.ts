@@ -9,6 +9,8 @@ export type BullModuleOptions = Omit<
       password: string
       tls?: boolean
       role?: string
+      sentinels?: Array<{ host: string; port: number }>
+      name?: string
     }
     prefix?: string
     settings?: AdvancedSettings
