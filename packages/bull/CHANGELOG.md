@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.18.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/bull@1.17.5...@skore-io/bull@1.18.0) (2023-12-07)
+
+### Features 🚀
+
+- bull cluster ([#139](https://github.com/skore-io/nestjs-extensions/issues/139)) ([3bc58f8](https://github.com/skore-io/nestjs-extensions/commit/3bc58f8b5b72f68f2f0d59b0d389eefa8fd56681))
+
 ## [1.17.5](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/bull@1.17.4...@skore-io/bull@1.17.5) (2023-12-01)
 
 ### Miscellaneous Chores 🧰
