@@ -54,8 +54,27 @@ export class BullModule implements NestModule {
   configure(consumer: MiddlewareConsumer): void {
     const options = BullModule.options
     const queues = options.map((option) => {
-      const bullOptions: QueueOptions = { redis: option.redis }
-      if (option.prefix) bullOptions.prefix = option.prefix
+      const bullOptions: QueueOptions = {}
+      if (!option.redis && !option.createClient) {
+        throw new Error("You must provide 'redis' or 'createClient' option")
+      }
+
+      if (option.redis && option.createClient) {
+        throw new Error("You must specify only one option: 'redis' or 'createClient'")
+      }
+
+      if (option.createClient) {
+        if (!option.prefix.startsWith('{') || !option.prefix.endsWith('}')) {
+          throw new Error('createClient must start with "{" and end with "}"')
+        }
+      }
+
+      if (option.redis) bullOptions.redis = option.redis
+      if (option.settings) bullOptions.settings = option.settings
+      if (option.createClient) bullOptions.createClient = option.createClient
+
+      bullOptions.prefix = option.prefix || 'bull'
+
       return new Bull(option.name, bullOptions)
     })
 
