@@ -4,9 +4,12 @@ import { RequestMethodEnum } from '../enum'
 import { lastValueFrom } from 'rxjs'
 import { KeycloakClient } from '../client'
 import { AxiosResponse } from 'axios'
+import { MemoryCache } from 'ts-method-cache'
 
 @Injectable()
 export class AuthedRequest {
+  private static readonly THIRTY_SECONDS = 30
+
   constructor(
     private readonly keycloakClient: KeycloakClient,
     private readonly httpService: HttpService,
@@ -45,6 +48,7 @@ export class AuthedRequest {
     return lastValueFrom(request)
   }
 
+  @MemoryCache({ ttl: AuthedRequest.THIRTY_SECONDS })
   async fetchToken(): Promise<string> {
     const { access_token: accessToken } = await this.keycloakClient.getToken()
 
