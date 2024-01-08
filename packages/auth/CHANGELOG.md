@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.19.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/auth@1.18.1...@skore-io/auth@1.19.0) (2024-01-08)
+
+### Features 🚀
+
+- add cache ([#140](https://github.com/skore-io/nestjs-extensions/issues/140)) ([e8855ef](https://github.com/skore-io/nestjs-extensions/commit/e8855ef9f9665e52810af24496305b0a0d57c708))
+
 ## [1.18.1](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/auth@1.18.0...@skore-io/auth@1.18.1) (2023-09-12)
 
 ### Continuous Integration 🤖
