@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.19.2](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/auth@1.19.1...@skore-io/auth@1.19.2) (2024-01-17)
+
+### Bug Fixes 🐛
+
+- **auth:** install qs package ([#143](https://github.com/skore-io/nestjs-extensions/issues/143)) ([9d7a533](https://github.com/skore-io/nestjs-extensions/commit/9d7a5339c377335bfa783a7c8389e4bf7129c5af))
+
 ## [1.19.1](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/auth@1.19.0...@skore-io/auth@1.19.1) (2024-01-08)
 
 **Note:** Version bump only for package @skore-io/auth
