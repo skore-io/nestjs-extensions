@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.36.4](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.36.3...@skore-io/event@1.36.4) (2024-01-17)
+
+### Miscellaneous Chores 🧰
+
+- **event:** add events-v2 topic to publish in batch ([#145](https://github.com/skore-io/nestjs-extensions/issues/145)) ([66a1acc](https://github.com/skore-io/nestjs-extensions/commit/66a1acca6212c461529d2acc55362068f636820b))
+
 ## [1.36.3](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.36.2...@skore-io/event@1.36.3) (2024-01-17)
 
 ### Miscellaneous Chores 🧰
