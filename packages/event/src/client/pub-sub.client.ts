@@ -83,7 +83,7 @@ export class PubSubClient implements EventClientInterface {
 
     const defaultAttributes = { created_at: String(Date.now()) }
 
-    const batchPublisher = this.pubSubClient.topic('events-v2', {
+    const batchPublisher = this.pubSubClient.topic('events', {
       batching: {
         maxMessages: this.BATCH_SIZE,
       },
@@ -103,7 +103,7 @@ export class PubSubClient implements EventClientInterface {
     if (events.length > this.BATCH_SIZE)
       throw new PublishPubSubError({ code: 400, message: 'Exceeded maximum events limit' })
 
-    const batchPublisher = this.pubSubClient.topic('events', {
+    const batchPublisher = this.pubSubClient.topic('events-v2', {
       batching: {
         maxMessages: this.BATCH_SIZE,
       },
