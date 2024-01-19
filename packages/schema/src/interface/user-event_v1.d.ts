@@ -12,13 +12,13 @@ export type UserEvents = Events & {
   /**
    * Identifier for the user who initiated the event.
    */
-  user_id: number;
+  user_id: number
   meta?: {
     /**
      * Session identifier in which the event occurred, can be null.
      */
-    session_id?: string | null;
-    [k: string]: unknown;
-  };
-  [k: string]: unknown;
-};
+    session_id?: string | null
+    [k: string]: unknown
+  }
+  [k: string]: unknown
+}

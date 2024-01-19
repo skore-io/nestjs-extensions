@@ -12,7 +12,7 @@ export interface Events {
   /**
    * Unique identifier for the company associated with the event.
    */
-  company_id: number;
+  company_id: number
   /**
    * Metadata associated with the event.
    */
@@ -20,8 +20,8 @@ export interface Events {
     /**
      * The source where the event originated.
      */
-    source: string;
-    [k: string]: unknown;
-  };
-  [k: string]: unknown;
+    source: string
+    [k: string]: unknown
+  }
+  [k: string]: unknown
 }

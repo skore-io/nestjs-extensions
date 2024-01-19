@@ -12,14 +12,14 @@ export type ContentEvent = Events & {
   /**
    * Type of action taken on the content (e.g., accessed, consumed).
    */
-  element_action: "accessed" | "consumed" | "completed" | "attended";
+  element_action: 'accessed' | 'consumed' | 'completed' | 'attended'
   /**
    * Type of the content element (e.g., content, mission, space).
    */
-  element_type: "content" | "mission" | "space";
+  element_type: 'content' | 'mission' | 'space'
   /**
    * Unique identifier for the content element.
    */
-  element_id: string;
-  [k: string]: unknown;
-};
+  element_id: string
+  [k: string]: unknown
+}
