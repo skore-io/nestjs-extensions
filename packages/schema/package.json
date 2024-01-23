@@ -18,7 +18,8 @@
   ],
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "nest build",
+    "build": "git submodule update --recursive --remote && npm run generate:interface && nest build",
+    "postbuild": "ts-node src/script/copy-to-dist.ts",
     "generate:interface": "ts-node -r tsconfig-paths/register src/script/generate-interface.script",
     "test": "npx jest"
   },

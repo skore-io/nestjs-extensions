@@ -1,5 +1,6 @@
 import * as fs from 'fs'
 import * as path from 'path'
+import * as ts from 'typescript'
 import { compileFromFile } from 'json-schema-to-typescript'
 
 const inputDirectory = path.join(__dirname, '../../data-schemas/schemas')
@@ -13,7 +14,9 @@ const generateInterfaceScript = async (): Promise<void> => {
       const filePath = path.join(inputDirectory, schema)
       const compiledInterface = await compileFromFile(filePath, {
         cwd: inputDirectory,
+        additionalProperties: false,
         declareExternallyReferenced: false,
+        bannerComment: '',
         style: {
           printWidth: 100,
           singleQuote: true,
@@ -31,6 +34,8 @@ const generateInterfaceScript = async (): Promise<void> => {
       if (countExportBlocks(compiledInterface) > 1) {
         removeGeneratedExports(interfaceFilePath)
       }
+
+      addImportStatements(interfaceFilePath)
     }
 
     writeExports()
@@ -57,6 +62,37 @@ const countExportBlocks = (fileContent: string): number => {
   // Counts the number of export blocks generated
   const exportBlocks = fileContent.match(/export type .*?{[^}]*}/gs)
   return exportBlocks ? exportBlocks.length : 0
+}
+
+const addImportStatements = (filePath: string): void => {
+  let fileContent = fs.readFileSync(filePath, 'utf-8')
+
+  const sourceFile = ts.createSourceFile(filePath, fileContent, ts.ScriptTarget.Latest, true)
+  const typeNames = []
+
+  const visitNode = (node: ts.Node) => {
+    if (node.kind === ts.SyntaxKind.TypeReference) {
+      const typeReferenceNode = node as ts.TypeReferenceNode
+      if (
+        typeReferenceNode.typeName &&
+        typeReferenceNode.typeName.kind === ts.SyntaxKind.Identifier
+      ) {
+        typeNames.push((typeReferenceNode.typeName as ts.Identifier).text)
+      }
+    }
+
+    ts.forEachChild(node, visitNode)
+  }
+
+  visitNode(sourceFile)
+
+  if (typeNames.length) {
+    const importStatement = `import { ${typeNames.join(', ')} } from './'\n\n`
+    fileContent = importStatement + fileContent
+
+    // Write the updated content back to the file
+    fs.writeFileSync(filePath, fileContent, 'utf8')
+  }
 }
 
 const removeGeneratedExports = (filePath: string): void => {

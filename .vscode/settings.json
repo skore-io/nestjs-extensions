@@ -1,11 +1,9 @@
 {
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
-  "eslint.validate": [
-    "json"
-  ],
+  "eslint.validate": ["json"],
   "eslint.enable": true,
   "[javascript, typescript]": {
     "editor.formatOnSave": true
