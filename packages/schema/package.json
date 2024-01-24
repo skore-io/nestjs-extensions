@@ -1,0 +1,30 @@
+{
+  "name": "@skore-io/schema",
+  "version": "1.0.0",
+  "description": "Lib to generate and validate Typescript interfaces from json schemas",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:skore-io/nestjs-extensions.git"
+  },
+  "license": "UNLICENSED",
+  "author": "Skore",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "directories": {
+    "dist": "dist"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "git submodule update --recursive --remote && npm run generate:interface && nest build",
+    "postbuild": "ts-node src/script/copy-to-dist.ts",
+    "generate:interface": "ts-node -r tsconfig-paths/register src/script/generate-interface.script"
+  },
+  "dependencies": {
+    "@types/json-schema": "^7.0.15",
+    "aws-sdk": "^2.1536.0",
+    "json-schema-to-typescript": "^13.1.2"
+  }
+}
