@@ -1,6 +1,6 @@
 {
   "name": "@skore-io/schema",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Lib to generate and validate Typescript interfaces from json schemas",
   "repository": {
     "type": "git",
