@@ -19,7 +19,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
-    "postbuild": "ts-node src/script/copy-to-dist.ts",
+    "postbuild": "ts-node src/script/copy-to-dist.script.ts",
     "build:dev": "git submodule update --recursive --remote && npm run generate:interface && nest build",
     "build:prod": "git submodule add git@github.com:skore-io/data-schemas.git && nest build",
     "generate:interface": "ts-node -r tsconfig-paths/register src/script/generate-interface.script"
