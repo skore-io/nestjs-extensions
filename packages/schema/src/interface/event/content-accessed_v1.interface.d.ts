@@ -1,7 +1,7 @@
 /**
  * Basic validation for a content accessed event.
  */
-export interface ContentAccessedEvent {
+export interface ContentAccessedEventV1 {
   attributes?: {
     action: 'accessed'
     type: 'io.skore.events.content'

@@ -1,11 +1,31 @@
+/* eslint-disable no-console */
 import * as fs from 'fs'
 import * as path from 'path'
 import { compile } from 'json-schema-to-typescript'
 
-const inputDirectory = path.join(__dirname, '../../data-schemas/schemas')
-const outputDirectory = path.join(__dirname, '../interface/')
+const srcDirectory = path.resolve(__dirname, '../')
+const baseDirectory = path.join(srcDirectory, '../data-schemas/schemas')
+const outputDirectory = path.join(srcDirectory, 'interface')
 
-const generateInterfaceScript = async (): Promise<void> => {
+const perform = async (): Promise<void> => {
+  const directories = fs
+    .readdirSync(baseDirectory)
+    .map((dir) => path.join(baseDirectory, dir))
+    .filter((dir) => fs.statSync(dir).isDirectory())
+
+  for (const directory of directories) {
+    await generateInterfacesInDirectory(directory)
+  }
+
+  writeExports(directories)
+}
+
+const generateInterfacesInDirectory = async (inputDirectory: string): Promise<void> => {
+  const interfaceFolderName = inputDirectory.split('/').pop()
+  const interfaceFolderPath = `${outputDirectory}/${interfaceFolderName}`
+
+  console.info(`Generating interfaces for domain=${interfaceFolderName}`)
+
   try {
     const schemas = fs.readdirSync(inputDirectory)
 
@@ -27,13 +47,18 @@ const generateInterfaceScript = async (): Promise<void> => {
         },
       })
 
-      const typescriptFilename = schema.replace(/\.json$/, '.d.ts')
-      const interfaceFilePath = path.join(outputDirectory, typescriptFilename)
+      const typescriptFilename = schema.replace(/\.json$/, '.interface.d.ts')
+      const interfaceFilePath = path.join(interfaceFolderPath, typescriptFilename)
+
+      if (!fs.existsSync(interfaceFolderPath)) {
+        console.info(`Creating new directory=${interfaceFolderPath} to export interface`)
+        fs.mkdirSync(interfaceFolderPath, { recursive: true })
+      }
 
       fs.writeFileSync(interfaceFilePath, compiledInterface)
     }
 
-    writeExports()
+    writeInterfaceExports(interfaceFolderPath, interfaceFolderName)
   } catch (error) {
     throw Error(`Error on generating interfaces: ${error}`)
   }
@@ -42,6 +67,8 @@ const generateInterfaceScript = async (): Promise<void> => {
 const modifyJsonSchema = (filePath: string): JSON => {
   try {
     const schema = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
+
+    if (!filePath.includes('/event')) return schema
 
     if (schema.properties) {
       // Creates a new "attributes" field based on existing fields
@@ -101,13 +128,12 @@ const modifyJsonSchema = (filePath: string): JSON => {
 
     return schema
   } catch (error) {
-    // eslint-disable-next-line no-console
     console.error(`Error modifying JSON schema: ${error}`)
   }
 }
 
-const writeExports = (): void => {
-  const files = fs.readdirSync(outputDirectory)
+const writeInterfaceExports = (interfaceFolderPath: string, interfaceFolderName: string): void => {
+  const files = fs.readdirSync(interfaceFolderPath)
 
   const indexFileContent = files
     .filter((file) => file !== 'index.ts')
@@ -117,7 +143,18 @@ const writeExports = (): void => {
   // Add a blank line to the end to remove eslint error: Insert `⏎`
   const finalContent = `${indexFileContent}\n`
 
-  fs.writeFileSync(path.join(outputDirectory, 'index.ts'), finalContent)
+  console.info(`Adding interface folder files to src/interface/${interfaceFolderName}/index.ts`)
+  fs.writeFileSync(path.join(interfaceFolderPath, 'index.ts'), finalContent)
 }
 
-generateInterfaceScript()
+const writeExports = (directories: string[]): void => {
+  console.info('Adding all generated interface folders to src/index.ts')
+
+  const indexFileContent = directories
+    .map((directory) => `export * from './interface/${directory.split('/').pop()}'`)
+    .join('\n')
+
+  fs.writeFileSync(path.join(srcDirectory, '/index.ts'), `${indexFileContent}\n`)
+}
+
+perform()

@@ -1,7 +1,7 @@
 /**
  * Basic validation for a users created event.
  */
-export interface UserCreatedEvent {
+export interface UserCreatedEventV1 {
   attributes?: {
     action: 'created'
     type: 'io.skore.events.user'
