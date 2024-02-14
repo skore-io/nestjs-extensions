@@ -25,6 +25,8 @@ export enum PubSubTypeEventEnum {
   'io.skore.commands.user' = 'io.skore.commands.user',
   'io.skore.commands.content' = 'io.skore.commands.content',
   'io.skore.commands.mission' = 'io.skore.commands.mission',
+  'br.com.edtech.sapiencialti.events.content' = 'br.com.edtech.sapiencialti.events.content',
+  'br.com.edtech.scormplay.events.content' = 'br.com.edtech.scormplay.events.content',
 }
 
 export enum PubSubActionEnum {
