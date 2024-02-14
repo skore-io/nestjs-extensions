@@ -1,6 +1,6 @@
 {
   "name": "@skore-io/event",
-  "version": "1.36.4",
+  "version": "1.37.0",
   "description": "Client manager for sending events",
   "homepage": "https://github.com/skore-io/nestjs-extensions#readme",
   "bugs": {
