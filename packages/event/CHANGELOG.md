@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.38.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.37.0...@skore-io/event@1.38.0) (2024-02-16)
+
+### Features 🚀
+
+- use cold events subscription ([#151](https://github.com/skore-io/nestjs-extensions/issues/151)) ([802b3d7](https://github.com/skore-io/nestjs-extensions/commit/802b3d739681f4fc8a333bd71eda1b67ae58adb2))
+
 ## [1.37.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.36.4...@skore-io/event@1.37.0) (2024-02-14)
 
 ### Features 🚀
