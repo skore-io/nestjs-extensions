@@ -2,12 +2,13 @@
 A collection of NestJS extensions used by Learning.rocks.
 </p>
 
-| Name                                     | Description                                                      |
-| ---------------------------------------- | -----------------------------------------------------------------|
-| [`Auth`](./packages/auth)                | Authenticate and provide access to users, services and companies |
-| [`Bull`](./packages/bull)                | Setup bull queues along with bull-board                          |
-| [`Event`](./packages/event)              | Publish events to a topic in Pub/Sub                             |
-| [`Pagination`](./packages/pagination)    | Paginate graphql queries                                         |
+| Name                                  | Description                                                      |
+| ------------------------------------- | ---------------------------------------------------------------- |
+| [`Auth`](./packages/auth)             | Authenticate and provide access to users, services and companies |
+| [`Bull`](./packages/bull)             | Setup bull queues along with bull-board                          |
+| [`Event`](./packages/event)           | Publish events to a topic in Pub/Sub                             |
+| [`Schema`](./packages/schema)         | Generate and validate Typescript interfaces from json schemas    |
+| [`Pagination`](./packages/pagination) | Paginate graphql queries                                         |
 
 **Local Development**
 
