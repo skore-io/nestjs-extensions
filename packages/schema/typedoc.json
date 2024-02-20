@@ -1,0 +1,22 @@
+{
+  "name": "Documentação de Schemas",
+  "categorizeByGroup": false,
+  "categoryOrder": [
+    "*"
+  ],
+  "entryPointStrategy": "expand",
+  "entryPoints": [
+    "src/interface"
+  ],
+  "exclude": [
+    "**/index.ts"
+  ],
+  "excludeExternals": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeReferences": true,
+  "githubPages": true,
+  "includeVersion": true,
+  "out": "../../docs",
+  "theme": "default"
+}
