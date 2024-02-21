@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/schema@1.2.1...@skore-io/schema@1.2.2) (2024-02-21)
+
+### Continuous Integration 🤖
+
+- **schema:** generate docs in github pages ([a6c6160](https://github.com/skore-io/nestjs-extensions/commit/a6c6160bee9b40b7f2d5f0933d63b30ba00e3b9b))
+
 ## [1.2.1](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/schema@1.2.0...@skore-io/schema@1.2.1) (2024-02-19)
 
 ### Bug Fixes 🐛

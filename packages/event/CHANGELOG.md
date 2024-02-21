@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.38.1](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.38.0...@skore-io/event@1.38.1) (2024-02-21)
+
+### Bug Fixes 🐛
+
+- add action on enum ([#153](https://github.com/skore-io/nestjs-extensions/issues/153)) ([b9902a6](https://github.com/skore-io/nestjs-extensions/commit/b9902a61ab29e74d99c450c81f6585db33d1d859))
+
 ## [1.38.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.37.0...@skore-io/event@1.38.0) (2024-02-16)
 
 ### Features 🚀
