@@ -5,6 +5,12 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  packages: write
+
 concurrency:
   group: pages
   cancel-in-progress: false
