@@ -18,6 +18,8 @@ export enum PubSubTypeEventEnum {
   'io.skore.events.section' = 'io.skore.events.section',
   'io.skore.events.mission' = 'io.skore.events.mission',
   'io.skore.events.mission.enrollment' = 'io.skore.events.mission.enrollment',
+  'io.skore.events.group' = 'io.skore.events.group',
+  'io.skore.events.space' = 'io.skore.events.space',
   'io.skore.commands.notification' = 'io.skore.commands.notification',
   'io.skore.commands.outbound' = 'io.skore.commands.outbound',
   'io.skore.commands.integration' = 'io.skore.commands.integration',
@@ -27,6 +29,8 @@ export enum PubSubTypeEventEnum {
   'io.skore.commands.mission' = 'io.skore.commands.mission',
   'br.com.edtech.sapiencialti.events.content' = 'br.com.edtech.sapiencialti.events.content',
   'br.com.edtech.scormplay.events.content' = 'br.com.edtech.scormplay.events.content',
+  'io.skore.events.content.import' = 'io.skore.events.content.import',
+  'io.skore.events.mission.import' = 'io.skore.events.mission.import',
 }
 
 export enum PubSubActionEnum {
