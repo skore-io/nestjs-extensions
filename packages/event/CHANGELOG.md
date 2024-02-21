@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.39.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.38.1...@skore-io/event@1.39.0) (2024-02-21)
+
+### Features 🚀
+
+- add impersionation_ended action ([#154](https://github.com/skore-io/nestjs-extensions/issues/154)) ([dcec7e5](https://github.com/skore-io/nestjs-extensions/commit/dcec7e526815bf5ca335fee22466bea699733102))
+
 ## [1.38.1](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.38.0...@skore-io/event@1.38.1) (2024-02-21)
 
 ### Bug Fixes 🐛
