@@ -79,4 +79,5 @@ export enum PubSubActionEnum {
   delete_consume = 'delete_consume',
   reset_worksheet = 'reset_worksheet',
   reset_scorm = 'reset_scorm',
+  impersonation_started = 'impersonation_started',
 }
