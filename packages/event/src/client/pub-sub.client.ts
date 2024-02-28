@@ -79,6 +79,10 @@ export class PubSubClient implements EventClientInterface {
         return
       } catch (error) {
         retries++
+
+        // eslint-disable-next-line no-console
+        console.error(`Error trying to publish event for the ${retries} time`)
+
         if (retries >= this.MAX_RETRIES) {
           // eslint-disable-next-line no-console
           console.error(`Error to publish event: ${error}`)
