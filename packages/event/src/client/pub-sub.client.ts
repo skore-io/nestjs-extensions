@@ -10,6 +10,7 @@ export class PubSubClient implements EventClientInterface {
   private readonly googleAuth: GoogleAuth
   private readonly BATCH_SIZE = 1000
   private readonly pubSubClient: PubSub
+  private readonly MAX_RETRIES = 3
 
   constructor(googleAuth = null) {
     this.googleAuth =
@@ -58,22 +59,31 @@ export class PubSubClient implements EventClientInterface {
   async publish(attributes: PubSubAttributeDto, body: object, url: string): Promise<void> {
     const pubSubClient = await this.googleAuth.getClient()
     const defaultAttributes = { created_at: String(Date.now()) }
+    let retries = 0
 
-    try {
-      await pubSubClient.request({
-        url,
-        method: 'POST',
-        data: {
-          messages: [
-            {
-              data: Buffer.from(JSON.stringify(body)).toString('base64'),
-              attributes: { ...defaultAttributes, ...attributes },
-            },
-          ],
-        },
-      })
-    } catch (error) {
-      throw new PublishPubSubError(error)
+    while (retries < this.MAX_RETRIES) {
+      try {
+        await pubSubClient.request({
+          url,
+          method: 'POST',
+          data: {
+            messages: [
+              {
+                data: Buffer.from(JSON.stringify(body)).toString('base64'),
+                attributes: { ...defaultAttributes, ...attributes },
+              },
+            ],
+          },
+        })
+        return
+      } catch (error) {
+        retries++
+        if (retries >= this.MAX_RETRIES) {
+          throw new PublishPubSubError(error)
+        }
+
+        await new Promise((resolve) => setTimeout(resolve, 1000))
+      }
     }
   }
 
