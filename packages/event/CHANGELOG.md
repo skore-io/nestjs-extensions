@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.41.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.40.0...@skore-io/event@1.41.0) (2024-02-28)
+
+### Features 🚀
+
+- add publish retry ([#156](https://github.com/skore-io/nestjs-extensions/issues/156)) ([0f54ee5](https://github.com/skore-io/nestjs-extensions/commit/0f54ee56954ad084e1802249c1b47eac3f910bf5))
+
 ## [1.40.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.39.0...@skore-io/event@1.40.0) (2024-02-22)
 
 ### Features 🚀
