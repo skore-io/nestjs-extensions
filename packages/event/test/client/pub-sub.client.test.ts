@@ -70,6 +70,7 @@ export class GetClientTest {
     const defaultAttributes = { created_at: String(Date.now()) }
 
     expect(getClient).toHaveBeenCalledTimes(1)
+    expect(request).toHaveBeenCalledTimes(1)
     expect(request).toHaveBeenCalledWith({
       url: 'https://test.com',
       method: 'POST',
@@ -112,6 +113,39 @@ export class GetClientTest {
     expect((err as PublishPubSubError).code).toEqual('PUBLISH_PUBSUB_FAILED')
     expect((err as PublishPubSubError).message).toEqual('fail to publish event')
     expect((err as PublishPubSubError).details).toEqual(errorFake)
+  }
+
+  @test
+  async '[publish] Should retry three times to publish event'() {
+    const errorFake = new Error('yolo error')
+    const request = jest
+      .fn()
+      .mockRejectedValueOnce(errorFake)
+      .mockRejectedValueOnce(errorFake)
+      .mockResolvedValue(undefined)
+
+    const getClient = jest.fn().mockResolvedValue({ request })
+
+    const pubSubClient = new PubSubClient({ getClient })
+
+    const attributePubSubDtoFake: PubSubAttributeDto = {
+      action: PubSubActionEnum.accessed,
+      type: PubSubTypeEventEnum['io.skore.commands.outbound'],
+      source: 'workspace:???.ts',
+    }
+
+    const bodyFake = {}
+
+    let err = null
+    try {
+      await pubSubClient.publish(attributePubSubDtoFake, bodyFake, null)
+    } catch (error) {
+      err = error
+    }
+
+    expect(getClient).toHaveBeenCalledTimes(1)
+    expect(request).toHaveBeenCalledTimes(3)
+    expect(err).toBeNull()
   }
 
   @test
