@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.43.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.42.0...@skore-io/event@1.43.0) (2024-02-29)
+
+### Features 🚀
+
+- **pub_sub_type_event:** add enum game audience ([#157](https://github.com/skore-io/nestjs-extensions/issues/157)) ([acb5c64](https://github.com/skore-io/nestjs-extensions/commit/acb5c64c561a49565edb76cc5c02dae1a15f2282))
+
 ## [1.42.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.41.0...@skore-io/event@1.42.0) (2024-02-28)
 
 ### Features 🚀
