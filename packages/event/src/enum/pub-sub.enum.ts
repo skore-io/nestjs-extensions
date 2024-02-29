@@ -31,6 +31,7 @@ export enum PubSubTypeEventEnum {
   'br.com.edtech.scormplay.events.content' = 'br.com.edtech.scormplay.events.content',
   'io.skore.events.content.import' = 'io.skore.events.content.import',
   'io.skore.events.mission.import' = 'io.skore.events.mission.import',
+  'io.skore.events.game.audience' = 'io.skore.events.game.audience',
 }
 
 export enum PubSubActionEnum {
