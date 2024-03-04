@@ -1,3 +1,0 @@
-[submodule "packages/schema/data-schemas"]
-	path = packages/schema/data-schemas
-	url = git@github.com:skore-io/data-schemas.git
