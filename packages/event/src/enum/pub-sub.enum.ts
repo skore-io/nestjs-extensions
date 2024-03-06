@@ -27,6 +27,7 @@ export enum PubSubTypeEventEnum {
   'io.skore.commands.user' = 'io.skore.commands.user',
   'io.skore.commands.content' = 'io.skore.commands.content',
   'io.skore.commands.mission' = 'io.skore.commands.mission',
+  'io.skore.commands.mission.enrollment' = 'io.skore.commands.mission.enrollment',
   'br.com.edtech.sapiencialti.events.content' = 'br.com.edtech.sapiencialti.events.content',
   'br.com.edtech.scormplay.events.content' = 'br.com.edtech.scormplay.events.content',
   'io.skore.events.content.import' = 'io.skore.events.content.import',
