@@ -86,4 +86,5 @@ export enum PubSubActionEnum {
   reset_scorm = 'reset_scorm',
   impersonation_started = 'impersonation_started',
   impersonation_ended = 'impersonation_ended',
+  create_version = 'create_version',
 }
