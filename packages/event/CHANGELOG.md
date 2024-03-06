@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.43.3](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.43.2...@skore-io/event@1.43.3) (2024-03-06)
+
+### Bug Fixes 🐛
+
+- add missing type ([398d1f5](https://github.com/skore-io/nestjs-extensions/commit/398d1f50f75578f2520dbb6689bfed69210514a7))
+
 ## [1.43.2](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.43.1...@skore-io/event@1.43.2) (2024-03-06)
 
 ### Bug Fixes 🐛
