@@ -101,7 +101,7 @@ export class PubSubClient implements EventClientInterface {
 
     const defaultAttributes = { created_at: String(Date.now()) }
 
-    const batchPublisher = this.pubSubClient.topic('events', {
+    const batchPublisher = this.pubSubClient.topic('cold-events', {
       batching: {
         maxMessages: this.BATCH_SIZE,
       },
