@@ -89,4 +89,5 @@ export enum PubSubActionEnum {
   impersonation_ended = 'impersonation_ended',
   create_version = 'create_version',
   reopen = 'reopen',
+  refresh = 'refresh',
 }
