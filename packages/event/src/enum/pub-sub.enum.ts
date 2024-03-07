@@ -90,4 +90,5 @@ export enum PubSubActionEnum {
   create_version = 'create_version',
   reopen = 'reopen',
   refresh = 'refresh',
+  mission_update = 'mission_update',
 }
