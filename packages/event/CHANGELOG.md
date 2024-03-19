@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.45.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.44.2...@skore-io/event@1.45.0) (2024-03-19)
+
+### Features 🚀
+
+- add recycle_worksheet action ([#162](https://github.com/skore-io/nestjs-extensions/issues/162)) ([b59d3cf](https://github.com/skore-io/nestjs-extensions/commit/b59d3cf73925cbe44f219df73c4cbc695e41bc19))
+
 ## [1.44.2](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.44.1...@skore-io/event@1.44.2) (2024-03-07)
 
 ### Bug Fixes 🐛
