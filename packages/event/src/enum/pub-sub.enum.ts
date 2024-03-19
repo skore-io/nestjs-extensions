@@ -47,6 +47,7 @@ export enum PubSubActionEnum {
   deleted = 'deleted',
   search = 'search',
   reseted = 'reseted',
+  recycled = 'recycled',
   commented = 'commented',
   ping = 'ping',
   delivered = 'delivered',
