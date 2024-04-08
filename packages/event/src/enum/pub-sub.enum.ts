@@ -37,6 +37,7 @@ export enum PubSubTypeEventEnum {
 
 export enum PubSubActionEnum {
   create_content_certificate = 'create_content_certificate',
+  create_mission_certificate = 'create_mission_certificate',
   send_push = 'send_push',
   attended = 'attended',
   accessed = 'accessed',
