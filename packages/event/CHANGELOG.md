@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.47.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.46.0...@skore-io/event@1.47.0) (2024-04-11)
+
+### Features 🚀
+
+- **pub_sub_action:** create mission certificate ([#164](https://github.com/skore-io/nestjs-extensions/issues/164)) ([d96bccc](https://github.com/skore-io/nestjs-extensions/commit/d96bcccb7791e6827d91bba802dfbf32009d23b9))
+
 ## [1.46.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.45.0...@skore-io/event@1.46.0) (2024-03-19)
 
 ### Features 🚀
