@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.48.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.47.0...@skore-io/event@1.48.0) (2024-05-16)
+
+### Features 🚀
+
+- **event_action:** remove attendance ([#165](https://github.com/skore-io/nestjs-extensions/issues/165)) ([b5f0a85](https://github.com/skore-io/nestjs-extensions/commit/b5f0a85134c7af4f659a829f15f8d00c5000d8d9))
+
 ## [1.47.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/event@1.46.0...@skore-io/event@1.47.0) (2024-04-11)
 
 ### Features 🚀
