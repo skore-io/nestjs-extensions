@@ -94,4 +94,5 @@ export enum PubSubActionEnum {
   reopen = 'reopen',
   refresh = 'refresh',
   mission_update = 'mission_update',
+  remove_attendance = 'remove_attendance',
 }
