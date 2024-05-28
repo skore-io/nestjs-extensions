@@ -95,4 +95,6 @@ export enum PubSubActionEnum {
   refresh = 'refresh',
   mission_update = 'mission_update',
   remove_attendance = 'remove_attendance',
+  certificate_enabled = 'certificate_enabled',
+  certificate_disabled = 'certificate_disabled',
 }
