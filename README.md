@@ -1,5 +1,5 @@
 <p align="center">
-A collection of NestJS extensions used by Learning.rocks.
+A collection of [NestJS](https://nestjs.com) extensions used by Learning.rocks.
 </p>
 
 | Name                                  | Description                                                      |
@@ -9,7 +9,7 @@ A collection of NestJS extensions used by Learning.rocks.
 | [`Event`](./packages/event)           | Publish events to a topic in Pub/Sub                             |
 | [`Pagination`](./packages/pagination) | Paginate graphql queries                                         |
 
-**Local Development**
+### Local development
 
 This project uses [lerna](https://www.npmjs.com/package/lerna) package to handle sub repo dependencies.
 
@@ -31,7 +31,7 @@ $ npm i
 $ npm run test
 ```
 
-### Running locally
+### Testing locally
 
 You can link projects to test new features before publishing a new release.
 Follow these steps:

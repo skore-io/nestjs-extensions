@@ -17,7 +17,10 @@ export function PaginationResponse<ItemType>(ItemClass: ClassType<ItemType>) {
     total: number
   }
 
-  return PaginationResponseClass as new (items: ItemType[], total: number) => {
+  return PaginationResponseClass as new (
+    items: ItemType[],
+    total: number,
+  ) => {
     [key in keyof PaginationResponseClass]: PaginationResponseClass[key]
   }
 }

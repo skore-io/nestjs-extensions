@@ -6,8 +6,8 @@ import { PubSubAttributeDto } from '../../src'
 import { ValidationAttributeError, PublishPubSubError } from '../../src/error'
 import { PubSub } from '@google-cloud/pubsub'
 
-@suite('[Event Client] - PubSubClient')
-export class GetClientTest {
+@suite
+export class PubSubClientTest {
   @test
   async '[publish] Should publish event at Pub Sub with successfully'() {
     process.env.GCP_EVENTS_PROJECT_URL = 'https://bilu.com.br/yolo'
@@ -158,7 +158,7 @@ export class GetClientTest {
 
     jest
       .spyOn(PubSub.prototype, 'topic')
-      .mockImplementation(() => ({ publishMessage: publishMessageSpy } as never))
+      .mockImplementation(() => ({ publishMessage: publishMessageSpy }) as never)
 
     const createdAt = Date.now()
 
