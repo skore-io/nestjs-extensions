@@ -1,13 +1,13 @@
 {
   "name": "@skore-io/auth",
   "version": "1.19.2",
-  "description": "Package to authenticate users and companies",
+  "description": "Package to authenticate users, companies and services",
   "repository": {
     "type": "git",
     "url": "git+https://github.com:skore-io/nestjs-extensions.git"
   },
   "license": "UNLICENSED",
-  "author": "Skore",
+  "author": "Learning Rocks",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "directories": {
@@ -22,14 +22,14 @@
     "test": "npx jest"
   },
   "dependencies": {
-    "@nestjs/passport": "^10.0.0",
-    "jsonwebtoken": "^9.0.0",
-    "passport": "^0.6.0",
+    "@nestjs/passport": "^10.0.3",
+    "jsonwebtoken": "^9.0.2",
+    "passport": "^0.7.0",
     "passport-http-bearer": "^1.0.1",
-    "qs": "^6.11.2",
+    "qs": "^6.12.1",
     "ts-method-cache": "^3.3.1"
   },
   "devDependencies": {
-    "@types/jsonwebtoken": "^9.0.2"
+    "@types/jsonwebtoken": "^9.0.6"
   }
 }

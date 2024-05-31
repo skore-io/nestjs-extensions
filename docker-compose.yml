@@ -4,6 +4,6 @@ services:
   redis:
     command: redis-server --requirepass redispassword
     container_name: redis
-    image: redis:5.0.9-alpine
+    image: redis:7.2.4-alpine
     ports:
       - 6379:6379

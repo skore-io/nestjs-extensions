@@ -7,7 +7,7 @@
     "url": "git+https://github.com:skore-io/nestjs-extensions.git"
   },
   "license": "UNLICENSED",
-  "author": "Skore",
+  "author": "Learning Rocks",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "directories": {
@@ -22,6 +22,6 @@
     "test": "npx jest --detectOpenHandles"
   },
   "dependencies": {
-    "class-validator": "^0.14.0"
+    "class-validator": "^0.14.1"
   }
 }

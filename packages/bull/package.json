@@ -8,7 +8,7 @@
     "url": "git+https://github.com/skore-io/nestjs-extensions.git"
   },
   "license": "UNLICENSED",
-  "author": "Skore",
+  "author": "Learning Rocks",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "directories": {
@@ -23,11 +23,11 @@
     "test": "npx jest"
   },
   "dependencies": {
-    "@bull-board/api": "^5.5.1",
-    "@bull-board/express": "^5.5.1",
+    "@bull-board/api": "^5.19.2",
+    "@bull-board/express": "^5.19.2",
     "@liaoliaots/nestjs-redis": "^9.0.5",
-    "@nestjs/bull": "^10.0.0",
-    "bull": "^4.11.5",
-    "express-basic-auth": "^1.2.0"
+    "@nestjs/bull": "^10.1.1",
+    "bull": "^4.12.9",
+    "express-basic-auth": "^1.2.1"
   }
 }
