@@ -49,9 +49,3 @@ npm pack
 ```bash
 npm install path-to-generated-file/skore-io-{package}-{version}.tgz
 ```
-
-### Husky Install <sub><sup>(required to commit)</sup></sub>
-
-We use [husky](https://www.npmjs.com/package/husky) to handle some hooks like `pre-commit` and `commit-msg`. To install it, you need to run `npm run prepare` or `npx husky install`.
-
-**_If you don't run this command, your code will go up badly indented causing conflicts in the project's code base._**
