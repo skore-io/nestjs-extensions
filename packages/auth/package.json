@@ -2,10 +2,6 @@
   "name": "@skore-io/auth",
   "version": "1.19.4",
   "description": "Package to authenticate users, companies and services",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com:skore-io/nestjs-extensions.git"
-  },
   "license": "UNLICENSED",
   "author": "Learning Rocks",
   "main": "dist/index.js",

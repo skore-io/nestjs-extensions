@@ -6,7 +6,6 @@
       "createRelease": "github"
     },
     "version": {
-      "message": "chore(release): %s",
       "allowBranch": [
         "main"
       ],
