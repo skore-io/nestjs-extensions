@@ -49,8 +49,14 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Run lerna version
+        run: lerna version --yes --conventional-commits
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Publish release
-        run: npm run publish
+        run: lerna publish from-git --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,11 +1,12 @@
 {
   "command": {
     "publish": {
+      "npmClient": "npm",
       "conventionalCommits": true,
-      "registry": "https://npm.pkg.github.com/",
-      "npmClient": "npm"
+      "createRelease": "github"
     },
     "version": {
+      "message": "chore(release): %s",
       "allowBranch": [
         "main"
       ],
