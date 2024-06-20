@@ -9,15 +9,13 @@
       "allowBranch": [
         "main"
       ],
+      "conventionalCommits": true,
+      "createRelease": "github",
       "changelogPreset": {
         "name": "conventionalcommits",
         "types": [
           {
             "type": "feat",
-            "section": "Features 🚀"
-          },
-          {
-            "type": "feature",
             "section": "Features 🚀"
           },
           {
@@ -68,15 +66,11 @@
         "commitUrlFormat": "{{host}}/{{owner}}/{{repository}}/commit/{{hash}}",
         "compareUrlFormat": "{{host}}/{{owner}}/{{repository}}/compare/{{previousTag}}...{{currentTag}}",
         "userUrlFormat": "{{host}}/{{user}}"
-      },
-      "conventionalCommits": true,
-      "createRelease": "github",
-      "message": "chore(release): %s"
+      }
     }
   },
   "packages": [
     "packages/*"
   ],
-  "includeMergedTags": true,
   "version": "independent"
 }
