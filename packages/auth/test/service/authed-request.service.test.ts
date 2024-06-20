@@ -66,7 +66,7 @@ export class AuthedRequestServiceTest {
 
     const response = await service.rest(url, method, data)
 
-    expect(this.httpService.request).toBeCalledWith({
+    expect(this.httpService.request).toHaveBeenCalledWith({
       url,
       method: method.toLowerCase(),
       headers: {
@@ -91,7 +91,7 @@ export class AuthedRequestServiceTest {
 
     const response = await service.graphql(url, query, variables)
 
-    expect(this.httpService.post).toBeCalledWith(
+    expect(this.httpService.post).toHaveBeenCalledWith(
       url,
       { query, variables },
       {

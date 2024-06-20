@@ -5,7 +5,7 @@ import { EventService } from '../../src/service'
 import { PubSubActionEnum, ClientEventNameEnum, PubSubTypeEventEnum } from '../../src/enum'
 import { ClientNotFoundError } from '../../src/error'
 
-@suite('Event Service')
+@suite
 export class EventServiceTest {
   @test
   async '[send] Call send with pubsub client with succeffully'() {
@@ -31,7 +31,7 @@ export class EventServiceTest {
 
     await eventService.send(dtoFake, bodyFake)
 
-    expect(clientFake).toBeCalledWith(dtoFake, bodyFake, 'https://bilu.com.br/yolo')
+    expect(clientFake).toHaveBeenCalledWith(dtoFake, bodyFake, 'https://bilu.com.br/yolo')
   }
 
   @test
@@ -58,7 +58,7 @@ export class EventServiceTest {
 
     await eventService.send(dtoFake, bodyFake, 'http://test.com')
 
-    expect(clientFake).toBeCalledWith(dtoFake, bodyFake, 'http://test.com')
+    expect(clientFake).toHaveBeenCalledWith(dtoFake, bodyFake, 'http://test.com')
   }
 
   @test
@@ -89,7 +89,7 @@ export class EventServiceTest {
 
     await eventService.publishInBatch(events)
 
-    expect(clientFake).toBeCalledWith(events)
+    expect(clientFake).toHaveBeenCalledWith(events)
   }
 
   @test

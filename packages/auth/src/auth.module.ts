@@ -4,9 +4,8 @@ import { ConfigModule } from '@nestjs/config'
 import { User } from './domain'
 import { CompanyGuard, UserGuard, AdminOrCompanyGuard, ServiceGuard } from './guard'
 import { WorkspaceClient, KeycloakClient } from './client'
-import { UserStrategy, CompanyStrategy, AdminOrCompanyStrategy } from './strategy'
+import { UserStrategy, CompanyStrategy, AdminOrCompanyStrategy, ServiceStrategy } from './strategy'
 import { AuthedRequest } from './service'
-import { ServiceStrategy } from './strategy/service.strategy'
 
 @Module({
   imports: [ConfigModule.forRoot(), HttpModule],

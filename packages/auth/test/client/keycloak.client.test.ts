@@ -69,7 +69,7 @@ export class KeyCloakClientTest {
 
     const response = await client.getToken()
 
-    expect(this.httpService.post).toBeCalledWith(
+    expect(this.httpService.post).toHaveBeenCalledWith(
       `${this.authBaseUrlFake}/token`,
       qs.stringify({ grant_type: 'client_credentials' }),
       {
@@ -119,7 +119,7 @@ export class KeyCloakClientTest {
 
     const response = await client.validateToken(fakeToken)
 
-    expect(this.httpService.post).toBeCalledWith(
+    expect(this.httpService.post).toHaveBeenCalledWith(
       `${this.authBaseUrlFake}/token/introspect`,
       qs.stringify({
         token: fakeToken,
