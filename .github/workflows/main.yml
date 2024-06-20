@@ -50,13 +50,13 @@ jobs:
         run: npm run build
 
       - name: Run lerna version
-        run: git update-index --assume-unchanged lerna version --yes --conventional-commits
+        run: git update-index --assume-unchanged package-lock.json lerna version --yes --conventional-commits
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish release
-        run: git update-index --assume-unchanged lerna publish from-git --yes
+        run: git update-index --assume-unchanged package-lock.json lerna publish from-git --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
