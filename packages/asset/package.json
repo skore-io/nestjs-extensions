@@ -1,6 +1,6 @@
 {
   "name": "@skore-io/asset",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Provides management for files hosted in external buckets",
   "homepage": "https://github.com/skore-io/nestjs-extensions#readme",
   "bugs": {
@@ -20,6 +20,5 @@
   "scripts": {
     "build": "rimraf dist && nest build",
     "test": "npx jest"
-  },
-  "dependencies": {}
+  }
 }

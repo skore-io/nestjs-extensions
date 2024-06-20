@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.19.4](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/auth@1.19.3...@skore-io/auth@1.19.4) (2024-06-20)
+
+### Miscellaneous Chores 🧰
+
+- add asset lib ([#168](https://github.com/skore-io/nestjs-extensions/issues/168)) ([d098152](https://github.com/skore-io/nestjs-extensions/commit/d098152e202a746b9f0dc4c46fc40b0394344941))
+
 ## [1.19.3](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/auth@1.19.2...@skore-io/auth@1.19.3) (2024-05-31)
 
 ### Miscellaneous Chores 🧰
