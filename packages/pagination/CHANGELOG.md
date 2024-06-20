@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.2](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/pagination@1.10.1...@skore-io/pagination@1.10.2) (2024-06-20)
+
+### Code Refactoring 🎨
+
+- **pagination:** remove vscode file ([7e4b207](https://github.com/skore-io/nestjs-extensions/commit/7e4b207ee1b49717cd445c9282d6a338d3da46a2))
+
 ## [1.10.1](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/pagination@1.10.0...@skore-io/pagination@1.10.1) (2024-05-31)
 
 ### Miscellaneous Chores 🧰
