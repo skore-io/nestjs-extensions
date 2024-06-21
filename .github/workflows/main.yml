@@ -54,7 +54,7 @@ jobs:
           echo "Generating release..."
 
           # Run lerna version and capture the output
-          output=$(npx lerna version --no-git-tag-version --yes 2>&1) # O '2>&1' redireciona stderr para stdout
+          output=$(npm run version:changes)
           echo "Output of Lerna Version:"
           echo "$output"
 
@@ -78,8 +78,8 @@ jobs:
           echo "Commit Message: $commitMessage"
 
           # Execute the npm version script with the dynamic commit message
-          echo "Running npm run version"
-          npm run version --message="$commitMessage"
+          echo "Generating commit with new version"
+          npm run version:generate --message="$commitMessage"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

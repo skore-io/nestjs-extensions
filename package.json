@@ -10,7 +10,8 @@
     "prepare": "husky install",
     "publish": "npm run ignore-package-lock && lerna publish --yes",
     "test": "lerna run test --parallel",
-    "version": "npm run ignore-package-lock && lerna version --yes --message \"$npm_config_message\""
+    "version:changes": "npm run ignore-package-lock && lerna version --no-git-tag-version --yes 2>&1",
+    "version:generate": "npm run ignore-package-lock && lerna version --yes --message \"$npm_config_message\""
   },
   "dependencies": {
     "@nestjs/apollo": "^12.1.0",
