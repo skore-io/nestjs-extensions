@@ -49,8 +49,28 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Run lerna version
-        run: git update-index --assume-unchanged package-lock.json && lerna version --yes --conventional-commits
+      - name: Generate release
+        run: |
+          # Run lerna version and capture the output
+          output=$(npx lerna version --no-git-tag-version --yes 2>&1) # O '2>&1' redireciona stderr para stdout
+
+          # Extract first package change using grep and awk
+          read packageName oldVersion newVersion < <(echo "$output" | grep ' - ' | awk -F ': ' '{
+            split($1, packageInfo, " - ");
+            split($2, versionInfo, " => ");
+            print packageInfo[2], versionInfo[1], versionInfo[2];
+            exit; # Sair após a primeira linha processada
+          }')
+
+          # Check if any package has been modified and set the commit message
+          if [ -z "$packageName" ]; then
+            commitMessage="chore(release): new release published"
+          else
+            commitMessage="chore($packageName): $newVersion"
+          fi
+
+          # Execute the npm version script with the dynamic commit message
+          npm run version --message="$commitMessage"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
