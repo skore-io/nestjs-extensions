@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.19.5](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/auth@1.19.4...@skore-io/auth@1.19.5) (2024-06-21)
+
+### Bug Fixes 🐛
+
+- **lerna:** release version ([#169](https://github.com/skore-io/nestjs-extensions/issues/169)) ([63bf7ef](https://github.com/skore-io/nestjs-extensions/commit/63bf7ef1066640d2c3c01a4cebf7ae37c2f7c08f))
+
 ## [1.19.4](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/auth@1.19.3...@skore-io/auth@1.19.4) (2024-06-20)
 
 ### Miscellaneous Chores 🧰
