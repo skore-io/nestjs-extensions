@@ -77,6 +77,9 @@ jobs:
 
           echo "Commit Message: $commitMessage"
 
+          # Remove changes created by the previous command
+          git checkout .
+
           # Execute the npm version script with the dynamic commit message
           echo "Generating commit with new version"
           npm run version:generate --message="$commitMessage"
