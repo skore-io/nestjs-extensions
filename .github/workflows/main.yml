@@ -51,16 +51,22 @@ jobs:
 
       - name: Generate release
         run: |
+          echo "Generating release..."
+
           # Run lerna version and capture the output
           output=$(npx lerna version --no-git-tag-version --yes 2>&1) # O '2>&1' redireciona stderr para stdout
+          echo "Output of Lerna Version:"
+          echo "$output"
 
           # Extract first package change using grep and awk
           read packageName oldVersion newVersion < <(echo "$output" | grep ' - ' | awk -F ': ' '{
             split($1, packageInfo, " - ");
             split($2, versionInfo, " => ");
             print packageInfo[2], versionInfo[1], versionInfo[2];
-            exit; # Sair após a primeira linha processada
+            exit; # Exit after the first line processed
           }')
+
+          echo "Package: $packageName, Old Version: $oldVersion, New Version: $newVersion"
 
           # Check if any package has been modified and set the commit message
           if [ -z "$packageName" ]; then
@@ -69,7 +75,10 @@ jobs:
             commitMessage="chore($packageName): $newVersion"
           fi
 
+          echo "Commit Message: $commitMessage"
+
           # Execute the npm version script with the dynamic commit message
+          echo "Running npm run version"
           npm run version --message="$commitMessage"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
