@@ -2,14 +2,6 @@
   "name": "@skore-io/asset",
   "version": "0.0.1",
   "description": "Provides management for files hosted in external buckets",
-  "homepage": "https://github.com/skore-io/nestjs-extensions#readme",
-  "bugs": {
-    "url": "https://github.com/skore-io/nestjs-extensions/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/skore-io/nestjs-extensions.git"
-  },
   "license": "UNLICENSED",
   "author": "Learning Rocks",
   "main": "dist/index.js",
