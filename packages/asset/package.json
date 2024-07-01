@@ -12,5 +12,8 @@
   "scripts": {
     "build": "rimraf dist && nest build",
     "test": "npx jest"
+  },
+  "dependencies": {
+    "cloudinary": "^2.2.0"
   }
 }
