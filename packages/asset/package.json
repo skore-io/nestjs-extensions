@@ -1,6 +1,6 @@
 {
   "name": "@skore-io/asset",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Provides management for files hosted in external buckets",
   "license": "UNLICENSED",
   "author": "Learning Rocks",

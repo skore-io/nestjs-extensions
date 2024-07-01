@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.3](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/asset@0.0.2...@skore-io/asset@0.0.3) (2024-07-01)
+
+### Build System 🛠
+
+- **asset:** add structure ([#170](https://github.com/skore-io/nestjs-extensions/issues/170)) ([e087721](https://github.com/skore-io/nestjs-extensions/commit/e08772106374db51c5b0330ea3d24db9082bcf07))
+
 ## [0.0.2](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/asset@0.0.1...@skore-io/asset@0.0.2) (2024-06-28)
 
 ### Code Refactoring 🎨
