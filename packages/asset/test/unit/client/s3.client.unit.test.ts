@@ -14,12 +14,14 @@ export class S3ClientUnitTest {
   }
 
   @test
-  async 'Should upload file to S3'() {
-    await expect(this.s3Client.upload()).rejects.toThrow('Not implemented yet')
+  async '[upload] Given a valid file, then upload it with successfully'() {
+    await expect(this.s3Client.upload(114, 'contents', 'file.pdf')).rejects.toThrow(
+      'Not implemented yet',
+    )
   }
 
   @test
-  async 'Should delete file of S3'() {
+  async '[delete] Should delete file with successfully'() {
     await expect(this.s3Client.delete()).rejects.toThrow('Not implemented yet')
   }
 }
