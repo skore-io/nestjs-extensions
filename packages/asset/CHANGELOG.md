@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.0](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/asset@0.0.3...@skore-io/asset@0.1.0) (2024-07-01)
+
+### Features 🚀
+
+- **asset:** upload to cloudinary ([#171](https://github.com/skore-io/nestjs-extensions/issues/171)) ([6c15b95](https://github.com/skore-io/nestjs-extensions/commit/6c15b95947f2af25a912afa9dd4ff5f827da3b60))
+
 ## [0.0.3](https://github.com/skore-io/nestjs-extensions/compare/@skore-io/asset@0.0.2...@skore-io/asset@0.0.3) (2024-07-01)
 
 ### Build System 🛠
