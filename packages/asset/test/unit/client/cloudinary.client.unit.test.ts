@@ -20,6 +20,6 @@ export class CloudinaryClientUnitTest {
 
   @test
   async 'Should delete file of Cloudinary'() {
-    await expect(this.cloudinaryClient.upload()).rejects.toThrow('Not implemented yet')
+    await expect(this.cloudinaryClient.delete()).rejects.toThrow('Not implemented yet')
   }
 }
